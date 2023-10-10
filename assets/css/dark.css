@@ -2,9 +2,9 @@
 --font-color: #eee;
 --bg-color: #212121;
 
---link-color:#599ada;
---link-state-color:#a3431d;
---link-state-border-color: #a3431d80;
+--link-color: #47a82f;
+--link-state-color:#33FF00;
+--link-state-border-color: rgba(28, 134, 1, 0.5);
 
 --thead-bg-color: #343a40;
 --table-border-color: lightgrey;

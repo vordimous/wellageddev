@@ -1,0 +1,9 @@
+<h1 class="site-title">
+
+    <a href="{{ .Site.BaseURL | relLangURL }}">
+        {{ if .Site.Params.navbar_logo }} 
+        <img src="{{ .Site.Params.navbar_logo }}" />
+        {{ end }}
+        {{ .Site.Title }}
+    </a>
+</h1>

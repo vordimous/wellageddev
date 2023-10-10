@@ -2,3 +2,20 @@
 .u-url {
     color: var(--font-color);
 }
+
+.site-title a:hover, a:focus, a:active {
+    color: var(--font-color);
+    border-bottom: 0px;
+}
+.site-title a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--font-color);
+    border-bottom: 0px;
+}
+.site-title img {
+    height: 30px;
+    margin-right: 5px;
+}
+​
