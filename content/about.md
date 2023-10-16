@@ -2,36 +2,15 @@
 title: "About"
 description: "Hugo, the world’s fastest framework for building websites"
 date: "2019-02-28"
-aliases: ["about-us","about-hugo","contact"]
-author: "Hugo Authors"
-menu:
-  about:
-    identifier: about-subpage
-    parent: about
-    name: About Subpage
-    title: About Subpage
-    url: /about/subpage/
-    weight: 1
-  subpage:
-    identifier: about-subpage2
-    parent: about
-    name: Second About subpage
-    title: Second About subpage
-    url: /about/subpage2/
-    weight: 10
+aliases: ["about-us","contact"]
+author: "AJ Danelz"
 ---
+
+# AJ Danelz
 
 ![AJ Danelz](https://adanelz.netlify.com//images/profile.jpg)
 
-[linktr](https://linktr.ee/vordimous)
-[twitter](https://twitter.com/Vordimous)
-[linkedin](https://linkedin.com/in/andrew-danelz/)
-[gitlab](https://gitlab.com/vordimous)
-[github](https://github.com/vordimous)
-[instagram](https://instagram.com/mixologyminimalist/)
-
-AJ Danelz
-=========
+[Linktr.ee](https://linktr.ee/vordimous)
 
 ## Software engineer, Designer and Architect
 
@@ -59,7 +38,7 @@ Feb 2021 - Jan 2022
 
 [WSO2](https://www.wso2.com/)
 
-I was a technical sales rep that worked with customers to solve their problems with WSO2 products.
+I was a technical sales engineer that worked with customers to solve their problems with WSO2 products.
 
 ### Sr. Full Stack Developer
 
@@ -95,27 +74,38 @@ I maintained legacy applications, worked on improvements and new features of exi
 
 ## Projects
 
-### [BMW Charge Forward](https://www.bmwchargeforward.com/)
+### BMW Charge Forward
+
+> [Project link](https://www.bmwchargeforward.com/)
 
 This project includes a collection of BMW internal services providing vehicle data sources. They are used to optimize electric vehicles charging times. To manage the streams of vehicle event data, AWS Lambda, SQS, and Kinesis were built together in a Typescript mono repo. The backend was built with node Nest.js framework and PostgreSQL.
 
-### [Transportation Management System](https://www.afs.net/)
+### Transportation Management System
+
+> [Project link](https://www.afs.net/)
 
 This project includes a collection of applications and microservices deployed with Docker, Kubernetes, and Helm. Projects I participated in: A CRUD application is the main entry point into the system. It uses Spring Boot, MS SQL Server, and Vue. A Rating System designed for high throughput and consists of multiple microservices using Spring Boot, Golang, Protobuf, gRPC, Redis, PostgreSQL, Vue. A Document Manager built to control the ingestion of physical documents using Spring Boot, Protobuf, gRPC, Websockets, RabbitMQ, PostgreSQL, Google Cloud API, and Vue. A Delayed Messaged Delivery service that can scale for high volume built with Kafka, Redis, and Spring Boot.
 
-### [BallerinaLang Exercism.io](https://exercism.org/tracks/ballerina)
+### BallerinaLang Exercism.io
+
+> [Project link](https://exercism.org/tracks/ballerina)
 
 I updated the code execution and testing environments and improved the base set of courses. I added and additional set of new courses that featured the recent features in the language.
 
-### [Gohlay](https://gitlab.com/vordimous/gohlay)
+### Gohlay
+
+> [Project link](https://gitlab.com/vordimous/gohlay)
 
 I am writing an `open-source` tool to reproduce the Kafka delayed/scheduled message system using `Golang` [Gohlay](https://gitlab.com/vordimous/gohlay) WIP. It has a much smaller footprint and can scale more efficiently without the dependency on Redis.
 
-### [Dynamic EDI parser](https://www.transplace.com/)
+### Dynamic EDI parser
+
+> [Project link](https://www.transplace.com/)
 
 This reliable `EDI` parser is able to convert any EDI file into an object format of choice (XML, JSON, etc.). I developed the algorithm that utilized specific Java class definitions to know how to parse any type of EDI file. This gave us the power to define broad or specific rules in each `Java` class file that would teach the algorithm how to read any EDI file. The classes could then be extended to build custom file parsers.
 
 ## Skills
+
 | Tech | Proficiency |
 | --- | --- |
 | `Golang` | ![80%](https://progress-bar.dev/80) |
@@ -145,10 +135,9 @@ Research article: Path Planning using Dijkstra and Lightning Enhancement
 
 Researched enhancements to Dijkstra's Algorithm that enables path planning based on a height map.
 
-
 ## Hobbies
 
-*   Hiking
-*   Scuba
-*   Traveling
-*   Mixology
+* Hiking
+* Scuba
+* Traveling
+* Mixology
