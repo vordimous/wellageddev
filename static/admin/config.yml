@@ -1,0 +1,52 @@
+backend:
+  name: github
+  repo: vordimous/wellageddev
+  branch: main
+
+media_folder: static/images
+public_folder: /images
+collections:
+  - name: post
+    label: Blog
+    folder: content/post
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    editor:
+      preview: false
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Author, name: author, widget: string, default: AJ Danelz }
+      - { label: Publish Date, name: date, widget: datetime }
+      - { label: Featured Image, name: thumbnail, widget: image, default: wd_logo.png }
+      - { label: Favorite, name: favorite, widget: boolean, default: false }
+      - { label: Hidden, name: hidden, widget: boolean, default: false }
+      - { label: Tags, name: tags, widget: list }
+      - { label: Categories, name: categories, widget: list }
+      - { label: Aliases, name: aliases, widget: list }
+      - { label: Description, name: description, widget: string }
+      - { label: Body, name: body, widget: markdown }
+  - name: note
+    label: Notes
+    folder: content/note
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    editor:
+      preview: false
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Publish Date, name: date, widget: datetime }
+      - { label: Description, name: description, widget: string }
+      - { label: Body, name: body, widget: markdown }
+  - name: pages
+    label: Pages
+    files:
+      - file: content/about.md
+        label: Contact Page
+        name: contact
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Author, name: author, widget: string, default: AJ Danelz }
+          - { label: Publish Date, name: date, widget: datetime }
+          - { label: Aliases, name: aliases, widget: list }
+          - { label: Description, name: description, widget: string }
+          - { label: Body, name: body, widget: markdown }
