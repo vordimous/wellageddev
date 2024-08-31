@@ -6,15 +6,15 @@ enableRobotsTXT: true
 
 menu:
   main:
-    - identifier: notes
-      name: Notes
-      title: Notes
-      url: /note/
-      weight: 1
+    # - identifier: notes
+    #   name: Notes
+    #   title: Notes
+    #   url: /note/
+    #   weight: 1
     - identifier: about
       name: About
       title: About
-      url: /about
+      url: /about/
       weight: 2
 
 params:
