@@ -1,14 +1,13 @@
 ---
-title: "About"
-description: "Hugo, the world’s fastest framework for building websites"
-date: "2019-02-28"
-aliases: ["about-us","contact"]
+title: "AJ Danelz - Resume"
+description: "I am a full stack engineer and developer advocate passionate about cloud application design and implementation"
+date: "2024-09-01"
 author: "AJ Danelz"
 ---
 
 # AJ Danelz
 
-![AJ Danelz](https://adanelz.netlify.com//images/profile.jpg)
+![AJ Danelz](../static/images/hs.png)
 
 [Linktr.ee](https://linktr.ee/vordimous)
 
@@ -23,6 +22,16 @@ I am a full stack engineer and developer advocate passionate about cloud applica
 Mar 2023 - _Present_
 
 [Aklivity](https://www.aklivity.io/)
+
+Aklivity is a startup and small team where I served in a leadership role on a team of one. I have created the the onboarding and overall developer experience for the [Zilla](https://docs.aklivity.io/zilla/latest/) project. This meant a completely new documentation site and [Demos repository](https://github.com/aklivity/zilla-demos). I created or updated all of the demos and examples to be runnable by a single command. I published [community updates](https://www.aklivity.io/post/aklivity-community-update-july-2024), [feature annoucements](https://www.aklivity.io/post/zilla-hails-a-taxi), and [demo walkthroughs](https://github.com/aklivity/zilla-demos/tree/main/petstore). I manged the community feedback being the first line of communication and troubleshooting.
+
+### Awesome List maintainer
+
+Mar 2023 - _Present_
+
+[awesome-data-engineering](https://github.com/igorbarinov/awesome-data-engineering)
+
+I took over as the primary maintainer to keep this list up to date. 
 
 ### Head of Developer Relations
 
@@ -76,31 +85,31 @@ I maintained legacy applications, worked on improvements and new features of exi
 
 ### BMW Charge Forward
 
-> [Project link](https://www.bmwchargeforward.com/)
+> [Project Homepage](https://www.bmwchargeforward.com/)
 
 This project includes a collection of BMW internal services providing vehicle data sources. They are used to optimize electric vehicles charging times. To manage the streams of vehicle event data, AWS Lambda, SQS, and Kinesis were built together in a Typescript mono repo. The backend was built with node Nest.js framework and PostgreSQL.
 
 ### Transportation Management System
 
-> [Project link](https://www.afs.net/)
+> [AFS company site](https://www.afs.net/)
 
 This project includes a collection of applications and microservices deployed with Docker, Kubernetes, and Helm. Projects I participated in: A CRUD application is the main entry point into the system. It uses Spring Boot, MS SQL Server, and Vue. A Rating System designed for high throughput and consists of multiple microservices using Spring Boot, Golang, Protobuf, gRPC, Redis, PostgreSQL, Vue. A Document Manager built to control the ingestion of physical documents using Spring Boot, Protobuf, gRPC, Websockets, RabbitMQ, PostgreSQL, Google Cloud API, and Vue. A Delayed Messaged Delivery service that can scale for high volume built with Kafka, Redis, and Spring Boot.
 
 ### BallerinaLang Exercism.io
 
-> [Project link](https://exercism.org/tracks/ballerina)
+> [Exercism Track](https://exercism.org/tracks/ballerina)
 
 I updated the code execution and testing environments and improved the base set of courses. I added and additional set of new courses that featured the recent features in the language.
 
 ### Gohlay
 
-> [Project link](https://gitlab.com/vordimous/gohlay)
+> [Project repo](https://gitlab.com/vordimous/gohlay)
 
 I am writing an `open-source` tool to reproduce the Kafka delayed/scheduled message system using `Golang` [Gohlay](https://gitlab.com/vordimous/gohlay) WIP. It has a much smaller footprint and can scale more efficiently without the dependency on Redis.
 
 ### Dynamic EDI parser
 
-> [Project link](https://www.transplace.com/)
+> [Transplace > UberFreight](https://www.transplace.com/)
 
 This reliable `EDI` parser is able to convert any EDI file into an object format of choice (XML, JSON, etc.). I developed the algorithm that utilized specific Java class definitions to know how to parse any type of EDI file. This gave us the power to define broad or specific rules in each `Java` class file that would teach the algorithm how to read any EDI file. The classes could then be extended to build custom file parsers.
 
@@ -108,14 +117,14 @@ This reliable `EDI` parser is able to convert any EDI file into an object format
 
 | Tech | Proficiency |
 | --- | --- |
-| `Golang` | ![80%](https://progress-bar.dev/80) |
-| `Java, Spring Boot` | ![82%](https://progress-bar.dev/82) |
-| `Front End, Vue, React` | ![90%](https://progress-bar.dev/90) |
-| `Kafka, Event Driven` | ![80%](https://progress-bar.dev/80) |
-| `Git, Devops, CI/CD` | ![90%](https://progress-bar.dev/90) |
-| `Docker, Kubernetes, Helm` | ![85%](https://progress-bar.dev/85) |
-| `gRPC, Protobuf` | ![80%](https://progress-bar.dev/80) |
-| `PostgreSQL, Grafana, Elastic Search` | ![72%](https://progress-bar.dev/72) |
+| `Golang` | ![80%](https://geps.dev/progress/80) |
+| `Java, Spring Boot` | ![82%](https://geps.dev/progress/82) |
+| `Front End, Vue, React` | ![90%](https://geps.dev/progress/90) |
+| `Kafka, Event Driven` | ![90%](https://geps.dev/progress/80) |
+| `Git, Devops, CI/CD` | ![90%](https://geps.dev/progress/90) |
+| `Docker, Kubernetes, Helm` | ![85%](https://geps.dev/progress/85) |
+| `gRPC, Protobuf` | ![80%](https://geps.dev/progress/80) |
+| `PostgreSQL, Grafana, Elastic Search` | ![72%](https://geps.dev/progress/72) |
 
 ## Education
 
