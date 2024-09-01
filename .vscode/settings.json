@@ -1,0 +1,5 @@
+{
+    "yaml.schemas": {
+        "https://json.schemastore.org/github-workflow.json": "file:///Users/adanelz/Code/wellageddev/.github/workflows/deploy.yaml"
+    }
+}
