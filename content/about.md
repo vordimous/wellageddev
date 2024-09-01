@@ -47,7 +47,7 @@ Feb 2021 - Jan 2022
 
 [WSO2](https://www.wso2.com/)
 
-I was a technical sales engineer who helped customers solve problems with WSO2 products. I brokered the deal for the first customer on the [Asgardeo](https://wso2.com/asgardeo/) SaaS platform.
+I was a technical sales engineer who helped customers solve problems with WSO2 products. I brokered the deal for the first customer on the [Asgardeo](https://wso2.com/asgardeo/) SaaS platform. Wrote an opinion piece on [auth and tech debt](https://thenewstack.io/with-identity-management-start-early-for-less-tech-debt/).
 
 ### Sr. Full Stack Developer
 
