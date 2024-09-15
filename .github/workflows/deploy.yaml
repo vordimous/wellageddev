@@ -33,8 +33,20 @@ jobs:
           hugo-version: '0.119.0'
           extended: true
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+          run_install: true
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
       - name: Build
-        run: hugo --minify
+        run: pnpm tinacms dev -c "hugo --minify"
 
       - name: Upload cloudflare-pages artifact
         uses: actions/upload-artifact@v3

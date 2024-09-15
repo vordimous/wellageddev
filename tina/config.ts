@@ -27,7 +27,7 @@ export default defineConfig({
       {
         label: 'Pages',
         name: 'pages',
-        path: 'content/',
+        path: 'content/*.md',
         fields: [
           {
             type: "datetime",
