@@ -46,7 +46,7 @@ jobs:
           cache: pnpm
 
       - name: Build
-        run: pnpm tinacms dev -c "hugo --minify"
+        run: pnpm build
 
       - name: Upload cloudflare-pages artifact
         uses: actions/upload-artifact@v3
