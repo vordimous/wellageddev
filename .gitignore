@@ -3,3 +3,6 @@ public/
 resources/
 themes/anubis
 .DS_Store
+
+node_modules
+.env

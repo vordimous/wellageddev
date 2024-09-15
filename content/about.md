@@ -5,8 +5,6 @@ date: "2024-09-01"
 author: "AJ Danelz"
 ---
 
-# AJ Danelz
-
 ![AJ Danelz](/images/hs.png)
 
 [Linktr.ee](https://linktr.ee/vordimous)
@@ -23,7 +21,7 @@ Mar 2023 - _Present_
 
 [Aklivity](https://www.aklivity.io/)
 
-Aklivity is a startup and small team, and I served in a leadership role on a team of one. I have created the onboarding and overall developer experience for the [Zilla](https://docs.aklivity.io/zilla/latest/) project, which meant a completely new documentation site and [Demos repository](https://github.com/aklivity/zilla-demos). I created or updated all of the demos and examples to be runnable by a single command. I improved the quickstart and managed the live service that new users interact with. I published [community updates](https://www.aklivity.io/post/aklivity-community-update-july-2024), [feature annoucements](https://www.aklivity.io/post/zilla-hails-a-taxi), and [demo walkthroughs](https://github.com/aklivity/zilla-demos/tree/main/petstore). I managed the community feedback, being the first line of communication and troubleshooting. I built all of the demos for conferences and worked the booth.
+Aklivity is a startup and small team, and I served in a leadership role on a team of one. I have created the onboarding and overall developer experience for the [Zilla](https://docs.aklivity.io/zilla/latest/) project, which meant a completely new documentation site and [Demos repository](https://github.com/aklivity/zilla-demos). I created or updated all of the demos and examples to be runnable by a single command. I improved the quickstart and managed the live service that new users interact with. I published [community updates](https://www.aklivity.io/post/aklivity-community-update-july-2024), [feature announcements](https://www.aklivity.io/post/zilla-hails-a-taxi), and [demo walkthroughs](https://github.com/aklivity/zilla-demos/tree/main/petstore). I managed the community feedback, being the first line of communication and troubleshooting. I built all of the demos for conferences and worked the booth.
 
 ### Awesome List maintainer
 
@@ -111,7 +109,7 @@ I wrote an `open-source` WIP tool to reproduce the Kafka delayed/scheduled messa
 
 > [Transplace => UberFreight](https://www.transplace.com/)
 
-This reliable `EDI` parser is able to convert any EDI file into an object format of choice (XML, JSON, etc.). I developed the algorithm that utilized specific Java class definitions to know how to parse any type of EDI file. This gave us the power to define broad or specific rules in each `Java` class file that would teach the algorithm how to read any EDI file. The classes could then be extended to build custom file parsers. Transpace was bought by UberFreight.
+This reliable `EDI` parser is able to convert any EDI file into an object format of choice (XML, JSON, etc.). I developed the algorithm that utilized specific Java class definitions to know how to parse any type of EDI file. This gave us the power to define broad or specific rules in each `Java` class file that would teach the algorithm how to read any EDI file. The classes could then be extended to build custom file parsers. Transplace was bought by UberFreight.
 
 ## Skills
 

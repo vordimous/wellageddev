@@ -1,11 +1,11 @@
-+++
-title = "Hidden Post"
-date = "2021-12-24"
-description = "Post available only by link"
-tags = [
+---
+title: "Hidden Post"
+date: "2021-12-24"
+description: "Post available only by link"
+tags: [
     "privacy"
 ]
-hidden = true
-+++
+hidden: true
+---
 
 This is hidden post
