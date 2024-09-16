@@ -17,6 +17,8 @@ concurrency:
 
 env:
   DistDir: public
+  TINA_TOKEN: ${{ secrets.TINA_TOKEN }}
+  NEXT_PUBLIC_TINA_CLIENT_ID: ${{ secrets.NEXT_PUBLIC_TINA_CLIENT_ID }}
 
 jobs:
   build:
