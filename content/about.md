@@ -11,13 +11,13 @@ author: "AJ Danelz"
 
 ## Software Engineer and Advocate
 
-I am a full-stack engineer, and developer advocate passionate about distributed cloud application design and implementation. I accomplish this through diligent design and programming, with a strong focus on DevOps and orchestration. I will contribute to the success of a software project by being a strong proponent of these ideals, advocating internally and externally for the developer community.
+I am a full-stack cloud application engineer, and developer advocate passionate about distributed cloud application design and implementation. I accomplish this through diligent design and programming, with a strong focus on DevOps and orchestration. I will contribute to the success of a software project by being a strong proponent of these ideals, advocating internally and externally for the developer community.
 
 ## Experiences
 
 ### Head of Developer Experience
 
-Mar 2023 - _Present_
+Mar 2023 - *Present*
 
 [Aklivity](https://www.aklivity.io/)
 
@@ -25,7 +25,7 @@ Aklivity is a startup and small team, and I served in a leadership role on a tea
 
 ### Awesome List maintainer
 
-nov 2023 - _Present_
+nov 2023 - *Present*
 
 [awesome-data-engineering](https://github.com/igorbarinov/awesome-data-engineering)
 
@@ -101,9 +101,9 @@ I updated the code execution and testing environments and improved the base set 
 
 ### Gohlay
 
-> [Project repo](https://gitlab.com/vordimous/gohlay)
+> [Project repo](https://github.com/vordimous/gohlay)
 
-I wrote an `open-source` WIP tool to reproduce the Kafka delayed/scheduled message system using `Golang` [Gohlay](https://gitlab.com/vordimous/gohlay) WIP. It has a much smaller footprint and can scale more efficiently without the dependency on Redis.
+I wrote an `open-source` tool to reproduce the Kafka delayed/scheduled message system using `Golang` [Gohlay](https://github.com/vordimous/gohlay). It has a much smaller footprint and can scale more efficiently without any external dependencies.
 
 ### Dynamic EDI parser
 
@@ -113,15 +113,15 @@ This reliable `EDI` parser is able to convert any EDI file into an object format
 
 ## Skills
 
-| Tech | Proficiency |
-| --- | --- |
-| `Golang` | ![80%](https://geps.dev/progress/80) |
-| `Java, Spring Boot` | ![82%](https://geps.dev/progress/82) |
-| `Front End, Vue, React` | ![90%](https://geps.dev/progress/90) |
-| `Kafka, Event Driven` | ![90%](https://geps.dev/progress/80) |
-| `Git, Devops, CI/CD` | ![90%](https://geps.dev/progress/90) |
-| `Docker, Kubernetes, Helm` | ![85%](https://geps.dev/progress/85) |
-| `gRPC, Protobuf` | ![80%](https://geps.dev/progress/80) |
+| Tech                                  | Proficiency                          |
+| ------------------------------------- | ------------------------------------ |
+| `Golang`                              | ![80%](https://geps.dev/progress/80) |
+| `Java, Spring Boot`                   | ![82%](https://geps.dev/progress/82) |
+| `Front End, Vue, React`               | ![90%](https://geps.dev/progress/90) |
+| `Kafka, Event Driven`                 | ![90%](https://geps.dev/progress/80) |
+| `Git, Devops, CI/CD`                  | ![90%](https://geps.dev/progress/90) |
+| `Docker, Kubernetes, Helm`            | ![85%](https://geps.dev/progress/85) |
+| `gRPC, Protobuf`                      | ![80%](https://geps.dev/progress/80) |
 | `PostgreSQL, Grafana, Elastic Search` | ![72%](https://geps.dev/progress/72) |
 
 ## Education
@@ -132,15 +132,15 @@ Southern Wesleyan University
 
 ## Anecdotes
 
-- Eagle Scout with the Silver Palm
-- Orchestrated and participated in many leadership programs and service projects
-- Research article: Path Planning using Dijkstra and Lightning Enhancement
+* Eagle Scout with the Silver Palm
+* Orchestrated and participated in many leadership programs and service projects
+* Research article: Path Planning using Dijkstra and Lightning Enhancement
 
 ## Hobbies
 
-- Hiking
-- Scuba
-- Traveling
-- Mixology
-- Disc Golf
-- 3D Printing
+* Hiking
+* Scuba Diving
+* Traveling
+* Mixology
+* Disc Golf
+* 3D Printing
