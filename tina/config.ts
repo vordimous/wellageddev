@@ -71,17 +71,38 @@ export default defineConfig({
         path: "content/post",
         fields: [
           {
-            type: "string",
-            name: "title",
-            label: "Title",
-            isTitle: true,
+            type: "datetime",
+            name: "date",
+            label: "Date",
             required: true,
+          },
+          {
+            type: "string",
+            name: "description",
+            label: "Description",
+          },
+          {
+            type: "string",
+            name: "author",
+            label: "Author",
+          },
+          {
+            type: "string",
+            name: "tags",
+            label: "Tags",
+            list: true,
+          },
+          {
+            type: "boolean",
+            name: "hidden",
+            label: "Hidden",
           },
           {
             type: "rich-text",
             name: "body",
             label: "Body",
             isBody: true,
+            required: true,
           },
         ],
       },

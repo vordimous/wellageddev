@@ -1,13 +1,4 @@
----
-title: "AJ Danelz - Resume"
-description: "I am a full stack engineer and developer advocate passionate about distributed cloud application design and implementation."
-date: "2024-09-01"
-author: "AJ Danelz"
----
-
-![AJ Danelz](/images/hs.png)
-
-[Linktr.ee](https://linktr.ee/vordimous)
+# AJ Danelz
 
 ## Software Engineer and Advocate
 
