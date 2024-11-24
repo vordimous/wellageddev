@@ -1,6 +1,7 @@
 ---
+title: versioning docs site
 date: 2024-11-10T05:00:00.000Z
-description: static site versions
+summary: static site versions
 draft: true
 tags:
 - documentation

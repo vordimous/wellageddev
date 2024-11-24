@@ -1,7 +1,7 @@
 ---
 title: Organizing your Quickstart, Cookbooks, Examples, and Demos
 date: 2024-06-08T05:00:00.000Z
-summary: How to organizing your Quickstart, Cookbooks, Examples, and Demos
+summary: How to organizing your Quickstart, Cookbooks, Examples, and Demos.
 draft: false
 tags:
 - devrel

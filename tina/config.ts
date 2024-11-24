@@ -30,6 +30,11 @@ export default defineConfig({
         path: 'content/',
         fields: [
           {
+            type: "string",
+            name: "title",
+            label: "Title",
+          },
+          {
             type: "datetime",
             name: "date",
             label: "Date",
@@ -37,13 +42,8 @@ export default defineConfig({
           },
           {
             type: "string",
-            name: "description",
-            label: "Description",
-          },
-          {
-            type: "string",
-            name: "author",
-            label: "Author",
+            name: "summary",
+            label: "Summary",
           },
           {
             type: "string",
@@ -53,8 +53,8 @@ export default defineConfig({
           },
           {
             type: "boolean",
-            name: "hidden",
-            label: "Hidden",
+            name: "draft",
+            label: "Draft",
           },
           {
             type: "rich-text",
@@ -78,49 +78,13 @@ export default defineConfig({
           },
           {
             type: "string",
-            name: "description",
-            label: "Description",
+            name: "summary",
+            label: "Summary",
           },
           {
             type: "string",
-            name: "author",
-            label: "Author",
-          },
-          {
-            type: "string",
-            name: "tags",
-            label: "Tags",
-            list: true,
-          },
-          {
-            type: "boolean",
-            name: "hidden",
-            label: "Hidden",
-          },
-          {
-            type: "rich-text",
-            name: "body",
-            label: "Body",
-            isBody: true,
-            required: true,
-          },
-        ],
-      },
-      {
-        name: "note",
-        label: "Notes",
-        path: "content/note",
-        fields: [
-          {
-            type: "datetime",
-            name: "date",
-            label: "Date",
-            required: true,
-          },
-          {
-            type: "string",
-            name: "description",
-            label: "description",
+            name: "title",
+            label: "Title",
           },
           {
             type: "string",
@@ -130,8 +94,8 @@ export default defineConfig({
           },
           {
             type: "boolean",
-            name: "hidden",
-            label: "Hidden",
+            name: "draft",
+            label: "Draft",
           },
           {
             type: "rich-text",

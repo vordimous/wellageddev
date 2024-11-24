@@ -1,7 +1,7 @@
 ---
 title: AJ Danelz
 date: 2024-11-01T04:00:00.000Z
-description: I am a full-stack cloud application engineer, and developer advocate passionate about distributed cloud application design and implementation. I accomplish this through diligent design and programming, with a strong focus on DevOps and orchestration. I will contribute to the success of a software project by being a strong proponent of these ideals, advocating internally and externally for the developer community.
+summary: I am a full-stack cloud application engineer, and developer advocate passionate about distributed cloud application design and implementation. I accomplish this through diligent design and programming, with a strong focus on DevOps and orchestration. I will contribute to the success of a software project by being a strong proponent of these ideals, advocating internally and externally for the developer community.
 tags:
 - devrel
 - developer

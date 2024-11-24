@@ -1,5 +1,5 @@
 ---
-title: DevRel is Quality over Vanity
+title: Effective DevRel means Quality over Vanity
 date: 2022-09-01T04:00:00.000Z
 summary: DevRel should be measured by the Quality of the experience.
 coverImg: "cover.webp"
