@@ -1,11 +1,9 @@
 ---
+title: Feature supporting content; Follow FOSS
 date: 2024-11-01T04:00:00.000Z
-description: why should DevRel be in Product
-author: AJ Danelz
-hidden: true
+summary: why should DevRel be in Product
+draft: true
 ---
-
-# Feature supporting content; Follow FOSS
 
 Focus on individual use cases and a path to success for each. Protocols like MQTT & SSE are easier since the use case is relatively uniform. HTTP & gRPC need to have clearly defined entry points for different developer communities. We should capture early-stage interest and grow the community with current features. Share progress updates to encourage new members to share ideas and see the path to implementation. By inviting feedback, we can shape the result to better match more communities. Aligning our focus with a specific set of communities will help focus our content. General paths will still be the default and first priority.
 

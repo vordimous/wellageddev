@@ -1,14 +1,12 @@
 ---
+title: Search First Content
 date: 2022-11-01T04:00:00.000Z
-description: All content that is meant for consumption should be easily searchable.
-author: AJ Danelz
-hidden: false
+summary: All content that is meant for consumption should be easily searchable.
+draft: false
 tags:
 - devrel
 - marketing
 ---
-
-# Search First Content
 
 The single purpose of any content is to be consumed. As new topic discovery happens through observation of feeds, topic research happens through search first and category navigation second. Search optimization benefits the consumer, accurate categorization benefits the creator. All levels of content from documentation to blogs should be discovered through internal search tools and external search engine optimization.
 

@@ -1,14 +1,12 @@
 ---
+title: AsyncAPI generates x MQTT messages per second
 date: 2024-11-01T04:00:00.000Z
-description: Writing a performance blog
-author: AJ Danelz
-hidden: true
+summary: Writing a performance blog
+draft: true
 tags:
 - devrel
 - marketing
 ---
-
-# AsyncAPI generates x MQTT messages per second
 
 The desired outcome for this blog is the clearly demonstrate a high throughput of MQTT messages across the QOS levels. A reader should come away from the blog with the understanding that Zilla can handle a more than adequate amount of messages per second with a minimal resource cost. Any gaps in scale will be understood as a cost limitation instead of a product limitation. The additional benefit of business workflows on Kafka will be a clear differentiator along with service definition and validation using AsyncAPI schemas.
 

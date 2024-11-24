@@ -1,13 +1,11 @@
 ---
+title: An effective management style
 date: 2022-02-01T04:00:00.000Z
-description: My perspective on an effective management style
-author: AJ Danelz
-hidden: false
+summary: My perspective on an effective management style
+draft: false
 tags:
 - management
 ---
-
-# An effective management style
 
 This is a collection of bullet points for how an effective management style should be implemented.
 

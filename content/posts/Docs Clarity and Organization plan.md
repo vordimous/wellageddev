@@ -1,11 +1,10 @@
 ---
+title: How to Organize docs
 date: 2024-11-01T04:00:00.000Z
-description: why should DevRel be in Product
-author: AJ Danelz
-hidden: true
+summary: why should DevRel be in Product
+draft: true
 ---
 
-# **Docs Organization**
 
 ## **Outcomes**
 
@@ -187,7 +186,7 @@ hidden: true
 
 ---
 
-# Guides and Tutorials
+## Guides and Tutorials
 
 General structure
 
@@ -366,150 +365,6 @@ All resources in zilla-templates repo or or templates folder of zilla
 
 ---
 
-# **Zilla Usage Nouns**
-
-#### This effort aims to look at what kinds of things Zilla can do. For the user asking "Where does Zilla fit in my solutions?" they need familiar terms that describe a general functionality. Zilla is a Swiss Army Knife that can fold out another Swiss Army Knife. The goal is to create a specific set of Nouns that are easily recognizable and help the user create a working mental model for Zilla. Just the same as being able to say a Swiss Army Knife is a file, corkscrew, or toothpick.
-
-Use case categories:
-
-**Application Development** - This is all about enabling apps (particularly new apps) to consume and produce event streams. This use case is defined by mapping to/from Kafka.  
-**Service Management** - This is all about adding observability, security, and validation to existing services/microservices. This use case is not defined by mapping to/from Kafka.
-
-The terminology/"nouns" describing what Zilla **is** should directly convey what Zilla **does**, which is supporting those use cases.
-
-Diagram example: [https://vordimous.github.io/zilla-docs/next/concepts/how-zilla-works.html](https://vordimous.github.io/zilla-docs/next/concepts/how-zilla-works.html) 
-
-## **Outcomes**
-
-* #### Connect internal Behavior to Industry terminology
-
-* #### Concise wording that remains distinct
-
-* #### Describe functionality without implementation details
-
-* #### Consistent & Searchable wording across different contexts
-
-## **Terminology**
-
-### **Server**
-
-#### As a Developer, I want to expose my events.
-
-* #### API
-
-* Protocol
-
-* #### Interface
-
-* #### Endpoint
-
-* #### validation
-
-* #### Proxy source
-
-* #### north
-
-#### Zilla bindings:
-
-* #### http, sse, mqtt, grpc, ws, openapi, asyncapi, ...
-
-### **Client**
-
-#### As a Developer, I want to interface events with my services.
-
-* #### talk to
-
-* #### connect
-
-* #### communicate
-
-* #### relay
-
-* #### Proxy destination
-
-* #### south
-
-#### Zilla bindings:
-
-* #### kafka, http, grpc, openapi, asyncapi, ...
-
-### **Pipeline**
-
-#### Proxy
-
-#### As a Systems Admin, I want to proxy my connections.
-
-* #### middleware
-
-* #### gateway
-
-* #### passthrough
-
-* validation  
-* observability  
-* security
-
-  #### Zilla bindings:
-
-* #### kafka, http, grpc, openapi, asyncapi, ... server \=\> client
-
-#### Mapping
-
-#### As a Data Admin, I want to reduce the complexity to access my events.
-
-* #### transformation
-
-* #### routing
-
-* #### Protocol mediation
-
-  #### Zilla bindings
-
-* #### http-kafka, sse-kafka, mqtt-kafka, grpc-kafka, openapi-asyncapi, asyncapi
-
-#### Validation & Filtering
-
-#### As a Developer, I want flexible and fast access to events.
-
-* #### proactive
-
-* #### filter
-
-* #### stateless store
-
-* #### build/rebuild
-
-* #### performance
-
-* #### edge
-
-  #### Zilla bindings
-
-* #### kafka cache\_client, cache\_server
-
-#### Remote
-
-#### As an Architect, I want to reuse and trigger existing services from my events.
-
-* #### external
-
-* #### resilience
-
-* #### service mesh
-
-* #### integrate
-
-  #### Zilla bindings
-
-* #### kafka-grpc
-
-## 
-
-## 
-
-## 
-
-## ---
 
 ## **Docs Inspiration**
 

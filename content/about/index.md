@@ -1,8 +1,18 @@
-# AJ Danelz
+---
+title: AJ Danelz
+date: 2024-11-01T04:00:00.000Z
+description: I am a full-stack cloud application engineer, and developer advocate passionate about distributed cloud application design and implementation. I accomplish this through diligent design and programming, with a strong focus on DevOps and orchestration. I will contribute to the success of a software project by being a strong proponent of these ideals, advocating internally and externally for the developer community.
+tags:
+- devrel
+- developer
+- resume
+---
 
 ## Software Engineer and Advocate
 
 I am a full-stack cloud application engineer, and developer advocate passionate about distributed cloud application design and implementation. I accomplish this through diligent design and programming, with a strong focus on DevOps and orchestration. I will contribute to the success of a software project by being a strong proponent of these ideals, advocating internally and externally for the developer community.
+
+[Linktr.ee](https://linktr.ee/vordimous)
 
 ## Experiences
 
@@ -44,7 +54,7 @@ Feb 2020 - Feb 2021
 
 [BMW: Apps and Services](https://www.bmwusa.com/)
 
-I was a senior member of the team building a service that provided electric car drivers with optimized charging for their vehicles called [bmwchargeforward.com](bmwchargeforward.com). This app connected many internal BMW systems but interfaced with power companies to provide up-to-date energy data. In addition, I coordinated with top vehicle manufacturers and utility companies to build a system to securely send electrical grid data from the utility companies to each electric car manufacturer.
+I was a senior member of the team building a service that provided electric car drivers with optimized charging for their vehicles called [bmwchargeforward.com](../bmwchargeforward.com). This app connected many internal BMW systems but interfaced with power companies to provide up-to-date energy data. In addition, I coordinated with top vehicle manufacturers and utility companies to build a system to securely send electrical grid data from the utility companies to each electric car manufacturer.
 
 ### Sr. Enterprise Application Engineer
 

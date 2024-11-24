@@ -1,14 +1,12 @@
 ---
+title: Technical Content Video Guidelines
 date: 2024-04-01T04:00:00.000Z
-description: How to make techincal content videos.
-author: AJ Danelz
-hidden: false
+summary: How to make techincal content videos.
+draft: false
 tags:
 - devrel
 - marketing
 ---
-
-# Technical Content Video Guidelines
 
 Any video about your products is good for the brand. Your company needs to be able to promote content that meets quality standards. This guide is a best practice reference sheet, and any guidelines should be encouraged but not forced into every production.
 

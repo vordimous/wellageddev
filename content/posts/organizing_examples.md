@@ -1,13 +1,11 @@
 ---
+title: Organizing your Quickstart, Cookbooks, Examples, and Demos
 date: 2024-06-08T05:00:00.000Z
-description: How to organizing your Quickstart, Cookbooks, Examples, and Demos
-author: AJ Danelz
-hidden: false
+summary: How to organizing your Quickstart, Cookbooks, Examples, and Demos
+draft: false
 tags:
 - devrel
 ---
-
-# Organizing your Quickstart, Cookbooks, Examples, and Demos
 
 As a developer, I want an easy way to run different samples and use the code to configure my own usecases.
 

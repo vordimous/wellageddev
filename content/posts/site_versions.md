@@ -1,8 +1,7 @@
 ---
 date: 2024-11-10T05:00:00.000Z
 description: static site versions
-author: AJ
-hidden: true
+draft: true
 tags:
 - documentation
 ---

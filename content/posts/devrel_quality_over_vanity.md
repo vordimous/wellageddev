@@ -1,13 +1,12 @@
 ---
+title: DevRel is Quality over Vanity
 date: 2022-09-01T04:00:00.000Z
-description: DevRel should be measured by the Quality of the experience.
-author: AJ Danelz
-hidden: false
+summary: DevRel should be measured by the Quality of the experience.
+coverImg: "cover.webp"
+draft: false
 tags:
 - devrel
 ---
-
-# DevRel is Quality over Vanity
 
 The developer relations team should have its roots in engineering. Empathy for the audience they need to serve is essential. Advocacy is first for the developer community. This community is any developer involved in the product, internal or external, past and present. In a Software tool company, this means overlap in different departments. DevRel is the least biased path to a developer’s first success with any new tool or product.
 

@@ -1,13 +1,11 @@
 ---
+title: Developer Relations belongs in Product
 date: 2024-11-01T04:00:00.000Z
-description: why should DevRel be in Product
-author: AJ Danelz
-hidden: true
+summary: why should DevRel be in Product
+draft: true
 tags:
 - devrel
 ---
-
-# Developer Relations belongs in Product
 
 Developer Experience is tied to the Product
 

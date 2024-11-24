@@ -1,13 +1,11 @@
 ---
+title: Getting GitHub Stars
 date: 2021-11-01T04:00:00.000Z
-description: Ideas on how to get more GitHub stars
-author: AJ Danelz
-hidden: false
+summary: Ideas on how to get more GitHub stars
+draft: false
 tags:
 - marketing
 ---
-
-# Getting GitHub Stars
 
 Some good ideas pull from [https://plane.so/blog/how-we-got-to-20k-github-stars](https://plane.so/blog/how-we-got-to-20k-github-stars) to discuss and add to.
 
