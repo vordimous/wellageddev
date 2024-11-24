@@ -298,14 +298,14 @@ All resources in zilla-examples repo
   * Portainer?
 
 Current list:  
-\- auto generate  
+- auto generate  
     asyncapi.http.kafka.proxy  
     asyncapi.mqtt.kafka.proxy  
     asyncapi.sse.kafka.proxy  
     asyncapi.mqtt.proxy  
     asyncapi.sse.proxy
 
-\- kafka mapping  
+- kafka mapping  
     grpc.kafka.proxy  
     http.kafka.async  
     http.kafka.cache  
@@ -314,31 +314,31 @@ Current list:
     http.kafka.sync  
     mqtt.kafka.broker
 
-\- kafka fanout  
+- kafka fanout  
     grpc.kafka.fanout  
     sse.kafka.fanout
 
-\- validation  
+- validation  
     http.kafka.karapace  
     http.proxy.schema.inline
 
-\- kafka auth  
+- kafka auth  
     http.kafka.sasl.scram  
     http.redpanda.sasl.scram
 
-\- API gateway  
+- API gateway  
     grpc.proxy  
     http.proxy  
     openapi.proxy  
     http.filesystem  
     http.filesystem.config.server
 
-\- client auth  
+- client auth  
     http.echo.jwt  
     mqtt.kafka.broker.jwt  
     sse.proxy.jwt
 
-\- PoC  
+- PoC  
     grpc.echo  
     grpc.kafka.echo  
     http.echo  
@@ -350,7 +350,7 @@ Current list:
     ws.echo  
     ws.reflect
 
-\- deployment  
+- deployment  
     kubernetes.prometheus.autoscale
 
 #### Demos
@@ -372,8 +372,8 @@ All resources in zilla-templates repo or or templates folder of zilla
 
 Use case categories:
 
-**Application Development** \- This is all about enabling apps (particularly new apps) to consume and produce event streams. This use case is defined by mapping to/from Kafka.  
-**Service Management** \- This is all about adding observability, security, and validation to existing services/microservices. This use case is not defined by mapping to/from Kafka.
+**Application Development** - This is all about enabling apps (particularly new apps) to consume and produce event streams. This use case is defined by mapping to/from Kafka.  
+**Service Management** - This is all about adding observability, security, and validation to existing services/microservices. This use case is not defined by mapping to/from Kafka.
 
 The terminology/"nouns" describing what Zilla **is** should directly convey what Zilla **does**, which is supporting those use cases.
 
