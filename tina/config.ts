@@ -35,15 +35,15 @@ export default defineConfig({
             label: "Title",
           },
           {
+            type: "string",
+            name: "summary",
+            label: "Summary",
+          },
+          {
             type: "datetime",
             name: "date",
             label: "Date",
             required: true,
-          },
-          {
-            type: "string",
-            name: "summary",
-            label: "Summary",
           },
           {
             type: "string",
@@ -68,13 +68,12 @@ export default defineConfig({
       {
         name: "post",
         label: "Posts",
-        path: "content/post",
+        path: "content/posts/",
         fields: [
           {
-            type: "datetime",
-            name: "date",
-            label: "Date",
-            required: true,
+            type: "string",
+            name: "title",
+            label: "Title",
           },
           {
             type: "string",
@@ -82,9 +81,10 @@ export default defineConfig({
             label: "Summary",
           },
           {
-            type: "string",
-            name: "title",
-            label: "Title",
+            type: "datetime",
+            name: "date",
+            label: "Date",
+            required: true,
           },
           {
             type: "string",
