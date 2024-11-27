@@ -82,6 +82,12 @@ I maintained legacy applications, worked on improvements and new features of exi
 
 ## Projects
 
+### Gohlay
+
+> [Project repo](https://github.com/vordimous/gohlay)
+
+I wrote an `open-source` cli tool that adds delayed/scheduled message system to Kafka using `Golang` called [Gohlay](https://github.com/vordimous/gohlay). It has a small footprint and can scale efficiently without any external data source dependencies.
+
 ### BMW Charge Forward
 
 > [Project Homepage](https://www.bmwchargeforward.com/)
@@ -99,12 +105,6 @@ This project includes a collection of applications and microservices deployed wi
 > [Exercism Track](https://exercism.org/tracks/ballerina)
 
 I updated the code execution and testing environments and improved the base set of courses. I also added an additional set of new courses that featured the language's recent features.
-
-### Gohlay
-
-> [Project repo](https://github.com/vordimous/gohlay)
-
-I wrote an `open-source` tool to reproduce the Kafka delayed/scheduled message system using `Golang` [Gohlay](https://github.com/vordimous/gohlay). It has a much smaller footprint and can scale more efficiently without any external dependencies.
 
 ### Dynamic EDI parser
 
