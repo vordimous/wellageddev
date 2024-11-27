@@ -1,36 +1,31 @@
 ---
 title: AJ Danelz
-date: 2024-11-01T04:00:00.000Z
-summary: I am a full-stack cloud application engineer, and developer advocate passionate about distributed cloud application design and implementation. I accomplish this through diligent design and programming, with a strong focus on DevOps and orchestration. I will contribute to the success of a software project by being a strong proponent of these ideals, advocating internally and externally for the developer community.
-tags:
-- devrel
-- developer
-- resume
+summary: I am a full-stack cloud application engineer and developer advocate passionate about distributed cloud applications. I am a golang enthusiast trapped in a Java dev's body. I have been a cloud-native aficionado since the moment I learned there was a world outside of VMs and server racks. My passions for event streaming and microservices fit nicely in the cloud. I love working for a global company, working with both technical and non-technical team members. I have served in a leadership role for the majority of my development career. In any role, I will contribute to the success of a software project by advocating internally and externally for all developers.
 ---
 
 ## Software Engineer and Advocate
 
-I am a full-stack cloud application engineer, and developer advocate passionate about distributed cloud application design and implementation. I accomplish this through diligent design and programming, with a strong focus on DevOps and orchestration. I will contribute to the success of a software project by being a strong proponent of these ideals, advocating internally and externally for the developer community.
+I am a full-stack cloud application engineer and developer advocate passionate about distributed cloud applications. I am a golang enthusiast trapped in a Java dev's body. I have been a cloud-native aficionado since the moment I learned there was a world outside of VMs and server racks. My passions for event streaming and microservices fit nicely in the cloud. I love working for a global company, working with both technical and non-technical team members. I have served in a leadership role for the majority of my development career. In any role, I will contribute to the success of a software project by advocating internally and externally for all developers.
 
-[Linktr.ee](https://linktr.ee/vordimous)
+[Linktr.ee](https://linktr.ee/vordimous) | [resume pdf](andrew_danelz.pdf)
 
 ## Experiences
 
 ### Head of Developer Experience
 
-Mar 2023 - *Present*
+Mar 2023 - Nov 2024
 
 [Aklivity](https://www.aklivity.io/)
 
 Aklivity is a startup and small team, and I served in a leadership role on a team of one. I have created the onboarding and overall developer experience for the [Zilla](https://docs.aklivity.io/zilla/latest/) project, which meant a completely new documentation site and [Demos repository](https://github.com/aklivity/zilla-demos). I created or updated all of the demos and examples to be runnable by a single command. I improved the quickstart and managed the live service that new users interact with. I published [community updates](https://www.aklivity.io/post/aklivity-community-update-july-2024), [feature announcements](https://www.aklivity.io/post/zilla-hails-a-taxi), and [demo walkthroughs](https://github.com/aklivity/zilla-demos/tree/main/petstore). I managed the community feedback, being the first line of communication and troubleshooting. I built all of the demos for conferences and worked the booth.
 
-### Awesome List maintainer
+### OSS maintainer
 
-nov 2023 - *Present*
+Jan 2019 - _Present_
 
-[awesome-data-engineering](https://github.com/igorbarinov/awesome-data-engineering)
+[gohlay](https://github.com/vordimous/gohlay) | [awesome-data-engineering](https://github.com/igorbarinov/awesome-data-engineering)
 
-I took over as the primary maintainer to keep this list up to date.
+I wrote an `open-source` CLI tool that adds a scheduled message system to Kafka using `Golang` called [Gohlay](https://github.com/vordimous/gohlay). It has a small footprint and can scale efficiently without any external data source dependencies. I took over as the primary maintainer of the awesome-data-engineering](https://github.com/igorbarinov/awesome-data-engineering) list to keep it up to date.
 
 ### Head of Developer Relations
 
@@ -54,7 +49,7 @@ Feb 2020 - Feb 2021
 
 [BMW: Apps and Services](https://www.bmwusa.com/)
 
-I was a senior member of the team building a service that provided electric car drivers with optimized charging for their vehicles called [bmwchargeforward.com](../bmwchargeforward.com). This app connected many internal BMW systems but interfaced with power companies to provide up-to-date energy data. In addition, I coordinated with top vehicle manufacturers and utility companies to build a system to securely send electrical grid data from the utility companies to each electric car manufacturer.
+I was a senior team member building a service that provided electric car drivers with optimized charging for their vehicles called [bmwchargeforward.com](../bmwchargeforward.com). This app connected many internal BMW systems but interfaced with power companies to provide up-to-date energy data. In addition, I coordinated with top vehicle manufacturers and utility companies to build a system to securely send electrical grid data from the utility companies to each electric car manufacturer.
 
 ### Sr. Enterprise Application Engineer
 
@@ -82,17 +77,28 @@ I maintained legacy applications, worked on improvements and new features of exi
 
 ## Projects
 
+### OSS project contribution
+
+- [mqtt-simulator](https://github.com/DamascenoRafael/mqtt-simulator)
+- [zilla](https://github.com/aklivity/zilla)
+- [grpc.io](https://github.com/grpc/grpc.io/commits?author=vordimous)
+- [exercism.io](https://github.com/exercism)
+- [vuepress/core](https://github.com/vuepress/core)
+- [wso2/k8s](https://github.com/wso2/kubernetes-is)
+- [hugo-wrapper](https://github.com/khos2ow/hugo-wrapper)
+- [mattermost](https://github.com/mattermost/mattermost/pull/8161)
+
 ### Gohlay
 
 > [Project repo](https://github.com/vordimous/gohlay)
 
-I wrote an `open-source` cli tool that adds delayed/scheduled message system to Kafka using `Golang` called [Gohlay](https://github.com/vordimous/gohlay). It has a small footprint and can scale efficiently without any external data source dependencies.
+I wrote an `open-source` CLI tool that adds a scheduled message system to Kafka using `Golang` called [Gohlay](https://github.com/vordimous/gohlay). It has a small footprint and can scale efficiently without any external data source dependencies.
 
 ### BMW Charge Forward
 
 > [Project Homepage](https://www.bmwchargeforward.com/)
 
-This project includes a collection of BMW internal services providing vehicle data sources. They are used to optimize electric vehicles charging times. To manage the streams of vehicle event data, AWS Lambda, SQS, and Kinesis were built together in a Typescript mono repo. The backend was built with node Nest.js framework and PostgreSQL.
+This project includes a collection of BMW internal services providing vehicle data sources. They are used to optimize electric vehicles charging times. AWS Lambda, SQS, and Kinesis were built together in a Typescript mono repo to manage the streams of vehicle event data. The backend was built with node Nest.js framework and PostgreSQL.
 
 ### Transportation Management System
 
@@ -127,21 +133,21 @@ This reliable `EDI` parser is able to convert any EDI file into an object format
 
 ## Education
 
-**B.S. in Computer Science** *Cum Laude*
+**B.S. in Computer Science** _Cum Laude_
 
 Southern Wesleyan University
 
 ## Anecdotes
 
-* Eagle Scout with the Silver Palm
-* Orchestrated and participated in many leadership programs and service projects
-* Research article: Path Planning using Dijkstra and Lightning Enhancement
+- Eagle Scout with the Silver Palm
+- Orchestrated and participated in many leadership programs and service projects
+- Research article: Path Planning using Dijkstra and Lightning Enhancement
 
 ## Hobbies
 
-* Hiking
-* Scuba Diving
-* Traveling
-* Mixology
-* Disc Golf
-* 3D Printing
+- Hiking
+- Scuba Diving
+- Traveling
+- Mixology
+- Disc Golf
+- 3D Printing
