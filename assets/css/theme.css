@@ -1,0 +1,35 @@
+:root{
+    --ff: 'Ubuntu';
+    --radius: 6px;
+    --primary-color: #292929;
+    --secondary-color: #EFEFE6;
+    --tertiary-color: #ff7f11;
+    --link-color: #449DD1;
+    --tertiary-color-light: #FFB370;
+    --secondary-color-dark: #dddddd;
+    --black: #292929;
+    --code-bg: #222628;
+    --code-fg: #f8f8f2;
+    --code-scroll-thumb: #525252;
+    --scrollbar-track: #EFEFE6;
+    --scrollbar-thumb: #8f9db7;
+  }
+  
+  .dark {
+    --primary-color: #EFEFE6;
+    --secondary-color: #292929;
+    --tertiary-color: #FF7F11;
+    --tertiary-color-light: #A34C00;
+    --secondary-color-dark: #303538;
+    --scrollbar-track: #292929;
+    --scrollbar-thumb: #525252;
+  }
+  
+  @font-face {
+    font-display: swap;
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/Ubuntu-Regular.woff2') format('woff2');
+  }
+  
