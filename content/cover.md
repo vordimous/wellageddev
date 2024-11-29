@@ -14,13 +14,13 @@ Cheers,
 AJ
 
 
-Hello Civo Team,
+Hello Source Team,
 
-I appreciate your consideration for the Tech lead position. At first glance of my CV, you wouldn't think a golang position is the next step in my career, but I assure you I am a golang enthusiast who has been trapped in a Java world. I have spent some time polishing my old side project, Gohlay, as proof of my affinity for Go. I have been a cloud-native aficionado since the moment I learned there was a world outside of VMs and server racks. My passions for event streaming and microservices fit nicely in the cloud. 
+I appreciate your consideration for the Lead Developer Relation Engineer. At first glance of my CV, you wouldn't think a golang position is the next step in my career, but I assure you I am a golang enthusiast who has been trapped in a Java devs body. I have spent some time polishing my old side project, Gohlay, as proof of my affinity for Go and passion for open-source. I have been a cloud-native aficionado since the moment I learned there was a world outside of VMs and server racks. My passions for event streaming and microservices fit nicely in the cloud.
 
 I love working for a global company and have been searching for a cloud-native company based in Europe. Reading the Civo culture was a breath of fresh air. I worked with the IAM team at WSO2, based in Sri Lanka, and was promoted to manage the Developer Relations team that spanned from Sri Lanka to Brazil. I managed both technical and nontechnical members of a 17-person team. Outside of direct management experience, I have served in a leadership role for the majority of my development career.
 
-With all that said, I would love to talk more about joining the Civo team as a Tech lead or any position I can fill to help fulfill the Civo vision for cloud computing.
+With all that said, I would love to talk more about joining the Source DevRel team or any position I can fill to help fulfill the Source vision for decentralized tools and infrastructure.
 
 Cheers,
 
