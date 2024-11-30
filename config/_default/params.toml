@@ -6,7 +6,7 @@
 # [Optional] Path to the site logo image relative to assets/ folder. Displayed before the Site Title in the header. Minimum size: 64x64px.
 logo = "/imgs/wd_logo.svg"
 # Site description.
-description = "DevRel 🥑 | I am a full-stack engineer and developer advocate, passionate about cloud application design and Event-driven architecture."
+description = "I am a full-stack cloud application engineer and developer advocate passionate about distributed cloud applications. I am a golang enthusiast trapped in a Java dev's body. I have been a cloud-native aficionado since the moment I learned there was a world outside of VMs and server racks. My passions for event streaming and microservices fit nicely in the cloud. I love working for a global company, working with both technical and non-technical team members. I have served in a leadership role for the majority of my development career. In any role, I will contribute to the success of a software project by advocating internally and externally for all developers."
 # [Optional] Copyright owner name.
 copyright = ""
 # Whether to optimize images per view port.
@@ -89,7 +89,7 @@ showBreadcrumbs = false
 # Whether to display pages as a card
 cardView = true
 # Whether to display RSS link
-showRSS = false
+showRSS = true
 
 # Taxonomy settings
 [taxonomy]
@@ -107,7 +107,7 @@ showBreadcrumbs = false
 # Whether to display pages as a card
 cardView = true
 # Whether to display RSS link
-showRSS = false
+showRSS = true
 
 # Social links
 [[social]]

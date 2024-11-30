@@ -11,7 +11,7 @@ theme = "kayal"
 
 # Number of articles per page in the listing.
 [pagination]
-  pagerSize = 5
+  pagerSize = 50
 
 # Enable processing of emojis in markdown.
 enableEmoji = true
