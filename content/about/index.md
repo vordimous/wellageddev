@@ -7,7 +7,7 @@ summary: I am a full-stack cloud application engineer and developer advocate pas
 
 I am a full-stack cloud application engineer and developer advocate passionate about distributed cloud applications. I am a golang enthusiast trapped in a Java dev's body. I have been a cloud-native aficionado since the moment I learned there was a world outside of VMs and server racks. My passions for event streaming and microservices fit nicely in the cloud. I love working for a global company, working with both technical and non-technical team members. I have served in a leadership role for the majority of my development career. In any role, I will contribute to the success of a software project by advocating internally and externally for all developers.
 
-[Linktr.ee](https://linktr.ee/vordimous) | [resume pdf](andrew_danelz.pdf)
+[Linktr.ee](https://linktr.ee/vordimous) | [resume pdf](./andrew_danelz.pdf)
 
 ## Experiences
 
@@ -15,7 +15,7 @@ I am a full-stack cloud application engineer and developer advocate passionate a
 
 Mar 2023 - Nov 2024
 
-[Aklivity](https://www.aklivity.io/)
+> [Aklivity](https://www.aklivity.io/)
 
 Aklivity is a startup and small team, and I served in a leadership role on a team of one. I have created the onboarding and overall developer experience for the [Zilla](https://docs.aklivity.io/zilla/latest/) project, which meant a completely new documentation site and [Demos repository](https://github.com/aklivity/zilla-demos). I created or updated all of the demos and examples to be runnable by a single command. I improved the quickstart and managed the live service that new users interact with. I published [community updates](https://www.aklivity.io/post/aklivity-community-update-july-2024), [feature announcements](https://www.aklivity.io/post/zilla-hails-a-taxi), and [demo walkthroughs](https://github.com/aklivity/zilla-demos/tree/main/petstore). I managed the community feedback, being the first line of communication and troubleshooting. I built all of the demos for conferences and worked the booth.
 
@@ -23,15 +23,19 @@ Aklivity is a startup and small team, and I served in a leadership role on a tea
 
 Jan 2019 - _Present_
 
-[gohlay](https://github.com/vordimous/gohlay) | [awesome-data-engineering](https://github.com/igorbarinov/awesome-data-engineering)
+> [gohlay](https://github.com/vordimous/gohlay) | [awesome-data-engineering](https://github.com/igorbarinov/awesome-data-engineering)
 
 I wrote an `open-source` CLI tool that adds a scheduled message system to Kafka using `Golang` called [Gohlay](https://github.com/vordimous/gohlay). It has a small footprint and can scale efficiently without any external data source dependencies. I took over as the primary maintainer of the awesome-data-engineering](https://github.com/igorbarinov/awesome-data-engineering) list to keep it up to date.
+
+#### OSS Contributor
+
+> [mqtt-simulator](https://github.com/DamascenoRafael/mqtt-simulator) \| [zilla](https://github.com/aklivity/zilla) \| [grpc.io](https://github.com/grpc/grpc.io/commits?author=vordimous) \| [exercism.io](https://github.com/exercism) \| [vuepress/core](https://github.com/vuepress/core) \| [wso2/k8s](https://github.com/wso2/kubernetes-is) \| [hugo-wrapper](https://github.com/khos2ow/hugo-wrapper) \| [mattermost](https://github.com/mattermost/mattermost/pull/8161) \| [open-telemetry](https://github.com/open-telemetry) \| [grafana/alloy](https://github.com/grafana/alloy)
 
 ### Head of Developer Relations
 
 Jan 2022 - Mar 2023
 
-[WSO2](https://www.wso2.com/)
+> [WSO2](https://www.wso2.com/)
 
 I lead the team that builds and fosters the community of developers around the Open Source and SAAS projects at WSO2 along with the Ballerina programming language (ballerina.io). Additionally, I led the technical writers who worked on each product documentation site and the company training material, leading them to improve the developer experience for both. I led the team in putting on a global hackathon. I was a speaker at and worked the conference booth for multiple large and small events.
 
@@ -39,7 +43,7 @@ I lead the team that builds and fosters the community of developers around the O
 
 Feb 2021 - Jan 2022
 
-[WSO2](https://www.wso2.com/)
+> [WSO2](https://www.wso2.com/)
 
 I was a technical sales engineer who helped customers solve problems with WSO2 products. I brokered the deal for the first customer on the [Asgardeo](https://wso2.com/asgardeo/) SaaS platform. Wrote an opinion piece on [auth and tech debt](https://thenewstack.io/with-identity-management-start-early-for-less-tech-debt/).
 
@@ -47,7 +51,7 @@ I was a technical sales engineer who helped customers solve problems with WSO2 p
 
 Feb 2020 - Feb 2021
 
-[BMW: Apps and Services](https://www.bmwusa.com/)
+> [BMW: Apps and Services](https://www.bmwusa.com/)
 
 I was a senior team member building a service that provided electric car drivers with optimized charging for their vehicles called [bmwchargeforward.com](../bmwchargeforward.com). This app connected many internal BMW systems but interfaced with power companies to provide up-to-date energy data. In addition, I coordinated with top vehicle manufacturers and utility companies to build a system to securely send electrical grid data from the utility companies to each electric car manufacturer.
 
@@ -55,7 +59,7 @@ I was a senior team member building a service that provided electric car drivers
 
 2018 - Feb 2020
 
-[AFS Logistics](https://www.afs.net/)
+> [AFS Logistics](https://www.afs.net/)
 
 I worked as a lead engineer on a team building a new Transportation Management System from the ground up using a microservice architecture. Spring Boot, gRPC, Protobuf, Kafka, Elastic Search, Vue.js, PostgreSQL, Docker, Kubernetes, Helm.
 
@@ -63,7 +67,7 @@ I worked as a lead engineer on a team building a new Transportation Management S
 
 2018 - 2020
 
-[Thinkful Inc](https://www.thinkful.com/)
+> [Thinkful Inc](https://www.thinkful.com/)
 
 I worked one-on-one with students participating in the program. My main goal was to help overcome hurdles and provide more depth to the program where needed.
 
@@ -71,22 +75,11 @@ I worked one-on-one with students participating in the program. My main goal was
 
 2012 - 2018
 
-[Transplace](https://www.transplace.com/)
+> [Transplace](https://www.transplace.com/)
 
 I maintained legacy applications, worked on improvements and new features of existing products, and architected new applications.
 
 ## Projects
-
-### OSS project contribution
-
-- [mqtt-simulator](https://github.com/DamascenoRafael/mqtt-simulator)
-- [zilla](https://github.com/aklivity/zilla)
-- [grpc.io](https://github.com/grpc/grpc.io/commits?author=vordimous)
-- [exercism.io](https://github.com/exercism)
-- [vuepress/core](https://github.com/vuepress/core)
-- [wso2/k8s](https://github.com/wso2/kubernetes-is)
-- [hugo-wrapper](https://github.com/khos2ow/hugo-wrapper)
-- [mattermost](https://github.com/mattermost/mattermost/pull/8161)
 
 ### Gohlay
 

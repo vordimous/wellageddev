@@ -9,5 +9,5 @@ pnpm dev
 generate pdf:
 
 ```sh
-curl --data-urlencode "markdown=$(cat content/about/index.md)" --output assets/andrew_danelz.pdf https://md-to-pdf.fly.dev
+curl --data-urlencode "markdown=$(cat content/about/index.md)" --output content/about/andrew_danelz.pdf https://md-to-pdf.fly.dev
 ```

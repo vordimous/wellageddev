@@ -16,8 +16,10 @@ I am a full-stack cloud application engineer and developer advocate passionate a
 
 [Resume](./about) | [PDF](./about/andrew_danelz.pdf)
 
-## OSS projects
+**OSS Maintainer**
 
-| Maintainer | Contributor |
-| ----------------- | ----------- |
-| [gohlay](https://github.com/vordimous/gohlay) \| [awesome-data-engineering](https://github.com/igorbarinov/awesome-data-engineering) | [mqtt-simulator](https://github.com/DamascenoRafael/mqtt-simulator) \| [zilla](https://github.com/aklivity/zilla) \| [grpc.io](https://github.com/grpc/grpc.io/commits?author=vordimous) \| [exercism.io](https://github.com/exercism) \| [vuepress/core](https://github.com/vuepress/core) \| [wso2/k8s](https://github.com/wso2/kubernetes-is) \| [hugo-wrapper](https://github.com/khos2ow/hugo-wrapper) \| [mattermost](https://github.com/mattermost/mattermost/pull/8161) |
+> [gohlay](https://github.com/vordimous/gohlay) \| [awesome-data-engineering](https://github.com/igorbarinov/awesome-data-engineering)
+
+**OSS Contributor**
+
+> [mqtt-simulator](https://github.com/DamascenoRafael/mqtt-simulator) \| [zilla](https://github.com/aklivity/zilla) \| [grpc.io](https://github.com/grpc/grpc.io/commits?author=vordimous) \| [exercism.io](https://github.com/exercism) \| [vuepress/core](https://github.com/vuepress/core) \| [wso2/k8s](https://github.com/wso2/kubernetes-is) \| [hugo-wrapper](https://github.com/khos2ow/hugo-wrapper) \| [mattermost](https://github.com/mattermost/mattermost/pull/8161) \| [open-telemetry](https://github.com/open-telemetry) \| [grafana/alloy](https://github.com/grafana/alloy)
