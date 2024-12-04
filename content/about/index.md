@@ -111,6 +111,17 @@ I updated the code execution and testing environments and improved the base set 
 
 This reliable `EDI` parser is able to convert any EDI file into an object format of choice (XML, JSON, etc.). I developed the algorithm that utilized specific Java class definitions to know how to parse any type of EDI file. This gave us the power to define broad or specific rules in each `Java` class file that would teach the algorithm how to read any EDI file. The classes could then be extended to build custom file parsers. Transplace was bought by UberFreight.
 
+## Public content
+
+- [Product Demos](https://github.com/aklivity/zilla-demos)
+- [Product Documentation]([Zilla](https://docs.aklivity.io/zilla/latest/))
+- [Community updates](https://www.aklivity.io/post/aklivity-community-update-july-2024)
+- [Feature announcements](https://www.aklivity.io/post/zilla-hails-a-taxi)
+- [Global Hackathon](https://www.hackerearth.com/challenges/new/competitive/ballerina-coding-challenge/)
+- [Demo walkthroughs](https://github.com/aklivity/zilla-demos/tree/main/petstore)
+- [Opinion article: Auth and tech debt](https://thenewstack.io/with-identity-management-start-early-for-less-tech-debt/).
+- [exercism.io ballerina course](https://github.com/exercism/ballerina)
+
 ## Skills
 
 | Tech                                  | Proficiency                          |
