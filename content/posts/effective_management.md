@@ -29,3 +29,5 @@ This is a collection of bullet points for how an effective management style shou
 - In 1:1s, note-taking will include all important details and feedback. You will be informed as early as possible about anything that would come up in a review.
 - Plan work as much ahead of time as possible, loosely implement structures like sprints and add on as needed.
 - Use growth days that are flexible for you to choose. ex. take one full day or two half days.
+
+- [egoless.engineering](https://egoless.engineering/)
