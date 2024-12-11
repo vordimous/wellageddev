@@ -1,0 +1,16 @@
+default: true
+
+# markdownlint relaxed rules https://github.com/DavidAnson/markdownlint/blob/main/style/relaxed.json
+line-length: false
+ul-start-left: false
+ul-indent: false
+no-inline-html: false
+first-line-h1: false
+
+# zilla-docs rules
+header-style:
+  style: consistent
+link-fragments: false
+no-hard-tabs: false
+ul-style:
+  style: dash

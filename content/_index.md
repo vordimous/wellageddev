@@ -7,7 +7,7 @@ tags:
   - developer
   - resume
 ---
-
+<!-- markdownlint-disable MD036 -->
 **AJ Danelz**
 
 Software Engineer and Advocate

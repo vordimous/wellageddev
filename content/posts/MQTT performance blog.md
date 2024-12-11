@@ -66,4 +66,3 @@ The desired outcome for this blog is the clearly demonstrate a high throughput o
 - Summarize results  
 - Reinforce the simplicity of deployment and synergy with Kafka business workflows  
 - Highlight the drop-in replacement for any other broker
-

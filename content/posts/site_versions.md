@@ -7,11 +7,11 @@ tags:
 - documentation
 ---
 
-* latest ref: default branch
-* next ref: develop
-* version refs:
-  * download url
-  * git ref
-* build command
-  * envs
-  * gen dirs
+- latest ref: default branch
+- next ref: develop
+- version refs:
+  - download url
+  - git ref
+- build command
+  - envs
+  - gen dirs

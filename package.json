@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "tinacms dev -c \"hugo server -D\"",
     "build": "tinacms build && hugo --minify",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "markdownlint-cli2 \"**/*.md\" \"#node_modules\"",
+    "lint-fix": "markdownlint-cli2 --fix \"**/*.md\" \"#node_modules\""
   },
   "keywords": [],
   "author": "",
@@ -16,6 +18,7 @@
   },
   "devDependencies": {
     "@tinacms/cli": "^1.6.12",
-    "@types/node": "^22.10.0"
+    "@types/node": "^22.10.0",
+    "markdownlint-cli2": "^0.16.0"
   }
 }

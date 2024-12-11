@@ -131,4 +131,4 @@ Make sure the resolution is 1920x1080p or higher. The aspect ratio should be 16:
 
 ## References
 
-- [https://dev.to/stripe/remote-work-a-guide-to-ensuring-quality-video-conferencing-55fi]()
+- [remote-work a guide to ensuring quality video conferencing](https://dev.to/stripe/remote-work-a-guide-to-ensuring-quality-video-conferencing-55fi)

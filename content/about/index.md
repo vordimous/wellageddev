@@ -1,11 +1,11 @@
 ---
 title: AJ Danelz
-summary: I am a full-stack cloud application engineer and developer advocate passionate about distributed cloud applications. I am a golang enthusiast trapped in a Java dev's body. I have been a cloud-native aficionado since the moment I learned there was a world outside of VMs and server racks. My passions for event streaming and microservices fit nicely in the cloud. I love working for a global company, working with both technical and non-technical team members. I have served in a leadership role for the majority of my development career. In any role, I will contribute to the success of a software project by advocating internally and externally for all developers.
+summary: I am a full-stack cloud application engineer, and developer advocate passionate about distributed cloud applications. I am a golang enthusiast trapped in a Java dev's body. I have been a cloud-native aficionado since the moment I learned there was a world outside of VMs and server racks. My passions for event streaming and microservices fit nicely in the cloud. I love working for a global company, working with both technical and non-technical team members. I have served in a leadership role for the majority of my development career. In any role, I will contribute to the success of a software project by advocating internally and externally for all developers.
 ---
 
 ## Software Engineer and Advocate
 
-I am a full-stack cloud application engineer and developer advocate passionate about distributed cloud applications. I am a golang enthusiast trapped in a Java dev's body. I have been a cloud-native aficionado since the moment I learned there was a world outside of VMs and server racks. My passions for event streaming and microservices fit nicely in the cloud. I love working for a global company, working with both technical and non-technical team members. I have served in a leadership role for the majority of my development career. In any role, I will contribute to the success of a software project by advocating internally and externally for all developers.
+I am a full-stack cloud application engineer, and developer advocate passionate about distributed cloud applications. I am a golang enthusiast trapped in a Java dev's body. I have been a cloud-native aficionado since the moment I learned there was a world outside of VMs and server racks. My passions for event streaming and microservices fit nicely in the cloud. I love working for a global company, working with both technical and non-technical team members. I have served in a leadership role for the majority of my development career. In any role, I will contribute to the success of a software project by advocating internally and externally for all developers.
 
 [Linktr.ee](https://linktr.ee/vordimous) | [resume pdf](./andrew_danelz.pdf)
 
@@ -25,7 +25,7 @@ Jan 2019 - _Present_
 
 > [gohlay](https://github.com/vordimous/gohlay) | [awesome-data-engineering](https://github.com/igorbarinov/awesome-data-engineering)
 
-I wrote an `open-source` CLI tool that adds a scheduled message system to Kafka using `Golang` called [Gohlay](https://github.com/vordimous/gohlay). It has a small footprint and can scale efficiently without any external data source dependencies. I took over as the primary maintainer of the awesome-data-engineering](https://github.com/igorbarinov/awesome-data-engineering) list to keep it up to date.
+I wrote an `open-source` CLI tool that adds a scheduled message system to Kafka using `Golang` called [Gohlay](https://github.com/vordimous/gohlay). It has a small footprint and can scale efficiently without any external data source dependencies. I took over as the primary maintainer of the [awesome-data-engineering](https://github.com/igorbarinov/awesome-data-engineering) list to keep it up to date.
 
 #### OSS Contributor
 
@@ -37,7 +37,7 @@ Jan 2022 - Mar 2023
 
 > [WSO2](https://www.wso2.com/)
 
-I lead the team that builds and fosters the community of developers around the Open Source and SAAS projects at WSO2 along with the Ballerina programming language (ballerina.io). Additionally, I led the technical writers who worked on each product documentation site and the company training material, leading them to improve the developer experience for both. I led the team in putting on a global hackathon. I was a speaker at and worked the conference booth for multiple large and small events.
+I lead the team that builds and fosters the community of developers around the Open Source and SAAS projects at WSO2 along with the Ballerina programming language [ballerina.io](https://ballerina.io). Additionally, I led the technical writers who worked on each product documentation site and the company training material, leading them to improve the developer experience for both. I led the team in putting on a global hackathon. I was a speaker at and worked the conference booth for multiple large and small events. I also created the [Ballerina Exercism.io track](#ballerinalang-exercismio)
 
 ### Lead Solutions Engineer
 
@@ -53,7 +53,7 @@ Feb 2020 - Feb 2021
 
 > [BMW: Apps and Services](https://www.bmwusa.com/)
 
-I was a senior team member building a service that provided electric car drivers with optimized charging for their vehicles called [bmwchargeforward.com](../bmwchargeforward.com). This app connected many internal BMW systems but interfaced with power companies to provide up-to-date energy data. In addition, I coordinated with top vehicle manufacturers and utility companies to build a system to securely send electrical grid data from the utility companies to each electric car manufacturer.
+I was a senior team member building a service that provided electric car drivers with optimized vehicle charging, called [bmwchargeforward.com](#bmw-charge-forward). This app connected many internal BMW systems but interfaced with power companies to provide up-to-date energy data. In addition, I coordinated with top vehicle manufacturers and utility companies to build a system to securely send electrical grid data from the utility companies to each electric car manufacturer.
 
 ### Sr. Enterprise Application Engineer
 
@@ -61,7 +61,7 @@ I was a senior team member building a service that provided electric car drivers
 
 > [AFS Logistics](https://www.afs.net/)
 
-I worked as a lead engineer on a team building a new Transportation Management System from the ground up using a microservice architecture. Spring Boot, gRPC, Protobuf, Kafka, Elastic Search, Vue.js, PostgreSQL, Docker, Kubernetes, Helm.
+I worked as a lead engineer on a team building a new [Transportation Management System](#transportation-management-system) from the ground up using a microservice architecture. Spring Boot, gRPC, Protobuf, Kafka, Elastic Search, Vue.js, PostgreSQL, Docker, Kubernetes, Helm.
 
 ### Full Stack Mentor
 
@@ -69,7 +69,7 @@ I worked as a lead engineer on a team building a new Transportation Management S
 
 > [Thinkful Inc](https://www.thinkful.com/)
 
-I worked one-on-one with students participating in the program. My main goal was to help overcome hurdles and provide more depth to the program where needed.
+I worked one-on-one with students in the program, teaching them how to use React.js and implement web design patterns. My main goal was to help overcome hurdles and provide more depth to the program where needed.
 
 ### Enterprise Application Engineer
 
@@ -77,7 +77,7 @@ I worked one-on-one with students participating in the program. My main goal was
 
 > [Transplace](https://www.transplace.com/)
 
-I maintained legacy applications, worked on improvements and new features of existing products, and architected new applications.
+I maintained legacy applications, worked on improvements and new features of existing products like [Realtime Search](#realtime-search), and architected new applications like the [Dynamic EDI Parser](#dynamic-edi-parser).
 
 ## Projects
 
@@ -85,7 +85,7 @@ I maintained legacy applications, worked on improvements and new features of exi
 
 > [Project repo](https://github.com/vordimous/gohlay)
 
-I wrote an `open-source` CLI tool that adds a scheduled message system to Kafka using `Golang` called [Gohlay](https://github.com/vordimous/gohlay). It has a small footprint and can scale efficiently without any external data source dependencies.
+I wrote an open-source CLI tool that adds a scheduled message system to Kafka using Golang called [Gohlay](https://github.com/vordimous/gohlay). It has a small footprint and can scale efficiently without any external data source dependencies.
 
 ### BMW Charge Forward
 
@@ -103,23 +103,29 @@ This project includes a collection of applications and microservices deployed wi
 
 > [Exercism Track](https://exercism.org/tracks/ballerina)
 
-I updated the code execution and testing environments and improved the base set of courses. I also added an additional set of new courses that featured the language's recent features.
+I updated the code execution and testing environments and improved the base set of courses. I also added new courses that featured the language's recent features.
 
 ### Dynamic EDI parser
 
 > [Transplace => UberFreight](https://www.transplace.com/)
 
-This reliable `EDI` parser is able to convert any EDI file into an object format of choice (XML, JSON, etc.). I developed the algorithm that utilized specific Java class definitions to know how to parse any type of EDI file. This gave us the power to define broad or specific rules in each `Java` class file that would teach the algorithm how to read any EDI file. The classes could then be extended to build custom file parsers. Transplace was bought by UberFreight.
+This reliable EDI parser can convert any EDI file into an object format of choice (XML, JSON, etc.). I developed the algorithm that utilized specific Java class definitions to know how to parse any EDI file. The algorithm gave us the power to define broad or specific rules in each Java class file that would teach the algorithm how to read any EDI file. Future devs could then extend the classes to build custom file parsers.
+
+### Realtime Search
+
+> [Transplace => UberFreight](https://www.transplace.com/)
+
+All of the data in the monolithic Groovy on Grails application was stored in a PostgreSQL database, with all of the search queries going through the Hibernate ORM down to the database. The application architects created a dynamic search builder language that could be generated off of the Java POJOs and rendered in the UI without any manual code. I developed the data ETL pipeline for every update to push JSON to an ElasticSearch cluster. The custom query UI and language could not be replaced, so I made a flexible query translator to map to the ElasticSearch Query DSL. Any normal object fetching would go through the ORM, and the dynamic search builder queries would be translated and sent to ElasticSearch. This significantly reduced the database's processing load and improved user-built query speeds.
 
 ## Public content
 
 - [Product Demos](https://github.com/aklivity/zilla-demos)
-- [Product Documentation]([Zilla](https://docs.aklivity.io/zilla/latest/))
+- [Product Documentation](<[Zilla](https://docs.aklivity.io/zilla/latest/)>)
 - [Community updates](https://www.aklivity.io/post/aklivity-community-update-july-2024)
 - [Feature announcements](https://www.aklivity.io/post/zilla-hails-a-taxi)
 - [Global Hackathon](https://www.hackerearth.com/challenges/new/competitive/ballerina-coding-challenge/)
 - [Demo walkthroughs](https://github.com/aklivity/zilla-demos/tree/main/petstore)
-- [Opinion article: Auth and tech debt](https://thenewstack.io/with-identity-management-start-early-for-less-tech-debt/).
+- [Opinion article: Auth and tech debt](https://thenewstack.io/with-identity-management-start-early-for-less-tech-debt/)
 - [exercism.io ballerina course](https://github.com/exercism/ballerina)
 
 ## Skills
