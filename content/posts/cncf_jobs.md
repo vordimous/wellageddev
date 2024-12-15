@@ -1,7 +1,7 @@
 ---
-title: Looking for CNCF Jobs is hard
+title: Looking for a CNCF Job is hard
 date: 2024-12-01T04:00:00.000Z
-summary: Searching for jobs on job boards 
+summary: Searching for cloud native jobs on different job boards is hard.
 tags:
 - oss
 - cncf
