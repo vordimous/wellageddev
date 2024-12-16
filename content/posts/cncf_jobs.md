@@ -15,6 +15,7 @@ Here are the US Remote friendly jobs pages that I am following for anyone else w
 
 - [altinity.com](https://altinity.com/careers/)
 - [apollographql.com](https://apollographql.com/careers?team=engineering&page=1)
+- [astronomer.io](https://www.astronomer.io/careers/)
 - [buoyant.io](https://buoyant.io/careers)
 - [bytebase.com](https://bytebase.com/about/#team)
 - [chainguard.dev](https://chainguard.dev/careers)
@@ -30,6 +31,7 @@ Here are the US Remote friendly jobs pages that I am following for anyone else w
 - [diagrid.io](https://diagrid.io/careers)
 - [emqx.com](https://emqx.com/en/careers)
 - [firehydrant.com](https://firehydrant.com/careers/)
+- [fusionauth](https://fusionauth.applytojob.com/apply)
 - [gitlab.com](https://about.gitlab.com/jobs/all-jobs/)
 - [gitpod.io](https://gitpod.io/careers)
 - [goteleport.com](https://goteleport.com/careers/#jobs)
