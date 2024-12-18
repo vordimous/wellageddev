@@ -11,17 +11,25 @@
   - 11 - 4 EST
 
 
-- Jake Hildabrand
-  - health systems & health plans halves of business
-  - Team structure
-    - cross functional teams
-    - needs domain knowledge of both stacks (Python & Java) & JavaEE
-    - 3 sr Staff and 3 sr dev
-    - search team
-      - helps both sides
-  - Operation
+Jake Hildabrand
+- health systems & health plans halves of business
+- Team structure
+  - cross functional teams
+  - needs domain knowledge of both stacks (Python & Java) & JavaEE
+  - 3 sr Staff and 3 sr dev
+  - search team
+    - helps both sides
+- Operation
 
 - AWS open search and elastic search LLM augmented customer search experience
+
+Rod Jones
+- search team is looking to add 3 people doing this job role
+- kyruus white labels their product to other people
+- focuses on search first customer interaction on finding health resources
+- Generalist in improving the search capabilities
+- room for advancement and potential leading of the team
+- 
 
 ## AiB
 
