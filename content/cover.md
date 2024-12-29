@@ -1,14 +1,13 @@
 ---
 title: Cover Pages
-date: 2024-11-01T04:00:00.000Z
 summary: just a place for cover pages
+date: 2024-11-01T04:00:00.000Z
 draft: true
 ---
 
-
 ## Developer Advocate
 
-Hello [company] Team,
+Hello \[company] Team,
 
 I appreciate your consideration. I have been a full-stack software engineer for over a decade and have a passion for developer advocacy. I have a wide range of experience in programming languages and technologies, which has enabled me to relate to most developers and provide guidance on a wide range of issues. I live and breathe open-source and love to grow the developer communities around great OSS. In my current role as Head of Developer Experience at Aklivity, I have created high-quality technical content and led community engagement efforts, ensuring a seamless onboarding experience for developers. I would fit right in with the Temporal developer community and team to continue empowering other developers.
 
@@ -38,7 +37,6 @@ Cheers,
 
 AJ
 
-
 Hello Apollo Team,
 
 I appreciate your consideration. I have been a full-stack software engineer for over a decade and have a passion for developer advocacy. I have a wide range of experience in programming languages and technologies, which has enabled me to relate to most developers and provide guidance on a wide range of issues. I live and breathe open-source and love to grow the developer communities around great OSS. I have spent some time polishing my old side project, Gohlay, as proof of my affinity for Go and passion for open-source. I have been a cloud-native aficionado since the moment I learned there was a world outside of VMs and server racks. My passions for event streaming and microservices fit nicely in the cloud.
@@ -61,9 +59,9 @@ AJ
 
 ## Software Developer
 
-Hello [company] Team,
+Hello \[company] Team,
 
-I appreciate your consideration for the [role]. At first glance of my CV, you wouldn't think a golang position is the next step in my career, but I assure you I am a golang enthusiast who has been trapped in a Java dev's body. I have spent some time polishing my old side project, Gohlay, as proof of my affinity for Go and passion for open-source. I have been a cloud-native aficionado since the moment I learned there was a world outside of VMs and server racks. My passions for event streaming and microservices fit nicely in the cloud.
+I appreciate your consideration for the \[role]. At first glance of my CV, you wouldn't think a golang position is the next step in my career, but I assure you I am a golang enthusiast who has been trapped in a Java dev's body. I have spent some time polishing my old side project, Gohlay, as proof of my affinity for Go and passion for open-source. I have been a cloud-native aficionado since the moment I learned there was a world outside of VMs and server racks. My passions for event streaming and microservices fit nicely in the cloud.
 
 I love working for a global company and have been searching for a cloud-native company based in Europe. Reading the company culture was a breath of fresh air. I worked with the global team at WSO2, based in Sri Lanka, and was promoted to manage the Developer Relations team that spanned from Sri Lanka to Brazil. I managed both technical and nontechnical members of a 17-person team. Outside of direct management experience, I have served in a leadership role for the majority of my development career.
 
@@ -87,9 +85,7 @@ AJ
 
 Senior Software Design Engineer
 
-
 At first glance of my CV, you wouldn't think a golang position is the next step in my career, but I assure you I am a golang enthusiast who has been trapped in a Java dev's body. When I found gRPC and protobufs back in 2016 I fell in love. They are a hard sell to old Java devs so I have been searching for a place where my passion for go and protobufs can thrive. I have been a cloud-native aficionado since the moment I learned there was a world outside of VMs and server racks. My passions for event streaming, golang, and microservices fit nicely in the cloud.
-
 
 Hello Portainer Team,
 
@@ -102,3 +98,5 @@ With all that said, I would love to talk more about joining the team in any posi
 Cheers,
 
 AJ
+
+[https://www.tonymarston.net/php-mysql/dont-do-domain-driven-design.html](https://www.tonymarston.net/php-mysql/dont-do-domain-driven-design.html)
