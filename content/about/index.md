@@ -1,163 +1,106 @@
 ---
 title: AJ Danelz
-summary: I am a full-stack cloud application engineer, and developer advocate passionate about distributed cloud applications. I am a golang enthusiast trapped in a Java dev's body. I have been a cloud-native aficionado since the moment I learned there was a world outside of VMs and server racks. My passions for event streaming and microservices fit nicely in the cloud. I love working for a global company, working with both technical and non-technical team members. I have served in a leadership role for the majority of my development career. In any role, I will contribute to the success of a software project by advocating internally and externally for all developers.
+summary: Full-Stack Cloud Application Engineer | Developer Advocate | Passionate about OSS
 ---
 
-## Software Engineer and Advocate
+Cloud-Native | Full-Stack Dev | Developer & OSS Advocate
 
-I am a full-stack cloud application engineer, and developer advocate passionate about distributed cloud applications. I am a golang enthusiast trapped in a Java dev's body. I have been a cloud-native aficionado since the moment I learned there was a world outside of VMs and server racks. My passions for event streaming and microservices fit nicely in the cloud. I love working for a global company, working with both technical and non-technical team members. I have served in a leadership role for the majority of my development career. In any role, I will contribute to the success of a software project by advocating internally and externally for all developers.
+## Summary
 
-[Linktr.ee](https://linktr.ee/vordimous) | [resume pdf](./andrew_danelz.pdf)
+Full-Stack engineer and Golang enthusiast with cloud-native, distributed systems expertise. Experienced in building scalable applications, event-driven microservices, and advocating for developer tools and frameworks. Flexible with a proven ability to collaborate globally across technical and non-technical teams. Self-motivated and empathetic, focusing on improving the developer experience and fostering open-source communities.
 
-## Experiences
+[Linktr.ee](https://linktr.ee/vordimous) | [Resume PDF](./andrew_danelz.pdf)
+
+## Core Competencies
+
+- **Languages & Frameworks**: Golang, Java, Spring Boot, Vue.js, React, TypeScript, Node.js
+- **Cloud & Infrastructure**: Docker, Kubernetes, Helm, AWS, Google Cloud
+- **Event Streaming & Messaging**: Kafka, gRPC, Protobuf, RabbitMQ
+- **Database Technologies**: PostgreSQL, Redis, ElasticSearch, Google Cloud API
+- **DevOps & CI/CD**: Git, Jenkins, CircleCI, Terraform, AWS CDK, Helm
+- **Developer Advocacy & Community**: Technical Content Creation, Open-Source Maintenance, Public Speaking, Event Management
+- **Technical Leadership**: Mentoring, People Management, Thought Leadership, Vision & Goal planning, Metric & KPI reporting
+
+## Professional Experience
 
 ### Head of Developer Experience
 
-Mar 2023 - Nov 2024
+**Aklivity** | Mar 2023 - Nov 2024
 
-> [Aklivity](https://www.aklivity.io/)
+Aklivity is an early-stage startup that enables event-driven solutions by proxying multiple API protocols onto Apache Kafka. I created and executed the vision for all aspects of community engagement and product documentation.
 
-Aklivity is a startup and small team, and I served in a leadership role on a team of one. I have created the onboarding and overall developer experience for the [Zilla](https://docs.aklivity.io/zilla/latest/) project, which meant a completely new documentation site and [Demos repository](https://github.com/aklivity/zilla-demos). I created or updated all of the demos and examples to be runnable by a single command. I improved the quickstart and managed the live service that new users interact with. I published [community updates](https://www.aklivity.io/post/aklivity-community-update-july-2024), [feature announcements](https://www.aklivity.io/post/zilla-hails-a-taxi), and [demo walkthroughs](https://github.com/aklivity/zilla-demos/tree/main/petstore). I managed the community feedback, being the first line of communication and troubleshooting. I built all of the demos for conferences and worked the booth.
+- Led the creation of a new, streamlined developer onboarding experience for the [Zilla project](https://docs.aklivity.io/zilla/latest/), including documentation, examples repositories, and interactive demos.
+- Enhanced community engagement through regular updates, feature announcements, and demo walkthroughs.
+- Acted as the first point of contact for community troubleshooting and feedback, improving product quality based on user input.
+- Represented the company at developer conferences and hackathons, creating product demos and handling booth responsibilities.
 
-### OSS maintainer
+### OSS Maintainer
 
-Jan 2019 - _Present_
+**Independent** | Jan 2019 - Present
 
-> [gohlay](https://github.com/vordimous/gohlay) | [awesome-data-engineering](https://github.com/igorbarinov/awesome-data-engineering)
-
-I wrote an `open-source` CLI tool that adds a scheduled message system to Kafka using `Golang` called [Gohlay](https://github.com/vordimous/gohlay). It has a small footprint and can scale efficiently without any external data source dependencies. I took over as the primary maintainer of the [awesome-data-engineering](https://github.com/igorbarinov/awesome-data-engineering) list to keep it up to date.
-
-#### OSS Contributor
-
-> [mqtt-simulator](https://github.com/DamascenoRafael/mqtt-simulator) \| [zilla](https://github.com/aklivity/zilla) \| [grpc.io](https://github.com/grpc/grpc.io/commits?author=vordimous) \| [exercism.io](https://github.com/exercism) \| [vuepress/core](https://github.com/vuepress/core) \| [wso2/k8s](https://github.com/wso2/kubernetes-is) \| [hugo-wrapper](https://github.com/khos2ow/hugo-wrapper) \| [mattermost](https://github.com/mattermost/mattermost/pull/8161) \| [open-telemetry](https://github.com/open-telemetry) \| [grafana/alloy](https://github.com/grafana/alloy)
+- [Gohlay](https://github.com/vordimous/gohlay): Maintainer of an open-source CLI tool written in Golang that interacts with Kafka to deliver scheduled messages. The tool is lightweight, scalable, and operates without external data dependencies.
+- Maintain the **awesome-data-engineering** list, ensuring it remains up-to-date with the latest tools and technologies.
 
 ### Head of Developer Relations
 
-Jan 2022 - Mar 2023
+**WSO2** | Jan 2022 - Mar 2023
 
-> [WSO2](https://www.wso2.com/)
-
-I lead the team that builds and fosters the community of developers around the Open Source and SAAS projects at WSO2 along with the Ballerina programming language [ballerina.io](https://ballerina.io). Additionally, I led the technical writers who worked on each product documentation site and the company training material, leading them to improve the developer experience for both. I led the team in putting on a global hackathon. I was a speaker at and worked the conference booth for multiple large and small events. I also created the [Ballerina Exercism.io track](#ballerinalang-exercismio)
+- Led the Developer Relations team, building a thriving community around WSO2's open-source and SaaS offerings, including the Ballerina programming language.
+- Spearheaded the creation of the [Ballerina Exercism.io track](https://github.com/exercism/ballerina), improving language education and adoption.
+- Coordinated global events, including hackathons and conferences.
+- Spoke on technical topics at industry events.
+- Collaborated with product teams and technical writers to enhance documentation and user experience across WSO2 products.
 
 ### Lead Solutions Engineer
 
-Feb 2021 - Jan 2022
+**WSO2** | Feb 2021 - Jan 2022
 
-> [WSO2](https://www.wso2.com/)
+- Supported sales teams in driving the adoption of WSO2 products by providing technical consultations and solutions.
+- Secured the first customer for the [Asgardeo SaaS platform](https://wso2.com/asgardeo/).
+- Authored an opinion article on [identity management and tech debt](https://thenewstack.io/with-identity-management-start-early-for-less-tech-debt/).
 
-I was a technical sales engineer who helped customers solve problems with WSO2 products. I brokered the deal for the first customer on the [Asgardeo](https://wso2.com/asgardeo/) SaaS platform. Wrote an opinion piece on [auth and tech debt](https://thenewstack.io/with-identity-management-start-early-for-less-tech-debt/).
+### Senior Full Stack Developer
 
-### Sr. Full Stack Developer
+**BMW - Apps and Services** | Feb 2020 - Feb 2021
 
-Feb 2020 - Feb 2021
+- Contributed to the development of [BMW Charge Forward](https://www.bmwchargeforward.com/), a platform optimizing electric vehicle charging through real-time energy data.
+- Built backend services using Node.js and NestJS, integrating with AWS services (Lambda, SQS, Kinesis) to handle streams of vehicle data.
 
-> [BMW: Apps and Services](https://www.bmwusa.com/)
+### Senior Enterprise Application Engineer
 
-I was a senior team member building a service that provided electric car drivers with optimized vehicle charging, called [bmwchargeforward.com](#bmw-charge-forward). This app connected many internal BMW systems but interfaced with power companies to provide up-to-date energy data. In addition, I coordinated with top vehicle manufacturers and utility companies to build a system to securely send electrical grid data from the utility companies to each electric car manufacturer.
+**AFS Logistics** | 2018 - Feb 2020
 
-### Sr. Enterprise Application Engineer
-
-2018 - Feb 2020
-
-> [AFS Logistics](https://www.afs.net/)
-
-I worked as a lead engineer on a team building a new [Transportation Management System](#transportation-management-system) from the ground up using a microservice architecture. Spring Boot, gRPC, Protobuf, Kafka, Elastic Search, Vue.js, PostgreSQL, Docker, Kubernetes, Helm.
+- Led development of a **Transportation Management System** using microservices architecture with Spring Boot, Golang, Kafka, Redis, PostgreSQL, and Kubernetes.
+- **Transportation Management System**: A high-performance system with microservices deployed using Kubernetes and Helm. Key components included an A Rating System, a Document Manager, and a scalable Delayed Message Delivery service.
+- Designed and implemented a **Delayed Message Delivery Service** that scaled efficiently using Kafka and Redis.
 
 ### Full Stack Mentor
 
-2018 - 2020
+**Thinkful Inc** | 2018 - 2020
 
-> [Thinkful Inc](https://www.thinkful.com/)
-
-I worked one-on-one with students in the program, teaching them how to use React.js and implement web design patterns. My main goal was to help overcome hurdles and provide more depth to the program where needed.
+- Mentored students in React.js and web design patterns, helping them overcome development hurdles and deepening their understanding of full-stack web development.
 
 ### Enterprise Application Engineer
 
-2012 - 2018
+[UberFreight](https://www.uberfreight.com) | 2012 - 2018
 
-> [Transplace](https://www.transplace.com/)
+- I maintained legacy applications, worked on improvements and new features of existing products like **Real-time Search**, and architected new applications like the **Dynamic EDI Parser**.
+- **Real-time Search**: Added an ElasticSearch API on top of a  monolithic Groovy on Grails, PostgreSQL, and Hibernate ORM application, reducing processing load and improving user-built query latency.
+- **Dynamic EDI Parser**: Developed an algorithm to parse EDI files dynamically into object formats (XML, JSON) for easier integration and extensibility.
 
-I maintained legacy applications, worked on improvements and new features of existing products like [Realtime Search](#realtime-search), and architected new applications like the [Dynamic EDI Parser](#dynamic-edi-parser).
+## Public Contributions
 
-## Projects
-
-### Gohlay
-
-> [Project repo](https://github.com/vordimous/gohlay)
-
-I wrote an open-source CLI tool that adds a scheduled message system to Kafka using Golang called [Gohlay](https://github.com/vordimous/gohlay). It has a small footprint and can scale efficiently without any external data source dependencies.
-
-### BMW Charge Forward
-
-> [Project Homepage](https://www.bmwchargeforward.com/)
-
-This project includes a collection of BMW internal services providing vehicle data sources. They are used to optimize electric vehicles charging times. AWS Lambda, SQS, and Kinesis were built together in a Typescript mono repo to manage the streams of vehicle event data. The backend was built with node Nest.js framework and PostgreSQL.
-
-### Transportation Management System
-
-> [AFS company site](https://www.afs.net/)
-
-This project includes a collection of applications and microservices deployed with Docker, Kubernetes, and Helm. Projects I participated in A Rating System designed for high throughput and consists of multiple microservices using Spring Boot, Golang, Protobuf, gRPC, Redis, PostgreSQL, and Vue. A Document Manager built to control the ingestion of physical documents using Spring Boot, Protobuf, gRPC, WebSockets, RabbitMQ, PostgreSQL, Google Cloud API, and Vue. A Delayed Messaged Delivery service that can scale for high volume built with Kafka, Redis, and Spring Boot.
-
-### BallerinaLang Exercism.io
-
-> [Exercism Track](https://exercism.org/tracks/ballerina)
-
-I updated the code execution and testing environments and improved the base set of courses. I also added new courses that featured the language's recent features.
-
-### Dynamic EDI parser
-
-> [Transplace => UberFreight](https://www.transplace.com/)
-
-This reliable EDI parser can convert any EDI file into an object format of choice (XML, JSON, etc.). I developed the algorithm that utilized specific Java class definitions to know how to parse any EDI file. The algorithm gave us the power to define broad or specific rules in each Java class file that would teach the algorithm how to read any EDI file. Future devs could then extend the classes to build custom file parsers.
-
-### Realtime Search
-
-> [Transplace => UberFreight](https://www.transplace.com/)
-
-All of the data in the monolithic Groovy on Grails application was stored in a PostgreSQL database, with all of the search queries going through the Hibernate ORM down to the database. The application architects created a dynamic search builder language that could be generated off of the Java POJOs and rendered in the UI without any manual code. I developed the data ETL pipeline for every update to push JSON to an ElasticSearch cluster. The custom query UI and language could not be replaced, so I made a flexible query translator to map to the ElasticSearch Query DSL. Any normal object fetching would go through the ORM, and the dynamic search builder queries would be translated and sent to ElasticSearch. This significantly reduced the database's processing load and improved user-built query speeds.
-
-## Public content
-
-- [Product Demos](https://github.com/aklivity/zilla-demos)
-- [Product Documentation](<[Zilla](https://docs.aklivity.io/zilla/latest/)>)
-- [Community updates](https://www.aklivity.io/post/aklivity-community-update-july-2024)
-- [Feature announcements](https://www.aklivity.io/post/zilla-hails-a-taxi)
-- [Global Hackathon](https://www.hackerearth.com/challenges/new/competitive/ballerina-coding-challenge/)
-- [Demo walkthroughs](https://github.com/aklivity/zilla-demos/tree/main/petstore)
-- [Opinion article: Auth and tech debt](https://thenewstack.io/with-identity-management-start-early-for-less-tech-debt/)
-- [exercism.io ballerina course](https://github.com/exercism/ballerina)
-
-## Skills
-
-| Tech                                  | Proficiency                          |
-| ------------------------------------- | ------------------------------------ |
-| `Golang`                              | ![80%](https://geps.dev/progress/80) |
-| `Java, Spring Boot`                   | ![82%](https://geps.dev/progress/82) |
-| `Front End, Vue, React`               | ![90%](https://geps.dev/progress/90) |
-| `Kafka, Event Driven`                 | ![90%](https://geps.dev/progress/80) |
-| `Git, Devops, CI/CD`                  | ![90%](https://geps.dev/progress/90) |
-| `Docker, Kubernetes, Helm`            | ![85%](https://geps.dev/progress/85) |
-| `gRPC, Protobuf`                      | ![80%](https://geps.dev/progress/80) |
-| `PostgreSQL, Grafana, Elastic Search` | ![72%](https://geps.dev/progress/72) |
+- [Product Demos on GitHub](https://github.com/aklivity/zilla-demos)
+- [Product Documentation](https://docs.aklivity.io/zilla/latest/)
+- [Community Updates and Blog Posts](https://www.aklivity.io/post/aklivity-community-update-july-2024)
+- [Ballerina Exercism.io Track](https://github.com/exercism/ballerina)
 
 ## Education
 
-**B.S. in Computer Science** _Cum Laude_
-
+**B.S. in Computer Science** (Cum Laude)
 Southern Wesleyan University
 
-## Anecdotes
+### Additional Information
 
-- Eagle Scout with the Silver Palm
-- Orchestrated and participated in many leadership programs and service projects
-- Research article: Path Planning using Dijkstra and Lightning Enhancement
-
-## Hobbies
-
-- Hiking
-- Scuba Diving
-- Traveling
-- Mixology
-- Disc Golf
-- 3D Printing
+- **Awards**: Eagle Scout with Silver Palm
+- **Research**: Path Planning using Dijkstra and Lightning Enhancement

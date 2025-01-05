@@ -59,6 +59,7 @@ Here are the US Remote friendly jobs pages that I am following for anyone else w
 - [percona.com](https://percona.com/about/careers)
 - [permify.co](https://permify.co/careers)
 - [planetscale.com](https://planetscale.com/careers)
+- [platform.sh](https://platform.sh/company/careers/)
 - [platform9.com](https://platform9.com/careers/#positions)
 - [posit.co](https://posit.co/about/careers/)
 - [progress.com](https://progress.com/company/careers?remoteType=Remote)
