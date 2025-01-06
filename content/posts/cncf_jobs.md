@@ -72,6 +72,7 @@ Here are the US Remote friendly jobs pages that I am following for anyone else w
 - [sematext.com](https://sematext.com/jobs/)
 - [siderolabs.com](https://siderolabs.com/careers/)
 - [signoz](https://jobs.gem.com/signoz)
+- [solo.io](https://www.solo.io/company/careers)
 - [splunk.com](https://splunk.com/en_us/careers/search-jobs.html?page=1&workingStyle=Remote&location=North%20Carolina%2C%20United%20States)
 - [stack.io](https://stack.io/careers)
 - [steamhaus.co](https://steamhaus.co.uk/careers/)
@@ -85,3 +86,4 @@ Here are the US Remote friendly jobs pages that I am following for anyone else w
 - [upbound.io](https://upbound.io/careers#working-with-us)
 - [vercel.com](https://vercel.com/careers?location=United+States&department=Marketing#positions)
 - [vultr.com](https://vultr.com/jobs#listings)
+- [wundergraph.com](https://wundergraph.com/jobs#open-position)

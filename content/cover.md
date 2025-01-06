@@ -113,4 +113,19 @@ Cheers,
 
 AJ
 
+## Cloud Native
+
+Hello Class Dojo Team,
+
+I appreciate your consideration. I am a golang enthusiast who has been trapped in a Java dev's body. I have recently published my side project, Gohlay, to prove my affinity for Go and passion for open-source. I have been a cloud-native aficionado since I learned there was a world outside of VMs and server racks. My experience with full-stack apps, event streaming, and microservices fit nicely in the cloud. I have a wide range of experience and learn fast. I encourage a low-ego dev environment that focuses on best practices and getting things done. Perfect is the enemy of very good.
+
+I love working for a remote company and have been searching for a cloud-native company that I can really call home. Reading your company culture was a breath of fresh air. I worked with the global team at WSO2, based in Sri Lanka, and was promoted to manage the Developer Relations team that spanned from Sri Lanka to Brazil. I managed both technical and nontechnical members of a 17-person team. Outside of direct management experience, I have served in a leadership role for the majority of my development career.
+
+I would love to discuss joining the team in any position I can fill to help fulfill the company's vision.
+
+Cheers,
+
+AJ
+
+
 [https://www.tonymarston.net/php-mysql/dont-do-domain-driven-design.html](https://www.tonymarston.net/php-mysql/dont-do-domain-driven-design.html)
