@@ -52,6 +52,7 @@ Here are the US Remote friendly jobs pages that I am following for anyone else w
 - [mariadb.com](https://mariadb.com/about-us/careers/)
 - [newrelic.com](https://newrelic.com/about/careers)
 - [ngrok.com](https://ngrok.com/careers)
+- [odigos.io](https://www.ycombinator.com/companies/odigos/jobs)
 - [omnistrate.com](https://omnistrate.com/careers)
 - [orkes.io](https://orkes.io/careers)
 - [ory.sh](https://ory.sh/jobs/)
