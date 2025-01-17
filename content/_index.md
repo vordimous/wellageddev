@@ -18,7 +18,7 @@ I am a full-stack cloud application engineer and developer advocate passionate a
 
 **OSS Maintainer**
 
-> [gohlay](https://github.com/vordimous/gohlay) \| [awesome-data-engineering](https://github.com/igorbarinov/awesome-data-engineering)
+> [gohlay](https://github.com/vordimous/gohlay) \|[vue-pdf](https://github.com/TaTo30/vue-pdf) \| [awesome-data-engineering](https://github.com/igorbarinov/awesome-data-engineering)
 
 **OSS Contributor**
 
