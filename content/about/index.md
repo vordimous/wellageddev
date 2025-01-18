@@ -40,7 +40,7 @@ Aklivity is an early-stage startup that enables event-driven solutions by proxyi
 
 - [Gohlay](https://github.com/vordimous/gohlay): Creator of an open-source CLI tool written in Golang that interacts with Kafka to deliver scheduled messages. The tool is lightweight, scalable, and operates without external data dependencies.
 - [vue-pdf](https://github.com/TaTo30/vue-pdf): Maintainer of a Vue.js library for rendering individual PDF pages as markup elements.
-- Maintain the **awesome-data-engineering** list, ensuring it remains up-to-date with the latest tools and technologies.
+- [awesome-data-engineering](https://github.com/igorbarinov/awesome-data-engineering): Maintain the list, ensuring it remains up-to-date with the latest tools and technologies.
 
 ### Head of Developer Relations
 
