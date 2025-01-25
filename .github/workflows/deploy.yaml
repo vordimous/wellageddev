@@ -37,9 +37,9 @@ jobs:
           echo $REPLACE;
           ESCAPED_KEYWORD=$(printf '%s\n' "$KEYWORD" | sed -e 's/[]\/$*.^[]/\\&/g');
           ESCAPED_REPLACE=$(printf '%s\n' "$REPLACE" | sed -e 's/[\/&]/\\&/g');
-          sed -i .bak "s/$ESCAPED_KEYWORD/$ESCAPED_REPLACE/g" content/about/index.md;
-          curl --data-urlencode "markdown=$(cat content/about/index.md)" --output content/about/andrew_danelz.pdf https://md-to-pdf.fly.dev;
-          cp content/about/index.md.bak content/about/index.md;
+          echo "s/$ESCAPED_KEYWORD/$ESCAPED_REPLACE/g";
+          sed "s/$ESCAPED_KEYWORD/$ESCAPED_REPLACE/g" content/about/index.md >> resume.md;
+          curl --data-urlencode "markdown=$(cat resume.md)" --output content/about/andrew_danelz.pdf https://md-to-pdf.fly.dev;
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
