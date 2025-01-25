@@ -5,11 +5,11 @@ summary: Full-Stack Cloud Application Engineer | Developer Advocate | Passionate
 
 Cloud-Native | Full-Stack Dev | Developer & OSS Advocate
 
+[Resume PDF](./andrew_danelz.pdf) | [Linktr.ee](https://linktr.ee/vordimous)
+
 ## Summary
 
 Full-Stack engineer and Golang enthusiast with cloud-native, distributed systems expertise. Experienced in building scalable applications, event-driven microservices, and advocating for developer tools and frameworks. Flexible with a proven ability to collaborate globally across technical and non-technical teams. Self-motivated and empathetic, focusing on improving the developer experience and fostering open-source communities.
-
-[Linktr.ee](https://linktr.ee/vordimous) | [Resume PDF](./andrew_danelz.pdf)
 
 ## Core Competencies
 

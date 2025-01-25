@@ -19,6 +19,8 @@ env:
   DistDir: public
   TINA_TOKEN: ${{ secrets.TINA_TOKEN }}
   NEXT_PUBLIC_TINA_CLIENT_ID: ${{ secrets.NEXT_PUBLIC_TINA_CLIENT_ID }}
+  KEYWORD: "[Resume PDF](./andrew_danelz.pdf)"
+  REPLACE: ${{ secrets.CONTACT_INFO }}
 
 jobs:
   build:
@@ -28,6 +30,14 @@ jobs:
         with:
           submodules: true  # Fetch Hugo themes (true OR recursive)
           fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+
+      - name: Generate Resume PDF
+        run: |
+          ESCAPED_KEYWORD=$(printf '%s\n' "$KEYWORD" | sed -e 's/[]\/$*.^[]/\\&/g');
+          ESCAPED_REPLACE=$(printf '%s\n' "$REPLACE" | sed -e 's/[\/&]/\\&/g');
+          sed -i .bak "s/$ESCAPED_KEYWORD/$ESCAPED_REPLACE/g" content/about/index.md;
+          curl --data-urlencode "markdown=$(cat content/about/index.md)" --output content/about/andrew_danelz.pdf https://md-to-pdf.fly.dev;
+          cp content/about/index.md.bak content/about/index.md;
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
