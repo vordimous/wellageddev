@@ -33,6 +33,8 @@ jobs:
 
       - name: Generate Resume PDF
         run: |
+          echo $KEYWORD;
+          echo $REPLACE;
           ESCAPED_KEYWORD=$(printf '%s\n' "$KEYWORD" | sed -e 's/[]\/$*.^[]/\\&/g');
           ESCAPED_REPLACE=$(printf '%s\n' "$REPLACE" | sed -e 's/[\/&]/\\&/g');
           sed -i .bak "s/$ESCAPED_KEYWORD/$ESCAPED_REPLACE/g" content/about/index.md;
