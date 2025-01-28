@@ -1,65 +1,40 @@
 # Notes
 
-## Kyrus health
 
-- LLM
-- Rod Jones director
-- 90 min live coding
-- Product & VP of engineering
-- some offshore teams
+## ClassDojo - Platform
+
+https://boards.greenhouse.io/classdojo/jobs/6219273
+
+https://classdojo.notion.site/ClassDojo-FAQ-for-Engineering-Candidates-8f3328c78e4942c3a1d5fea60935e203
+
+https://classdojo.notion.site/3-Values-2cce988938154ddab0539dd2a27a399a
+
 - majority in the US, east to west
   - 11 - 4 EST
 
-Jake Hildabrand
-
-- health systems & health plans halves of business
 - Team structure
-  - cross functional teams
-  - needs domain knowledge of both stacks (Python & Java) & JavaEE
-  - 3 sr Staff and 3 sr dev
-  - search team
-    - helps both sides
-- Operation
+  - entire team is remote
+  - daily stadups and weekly prio meetings
+- Main problems/challenges
+  - SOC audit
+  - Peak loads during busy season
+- Advancement
+  - pay automatic per experience in the role
+- Remote culture
+  - remote first
+  - there is an office but no one works from it anymore
 
-- AWS open search and elastic search LLM augmented customer search experience
+## Basis Tech - Manager
 
-Rod Jones
+https://jobs.lever.co/centro/6966e02b-e6e4-479e-9699-9efa33a098d8
 
-- search team is looking to add 3 people doing this job role
-- kyruus white labels their product to other people
-- focuses on search first customer interaction on finding health resources
-- Generalist in improving the search capabilities
-- room for advancement and potential leading of the team
+helped early internet campaigns
 
-Jeff McBride & Zach Heath
-
-- How was the acquisition handled
-- how integrated are the people now
-- growth in the search team
-- flexible or ridgid daily tasks
-- KPIs
-- task/design distribution
-
-## AiB
-
-- use corp and entity in europe
-- worldwide team
-- salary benefits and equity
-  - 401k 2% match
-  - health and 16 weeks parental leave
-  - unlimited PTO, manditory min
-  - 3 year equipment
-  - educational budget
-  - 2k for remote setup
-- 180k ish + equity inflation adjustments
-- travel
-  - 25% max conference
-  - yearly company retreat
-
-- intro call
-- engineer call
-- culture fit
-- task assignment
-- GM hiring manager call
-- hr & CO call
-- offer
+- Team structure
+  - entire team is remote
+- Main problems/challenges
+- Advancement
+- Salary
+- Travel
+- Remote culture
+  - remote first
