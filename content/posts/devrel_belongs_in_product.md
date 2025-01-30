@@ -1,82 +1,90 @@
 ---
 title: Developer Relations belongs in Product
-date: 2024-11-01T04:00:00.000Z
-summary: DevRel should be in Product to align goals with the developer experience.
-draft: true
+date: 2025-01-29T04:00:00.000Z
+summary: The role of Developer Relations (DevRel) has long been debated: Is it a marketing function, a technical advocacy team, or something else entirely? While DevRel historically emerged from marketing departments, its true home lies within **Product**. Here's why.
 tags:
 - devrel
 ---
 
-# Developer Relations belongs in Product
+# Developer Relations Belongs in Product: Why Alignment Drives Better Outcomes
 
-- Developer Experience is tied to the Product
+The role of Developer Relations (DevRel) has long been debated: Is it a marketing function, a technical advocacy team, or something else entirely? While DevRel historically emerged from marketing departments, its true home lies within **Product**. Here's why.
 
-- Product design impacts Experience
+---
 
-- Marketing KPIs don't impact Developer success
+## Developer Experience is a Product-Centric Discipline
 
-    DevRel was born in marketing. The elusive developer make getting in touch much more difficult and special skills were required to build a relationship with trust. Now any typical marketing incetive goes against a DevRel building that trust.
+Developer Experience (DevEx) isn’t just about slick APIs or polished SDKs—it’s the sum of every interaction a developer has with your product. This includes onboarding flows, error messages, documentation, and even community support. These touchpoints are **direct extensions of the product itself**, not just ancillary marketing materials. When DevRel sits within Product, it ensures that the developer’s journey is treated as a core part of the product strategy, not an afterthought.
 
-- Product docs shouldn't be managed by engineers
+### Product Design Shapes Developer Experience
 
-    Documentation is the framework that all other developer resources are built on top of. they should be aligned closely with what the product is doing and needs to keep pace with changes and advancements. Technical writers should stay close to the product team and the product team should be working closely with the technical writers. They are both working towards a better developer experience. Technical writing should be under DevRel and DevRel should have the same goals as the product team.
+A well-designed product minimizes friction for developers. For example:
 
-- The biggest conduit for the Developers relationship with your product is your docs
+- A confusing API schema forces developers to waste time deciphering endpoints.
+- Poorly designed SDKs lead to frustration and abandonment.
+- Inconsistent versioning erodes trust.
 
-    Documentation is the Human API for your product. People who are interacting with the Devs that use your docs should be maintaining it. Product engineers are not a good sample of the Developers who use your product.
+DevRel teams embedded in Product can advocate for developer-centric design decisions early in the development cycle. They act as the voice of the end-user, ensuring that the product is built with real-world use cases in mind.
 
-- DevRel's primary goal is to get Developers to the right place in the docs
+---
 
-    DevRel should be highlighting features and offering usable demonstrations for Devs to find and run with. the next stop in that marathon is your docs. DevRel's incentives should aline with the Product documentation which should align with the product.
+## Why Marketing KPIs Conflict with Developer Success
 
-- Marketing is entertainment, DevRel is substance
-  - Entertain/Engage and inform: Marketing
-  - Inform and guide to success: DevRel
+DevRel was born in marketing because developers were seen as a "hard-to-reach" audience. Traditional marketing tactics—lead generation, conversion rates, and click-through metrics—don’t translate to developer success. In fact, they often undermine trust. For example:
+- **Gating documentation behind forms** frustrates developers seeking quick answers.
+- **Prioritizing buzzwords over substance** erodes credibility.
 
-- Dev Marketing is a matchmaking service and DevRel is the wingman
-  - Devrel makes sure your first interaction is meaningful
-  - Marketing makes sure there is a first interaction
+DevRel’s mission—to build trust and empower developers—is fundamentally misaligned with marketing’s focus on acquisition and growth. When DevRel reports to Marketing, it risks becoming a lead-gen tool rather than a champion for developers.
 
+---
 
+## Documentation: The Foundation of Developer Experience
 
-## Developer Experience is Tied to the Product
+### Product Docs Should Guided by Engineers
 
-As we strive for better developer experiences, it's easy to get caught up in the idea that dev relations (DevRel) and product are separate entities. However, this couldn't be further from the truth. In reality, developer experience is deeply tied to the product itself.
+In the fast paced race to keep up with product improvements and user demands, DevRel and the Technical Writers within the team are the drivers while Engineers navigate. Engineers are experts at building products, not explaining them. Documentation requires a different skill set: clarity, empathy, and an understanding of diverse user personas. **Technical writers**, not engineers, should own documentation. However, they must work *alongside* the Product team to:
 
-## Product Design Impacts Experience
+- Stay synchronized with product updates.
+- Translate technical details into actionable guidance.
+- Iterate based on developer feedback.
 
-The design of our products has a direct impact on how developers interact with them. A well-designed product can make or break the developer's experience. Conversely, a poorly designed product can lead to frustration and abandonment. As such, it's essential that product designers prioritize developer experience alongside business goals.
+When documentation lives under DevRel (which itself aligns with Product), it becomes a living resource that evolves with the product.
 
-## Marketing KPIs Don't Impact Developer Success
+### Documentation is the "Human API"
 
-One of the biggest misconceptions about DevRel is that marketing metrics like engagement rates or conversion numbers are directly tied to developer success. However, this couldn't be further from the truth. Developers don't care about your marketing metrics; they care about using and enjoying your product.
+Your docs are the primary interface developers use to interact with your product. Think of them as the **Human API**—a bridge between your product’s capabilities and the developer’s goals. If this API is poorly designed, developers will struggle to adopt your product, no matter how powerful it is.
 
-## DevRel Was Born in Marketing
+Product engineers are not the target audience for documentation. Developers using your product may have varying levels of expertise, work in different environments, or prioritize different use cases. Technical writers and DevRel teams, armed with direct feedback from the community, are better equipped to create inclusive, effective docs.
 
-Historically, dev relations have been managed by marketing teams. This has led to a culture of making developers feel special and exclusive. While this may have worked in the past, it's no longer effective. Modern marketing incentives often prioritize short-term gains over long-term relationships.
+---
 
-Today, DevRel is about building trust and fostering a community around your product. This requires a different approach than traditional marketing tactics. Instead of relying on gimmicks or special perks, we need to focus on providing value and support that resonates with developers.
+## DevRel’s Role: Guiding Developers to the Right Resources
 
-## Product Docs Shouldn't Be Managed by Engineers
+DevRel’s primary goal isn’t to entertain or generate leads—it’s to **guide developers to success**. This means:
 
-Documentation is the backbone of any developer's experience. It provides the framework for understanding how your product works, what features are available, and how to use them effectively. However, many product teams still manage documentation themselves, often resulting in a mismatch between the product's capabilities and the documentation's content.
+- Creating tutorials and demos that highlight key features.
+- Directing developers to relevant documentation.
+- Acting as a feedback loop between users and Product.
 
-Technical writers should be aligned closely with the product team to ensure that documentation stays up-to-date and accurate. This requires close collaboration and communication between the product team, technical writers, and DevRel.
+When DevRel and Product share goals, incentives align. For example, a Product team focused on adoption will prioritize features that solve real problems, while DevRel ensures developers can easily find and implement those features via docs and resources.
 
-## The Biggest Conduit for Developer Relationships
+---
 
-Documentation is often overlooked as a critical component of the developer relationship. However, it's not just any documentation – it needs to be human-centered, accessible, and informative. Documentation should serve as the primary conduit for developers interacting with your product.
+## Marketing vs. DevRel: Entertainment vs. Substance
 
-Product engineers are not the best representation of the developers who use your product. They may have limited visibility into real-world problems or workflows. Instead, technical writers and DevRel teams should focus on creating documentation that resonates with the broader developer community.
+- **Marketing’s Role**: Entertain, engage, and attract. Think viral tweets, swag, and event sponsorships.
+- **DevRel’s Role**: Inform, educate, and retain. Think in-depth workshops, troubleshooting guides, and API deep dives.
 
-## DevRel's Primary Goal is to Get Developers to the Right Place in Docs
+Marketing creates the first impression; DevRel ensures the second, third, and hundredth interactions are meaningful. Imagine Marketing as a matchmaker and DevRel as the wingman: Marketing gets developers in the door, but DevRel ensures they stay.
 
-The ultimate goal of dev relations should be to guide developers to the most relevant and useful resources within your product's documentation. This may seem obvious, but it requires a deep understanding of the developer ecosystem and the challenges they face.
+---
 
-Incentivizing DevRel teams to align with product documentation is crucial for creating a cohesive and effective experience for developers. By prioritizing documentation quality and accessibility, we can build trust, foster engagement, and drive adoption.
+## The Path Forward: Integrate DevRel with Product
 
-## Conclusion
+To maximize developer success:
 
-Developer relations belongs in product because it's deeply tied to the developer experience. Product design, marketing metrics, and documentation all play critical roles in shaping the developer relationship. By recognizing the interconnectedness of these components, we can create a more cohesive and effective DevRel strategy that prioritizes value, trust, and community.
+1. **Move DevRel under Product** to align incentives with user outcomes.
+2. **Empower technical writers** as first-class stakeholders in product development.
+3. **Treat documentation as a core product feature**, not a support artifact.
 
-Let's put an end to siloed approaches and focus on building a unified front for developers who interact with our products. By doing so, we can unlock new levels of engagement, adoption, and success – both for developers and the product itself.
+When DevRel and Product work in lockstep, developers win—and so does your product. 🚀
