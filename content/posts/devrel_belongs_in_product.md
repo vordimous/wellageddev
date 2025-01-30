@@ -1,14 +1,13 @@
 ---
-title: Developer Relations belongs in Product
+title: Developer Relations Belongs in Product
 date: 2025-01-29T04:00:00.000Z
-summary: The role of Developer Relations (DevRel) has long been debated: Is it a marketing function, a technical advocacy team, or something else entirely? While DevRel historically emerged from marketing departments, its true home lies within **Product**. Here's why.
+summary: The role of Developer Relations (DevRel) has long been debated. Is it a marketing function, a technical advocacy team, or something else entirely? While DevRel historically emerged from marketing departments, its true home lies within **Product**. Here's why.
+draft: false
 tags:
 - devrel
 ---
 
-# Developer Relations Belongs in Product: Why Alignment Drives Better Outcomes
-
-The role of Developer Relations (DevRel) has long been debated: Is it a marketing function, a technical advocacy team, or something else entirely? While DevRel historically emerged from marketing departments, its true home lies within **Product**. Here's why.
+The role of Developer Relations (DevRel) has long been debated. Is it a marketing function, a technical advocacy team, or something else entirely? While DevRel historically emerged from marketing departments, its true home lies within **Product**. Here's why.
 
 ---
 
