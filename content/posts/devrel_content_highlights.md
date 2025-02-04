@@ -7,36 +7,32 @@ tags:
 - devrel
 ---
 
-## TL;DR
+## TL;DR Highlights
 
-- [My best Blog](#blog-highlight)
-  - [MQTT to Kafka feature annoucement and Demo](https://www.aklivity.io/post/zilla-hails-a-taxi)
-- [My best Video](#video-highlight)
-  - My [Video Walkthrough](https://www.youtube.com/watch?v=FemWt31R7jg) for the new [AsyncAPI feature support annoucement](https://www.aklivity.io/post/announcing-openapi-and-asyncapi-support-in-zilla). The team had a tight deadline meaning I had to record this over the weekend and couldn't re-recorded it to add more polish.
-- [My best Documentation](#documentation-highlight)
-  - [A product feature guide I am proud of](https://docs.aklivity.io/zilla/latest/how-tos/mqtt/mqtt.kafka.broker.html)
+- I wrote the blog and demo for the [MQTT to Kafka feature announcement](https://www.aklivity.io/post/zilla-hails-a-taxi).
+- My [Video Walkthrough](https://www.youtube.com/watch?v=FemWt31R7jg) for the new [AsyncAPI feature support announcement](https://www.aklivity.io/post/announcing-openapi-and-asyncapi-support-in-zilla). The team had a tight deadline, meaning I had to record this over a weekend and couldn't re-recorded it to add more polish.
+- I completely revitalized the current [Zilla documentation site](https://docs.aklivity.io/zilla/latest/). It started as a Gitbook site \([wayback link](https://web.archive.org/web/20230208143438/https://docs.aklivity.io/zilla/get-started)\). I improved the content and reworked all of the demos and examples. I am proud of the [MQTT broker product feature guide](https://docs.aklivity.io/zilla/latest/how-tos/mqtt/mqtt.kafka.broker.html).
 
-## My Blogs
+## Blogs
 
-### Blog Highlight
-
-- [MQTT to Kafka feature annoucement and Demo](https://www.aklivity.io/post/zilla-hails-a-taxi)
-
-## My Videos
-
-[Video Walkthrough](https://www.youtube.com/watch?v=FemWt31R7jg) for the new [AsyncAPI feature support annoucement](https://www.aklivity.io/post/announcing-openapi-and-asyncapi-support-in-zilla)
-
-### Video Highlight
-
-## My Documentations
-
-- [Product Demos on GitHub](https://github.com/aklivity/zilla-demos)
-- [Product Documentation](https://docs.aklivity.io/zilla/latest/)
+- [MQTT to Kafka feature announcement and Demo](https://www.aklivity.io/post/zilla-hails-a-taxi)
 - [Community Updates and Blog Posts](https://www.aklivity.io/post/aklivity-community-update-july-2024)
-- [Ballerina Exercism.io Track](https://github.com/exercism/ballerina)
+- [My personal blogs](https://wellaged.dev/posts/)
 
-[A product feature guide I am proud of](https://docs.aklivity.io/zilla/latest/how-tos/mqtt/mqtt.kafka.broker.html)
+## Videos
 
-I managed multiple product examples with [single startup script and E2E tests](https://github.com/aklivity/zilla-examples/tree/example-startup-compose)
+- [Video Walkthrough for an AsyncAPI feature announcement](https://www.youtube.com/watch?v=FemWt31R7jg)
+- [Technical content video with Twitch Studio tutorial](https://www.youtube.com/watch?v=-YxynmGkwqs)
 
-### Documentation Highlight
+## Documentation
+
+- How I [organize documentation](./organizing_documentation.md).
+- The [Zilla docs](https://docs.aklivity.io/zilla/latest/) [I inherited](https://web.archive.org/web/20230208143438/https://docs.aklivity.io/zilla/get-started) when I started vs when [I left](https://web.archive.org/web/20241208145809/https://docs.aklivity.io/zilla/latest/).
+- A [product feature guide](https://docs.aklivity.io/zilla/latest/how-tos/mqtt/mqtt.kafka.broker.html) that I am proud of.
+
+## Demos/Examples
+
+- How I [organize examples](./organizing_examples.md).
+- I managed multiple product examples with [single startup script and E2E tests](https://github.com/aklivity/zilla-examples/tree/example-startup-compose).
+- Created [Product Demos on GitHub](https://github.com/aklivity/zilla-demos) that can easily be run locally with a Compose file. Vendor specific options can be set from the options passed into the startup script.
+- I restarted and expanded the [Ballerina Exercism.io Track](https://github.com/exercism/ballerina).
