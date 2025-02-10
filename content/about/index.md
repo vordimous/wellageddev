@@ -91,9 +91,9 @@ Aklivity is an early-stage startup that enables event-driven solutions by proxyi
 
 ## Public Contributions
 
+- [Videos, Blogs, and Documentation Highlights](https://wellaged.dev/posts/devrel_content_highlights/)
 - [Product Demos on GitHub](https://github.com/aklivity/zilla-demos)
 - [Product Documentation](https://docs.aklivity.io/zilla/latest/)
-- [Community Updates and Blog Posts](https://www.aklivity.io/post/aklivity-community-update-july-2024)
 - [Ballerina Exercism.io Track](https://github.com/exercism/ballerina)
 
 ## Education
