@@ -3,7 +3,7 @@ title: AJ Danelz
 summary: Full-Stack Cloud Application Engineer | Developer Advocate | Passionate about OSS
 ---
 
-Cloud-Native | Full-Stack Dev | Developer & OSS Advocate
+Cloud-Native | Full-Stack Dev | Developer & OSS Advocate 🥑
 
 [Resume PDF](./andrew_danelz.pdf) | [Linktr.ee](https://linktr.ee/vordimous)
 
@@ -89,13 +89,6 @@ Aklivity is an early-stage startup that enables event-driven solutions by proxyi
 - **Real-time Search**: Added an ElasticSearch API on top of a  monolithic Groovy on Grails, PostgreSQL, and Hibernate ORM application, reducing processing load and improving user-built query latency.
 - **Dynamic EDI Parser**: Developed an algorithm to parse EDI files dynamically into object formats (XML, JSON) for easier integration and extensibility.
 
-## Public Contributions
-
-- [Videos, Blogs, and Documentation Highlights](https://wellaged.dev/posts/devrel_content_highlights/)
-- [Product Demos on GitHub](https://github.com/aklivity/zilla-demos)
-- [Product Documentation](https://docs.aklivity.io/zilla/latest/)
-- [Ballerina Exercism.io Track](https://github.com/exercism/ballerina)
-
 ## Education
 
 **B.S. in Computer Science** (Cum Laude)
@@ -103,5 +96,6 @@ Southern Wesleyan University
 
 ### Additional Information
 
+- **Public Content**: [Highlights and links to my Blog, video, and documentation work](https://wellaged.dev/posts/devrel_content_highlights/)
 - **Awards**: Eagle Scout with Silver Palm
 - **Research**: Path Planning using Dijkstra and Lightning Enhancement
