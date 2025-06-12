@@ -62,7 +62,7 @@ tags:
 * [📚 Modern Software Engineering](https://amzn.to/4jhd1kC)
 * [📚 The Missing README](https://amzn.to/4iV22h0)
 * [📚 The Pragmatic Programmer](https://amzn.to/3YeWG88)
-* [📚 The Software Engineer’s Guidebook](https://amzn.to/4jhVHMt)
+* [📚 The Software Engineer's Guidebook](https://amzn.to/4jhVHMt)
 * [📚 The Effective Engineer](https://amzn.to/41ZHqOL)
 
 ## System Design and Architecture

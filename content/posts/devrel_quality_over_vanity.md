@@ -8,7 +8,7 @@ tags:
 - devrel
 ---
 
-The developer relations team should have its roots in engineering. Empathy for the audience they need to serve is essential. Advocacy is first for the developer community. This community is any developer involved in the product, internal or external, past and present. In a Software tool company, this means overlap in different departments. DevRel is the least biased path to a developer’s first success with any new tool or product.
+The developer relations team should have its roots in engineering. Empathy for the audience they need to serve is essential. Advocacy is first for the developer community. This community is any developer involved in the product, internal or external, past and present. In a Software tool company, this means overlap in different departments. DevRel is the least biased path to a developer's first success with any new tool or product.
 
 To the developer community, represent the company. To the company, represent the community.
 

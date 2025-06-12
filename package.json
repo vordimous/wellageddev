@@ -14,11 +14,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "tinacms": "^2.5.0"
+    "tinacms": "^2.7.8"
   },
   "devDependencies": {
-    "@tinacms/cli": "^1.6.12",
-    "@types/node": "^22.10.0",
-    "markdownlint-cli2": "^0.16.0"
+    "@tinacms/cli": "^1.9.8",
+    "@types/node": "^22.15.31",
+    "markdownlint-cli2": "^0.18.1"
   }
 }

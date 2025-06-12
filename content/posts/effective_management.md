@@ -4,7 +4,7 @@ date: 2022-02-01T04:00:00.000Z
 summary: My perspective on an effective management style
 draft: false
 tags:
-- management
+  - management
 ---
 
 This is a collection of bullet points for how an effective management style should be implemented.
@@ -12,7 +12,7 @@ This is a collection of bullet points for how an effective management style shou
 ## Team
 
 - Your managers goal is the make the most of your time and not require most of your time.
-- Your manager should trust you to manage your own time. You don’t need to clear with me in advance your time AFK or OOO.
+- Your manager should trust you to manage your own time. You don't need to clear with me in advance your time AFK or OOO.
 - 1:1 are for the team and will be documented privately with you, me, and your lead. Any feedback on PAR reviews will come from this document.
 - Please ask for help when you need it. Nobody works alone.
 
@@ -29,5 +29,7 @@ This is a collection of bullet points for how an effective management style shou
 - In 1:1s, note-taking will include all important details and feedback. You will be informed as early as possible about anything that would come up in a review.
 - Plan work as much ahead of time as possible, loosely implement structures like sprints and add on as needed.
 - Use growth days that are flexible for you to choose. ex. take one full day or two half days.
+
+## Links
 
 - [egoless.engineering](https://egoless.engineering/)

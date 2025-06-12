@@ -26,9 +26,9 @@ Before recording or presenting, ensuring everything will work before committing 
 A friendly live camera can add personality to a video. However, ensure it does distract the viewer from the content.
 
 - Do not use virtual backgrounds; record in a well-lit room with a simple backdrop. Use a **white/light-colored** background.
-- Dress for business casual if you don’t know the audience.
+- Dress for business casual if you don't know the audience.
 - Scripts are always good but do not try to read a script while recording. It will sound stiff and as if you're reading a book.
-- Check that it isn’t blocking anything important.
+- Check that it isn't blocking anything important.
 
 ### Record in a Sandbox
 
@@ -51,12 +51,12 @@ Pre-recording the bulk of a presentation will significantly improve quality and 
 Ambient office noises can be much louder than the speaker realizes.
 
 - Find a quiet place and record an audio test, including making noises around and outside the room.
-- When typing, don’t press the keys too hard.
+- When typing, don't press the keys too hard.
 - Silence all device notifications and mute all electronics.
 
 ### Simple Movement
 
-Consumers can’t follow your demo as fast as you can move through it.
+Consumers can't follow your demo as fast as you can move through it.
 
 - If you have any mouse movements, consider making as few as possible and do it slowly.
 - If you perform some action, always try to explain why you did it or the impact it will have.
@@ -67,7 +67,7 @@ Consumers can’t follow your demo as fast as you can move through it.
 In any visual presentation, text on the screen is a detriment.
 
 - DO NOT read slides. They should be a visual aid to the talking points.
-- Don’t overpopulate slides with too much text. Simple outlines, at most, should be used.
+- Don't overpopulate slides with too much text. Simple outlines, at most, should be used.
 - Don't talk about URLs or how to find other content. Instead, mention resources and add them in the description or pinned comment.
 
 ### On Brand
@@ -108,7 +108,7 @@ Make sure the resolution is 1920x1080p or higher. The aspect ratio should be 16:
 - Briefly describe the video, **DO NOT** read the title
 - An overview of the overall structure of the video
 - Branding: Mention the company and the social channels consumers can find more information on the topic
-- Introduce yourself. It is an excellent transition into the body of the content. Ex. “Hi, I’m X, so let's get to it.”
+- Introduce yourself. It is an excellent transition into the body of the content. Ex. “Hi, I'm X, so let's get to it.”
 
 ### Problem(⅓ of the runtime)
 

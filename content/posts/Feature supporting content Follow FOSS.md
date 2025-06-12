@@ -9,7 +9,7 @@ Focus on individual use cases and a path to success for each. Protocols like MQT
 
 ## Action plan
 
-Keep track of features large and small in a named package that makes sense and aligns with how a developer community would understand it. Could be a whole protocol, major enhancement, or specific use case that needs a specific functionality. Every step, with some exceptions, doesn’t need to be followed but should be considered. Existing features likely fall in somewhere on this list.
+Keep track of features large and small in a named package that makes sense and aligns with how a developer community would understand it. Could be a whole protocol, major enhancement, or specific use case that needs a specific functionality. Every step, with some exceptions, doesn't need to be followed but should be considered. Existing features likely fall in somewhere on this list.
 
 1. Proposal/Spec
 2. Feedback forums/chat
@@ -60,7 +60,7 @@ Keep track of features large and small in a named package that makes sense and a
 - Deployment architectures for demos
   - Highlight vscode extension
   - Sunset zilla studio?
-- Zilla issues/discussions, check the roadmap/chats for items that aren’t issues and make them into discussions. Features that are mostly thought through would have more official proposal/specs attached. Other ideas could be open threads for feedback and upvoting.
+- Zilla issues/discussions, check the roadmap/chats for items that aren't issues and make them into discussions. Features that are mostly thought through would have more official proposal/specs attached. Other ideas could be open threads for feedback and upvoting.
 - Deep dive into capabilities and how they work with Kafka.
   - MQTT sessions and Kafka
   - Routing and route matching
@@ -82,7 +82,7 @@ General
 
 - Share in as many relevant communities as possible
 - Go to other communities and post in a centralized place
-- Try to share in different places each week, don’t spam one place
+- Try to share in different places each week, don't spam one place
 - Plan for the item the week before and share early in the week
 
 Types of content
@@ -105,7 +105,7 @@ Tooling
   - Public and searchable
 - Slack and Discord are good places for one-off chats
   - Slack will be deleted
-  - Both aren’t public
+  - Both aren't public
 - Discord has announcement rooms for publishing updates
 - Could Publish updates on Twitter
 - The tech mindshare has a big presence in the Fediverse

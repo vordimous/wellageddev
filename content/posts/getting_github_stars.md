@@ -17,7 +17,7 @@ What worked \#1
 - We asked them to outline their business goals, describe their troubles with other software, name our features, even opine on the logo.
 - We consistently kept them updated about our progress.
 
-What didn’t \#1
+What didn't \#1
 
 - Automating updates and boilerplate responses
 - Delays with Support requests, especially from new users
@@ -30,7 +30,7 @@ What worked \#2
 - Personal messages when a feature got shipped
 - Asking for referrals
 
-What didn’t \#2
+What didn't \#2
 
 - Lengthy messages with unnecessary context
 - Shying away from sharing work in progress
@@ -42,12 +42,12 @@ In hindsight, this was the game prep we needed before we went wide with our repo
 
 What worked \#3
 
-- It didn’t push Plane into anyone’s face.
+- It didn't push Plane into anyone's face.
 - Short-and-sweet instructions for self-hosting came first.
 - There were links to destinations new users expect to see.
 - Using simple language, keeping in mind of the global audience
 
-What didn’t \#3
+What didn't \#3
 
 - The full readme is a little too long.
 - We heard some folks saying it was too promotional—something we are still considering changing.
@@ -57,11 +57,11 @@ What didn’t \#3
 What worked \#4
 
 - Cycling posts through five destinations
-- Bringing older updates back up to the top of our users’ feeds
+- Bringing older updates back up to the top of our users' feeds
 - Figuring out destinations and networks that were working well
 - Doubling down on them and discarding others in the short-term
 
-What didn’t \#4
+What didn't \#4
 
 - No variation in language or tone for different channels
 
@@ -73,7 +73,7 @@ What worked \#5
 
 ## 5: Captive audiences
 
-What didn’t \#5
+What didn't \#5
 
 - Talking about every bug or minor improvement
 - Excessive promotion or cross-posting
@@ -86,7 +86,7 @@ What worked \#6
 - Linking metrics for releases when announcing them
 - Showing early previews of features in action, usually via a GIF
 
-What didn’t \#6
+What didn't \#6
 
 - Automating tweets without careful, careful planning
 - Linking to our sites and resources a little too much without enough show-and-tell sometimes
@@ -97,9 +97,9 @@ What worked \#7
 
 - Strategic publisher and audience research
 - Enough breadcrumbs to the product, Docs, or the plane.so site
-- Lots of show-don’t-tell
+- Lots of show-don't-tell
 
-What didn’t \#7
+What didn't \#7
 
 - Not planning for reviews and approvals
 - Going wide, not deep, with distribution

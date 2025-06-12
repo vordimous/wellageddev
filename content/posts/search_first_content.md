@@ -10,7 +10,7 @@ tags:
 
 The single purpose of any content is to be consumed. As new topic discovery happens through observation of feeds, topic research happens through search first and category navigation second. Search optimization benefits the consumer, accurate categorization benefits the creator. All levels of content from documentation to blogs should be discovered through internal search tools and external search engine optimization.
 
-Search optimization cannot lead to metadata content. A piece of content must first be created for the sole purpose of benefiting the consumer. Improved algorithmic results at the cost of quality or relevance will sour an audience’s attention.
+Search optimization cannot lead to metadata content. A piece of content must first be created for the sole purpose of benefiting the consumer. Improved algorithmic results at the cost of quality or relevance will sour an audience's attention.
 
 ### Stakeholders
 
@@ -80,7 +80,7 @@ All content should be discoverable in the same place. Filtering by subject and t
 
 #### Products
 
-Each product can have a dedicated stream but there will still be company-wide content that won’t need to fit under one specific product.
+Each product can have a dedicated stream but there will still be company-wide content that won't need to fit under one specific product.
 
 #### Announcements
 
@@ -116,7 +116,7 @@ Let tools work for us. Adding automatic text validation will increase quality wi
 
 ### Feedback
 
-The immediate benefit for creators. Asking someone to invest the time can be reworded by the automated and collaborative observation from the team. Even when content doesn’t fit into any need for the company the discussion and improvements will benefit the creator.  
+The immediate benefit for creators. Asking someone to invest the time can be reworded by the automated and collaborative observation from the team. Even when content doesn't fit into any need for the company the discussion and improvements will benefit the creator.  
 Channels and statuses should cater to what teams can/should provide feedback or become aware of the new content.
 
 ### Visibility
