@@ -6,6 +6,7 @@ tags:
   - books
 ---
 
+* [The Mikado Method](https://mikadomethod.info/)
 * [The Pragmatic Programmer](https://github.com/vordimous/books/blob/master/the-pragmatic-programmer.pdf)
 * [Modern Software Engineering](https://amzn.to/3kqZaQ6)
 * [Code Complete: A Practical Handbook of Software Construction](https://amzn.to/3wH6FZf)
