@@ -27,13 +27,13 @@ tags:
 
 ## Documentation
 
-- How I [organize documentation](./organizing_documentation.md).
+- How I [organize documentation](/posts/organizing_documentation/).
 - The [Zilla docs](https://docs.aklivity.io/zilla/latest/) [I inherited](https://web.archive.org/web/20230208143438/https://docs.aklivity.io/zilla/get-started) when I started vs when [I left](https://web.archive.org/web/20241208145809/https://docs.aklivity.io/zilla/latest/).
 - A [product feature guide](https://docs.aklivity.io/zilla/latest/how-tos/mqtt/mqtt.kafka.broker.html) that I am proud of.
 
 ## Demos/Examples
 
-- How I [organize examples](./organizing_examples.md).
+- How I [organize examples](/posts/organizing_examples/).
 - I managed multiple product examples with [single startup script](https://github.com/vordimous/zilla-examples/tree/main?tab=readme-ov-file#usage) and E2E tests that run in a [GitHub Action](https://github.com/vordimous/zilla-examples/tree/main/.github/workflows/test.yaml).
 - Created [Product Demos on GitHub](https://github.com/vordimous/zilla-demos) that can easily be run locally with a Compose file. Vendor specific options can be set from the options passed into the startup script.
 - I restarted and expanded the [Ballerina Exercism.io Track](https://github.com/exercism/ballerina).
