@@ -11,7 +11,7 @@ tags:
 
 - I wrote the blog and demo for the [MQTT to Kafka feature announcement](https://www.aklivity.io/post/zilla-hails-a-taxi).
 - My [Video Walkthrough](https://www.youtube.com/watch?v=FemWt31R7jg) for the new [AsyncAPI feature support announcement](https://www.aklivity.io/post/announcing-openapi-and-asyncapi-support-in-zilla). The team had a tight deadline, meaning I had to record this over a weekend and couldn't re-recorded it to add more polish.
-- I completely revitalized the current [Zilla documentation site](https://docs.aklivity.io/zilla/latest/). It started as a Gitbook site \([wayback link](https://web.archive.org/web/20230208143438/https://docs.aklivity.io/zilla/get-started)\). I improved the content and reworked all of the demos and examples. I am proud of the [MQTT broker product feature guide](https://docs.aklivity.io/zilla/latest/how-tos/mqtt/mqtt.kafka.broker.html).
+- I completely revitalized the current [Zilla documentation site](https://docs.aklivity.io/zilla/latest/). It started as a Gitbook site ([wayback link](https://web.archive.org/web/20230208143438/https://docs.aklivity.io/zilla/get-started)). I improved the content and reworked all of the demos and examples. I am proud of the [MQTT broker product feature guide](https://docs.aklivity.io/zilla/latest/how-tos/mqtt/mqtt.kafka.broker.html).
 - I managed multiple product examples with a [single startup script](https://github.com/vordimous/zilla-examples/tree/main?tab=readme-ov-file#usage) and E2E tests that run in a [GitHub Action](https://github.com/vordimous/zilla-examples/tree/main/.github/workflows/test.yaml).
 
 ## Blogs
