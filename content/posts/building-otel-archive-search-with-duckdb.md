@@ -14,28 +14,6 @@ OpenTelemetry is the industry standard for application observability, but the tr
 
 This post walks through building a user-facing audit log archive that filters business events from raw OTEL telemetry, stores them in object storage, and makes them searchable via a type-safe API. The entire stack uses industry-standard tooling (OpenTelemetry, Protobuf, DuckDB) with no vendor lock-in and no per-query cost.
 
-- [The Problem: Observability Data vs. User Data](#the-problem-observability-data-vs-user-data)
-- [Why DuckDB?](#why-duckdb)
-- [Architecture: Hot / Warm / Cold](#architecture-hot--warm--cold)
-- [Technology Choices](#technology-choices)
-- [The Protobuf \& gRPC Data Pipeline](#the-protobuf--grpc-data-pipeline)
-  - [OTEL Is Built on Protobuf](#otel-is-built-on-protobuf)
-  - [Schema Synchronization Across Applications](#schema-synchronization-across-applications)
-  - [Deriving OTEL Event Names from Proto Enums](#deriving-otel-event-names-from-proto-enums)
-  - [How Protobuf Connects to DuckDB](#how-protobuf-connects-to-duckdb)
-- [Implementation Deep-Dive](#implementation-deep-dive)
-  - [Data Layout: Hive-Partitioned JSONL on Object Storage](#data-layout-hive-partitioned-jsonl-on-object-storage)
-  - [DuckDB Client: CLI Subprocess Pattern](#duckdb-client-cli-subprocess-pattern)
-  - [Unnesting OTEL's Nested Structure](#unnesting-otels-nested-structure)
-  - [Extracting Attributes with `list_filter` and `list_extract`](#extracting-attributes-with-list_filter-and-list_extract)
-  - [Dynamic Search with Configurable Fields](#dynamic-search-with-configurable-fields)
-  - [Advanced Search: Structured Filters + Free-Text](#advanced-search-structured-filters--free-text)
-  - [Handling Nanosecond Timestamps](#handling-nanosecond-timestamps)
-- [Results \& Viability](#results--viability)
-  - [Who This Serves](#who-this-serves)
-  - [The Cost Equation](#the-cost-equation)
-  - [What's Next](#whats-next)
-
 ## The Problem: Observability Data vs. User Data
 
 Application observability and user audit logs are usually treated as separate concerns. Observability tools like Datadog and Splunk capture everything (HTTP requests, database queries, cache hits, internal retries) and surface it to DevOps teams. Audit logs are typically a separate system: a database table, a dedicated logging service, or a third-party compliance tool.
