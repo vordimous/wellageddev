@@ -1,5 +1,5 @@
 ---
-title: Building a User Audit Log Archive on OpenTelemetry and DuckDB
+title: Building a User Audit Log Archive on OpenTelemetry and DuckDB | Rough Draft
 date: 2026-02-04T04:00:00.000Z
 summary: How to filter business events from raw OpenTelemetry telemetry, store them in tiered object storage, and make them searchable with DuckDB — no vendor lock-in and no per-query cost.
 tags:
@@ -75,7 +75,7 @@ DuckDB is also free. No per-query cost, no scan-based billing, no retention tier
 
 Instead of forcing all queries through a single storage layer, the architecture uses tiered storage matched to query patterns:
 
-```mermaid
+{{< mermaid >}}
 flowchart TD
     collector[OTEL Collector]
     pipeline[Data Pipeline]
@@ -93,7 +93,7 @@ flowchart TD
     index --> api
     storage --> api
     api --> consumers
-```
+{{< /mermaid >}}
 
 The important piece is the **data pipeline** sitting between the OTEL Collector and storage. It receives the full firehose of observability data and filters it down to business-relevant events, the audit trail that users and support teams actually need. Internal infrastructure spans (HTTP middleware, database connection pools, cache operations) get discarded or routed to a separate observability store.
 
