@@ -10,8 +10,6 @@ tags:
 - architecture
 ---
 
-# Building a User Audit Log Archive on OpenTelemetry and DuckDB
-
 OpenTelemetry is the industry standard for application observability, but the trace data it captures contains more than infrastructure metrics. Inside OTEL spans are the business events your users actually care about: files processed, documents translated, messages delivered, errors encountered. The problem is that this data is mixed in with thousands of internal spans that mean nothing outside of DevOps.
 
 This post walks through building a user-facing audit log archive that filters business events from raw OTEL telemetry, stores them in object storage, and makes them searchable via a type-safe API. The entire stack uses industry-standard tooling (OpenTelemetry, Protobuf, DuckDB) with no vendor lock-in and no per-query cost.
