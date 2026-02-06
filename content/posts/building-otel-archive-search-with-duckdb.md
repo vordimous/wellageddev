@@ -1,6 +1,6 @@
 ---
 title: Building a User Audit Log Archive on OpenTelemetry and DuckDB | Rough Draft
-summary: 'How to filter business events from raw OpenTelemetry telemetry, store them in tiered object storage, and make them searchable with DuckDB — no vendor lock-in and no per-query cost.'
+summary: "How to filter business events from raw OpenTelemetry telemetry, store them in tiered object storage, and make them searchable with DuckDB — no vendor lock-in and no per-query cost."
 date: 2026-02-04T04:00:00.000Z
 tags:
   - opentelemetry
@@ -16,44 +16,42 @@ The traditional answer is to build more. More search endpoints, more storage sch
 
 It doesn't have to work that way. Your application is already capturing this information. It's sitting inside your OpenTelemetry traces. Every span carries business context: files processed, documents modified, messages delivered, errors encountered. The problem is that it's buried under thousands of internal spans that mean nothing outside of DevOps, locked inside tooling that nobody wants to teach end users to navigate.
 
-{{\< mermaid >}}
+{{< mermaid >}}
 flowchart LR
-subgraph INPUT\["📡  Ingestion"]
-collector\["OTEL Collector<br/>100% of spans"]
-end
+  subgraph INPUT["📡 Ingestion"]
+  collector["OTEL Collector<br/>100% of spans"]
+  end
 
-```
-subgraph FILTER["🔍 Pipeline"]
-    pipeline{"Business Event<br/>Filter"}
-end
+  subgraph FILTER["🔍 Pipeline"]
+      pipeline{"Business Event<br/>Filter"}
+  end
 
-subgraph SERVE["⚡ Query Tiers"]
-    direction TB
-    warm["Warm Path<br/>DuckDB · 23ms<br/>0.7% of data"]
-    cold["Cold Path<br/>JSONL on S3 · 5s<br/>8% of data"]
-    archive["Archive<br/>Full OTEL · 60s<br/>100% retained"]
-end
+  subgraph SERVE["⚡ Query Tiers"]
+      direction TB
+      warm["Warm Path<br/>DuckDB · 23ms<br/>0.7% of data"]
+      cold["Cold Path<br/>JSONL on S3 · 5s<br/>8% of data"]
+      archive["Archive<br/>Full OTEL · 60s<br/>100% retained"]
+  end
 
-noise(["🗑️ Infrastructure Noise<br/>92% discarded"])
+  noise(["🗑️ Infrastructure Noise<br/>92% discarded"])
 
-collector ==>|"all traces<br/>via OTLP"| pipeline
-pipeline ==> warm
-pipeline ==> cold
-pipeline -.-> archive
-pipeline -.-> noise
+  collector ==>|"all traces<br/>via OTLP"| pipeline
+  pipeline ==> warm
+  pipeline ==> cold
+  pipeline -.-> archive
+  pipeline -.-> noise
 
-style INPUT fill:#1a1a2e,stroke:#16213e,color:#eee
-style FILTER fill:#16213e,stroke:#0f3460,color:#eee
-style SERVE fill:#0f3460,stroke:#533483,color:#eee
-style noise fill:none,stroke:#666,color:#999,stroke-dasharray: 5 5
-style warm fill:#064e3b,stroke:#10b981,color:#ecfdf5
-style cold fill:#78350f,stroke:#f59e0b,color:#fef3c7
-style archive fill:#7f1d1d,stroke:#ef4444,color:#fef2f2
-style collector fill:#1e3a5f,stroke:#3b82f6,color:#dbeafe
-style pipeline fill:#312e81,stroke:#818cf8,color:#e0e7ff
-```
+  style INPUT fill:#1a1a2e,stroke:#16213e,color:#eee
+  style FILTER fill:#16213e,stroke:#0f3460,color:#eee
+  style SERVE fill:#0f3460,stroke:#533483,color:#eee
+  style noise fill:none,stroke:#666,color:#999,stroke-dasharray: 5 5
+  style warm fill:#064e3b,stroke:#10b981,color:#ecfdf5
+  style cold fill:#78350f,stroke:#f59e0b,color:#fef3c7
+  style archive fill:#7f1d1d,stroke:#ef4444,color:#fef2f2
+  style collector fill:#1e3a5f,stroke:#3b82f6,color:#dbeafe
+  style pipeline fill:#312e81,stroke:#818cf8,color:#e0e7ff
 
-{{\< /mermaid >}}
+{{< /mermaid >}}
 
 This post walks through building a user-facing audit log archive that filters business events from raw OTEL telemetry, stores them in object storage, and makes them searchable through a type-safe API. It's accessible, safe, and cheap. No application overhead, no per-query costs, no vendor lock-in. Just industry-standard tooling (OpenTelemetry, Protobuf, DuckDB) wired together in a way that serves the people who actually use your software.
 
@@ -101,28 +99,26 @@ DuckDB is also free. No per-query cost, no scan-based billing, no retention tier
 
 Instead of forcing all queries through a single storage layer, the architecture uses tiered storage matched to query patterns:
 
-{{\< mermaid >}}
+{{< mermaid >}}
 flowchart TD
-collector\[OTEL Collector]
-pipeline\[Data Pipeline]
-duckdb\[(DuckDB File)]
-index\[(Index — MongoDB)]
-storage\[(Object Storage — GCS/S3/MinIO)]
-api\[Audit Log Search API]
-consumers\[Consumers — UI, Support Tools, APIs]
+  collector[OTEL Collector]
+  pipeline[Data Pipeline]
+  duckdb[(DuckDB File)]
+  index[(Index — MongoDB)]
+  storage[(Object Storage — GCS/S3/MinIO)]
+  api[Audit Log Search API]
+  consumers[Consumers — UI, Support Tools, APIs]
 
-```
-collector -- all traces via OTLP --> pipeline
-pipeline -- warm path --> duckdb
-pipeline -- trace lookup --> index
-pipeline -- audit events JSONL --> storage
-duckdb --> api
-index --> api
-storage --> api
-api --> consumers
-```
+  collector -- all traces via OTLP --> pipeline
+  pipeline -- warm path --> duckdb
+  pipeline -- trace lookup --> index
+  pipeline -- audit events JSONL --> storage
+  duckdb --> api
+  index --> api
+  storage --> api
+  api --> consumers
 
-{{\< /mermaid >}}
+{{< /mermaid >}}
 
 The important piece is the **data pipeline** sitting between the OTEL Collector and storage. It receives the full firehose of observability data and filters it down to business-relevant events, the audit trail that users and support teams actually need. Internal infrastructure spans (HTTP middleware, database connection pools, cache operations) get discarded or routed to a separate observability store.
 
@@ -212,19 +208,17 @@ export function toOtelEventName(type: EventType): string {
 
 // Reverse: parse OTEL event name back to proto enum
 export function fromOtelEventName(otelEventName: string): EventType {
-  const enumName = otelEventName
-    .substring("myapp.event.".length)
-    .toUpperCase() as keyof typeof EventType;
+  const enumName = otelEventName.substring("myapp.event.".length).toUpperCase() as keyof typeof EventType;
   return EventType[enumName] ?? EventType.UNSPECIFIED;
 }
 ```
 
 So:
 
-* The proto enum is the single source of truth for event classification.
-* No separate mapping files to maintain.
-* Event name derivation is testable and deterministic.
-* End-event classification (which events mark a transaction as complete) is defined as a `Set<EventType>` alongside the enum, not scattered across services.
+- The proto enum is the single source of truth for event classification.
+- No separate mapping files to maintain.
+- Event name derivation is testable and deterministic.
+- End-event classification (which events mark a transaction as complete) is defined as a `Set<EventType>` alongside the enum, not scattered across services.
 
 This is also how the data pipeline decides which spans are audit-relevant: if a span contains events matching known `EventType` names, it's a business event. Everything else is infrastructure noise.
 
@@ -270,7 +264,7 @@ month=02/
 
 DuckDB reads compressed JSONL directly, with no decompression step or ETL pipeline. A query for January 15th reads only the files in `year=2025/month=01/day=15/`.
 
-**A practical caveat:** DuckDB's glob-based Hive partition filtering can be slower than expected. When given a broad glob pattern, DuckDB enumerates *all* directories first, then filters them, rather than walking only the matching directories. In benchmarks, this showed as \~23 seconds with a glob versus \~3 seconds with explicit paths. The fix is to build explicit per-day paths in application code instead of relying on a single broad glob:
+**A practical caveat:** DuckDB's glob-based Hive partition filtering can be slower than expected. When given a broad glob pattern, DuckDB enumerates _all_ directories first, then filters them, rather than walking only the matching directories. In benchmarks, this showed as \~23 seconds with a glob versus \~3 seconds with explicit paths. The fix is to build explicit per-day paths in application code instead of relying on a single broad glob:
 
 ```typescript
 
@@ -338,19 +332,19 @@ ${sql}
 
 `;
 
-  
+
 
 return new Promise((resolve, reject) => {
 
 const duckdb = spawn('duckdb', ['-json', '-c', fullSql]);
 
-  
+
 
 let stdout = '';
 
 duckdb.stdout.on('data', (data) => { stdout += data.toString(); });
 
-  
+
 
 duckdb.on('close', (code) => {
 
@@ -441,21 +435,15 @@ The `ignore_errors=true` flag matters in production. Without it, a single malfor
 OTEL attributes are stored as an array of key-value pairs, not a flat map:
 
 ```json
-
 {
+  "attributes": [
+    { "key": "http.method", "value": { "stringValue": "POST" } },
 
-"attributes": [
+    { "key": "http.status_code", "value": { "intValue": "200" } },
 
-{ "key": "http.method", "value": { "stringValue": "POST" } },
-
-{ "key": "http.status_code", "value": { "intValue": "200" } },
-
-{ "key": "myapp.transaction.id", "value": { "stringValue": "abc-123" } }
-
-]
-
+    { "key": "myapp.transaction.id", "value": { "stringValue": "abc-123" } }
+  ]
 }
-
 ```
 
 Extracting a specific attribute requires filtering the array by key, then accessing the value. DuckDB's `list_filter()` and `list_extract()` functions handle this:
@@ -481,63 +469,51 @@ For integer attributes (like HTTP status codes), swap `stringValue` for `intValu
 Instead of hardcoding which OTEL attributes are searchable, the search API uses a field configuration that maps user-friendly names to internal OTEL attribute keys:
 
 ```typescript
-
 interface SearchFieldDefinition {
+  name: string; // API field name: 'httpStatus'
 
-name: string; // API field name: 'httpStatus'
+  label: string; // UI label: 'HTTP Status'
 
-label: string; // UI label: 'HTTP Status'
+  otelKey: string; // OTEL key: 'http.response.status_code'
 
-otelKey: string; // OTEL key: 'http.response.status_code'
+  valueType: "string" | "int" | "bool" | "double";
 
-valueType: "string" | "int" | "bool" | "double";
+  category: "http" | "database" | "messaging" | "audit" | "service" | "error";
 
-category: "http" | "database" | "messaging" | "audit" | "service" | "error";
-
-description: string; // Tooltip text
-
+  description: string; // Tooltip text
 }
 
-  
-
 const SEARCH_FIELDS: SearchFieldDefinition[] = [
+  {
+    name: "url",
 
-{
+    label: "URL",
 
-name: "url",
+    otelKey: ATTR_URL_FULL, // from @opentelemetry/semantic-conventions
 
-label: "URL",
+    valueType: "string",
 
-otelKey: ATTR_URL_FULL, // from @opentelemetry/semantic-conventions
+    category: "http",
 
-valueType: "string",
+    description: "Full request URL",
+  },
 
-category: "http",
+  {
+    name: "httpStatus",
 
-description: "Full request URL",
+    label: "HTTP Status",
 
-},
+    otelKey: ATTR_HTTP_RESPONSE_STATUS_CODE,
 
-{
+    valueType: "int",
 
-name: "httpStatus",
+    category: "http",
 
-label: "HTTP Status",
+    description: "HTTP response status code",
+  },
 
-otelKey: ATTR_HTTP_RESPONSE_STATUS_CODE,
-
-valueType: "int",
-
-category: "http",
-
-description: "HTTP response status code",
-
-},
-
-// ... 18 fields across HTTP, Database, Messaging, Audit, File, Service, Error
-
+  // ... 18 fields across HTTP, Database, Messaging, Audit, File, Service, Error
 ];
-
 ```
 
 OTEL attribute keys are sourced from `@opentelemetry/semantic-conventions` where available, keeping them consistent with the broader OTEL ecosystem. Custom domain attributes use a namespaced convention (e.g., `myapp.transaction.id`).
@@ -545,31 +521,23 @@ OTEL attribute keys are sourced from `@opentelemetry/semantic-conventions` where
 The API exposes a `/fields` endpoint that returns all searchable fields with metadata:
 
 ```json
-
 {
+  "fields": [
+    {
+      "name": "httpStatus",
 
-"fields": [
+      "label": "HTTP Status",
 
-{
+      "valueType": "int",
 
-"name": "httpStatus",
+      "category": "http",
 
-"label": "HTTP Status",
+      "description": "HTTP response status code"
+    }
+  ],
 
-"valueType": "int",
-
-"category": "http",
-
-"description": "HTTP response status code"
-
+  "count": 18
 }
-
-],
-
-"count": 18
-
-}
-
 ```
 
 A UI consuming this endpoint can dynamically generate filter controls (dropdowns, text inputs, numeric ranges) without hardcoding field lists. Adding a new searchable field means adding one entry to the configuration; the API, query builder, and field discovery all pick it up. This works well for audit log UIs where different users need different filters: a support agent searches by customer ID, a compliance team filters by date range and document type, and both work against the same API.
@@ -579,55 +547,38 @@ A UI consuming this endpoint can dynamically generate filter controls (dropdowns
 The advanced search endpoint combines structured attribute filters with a free-text fallback. Each filter specifies a field, an operator, and a value:
 
 ```json
-
 {
+  "startDate": "2025-01-01",
 
-"startDate": "2025-01-01",
+  "endDate": "2025-01-31",
 
-"endDate": "2025-01-31",
+  "filters": [
+    { "field": "httpStatus", "operator": "gte", "value": "400" },
 
-"filters": [
+    { "field": "serviceName", "operator": "eq", "value": "order-api" }
+  ],
 
-{ "field": "httpStatus", "operator": "gte", "value": "400" },
-
-{ "field": "serviceName", "operator": "eq", "value": "order-api" }
-
-],
-
-"freeText": "timeout"
-
+  "freeText": "timeout"
 }
-
 ```
 
 The query builder translates each filter into a type-aware SQL condition. For string fields, it uses quoted comparison. For numeric fields, it validates and casts:
 
 ```typescript
-
 // Type-aware SQL generation based on field definition
 
 switch (filter.operator) {
+  case "eq":
+    return fieldDef.valueType === "string" ? `AND ${column} = '${escapedValue}'` : `AND ${column} = ${validateNumeric(filter.value)}`;
 
-case "eq":
+  case "contains":
+    return `AND CAST(${column} AS VARCHAR) ILIKE '%${escapedValue}%'`;
 
-return fieldDef.valueType === "string"
+  case "gte":
+    return `AND ${column} >= ${validateNumeric(filter.value)}`;
 
-? `AND ${column} = '${escapedValue}'`
-
-: `AND ${column} = ${validateNumeric(filter.value)}`;
-
-case "contains":
-
-return `AND CAST(${column} AS VARCHAR) ILIKE '%${escapedValue}%'`;
-
-case "gte":
-
-return `AND ${column} >= ${validateNumeric(filter.value)}`;
-
-// ... gt, lt, lte, neq
-
+  // ... gt, lt, lte, neq
 }
-
 ```
 
 The free-text fallback uses `ILIKE` across the full JSON-serialized attributes:
@@ -647,19 +598,13 @@ This gives users a "Google-like" search experience (type anything and find match
 OTEL timestamps are in nanoseconds (as strings in JSON, since JavaScript's `Number` type can't safely represent them). DuckDB casts them to `BIGINT`, and the search service uses JavaScript's `BigInt` for arithmetic:
 
 ```typescript
-
 const startNanos = BigInt(row.start_nanos);
 
 const endNanos = BigInt(row.end_nanos);
 
 const durationMs = Number((endNanos - startNanos) / BigInt(1_000_000));
 
-const startTime = new Date(
-
-Number(startNanos / BigInt(1_000_000)),
-
-).toISOString();
-
+const startTime = new Date(Number(startNanos / BigInt(1_000_000))).toISOString();
 ```
 
 Nanosecond precision is preserved through the DuckDB query and converted to millisecond ISO timestamps for the API response.
@@ -688,10 +633,10 @@ The warm path handles all interactive UI queries under 30ms, fast enough that th
 
 Since the architecture filters business events from OTEL observability data and exposes them through a searchable API, it serves both internal teams and end users:
 
-* **End users** browsing their transaction history, checking the status of a file upload, or reviewing a document processing timeline, directly in the application UI
-* **Support teams** investigating a customer's issue by searching for their transaction ID or correlation ID across months of audit data
-* **Compliance teams** auditing transaction records for specific document types, date ranges, or error conditions
-* **DevOps teams** that can fall back to the full OTEL archive when they need infrastructure-level spans for debugging
+- **End users** browsing their transaction history, checking the status of a file upload, or reviewing a document processing timeline, directly in the application UI
+- **Support teams** investigating a customer's issue by searching for their transaction ID or correlation ID across months of audit data
+- **Compliance teams** auditing transaction records for specific document types, date ranges, or error conditions
+- **DevOps teams** that can fall back to the full OTEL archive when they need infrastructure-level spans for debugging
 
 The field discovery endpoint lets new consumers build their own query UIs without coordinating with the API team. A customer-facing audit view, an internal support tool, and a compliance dashboard can all use the same API with different field filters.
 
@@ -707,8 +652,8 @@ For the warm path, a DuckDB file containing months of denormalized audit summari
 
 A few optimizations we're looking at next:
 
-* **DuckDB's read-through caching** ([announced in January 2026](https://duckdb.org/2026/01/22/read-through-caching.html)) can cache HTTP range requests locally, reducing repeated cold-path query times.
-* **Parquet conversion** for older archives. DuckDB's columnar format is faster than JSONL for analytical queries, and DuckDB can perform the conversion itself.
-* **Redis caching** for frequently-accessed query patterns, moving from in-process cache to shared cache across API replicas.
+- **DuckDB's read-through caching** ([announced in January 2026](https://duckdb.org/2026/01/22/read-through-caching.html)) can cache HTTP range requests locally, reducing repeated cold-path query times.
+- **Parquet conversion** for older archives. DuckDB's columnar format is faster than JSONL for analytical queries, and DuckDB can perform the conversion itself.
+- **Redis caching** for frequently-accessed query patterns, moving from in-process cache to shared cache across API replicas.
 
 [Clay Smith's "Cheap OpenTelemetry Lakehouses"](https://clay.fyi) work covers a similar Parquet + DuckDB + Iceberg pattern for OTEL storage and arrived at many of the same conclusions independently. The convergence is a good sign: embedded SQL engines over open file formats on object storage seem like a solid pattern for anyone who needs to make telemetry data accessible to users, not just DevOps.
