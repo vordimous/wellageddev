@@ -77,17 +77,12 @@ With the `httpfs` extension, DuckDB can query JSONL and Parquet files stored in 
 
 In a proof of concept against real production OTEL data, the performance gap was significant:
 
-\| Data Tier | Query Time | Monthly Size | Reduction vs Raw |
-
-\| ------------------------- | ---------- | ------------ | ---------------- |
-
-\| Full OTEL JSONL (archive) | 52s | 3.8 GB | — |
-
-\| Business-filtered JSONL | 29s | 2.1 GB | 45% |
-
-\| Audit-event JSONL | 5s | 400 MB | 92% |
-
-\| DuckDB warm path | 23ms | 26 MB | 99.3% |
+| Data Tier | Query Time | Monthly Size | Reduction vs Raw |
+| ------------------------- | ---------- | ------------ | ---------------- |
+| Full OTEL JSONL (archive) | 52s | 3.8 GB | — |
+| Business-filtered JSONL | 29s | 2.1 GB | 45% |
+| Audit-event JSONL | 5s | 400 MB | 92% |
+| DuckDB warm path | 23ms | 26 MB | 99.3% |
 
 The first row is everything the OTEL Collector captures: every internal span, every HTTP request, every database query. The third row is just the business events that matter to users. Filtering out observability noise reduces data volume by 92%.
 
@@ -613,19 +608,13 @@ Nanosecond precision is preserved through the DuckDB query and converted to mill
 
 The proof of concept confirms DuckDB works as a query engine for user audit log archives. Results against real production data:
 
-\| Query Pattern | Warm (DuckDB file) | Cold (JSONL on GCS) |
-
-\| ------------------------------ | ------------------ | ------------------- |
-
-\| Single transaction by ID | 22ms | 4-11s |
-
-\| Event timeline for transaction | 30ms | N/A |
-
-\| Filtered list with pagination | 28ms | N/A |
-
-\| Date range (1 week) | 24ms | 15-38s |
-
-\| Monthly aggregation | 23ms | 57-144s |
+| Query Pattern | Warm (DuckDB file) | Cold (JSONL on GCS) |
+| ------------------------------ | ------------------ | ------------------- |
+| Single transaction by ID | 22ms | 4-11s |
+| Event timeline for transaction | 30ms | N/A |
+| Filtered list with pagination | 28ms | N/A |
+| Date range (1 week) | 24ms | 15-38s |
+| Monthly aggregation | 23ms | 57-144s |
 
 The warm path handles all interactive UI queries under 30ms, fast enough that the audit log feels instant. The cold path handles drill-down into full transaction detail in single-digit seconds for most cases. If data hasn't been processed into the warm tier yet, the cold path still works, just slower.
 
