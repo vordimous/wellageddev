@@ -12,7 +12,7 @@ tags:
 
 Your application already delivers business data to users through purpose-built endpoints, schemas, and query infrastructure. But both operators and users want to know more. What happened to my file? When did that job run? How has usage changed over the last quarter? The kind of questions that live outside your core domain model.
 
-The traditional answer is to build more. More search endpoints, more storage schemas, more application nodes handling queries, more database capacity to collect and serve results. Costs balloon. Complexity compounds. And you still end up with a narrow view of what the application is actually doing.
+The traditional answer is to build more. More search endpoints, more storage schemas, more application nodes handling queries, and more database capacity to collect and serve results. Costs balloon. Complexity compounds. And you still end up with a narrow view of what the application is actually doing.
 
 It doesn't have to work that way. Your application is already capturing this information. It's sitting inside your OpenTelemetry traces. Every span carries business context: files processed, documents modified, messages delivered, errors encountered. The problem is that it's buried under thousands of internal spans that mean nothing outside of DevOps, locked inside tooling that nobody wants to teach end users to navigate.
 
@@ -22,7 +22,7 @@ This post walks through building a user-facing audit log archive that filters bu
 
 Application observability and user audit logs are usually treated as separate concerns. Observability tools like Datadog and Splunk capture everything (HTTP requests, database queries, cache hits, internal retries) and surface it to DevOps teams. Audit logs are typically a separate system: a database table, a dedicated logging service, or a third-party compliance tool.
 
-But if your application is already instrumented with OpenTelemetry, the data from both flows through the same pipeline. Every business transaction that matters to your users (a file upload, a document translation, a payment processed) already exists as OTEL spans with rich attributes. The challenge is filtering out the observability noise and capturing only the data relevant to end users.
+But if your application is already instrumented with OpenTelemetry, the data from both flows through the same pipeline. Every business transaction that matters to your users (a file upload, a document modification, a payment processed) already exists as OTEL spans with rich attributes. The challenge is filtering out the observability noise and capturing only the data relevant to end users.
 
 This creates two problems:
 
@@ -40,12 +40,17 @@ With the `httpfs` extension, DuckDB can query JSONL and Parquet files stored in 
 
 In a proof of concept against real production OTEL data, the performance gap was significant:
 
-| Data Tier                 | Query Time | Monthly Size | Reduction vs Raw |
-| ------------------------- | ---------- | ------------ | ---------------- |
-| Full OTEL JSONL (archive) | 52s        | 3.8 GB       | —                |
-| Business-filtered JSONL   | 29s        | 2.1 GB       | 45%              |
-| Audit-event JSONL         | 5s         | 400 MB       | 92%              |
-| DuckDB warm path          | 23ms       | 26 MB        | 99.3%            |
+\| Data Tier | Query Time | Monthly Size | Reduction vs Raw |
+
+\| ------------------------- | ---------- | ------------ | ---------------- |
+
+\| Full OTEL JSONL (archive) | 52s | 3.8 GB | — |
+
+\| Business-filtered JSONL | 29s | 2.1 GB | 45% |
+
+\| Audit-event JSONL | 5s | 400 MB | 92% |
+
+\| DuckDB warm path | 23ms | 26 MB | 99.3% |
 
 The first row is everything the OTEL Collector captures: every internal span, every HTTP request, every database query. The third row is just the business events that matter to users. Filtering out observability noise reduces data volume by 92%.
 
@@ -58,24 +63,41 @@ DuckDB is also free. No per-query cost, no scan-based billing, no retention tier
 Instead of forcing all queries through a single storage layer, the architecture uses tiered storage matched to query patterns:
 
 {{\< mermaid >}}
+
 flowchart TD
+
 collector\[OTEL Collector]
+
 pipeline\[Data Pipeline]
+
 duckdb\[(DuckDB File)]
+
 index\[(Index — MongoDB)]
+
 storage\[(Object Storage — GCS/S3/MinIO)]
+
 api\[Audit Log Search API]
+
 consumers\[Consumers — UI, Support Tools, APIs]
 
 ```
+
 collector -- all traces via OTLP --> pipeline
+
 pipeline -- warm path --> duckdb
+
 pipeline -- trace lookup --> index
+
 pipeline -- audit events JSONL --> storage
+
 duckdb --> api
+
 index --> api
+
 storage --> api
+
 api --> consumers
+
 ```
 
 {{\< /mermaid >}}
@@ -121,9 +143,11 @@ Protobuf here acts as a **schema contract**. Field types, field numbers, and fie
 When an ingestion processor (written in Java) and a search API (written in TypeScript) both need to understand what an "audit event" looks like, you have two choices:
 
 1. **Manual mapping.** Each service defines its own types and manually maps between them. Every schema change requires coordinated updates across services, and drift is inevitable.
-2. **Generated types from a shared proto.** Define the schema once in `.proto` files, generate language-specific types with `protoc`, and share the definitions across services.
+2. **Generated types from a shared proto.** Define the schema once in `.proto` files, generate language-specific types, and share the definitions across services.
 
-The second approach eliminates drift by construction. Consider an audit domain with 40+ event types spanning file processing, document translation, messaging, request/response cycles, error handling, scheduling, and retry logic:
+The second approach eliminates drift by construction. Tools like [Buf](https://buf.build/) make this workflow practical by handling linting, breaking change detection, and code generation across languages from a single `buf.gen.yaml` configuration. Instead of wiring together `protoc` plugins manually, Buf manages the full generation pipeline.
+
+Consider an audit domain with 40+ event types spanning file processing, document modification, messaging, request/response cycles, error handling, scheduling, and retry logic:
 
 ```protobuf
 // Defined once in the event.proto
@@ -137,7 +161,7 @@ enum EventType {
 
   // Document events (10-19)
   EVENT_TYPE_DOCUMENT_RECEIVED = 10;
-  EVENT_TYPE_DOCUMENT_TRANSLATED = 13;
+  EVENT_TYPE_DOCUMENT_MODIFIED = 13;
 
   // Message events (20-29)
   EVENT_TYPE_MESSAGE_RECEIVED = 20;
@@ -147,7 +171,7 @@ enum EventType {
 }
 ```
 
-Running `protoc-gen-es` (for TypeScript) and `protoc-gen-java` (for Java) against this single file produces type-safe enums in both languages. Adding a new auditable event type means adding one line to the proto. Both services pick it up on their next build.
+Running Buf's code generation with `protoc-gen-es` (for TypeScript) and `protoc-gen-java` (for Java) configured in `buf.gen.yaml` produces type-safe enums in both languages from this single file. Buf's breaking change detection (`buf breaking`) also catches any accidental modifications to stable field numbers or enum values before they reach a build. Adding a new auditable event type means adding one line to the proto. Both services pick it up on their next build.
 
 ### Deriving OTEL Event Names from Proto Enums
 
@@ -160,23 +184,23 @@ One practical benefit of proto-first design: OTEL span event names can be derive
 // → OTEL span event name
 
 export function toOtelEventName(type: EventType): string {
-    const enumName = EventType[type];
-    return "myapp.event." + enumName.toLowerCase();
+  const enumName = EventType[type];
+  return "myapp.event." + enumName.toLowerCase();
 }
 
 // Reverse: parse OTEL event name back to proto enum
 export function fromOtelEventName(otelEventName: string): EventType {
-    const enumName = otelEventName
-        .substring("myapp.event.".length)
-        .toUpperCase() as keyof typeof EventType;
-    return EventType[enumName] ?? EventType.UNSPECIFIED;
+  const enumName = otelEventName
+    .substring("myapp.event.".length)
+    .toUpperCase() as keyof typeof EventType;
+  return EventType[enumName] ?? EventType.UNSPECIFIED;
 }
 ```
 
 So:
 
 * The proto enum is the single source of truth for event classification.
-* No separate mapping files to maintain
+* No separate mapping files to maintain.
 * Event name derivation is testable and deterministic.
 * End-event classification (which events mark a transaction as complete) is defined as a `Set<EventType>` alongside the enum, not scattered across services.
 
@@ -199,16 +223,27 @@ A schema change in the proto propagates through the entire stack: the ingestion 
 The OTEL Collector's file exporter writes JSONL files to object storage. Organizing them with Hive-style partitioning enables DuckDB to scan only the relevant date partitions:
 
 ```
+
 s3://audit-data/
-  year=2025/
-    month=01/
-      day=15/
-        events-001.json.gz
-        events-002.json.gz
-      day=16/
-        events-001.json.gz
-    month=02/
-      ...
+
+year=2025/
+
+month=01/
+
+day=15/
+
+events-001.json.gz
+
+events-002.json.gz
+
+day=16/
+
+events-001.json.gz
+
+month=02/
+
+...
+
 ```
 
 DuckDB reads compressed JSONL directly, with no decompression step or ETL pipeline. A query for January 15th reads only the files in `year=2025/month=01/day=15/`.
@@ -216,20 +251,35 @@ DuckDB reads compressed JSONL directly, with no decompression step or ETL pipeli
 **A practical caveat:** DuckDB's glob-based Hive partition filtering can be slower than expected. When given a broad glob pattern, DuckDB enumerates *all* directories first, then filters them, rather than walking only the matching directories. In benchmarks, this showed as \~23 seconds with a glob versus \~3 seconds with explicit paths. The fix is to build explicit per-day paths in application code instead of relying on a single broad glob:
 
 ```typescript
+
 // Instead of: s3://bucket/year=*/month=*/day=*/*.json.gz
+
 // Build explicit paths for the requested date range:
+
 private buildGlobPathsForRange(startDate: string, endDate: string): string[] {
-  const paths: string[] = [];
-  for (let d = new Date(start); d <= end; d.setDate(d.getDate() + 1)) {
-    const year = d.getFullYear();
-    const month = String(d.getMonth() + 1).padStart(2, '0');
-    const day = String(d.getDate()).padStart(2, '0');
-    paths.push(
-      `s3://${bucket}/year=${year}/month=${month}/day=${day}/*.json*`
-    );
-  }
-  return paths;
+
+const paths: string[] = [];
+
+for (let d = new Date(start); d <= end; d.setDate(d.getDate() + 1)) {
+
+const year = d.getFullYear();
+
+const month = String(d.getMonth() + 1).padStart(2, '0');
+
+const day = String(d.getDate()).padStart(2, '0');
+
+paths.push(
+
+`s3://${bucket}/year=${year}/month=${month}/day=${day}/*.json*`
+
+);
+
 }
+
+return paths;
+
+}
+
 ```
 
 This limits the scan to exactly the requested days, with a configurable maximum (e.g., 90 days) to prevent runaway queries.
@@ -243,30 +293,55 @@ There are two ways to use DuckDB from Node.js: via native bindings or via a CLI 
 The subprocess client configures S3 access via DuckDB's `httpfs` extension, then runs the query:
 
 ```typescript
+
 async query<T>(sql: string): Promise<T[]> {
-  const fullSql = `
-    INSTALL httpfs;
-    LOAD httpfs;
-    SET s3_endpoint='${this.s3Endpoint}';
-    SET s3_access_key_id='${this.accessKey}';
-    SET s3_secret_access_key='${this.secretKey}';
-    SET s3_use_ssl=${this.useSsl};
-    SET s3_url_style='path';
-    ${sql}
-  `;
 
-  return new Promise((resolve, reject) => {
-    const duckdb = spawn('duckdb', ['-json', '-c', fullSql]);
+const fullSql = `
 
-    let stdout = '';
-    duckdb.stdout.on('data', (data) => { stdout += data.toString(); });
+INSTALL httpfs;
 
-    duckdb.on('close', (code) => {
-      if (code !== 0) return reject(new Error(`DuckDB failed`));
-      resolve(stdout.trim() ? JSON.parse(stdout) : []);
-    });
-  });
+LOAD httpfs;
+
+SET s3_endpoint='${this.s3Endpoint}';
+
+SET s3_access_key_id='${this.accessKey}';
+
+SET s3_secret_access_key='${this.secretKey}';
+
+SET s3_use_ssl=${this.useSsl};
+
+SET s3_url_style='path';
+
+${sql}
+
+`;
+
+  
+
+return new Promise((resolve, reject) => {
+
+const duckdb = spawn('duckdb', ['-json', '-c', fullSql]);
+
+  
+
+let stdout = '';
+
+duckdb.stdout.on('data', (data) => { stdout += data.toString(); });
+
+  
+
+duckdb.on('close', (code) => {
+
+if (code !== 0) return reject(new Error(`DuckDB failed`));
+
+resolve(stdout.trim() ? JSON.parse(stdout) : []);
+
+});
+
+});
+
 }
+
 ```
 
 The `-json` flag tells DuckDB to emit results as a JSON array, which matches the API response format. Each query is a separate subprocess with no connection pooling or state leaks. If DuckDB crashes, it doesn't take down the API process.
@@ -280,33 +355,61 @@ OTEL JSONL is deeply nested. A single line contains a `resourceSpans` array, eac
 DuckDB's `unnest()` function handles this well in CTEs (Common Table Expressions):
 
 ```sql
+
 WITH raw_data AS (
-  SELECT * FROM read_json(
-    's3://bucket/year=2025/month=01/day=15/*.json*',
-    format='newline_delimited',
-    ignore_errors=true
-  )
-),
--- Level 1: unnest resourceSpans
-unnested AS (
-  SELECT unnest(resourceSpans) as rs FROM raw_data
-),
--- Level 2: unnest scopeSpans
-scope_spans AS (
-  SELECT unnest(rs.scopeSpans) as ss FROM unnested
-),
--- Level 3: unnest spans
-spans AS (
-  SELECT unnest(ss.spans) as span FROM scope_spans
+
+SELECT * FROM read_json(
+
+'s3://bucket/year=2025/month=01/day=15/*.json*',
+
+format='newline_delimited',
+
+ignore_errors=true
+
 )
+
+),
+
+-- Level 1: unnest resourceSpans
+
+unnested AS (
+
+SELECT unnest(resourceSpans) as rs FROM raw_data
+
+),
+
+-- Level 2: unnest scopeSpans
+
+scope_spans AS (
+
+SELECT unnest(rs.scopeSpans) as ss FROM unnested
+
+),
+
+-- Level 3: unnest spans
+
+spans AS (
+
+SELECT unnest(ss.spans) as span FROM scope_spans
+
+)
+
 SELECT
-  span.traceId as trace_id,
-  span.spanId as span_id,
-  span.name as span_name,
-  CAST(span.startTimeUnixNano AS BIGINT) as start_nanos,
-  CAST(span.endTimeUnixNano AS BIGINT) as end_nanos,
-  span.attributes as attrs
+
+span.traceId as trace_id,
+
+span.spanId as span_id,
+
+span.name as span_name,
+
+CAST(span.startTimeUnixNano AS BIGINT) as start_nanos,
+
+CAST(span.endTimeUnixNano AS BIGINT) as end_nanos,
+
+span.attributes as attrs
+
 FROM spans
+
 ```
 
 The `ignore_errors=true` flag matters in production. Without it, a single malformed JSON line causes the entire query to fail.
@@ -316,22 +419,35 @@ The `ignore_errors=true` flag matters in production. Without it, a single malfor
 OTEL attributes are stored as an array of key-value pairs, not a flat map:
 
 ```json
+
 {
-    "attributes": [
-        { "key": "http.method", "value": { "stringValue": "POST" } },
-        { "key": "http.status_code", "value": { "intValue": "200" } },
-        { "key": "myapp.transaction.id", "value": { "stringValue": "abc-123" } }
-    ]
+
+"attributes": [
+
+{ "key": "http.method", "value": { "stringValue": "POST" } },
+
+{ "key": "http.status_code", "value": { "intValue": "200" } },
+
+{ "key": "myapp.transaction.id", "value": { "stringValue": "abc-123" } }
+
+]
+
 }
+
 ```
 
 Extracting a specific attribute requires filtering the array by key, then accessing the value. DuckDB's `list_filter()` and `list_extract()` functions handle this:
 
 ```sql
+
 -- Extract a specific attribute value from the OTEL attributes array
+
 (list_extract(
-  list_filter(attrs, x -> x.key = 'myapp.transaction.id'), 1
+
+list_filter(attrs, x -> x.key = 'myapp.transaction.id'), 1
+
 )).value.stringValue as transaction_id
+
 ```
 
 This reads as: "filter the attributes array to entries where key equals 'myapp.transaction.id', take the first match, and extract its stringValue."
@@ -343,34 +459,63 @@ For integer attributes (like HTTP status codes), swap `stringValue` for `intValu
 Instead of hardcoding which OTEL attributes are searchable, the search API uses a field configuration that maps user-friendly names to internal OTEL attribute keys:
 
 ```typescript
+
 interface SearchFieldDefinition {
-    name: string; // API field name: 'httpStatus'
-    label: string; // UI label: 'HTTP Status'
-    otelKey: string; // OTEL key: 'http.response.status_code'
-    valueType: "string" | "int" | "bool" | "double";
-    category: "http" | "database" | "messaging" | "audit" | "service" | "error";
-    description: string; // Tooltip text
+
+name: string; // API field name: 'httpStatus'
+
+label: string; // UI label: 'HTTP Status'
+
+otelKey: string; // OTEL key: 'http.response.status_code'
+
+valueType: "string" | "int" | "bool" | "double";
+
+category: "http" | "database" | "messaging" | "audit" | "service" | "error";
+
+description: string; // Tooltip text
+
 }
 
+  
+
 const SEARCH_FIELDS: SearchFieldDefinition[] = [
-    {
-        name: "url",
-        label: "URL",
-        otelKey: ATTR_URL_FULL, // from @opentelemetry/semantic-conventions
-        valueType: "string",
-        category: "http",
-        description: "Full request URL",
-    },
-    {
-        name: "httpStatus",
-        label: "HTTP Status",
-        otelKey: ATTR_HTTP_RESPONSE_STATUS_CODE,
-        valueType: "int",
-        category: "http",
-        description: "HTTP response status code",
-    },
-    // ... 18 fields across HTTP, Database, Messaging, Audit, File, Service, Error
+
+{
+
+name: "url",
+
+label: "URL",
+
+otelKey: ATTR_URL_FULL, // from @opentelemetry/semantic-conventions
+
+valueType: "string",
+
+category: "http",
+
+description: "Full request URL",
+
+},
+
+{
+
+name: "httpStatus",
+
+label: "HTTP Status",
+
+otelKey: ATTR_HTTP_RESPONSE_STATUS_CODE,
+
+valueType: "int",
+
+category: "http",
+
+description: "HTTP response status code",
+
+},
+
+// ... 18 fields across HTTP, Database, Messaging, Audit, File, Service, Error
+
 ];
+
 ```
 
 OTEL attribute keys are sourced from `@opentelemetry/semantic-conventions` where available, keeping them consistent with the broader OTEL ecosystem. Custom domain attributes use a namespaced convention (e.g., `myapp.transaction.id`).
@@ -378,18 +523,31 @@ OTEL attribute keys are sourced from `@opentelemetry/semantic-conventions` where
 The API exposes a `/fields` endpoint that returns all searchable fields with metadata:
 
 ```json
+
 {
-    "fields": [
-        {
-            "name": "httpStatus",
-            "label": "HTTP Status",
-            "valueType": "int",
-            "category": "http",
-            "description": "HTTP response status code"
-        }
-    ],
-    "count": 18
+
+"fields": [
+
+{
+
+"name": "httpStatus",
+
+"label": "HTTP Status",
+
+"valueType": "int",
+
+"category": "http",
+
+"description": "HTTP response status code"
+
 }
+
+],
+
+"count": 18
+
+}
+
 ```
 
 A UI consuming this endpoint can dynamically generate filter controls (dropdowns, text inputs, numeric ranges) without hardcoding field lists. Adding a new searchable field means adding one entry to the configuration; the API, query builder, and field discovery all pick it up. This works well for audit log UIs where different users need different filters: a support agent searches by customer ID, a compliance team filters by date range and document type, and both work against the same API.
@@ -399,39 +557,65 @@ A UI consuming this endpoint can dynamically generate filter controls (dropdowns
 The advanced search endpoint combines structured attribute filters with a free-text fallback. Each filter specifies a field, an operator, and a value:
 
 ```json
+
 {
-    "startDate": "2025-01-01",
-    "endDate": "2025-01-31",
-    "filters": [
-        { "field": "httpStatus", "operator": "gte", "value": "400" },
-        { "field": "serviceName", "operator": "eq", "value": "order-api" }
-    ],
-    "freeText": "timeout"
+
+"startDate": "2025-01-01",
+
+"endDate": "2025-01-31",
+
+"filters": [
+
+{ "field": "httpStatus", "operator": "gte", "value": "400" },
+
+{ "field": "serviceName", "operator": "eq", "value": "order-api" }
+
+],
+
+"freeText": "timeout"
+
 }
+
 ```
 
 The query builder translates each filter into a type-aware SQL condition. For string fields, it uses quoted comparison. For numeric fields, it validates and casts:
 
 ```typescript
+
 // Type-aware SQL generation based on field definition
+
 switch (filter.operator) {
-    case "eq":
-        return fieldDef.valueType === "string"
-            ? `AND ${column} = '${escapedValue}'`
-            : `AND ${column} = ${validateNumeric(filter.value)}`;
-    case "contains":
-        return `AND CAST(${column} AS VARCHAR) ILIKE '%${escapedValue}%'`;
-    case "gte":
-        return `AND ${column} >= ${validateNumeric(filter.value)}`;
-    // ... gt, lt, lte, neq
+
+case "eq":
+
+return fieldDef.valueType === "string"
+
+? `AND ${column} = '${escapedValue}'`
+
+: `AND ${column} = ${validateNumeric(filter.value)}`;
+
+case "contains":
+
+return `AND CAST(${column} AS VARCHAR) ILIKE '%${escapedValue}%'`;
+
+case "gte":
+
+return `AND ${column} >= ${validateNumeric(filter.value)}`;
+
+// ... gt, lt, lte, neq
+
 }
+
 ```
 
 The free-text fallback uses `ILIKE` across the full JSON-serialized attributes:
 
 ```sql
+
 WHERE (structured_conditions)
-   OR attrs_json ILIKE '%timeout%'
+
+OR attrs_json ILIKE '%timeout%'
+
 ```
 
 This gives users a "Google-like" search experience (type anything and find matching audit events) while also supporting precise, structured queries when they know exactly what they're looking for.
@@ -441,12 +625,19 @@ This gives users a "Google-like" search experience (type anything and find match
 OTEL timestamps are in nanoseconds (as strings in JSON, since JavaScript's `Number` type can't safely represent them). DuckDB casts them to `BIGINT`, and the search service uses JavaScript's `BigInt` for arithmetic:
 
 ```typescript
+
 const startNanos = BigInt(row.start_nanos);
+
 const endNanos = BigInt(row.end_nanos);
+
 const durationMs = Number((endNanos - startNanos) / BigInt(1_000_000));
+
 const startTime = new Date(
-    Number(startNanos / BigInt(1_000_000)),
+
+Number(startNanos / BigInt(1_000_000)),
+
 ).toISOString();
+
 ```
 
 Nanosecond precision is preserved through the DuckDB query and converted to millisecond ISO timestamps for the API response.
@@ -455,13 +646,19 @@ Nanosecond precision is preserved through the DuckDB query and converted to mill
 
 The proof of concept confirms DuckDB works as a query engine for user audit log archives. Results against real production data:
 
-| Query Pattern                  | Warm (DuckDB file) | Cold (JSONL on GCS) |
-| ------------------------------ | ------------------ | ------------------- |
-| Single transaction by ID       | 22ms               | 4-11s               |
-| Event timeline for transaction | 30ms               | N/A                 |
-| Filtered list with pagination  | 28ms               | N/A                 |
-| Date range (1 week)            | 24ms               | 15-38s              |
-| Monthly aggregation            | 23ms               | 57-144s             |
+\| Query Pattern | Warm (DuckDB file) | Cold (JSONL on GCS) |
+
+\| ------------------------------ | ------------------ | ------------------- |
+
+\| Single transaction by ID | 22ms | 4-11s |
+
+\| Event timeline for transaction | 30ms | N/A |
+
+\| Filtered list with pagination | 28ms | N/A |
+
+\| Date range (1 week) | 24ms | 15-38s |
+
+\| Monthly aggregation | 23ms | 57-144s |
 
 The warm path handles all interactive UI queries under 30ms, fast enough that the audit log feels instant. The cold path handles drill-down into full transaction detail in single-digit seconds for most cases. If data hasn't been processed into the warm tier yet, the cold path still works, just slower.
 
