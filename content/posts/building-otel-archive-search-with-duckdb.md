@@ -111,6 +111,7 @@ storage\[(Object Storage — GCS/S3/MinIO)]
 api\[Audit Log Search API]
 consumers\[Consumers — UI, Support Tools, APIs]
 
+```
 collector -- all traces via OTLP --> pipeline
 pipeline -- warm path --> duckdb
 pipeline -- trace lookup --> index
@@ -119,6 +120,7 @@ duckdb --> api
 index --> api
 storage --> api
 api --> consumers
+```
 
 {{\< /mermaid >}}
 
