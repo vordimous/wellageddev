@@ -16,6 +16,45 @@ The traditional answer is to build more. More search endpoints, more storage sch
 
 It doesn't have to work that way. Your application is already capturing this information. It's sitting inside your OpenTelemetry traces. Every span carries business context: files processed, documents modified, messages delivered, errors encountered. The problem is that it's buried under thousands of internal spans that mean nothing outside of DevOps, locked inside tooling that nobody wants to teach end users to navigate.
 
+{{\< mermaid >}}
+flowchart LR
+subgraph INPUT\["📡  Ingestion"]
+collector\["OTEL Collector<br/>100% of spans"]
+end
+
+```
+subgraph FILTER["🔍 Pipeline"]
+    pipeline{"Business Event<br/>Filter"}
+end
+
+subgraph SERVE["⚡ Query Tiers"]
+    direction TB
+    warm["Warm Path<br/>DuckDB · 23ms<br/>0.7% of data"]
+    cold["Cold Path<br/>JSONL on S3 · 5s<br/>8% of data"]
+    archive["Archive<br/>Full OTEL · 60s<br/>100% retained"]
+end
+
+noise(["🗑️ Infrastructure Noise<br/>92% discarded"])
+
+collector ==>|"all traces<br/>via OTLP"| pipeline
+pipeline ==> warm
+pipeline ==> cold
+pipeline -.-> archive
+pipeline -.-> noise
+
+style INPUT fill:#1a1a2e,stroke:#16213e,color:#eee
+style FILTER fill:#16213e,stroke:#0f3460,color:#eee
+style SERVE fill:#0f3460,stroke:#533483,color:#eee
+style noise fill:none,stroke:#666,color:#999,stroke-dasharray: 5 5
+style warm fill:#064e3b,stroke:#10b981,color:#ecfdf5
+style cold fill:#78350f,stroke:#f59e0b,color:#fef3c7
+style archive fill:#7f1d1d,stroke:#ef4444,color:#fef2f2
+style collector fill:#1e3a5f,stroke:#3b82f6,color:#dbeafe
+style pipeline fill:#312e81,stroke:#818cf8,color:#e0e7ff
+```
+
+{{\< /mermaid >}}
+
 This post walks through building a user-facing audit log archive that filters business events from raw OTEL telemetry, stores them in object storage, and makes them searchable through a type-safe API. It's accessible, safe, and cheap. No application overhead, no per-query costs, no vendor lock-in. Just industry-standard tooling (OpenTelemetry, Protobuf, DuckDB) wired together in a way that serves the people who actually use your software.
 
 ## The Problem: Observability Data vs. User Data
@@ -63,42 +102,23 @@ DuckDB is also free. No per-query cost, no scan-based billing, no retention tier
 Instead of forcing all queries through a single storage layer, the architecture uses tiered storage matched to query patterns:
 
 {{\< mermaid >}}
-
 flowchart TD
-
 collector\[OTEL Collector]
-
 pipeline\[Data Pipeline]
-
 duckdb\[(DuckDB File)]
-
 index\[(Index — MongoDB)]
-
 storage\[(Object Storage — GCS/S3/MinIO)]
-
 api\[Audit Log Search API]
-
 consumers\[Consumers — UI, Support Tools, APIs]
 
-```
-
 collector -- all traces via OTLP --> pipeline
-
 pipeline -- warm path --> duckdb
-
 pipeline -- trace lookup --> index
-
 pipeline -- audit events JSONL --> storage
-
 duckdb --> api
-
 index --> api
-
 storage --> api
-
 api --> consumers
-
-```
 
 {{\< /mermaid >}}
 
