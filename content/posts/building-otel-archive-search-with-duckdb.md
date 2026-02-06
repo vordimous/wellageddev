@@ -1,18 +1,22 @@
 ---
 title: Building a User Audit Log Archive on OpenTelemetry and DuckDB | Rough Draft
+summary: 'How to filter business events from raw OpenTelemetry telemetry, store them in tiered object storage, and make them searchable with DuckDB — no vendor lock-in and no per-query cost.'
 date: 2026-02-04T04:00:00.000Z
-summary: How to filter business events from raw OpenTelemetry telemetry, store them in tiered object storage, and make them searchable with DuckDB — no vendor lock-in and no per-query cost.
 tags:
-- opentelemetry
-- duckdb
-- protobuf
-- observability
-- architecture
+  - opentelemetry
+  - duckdb
+  - protobuf
+  - observability
+  - architecture
 ---
 
-OpenTelemetry is the industry standard for application observability, but the trace data it captures contains more than infrastructure metrics. Inside OTEL spans are the business events your users actually care about: files processed, documents translated, messages delivered, errors encountered. The problem is that this data is mixed in with thousands of internal spans that mean nothing outside of DevOps.
+Your application already delivers business data to users through purpose-built endpoints, schemas, and query infrastructure. But both operators and users want to know more. What happened to my file? When did that job run? How has usage changed over the last quarter? The kind of questions that live outside your core domain model.
 
-This post walks through building a user-facing audit log archive that filters business events from raw OTEL telemetry, stores them in object storage, and makes them searchable via a type-safe API. The entire stack uses industry-standard tooling (OpenTelemetry, Protobuf, DuckDB) with no vendor lock-in and no per-query cost.
+The traditional answer is to build more. More search endpoints, more storage schemas, more application nodes handling queries, more database capacity to collect and serve results. Costs balloon. Complexity compounds. And you still end up with a narrow view of what the application is actually doing.
+
+It doesn't have to work that way. Your application is already capturing this information. It's sitting inside your OpenTelemetry traces. Every span carries business context: files processed, documents modified, messages delivered, errors encountered. The problem is that it's buried under thousands of internal spans that mean nothing outside of DevOps, locked inside tooling that nobody wants to teach end users to navigate.
+
+This post walks through building a user-facing audit log archive that filters business events from raw OTEL telemetry, stores them in object storage, and makes them searchable through a type-safe API. It's accessible, safe, and cheap. No application overhead, no per-query costs, no vendor lock-in. Just industry-standard tooling (OpenTelemetry, Protobuf, DuckDB) wired together in a way that serves the people who actually use your software.
 
 ## The Problem: Observability Data vs. User Data
 
@@ -53,25 +57,28 @@ DuckDB is also free. No per-query cost, no scan-based billing, no retention tier
 
 Instead of forcing all queries through a single storage layer, the architecture uses tiered storage matched to query patterns:
 
-{{< mermaid >}}
+{{\< mermaid >}}
 flowchart TD
-    collector[OTEL Collector]
-    pipeline[Data Pipeline]
-    duckdb[(DuckDB File)]
-    index[(Index — MongoDB)]
-    storage[(Object Storage — GCS/S3/MinIO)]
-    api[Audit Log Search API]
-    consumers[Consumers — UI, Support Tools, APIs]
+collector\[OTEL Collector]
+pipeline\[Data Pipeline]
+duckdb\[(DuckDB File)]
+index\[(Index — MongoDB)]
+storage\[(Object Storage — GCS/S3/MinIO)]
+api\[Audit Log Search API]
+consumers\[Consumers — UI, Support Tools, APIs]
 
-    collector -- all traces via OTLP --> pipeline
-    pipeline -- warm path --> duckdb
-    pipeline -- trace lookup --> index
-    pipeline -- audit events JSONL --> storage
-    duckdb --> api
-    index --> api
-    storage --> api
-    api --> consumers
-{{< /mermaid >}}
+```
+collector -- all traces via OTLP --> pipeline
+pipeline -- warm path --> duckdb
+pipeline -- trace lookup --> index
+pipeline -- audit events JSONL --> storage
+duckdb --> api
+index --> api
+storage --> api
+api --> consumers
+```
+
+{{\< /mermaid >}}
 
 The important piece is the **data pipeline** sitting between the OTEL Collector and storage. It receives the full firehose of observability data and filters it down to business-relevant events, the audit trail that users and support teams actually need. Internal infrastructure spans (HTTP middleware, database connection pools, cache operations) get discarded or routed to a separate observability store.
 
@@ -114,7 +121,6 @@ Protobuf here acts as a **schema contract**. Field types, field numbers, and fie
 When an ingestion processor (written in Java) and a search API (written in TypeScript) both need to understand what an "audit event" looks like, you have two choices:
 
 1. **Manual mapping.** Each service defines its own types and manually maps between them. Every schema change requires coordinated updates across services, and drift is inevitable.
-
 2. **Generated types from a shared proto.** Define the schema once in `.proto` files, generate language-specific types with `protoc`, and share the definitions across services.
 
 The second approach eliminates drift by construction. Consider an audit domain with 40+ event types spanning file processing, document translation, messaging, request/response cycles, error handling, scheduling, and retry logic:
@@ -169,10 +175,10 @@ export function fromOtelEventName(otelEventName: string): EventType {
 
 So:
 
-- The proto enum is the single source of truth for event classification.
-- No separate mapping files to maintain
-- Event name derivation is testable and deterministic.
-- End-event classification (which events mark a transaction as complete) is defined as a `Set<EventType>` alongside the enum, not scattered across services.
+* The proto enum is the single source of truth for event classification.
+* No separate mapping files to maintain
+* Event name derivation is testable and deterministic.
+* End-event classification (which events mark a transaction as complete) is defined as a `Set<EventType>` alongside the enum, not scattered across services.
 
 This is also how the data pipeline decides which spans are audit-relevant: if a span contains events matching known `EventType` names, it's a business event. Everything else is infrastructure noise.
 
@@ -207,7 +213,7 @@ s3://audit-data/
 
 DuckDB reads compressed JSONL directly, with no decompression step or ETL pipeline. A query for January 15th reads only the files in `year=2025/month=01/day=15/`.
 
-**A practical caveat:** DuckDB's glob-based Hive partition filtering can be slower than expected. When given a broad glob pattern, DuckDB enumerates _all_ directories first, then filters them, rather than walking only the matching directories. In benchmarks, this showed as ~23 seconds with a glob versus ~3 seconds with explicit paths. The fix is to build explicit per-day paths in application code instead of relying on a single broad glob:
+**A practical caveat:** DuckDB's glob-based Hive partition filtering can be slower than expected. When given a broad glob pattern, DuckDB enumerates *all* directories first, then filters them, rather than walking only the matching directories. In benchmarks, this showed as \~23 seconds with a glob versus \~3 seconds with explicit paths. The fix is to build explicit per-day paths in application code instead of relying on a single broad glob:
 
 ```typescript
 // Instead of: s3://bucket/year=*/month=*/day=*/*.json.gz
@@ -463,10 +469,10 @@ The warm path handles all interactive UI queries under 30ms, fast enough that th
 
 Since the architecture filters business events from OTEL observability data and exposes them through a searchable API, it serves both internal teams and end users:
 
-- **End users** browsing their transaction history, checking the status of a file upload, or reviewing a document processing timeline, directly in the application UI
-- **Support teams** investigating a customer's issue by searching for their transaction ID or correlation ID across months of audit data
-- **Compliance teams** auditing transaction records for specific document types, date ranges, or error conditions
-- **DevOps teams** that can fall back to the full OTEL archive when they need infrastructure-level spans for debugging
+* **End users** browsing their transaction history, checking the status of a file upload, or reviewing a document processing timeline, directly in the application UI
+* **Support teams** investigating a customer's issue by searching for their transaction ID or correlation ID across months of audit data
+* **Compliance teams** auditing transaction records for specific document types, date ranges, or error conditions
+* **DevOps teams** that can fall back to the full OTEL archive when they need infrastructure-level spans for debugging
 
 The field discovery endpoint lets new consumers build their own query UIs without coordinating with the API team. A customer-facing audit view, an internal support tool, and a compliance dashboard can all use the same API with different field filters.
 
@@ -482,8 +488,8 @@ For the warm path, a DuckDB file containing months of denormalized audit summari
 
 A few optimizations we're looking at next:
 
-- **DuckDB's read-through caching** ([announced in January 2026](https://duckdb.org/2026/01/22/read-through-caching.html)) can cache HTTP range requests locally, reducing repeated cold-path query times.
-- **Parquet conversion** for older archives. DuckDB's columnar format is faster than JSONL for analytical queries, and DuckDB can perform the conversion itself.
-- **Redis caching** for frequently-accessed query patterns, moving from in-process cache to shared cache across API replicas.
+* **DuckDB's read-through caching** ([announced in January 2026](https://duckdb.org/2026/01/22/read-through-caching.html)) can cache HTTP range requests locally, reducing repeated cold-path query times.
+* **Parquet conversion** for older archives. DuckDB's columnar format is faster than JSONL for analytical queries, and DuckDB can perform the conversion itself.
+* **Redis caching** for frequently-accessed query patterns, moving from in-process cache to shared cache across API replicas.
 
 [Clay Smith's "Cheap OpenTelemetry Lakehouses"](https://clay.fyi) work covers a similar Parquet + DuckDB + Iceberg pattern for OTEL storage and arrived at many of the same conclusions independently. The convergence is a good sign: embedded SQL engines over open file formats on object storage seem like a solid pattern for anyone who needs to make telemetry data accessible to users, not just DevOps.
