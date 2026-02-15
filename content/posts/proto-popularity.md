@@ -9,6 +9,8 @@ tags:
 - api
 ---
 
+It isn't about he protocol it is about the schema. You don't need to give up REST to get the benefits of Protobufs.
+
 ## Contract-first is a different mindset
 
 Some developers naturally think in terms of defining the contract before writing any code. The service, its methods, its message types, all defined up front. Then tooling generates everything from that definition.
@@ -39,6 +41,7 @@ Rising tides float all boats. The goal is to teach developers another way to def
 
 - A `.proto` file defines message types and service contracts in one place. Single definition, everything generated from it.
 - The schema is the source of truth, not the code. You define the contract first, then generate clients, servers, and docs from it.
+- Any object that leaves the application boundary (DTOs, API responses, events, messages) can be defined as a Protobuf message from the start. That schema becomes shareable across any service that needs it, regardless of language. Two Go services, a Python worker, and a TypeScript frontend can all generate types from the same `.proto` file.
 - Tools like `buf` (bufbuild/buf) handle linting, formatting, and breaking change detection against that definition. The schema has its own development lifecycle.
 - `protovalidate` (bufbuild/protovalidate) adds validation rules directly in the `.proto` file. The contract enforces its own constraints.
 - Protobuf forward and backward compatibility reduces breaking changes, lets teams upgrade independently.
