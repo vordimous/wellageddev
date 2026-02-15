@@ -1,7 +1,7 @@
 ---
 title: Why are Protobufs not more popular? - WIP
 date: 2025-02-14T05:00:00.000Z
-summary: Teaching developers to think contract-first and giving them more protocol options
+summary: Protobuf schemas get overlooked because most developers have only ever worked with JSON
 draft: false
 tags:
 - devrel
@@ -9,45 +9,41 @@ tags:
 - api
 ---
 
+## Contract-first is a different mindset
 
-## RPC protocols are a different mindset
+Some developers naturally think in terms of defining the contract before writing any code. The service, its methods, its message types, all defined up front. Then tooling generates everything from that definition.
 
-Some developers naturally think in terms of remote procedure calls. They define a service, its methods, and its message types, then let tooling handle the rest.
+- SOAP did this with XML/WSDL, gRPC does it with Protobuf. Different eras, same instinct.
+- The wire format is not the concern. The contract is the source of truth.
+- Define the contract, generate the code, trust the process.
 
-- SOAP did this with XML/WSDL, gRPC does it with Protobuf. Different eras, same contract-first instinct
-- The wire format (binary, XML, whatever) is not the concern, the contract is the source of truth
-- Define the contract, generate the code, trust the process
+## JSON is the default
 
-## REST developers built trust through visibility
+JSON is human-readable, universally supported, and works everywhere. Curl, browser dev tools, Postman, every language. That's a real strength and it's why JSON became the default format for APIs. Nothing wrong with that.
 
-Most developers want to see what's on the wire. JSON is human-readable, curl works out of the box, browser dev tools show every request and response. That visibility builds trust and it's a legitimate reason REST became the default.
+- JSON doesn't have a built-in schema. The shape of the data is implied by the code. Schema definitions (OpenAPI, Swagger, JSON Schema) are often added as an afterthought.
+- Most teams build code-first and generate docs later. Contract-first (or "design-first") requires defining the schema before writing business logic. That's a different workflow that takes looking at the problem different.
 
-- Contract-first (or "design-first") APIs require defining the schema before writing business logic. Feels like overhead.
-- REST schema definitions (OpenAPI, Swagger) are often generated after the code is written. Documentation, not source of truth.
-- REST tooling is mature: Postman, curl, browser dev tools, decades of Stack Overflow answers. That ecosystem is where most devs first learn to build.
+## Most developers have only used one approach
 
-## Fewer developers are choosing their protocol
+JSON's ubiquity means fewer developers actively think about their serialization or schema choice. It's just what you use.
 
-The visibility that drew developers to REST is something fewer of them actively use today. Not a knock on REST, just how the landscape has shifted.
-
-- BaaS platforms (Firebase, Supabase) abstract the API layer. The HTTP request is hidden behind an SDK call.
-- Heavy frameworks and vibe coding generate API contracts. AI defaults to REST because that's what the training data contains.
-- REST is the default because so many before already chose it. The well worn path, not an active decision.
-- Many developers have never seriously evaluated alternatives.
+- BaaS platforms (Firebase, Supabase) abstract the API layer. The data format is hidden behind an SDK call.
+- Heavy frameworks and vibe coding generate the API layer. AI defaults to JSON because that's what the training data contains.
+- JSON is the default because so many before already chose it. The well worn path, not an active decision.
+- Most developers haven't had the opportunity to try contract-first development.
 
 ## Bringing attention to Protobufs
 
-Rising tides float all boats. Not about replacing REST with gRPC. About teaching developers to think contract-first and choose the right protocol for the task.
+Rising tides float all boats. The goal is to teach developers another way to define their APIs that opens up more opportunities.
 
-- Protobuf is a serialization format, not an RPC protocol. gRPC is the RPC framework built on top of it.
-- The `.proto` file defines both message types and service contracts in one place. Single definition, everything generated from it. Tools like `buf` (bufbuild/buf) handle linting, formatting, and breaking change detection against that definition.
-- `.proto` doesn't lock you into gRPC. gRPC-gateway and Envoy transcoding serve both gRPC and REST from the same contract.
-- REST and gRPC coexist, the protocol becomes a delivery choice
-- More OSS projects should offer Protobuf-defined APIs alongside existing REST. Normalizes contract-first thinking.
-- Protobuf forward and backward compatibility reduces breaking changes, lets teams upgrade independently. `protovalidate` (bufbuild/protovalidate) adds validation rules directly in the `.proto` file, so the contract enforces its own constraints.
-- gRPC has constraints: no native browser support (HTTP/2 binary framing). gRPC-Web is one workaround, ConnectRPC (connectrpc/connect-es) is another that works over standard HTTP without a special proxy. This is why coexistence matters.
-- Use gRPC where it fits (service-to-service, internal APIs, streaming), REST where it fits (browser clients, public APIs)
-- Once developers think contract-first, the protocol question becomes secondary
+- A `.proto` file defines message types and service contracts in one place. Single definition, everything generated from it.
+- The schema is the source of truth, not the code. You define the contract first, then generate clients, servers, and docs from it.
+- Tools like `buf` (bufbuild/buf) handle linting, formatting, and breaking change detection against that definition. The schema has its own development lifecycle.
+- `protovalidate` (bufbuild/protovalidate) adds validation rules directly in the `.proto` file. The contract enforces its own constraints.
+- Protobuf forward and backward compatibility reduces breaking changes, lets teams upgrade independently.
+- The transport protocol is a separate decision. gRPC, REST (via gRPC-gateway or Envoy transcoding), ConnectRPC (connectrpc/connect-es) all work from the same `.proto` definition. JSON still flows through REST gateways, mapped from the proto contract.
+- More OSS projects should offer Protobuf-defined APIs alongside their existing interfaces. Normalizes contract-first thinking.
 - Larger projects with explicit service contracts get easier to maintain over time, not harder
 - Buf's argument: the real reason to use Protobuf isn't performance, it's that schema-driven development reduces integration failures
 - Learning to trust the contract is the real shift
