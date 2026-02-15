@@ -69,6 +69,64 @@ Stream the contributions. Demystifies the Protobuf workflow for developers who h
 - VODs, clips, and writeups continue educating after the stream ends
 - Each contribution becomes a case study for introducing schema-driven APIs to existing projects
 
+## It is time to reconsider Protobuf - Blog and Talk
+
+The ROI on Protobuf has never been better. The tooling, the ecosystem, and the developer experience have all changed since the common criticisms were written.
+
+- A direct rebuttal to the feedback collected in [I Reviewed 1,000s of Opinions on gRPC](https://konfigthis.com/blog/grpc/). Those criticisms were valid when written. Today each one can either be reversed or is much more nuanced:
+    - "Tooling is immature." `buf` CLI, BSR, VS Code and IntelliJ plugins, Postman gRPC support. The tooling gap has closed.
+    - "Build process overhead." `buf generate` is one command. Remote plugins via BSR mean you don't need protoc installed locally.
+    - "Debugging is hard." `buf curl`, grpcurl, Postman, and ConnectRPC's JSON mode all make inspection straightforward.
+    - "No browser support." ConnectRPC works over standard HTTP without a proxy. This is solved.
+    - "Load balancing is tricky." Service meshes (Istio, Linkerd, Envoy) handle gRPC-aware load balancing natively now.
+    - "It's over-engineering for non-Google scale." The argument was always about performance. The real argument is about schemas. You don't need Google scale to benefit from clear contracts.
+- The deciding factor should be: is this project going to have schemas? Schemas almost always matter. If data crosses a boundary, a schema makes that boundry well defined and easier to maintain.
+- Protobuf is the most capable schema language available and can be used anywhere schemas are found. API contracts, event schemas, data pipelines, configuration, inter-service messages, and even REST APIs.
+
+### CFP 
+
+# It Is Time to Reconsider Protobuf
+
+Most developers dismissed Protocol Buffers years ago. The tooling was rough, the learning curve was steep, and the common advice was "you're not Google, you don't need it." That advice is outdated.
+
+The Protobuf ecosystem has changed. The `buf` CLI handles linting, formatting, and breaking change detection in a single tool. The Buf Schema Registry provides dependency management and remote code generation without installing protoc. ConnectRPC serves gRPC, gRPC-Web, and plain HTTP from the same `.proto` definition with no proxy required. Validation rules live directly in the schema with protovalidate.
+
+But the bigger shift is in how we should think about Protobuf. It was never really about performance or replacing REST. Protobuf is a schema language. Any object that crosses an application boundary (an API response, an event, a message, a DTO) can be defined as a Protobuf message. That definition becomes the source of truth, shareable across services in any language, with forward and backward compatibility built in.
+
+This talk walks through the most common criticisms of Protobuf and gRPC, acknowledges where they came from, and shows what has changed. You'll see the current state of the tooling, a practical workflow for adopting Protobuf schemas in an existing project, and why the real ROI is in schema-driven development, not raw throughput.
+
+## Talk outline 
+
+> Slated at ~25 min runtime but can be adapted to a lightning talk or deep dive
+
+1. The old criticisms and why they stuck (5 min)
+    - Walk through real developer feedback collected from Reddit, HN, and Twitter
+    - Acknowledge each point was valid at the time
+2. What changed (8 min)
+    - `buf` CLI and BSR: schema development lifecycle
+    - ConnectRPC: multi-protocol from one definition, no proxy
+    - `protovalidate`: contracts that enforce themselves
+    - Postman, VS Code, IntelliJ: mainstream tooling support
+3. Protobuf is a schema, not just a SerDe format (7 min)
+    - Any object leaving the application boundary is a candidate
+    - Schema as source of truth vs code as source of truth
+    - Forward/backward compatibility vs custom versioning
+    - Same `.proto`, any language, any transport
+4. Practical adoption path (5 min)
+    - Start with DTOs and boundary objects
+    - Generate alongside existing JSON APIs
+    - gRPC-gateway / ConnectRPC for coexistence
+    - One schema, multiple consumers
+
+## Target audience
+Polyglot developers, API designers, and platform engineers who evaluated Protobuf or gRPC in the past and decided against it, or who have only ever worked with JSON APIs.
+
+## Takeaways
+- The Protobuf tooling ecosystem has matured to the point where the old friction points simply don't exist for most use cases
+- Protobuf is a schema language, not just a serialization format or a gRPC dependency
+- You can adopt Protobuf schemas without giving up REST or JSON
+- Schema-driven development reduces integration failures regardless of project scale
+
 ---
 
 ## References
