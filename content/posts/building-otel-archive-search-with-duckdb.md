@@ -10,6 +10,8 @@ tags:
   - architecture
 ---
 
+> AI-assisted: I designed the architecture described here and built the proof of concept. Claude helped draft and structure the writeup. All benchmarks and code examples are from real implementation work.
+
 Your application already delivers business data to users through purpose-built endpoints, schemas, and query infrastructure. But both operators and users want to know more. What happened to my file? When did that job run? How has usage changed over the last quarter? The kind of questions that live outside your core domain model.
 
 The traditional answer is to build more. More search endpoints, more storage schemas, more application nodes handling queries, and more database capacity to collect and serve results. Costs balloon. Complexity compounds. And you still end up with a narrow view of what the application is actually doing.

@@ -1,6 +1,6 @@
 ---
 title: Using observability in development
-date: 2025-01-14T04:00:00.000Z
+date: 2026-01-14T04:00:00.000Z
 summary: While developing new features open telemetry and observability pipelines should be available to aid development and detect edge cases.
 draft: true
 tags:

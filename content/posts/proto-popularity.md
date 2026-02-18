@@ -1,6 +1,6 @@
 ---
 title: Why are Protobufs not more popular? - WIP
-date: 2025-02-14T05:00:00.000Z
+date: 2026-02-14T05:00:00.000Z
 summary: Protobuf schemas get overlooked because most developers have only ever worked with JSON
 draft: false
 tags:
@@ -8,6 +8,8 @@ tags:
 - protobuf
 - api
 ---
+
+> AI-assisted: I developed the arguments and references in this post. Claude helped organize and expand the draft.
 
 It isn't about he protocol it is about the schema. You don't need to give up REST to get the benefits of Protobufs.
 
