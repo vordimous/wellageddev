@@ -1,5 +1,5 @@
 ---
-title: Building a User Audit Log Archive on OpenTelemetry and DuckDB | Rough Draft
+title: Building a User-Facing Audit Log Archive on OpenTelemetry and DuckDB | Rough Draft
 summary: "How to filter business events from raw OpenTelemetry telemetry, store them in tiered object storage, and make them searchable with DuckDB — no vendor lock-in and no per-query cost."
 date: 2026-02-04T04:00:00.000Z
 tags:
@@ -59,7 +59,7 @@ This post walks through building a user-facing audit log archive that filters bu
 
 ## The Problem: Observability Data vs. User Data
 
-Application observability and user audit logs are usually treated as separate concerns. Observability tools like Datadog and Splunk capture everything (HTTP requests, database queries, cache hits, internal retries) and surface it to DevOps teams. Audit logs are typically a separate system: a database table, a dedicated logging service, or a third-party compliance tool.
+Application observability and user-facing audit logs are usually treated as separate concerns. Observability tools like Datadog and Splunk capture everything (HTTP requests, database queries, cache hits, internal retries) and surface it to DevOps teams. Audit logs are typically a separate system built for compliance or support teams, not the application users themselves: a database table, a dedicated logging service, or a third-party compliance tool.
 
 But if your application is already instrumented with OpenTelemetry, the data from both flows through the same pipeline. Every business transaction that matters to your users (a file upload, a document modification, a payment processed) already exists as OTEL spans with rich attributes. The challenge is filtering out the observability noise and capturing only the data relevant to end users.
 
@@ -537,7 +537,7 @@ The API exposes a `/fields` endpoint that returns all searchable fields with met
 }
 ```
 
-A UI consuming this endpoint can dynamically generate filter controls (dropdowns, text inputs, numeric ranges) without hardcoding field lists. Adding a new searchable field means adding one entry to the configuration; the API, query builder, and field discovery all pick it up. This works well for audit log UIs where different users need different filters: a support agent searches by customer ID, a compliance team filters by date range and document type, and both work against the same API.
+A UI consuming this endpoint can dynamically generate filter controls (dropdowns, text inputs, numeric ranges) without hardcoding field lists. Adding a new searchable field means adding one entry to the configuration; the API, query builder, and field discovery all pick it up. This works well for user-facing audit log UIs where different audiences need different filters: an end user reviews their own recent activity, a support agent searches by customer ID, a compliance team filters by date range and document type, and all three work against the same API.
 
 ### Advanced Search: Structured Filters + Free-Text
 
@@ -608,7 +608,7 @@ Nanosecond precision is preserved through the DuckDB query and converted to mill
 
 ## Results & Viability
 
-The proof of concept confirms DuckDB works as a query engine for user audit log archives. Results against real production data:
+The proof of concept confirms DuckDB works as a query engine for user-facing audit log archives. Results against real production data:
 
 | Query Pattern | Warm (DuckDB file) | Cold (JSONL on GCS) |
 | ------------------------------ | ------------------ | ------------------- |
@@ -648,3 +648,48 @@ A few optimizations we're looking at next:
 - **Redis caching** for frequently-accessed query patterns, moving from in-process cache to shared cache across API replicas.
 
 [Clay Smith's "Cheap OpenTelemetry Lakehouses"](https://clay.fyi) work covers a similar Parquet + DuckDB + Iceberg pattern for OTEL storage and arrived at many of the same conclusions independently. The convergence is a good sign: embedded SQL engines over open file formats on object storage seem like a solid pattern for anyone who needs to make telemetry data accessible to users, not just DevOps.
+
+---
+
+## CFP
+
+# Your App Already Has an Audit Log. It's Hiding in Your OpenTelemetry Data.
+
+Your application already captures every business transaction that matters to users. File uploads, document modifications, payment processing, status changes. It's all there, inside your OpenTelemetry traces, buried under thousands of infrastructure spans that nobody outside DevOps will ever need.
+
+The traditional answer is to build a separate audit log system: new storage schemas, new endpoints, new database capacity. The cost compounds and you still end up with a narrow view of what the application is actually doing. This talk presents a different approach. Filter business events from the OTEL telemetry you already collect, store them in tiered object storage, and make them searchable with DuckDB. No vendor lock-in, no per-query cost, no separate instrumentation. Just industry-standard tooling (OpenTelemetry, Protobuf, DuckDB) wired together in a way that serves the people who actually use your software.
+
+You'll see real proof-of-concept benchmarks: filtering out 92% of observability noise to isolate business events, a warm path that returns paginated results in 23ms, and a cold path that drills into full transaction detail from object storage in single-digit seconds. The entire stack runs on open-source software with data stored in plain JSONL files on S3/GCS, the cheapest durable storage available.
+
+## Talk outline
+
+> Slated at ~25 min runtime but can be adapted to a lightning talk or deep dive
+
+1. The problem: observability data vs. user data (4 min)
+    - Your OTEL traces already contain the audit trail. The challenge is separating business events from infrastructure noise.
+    - Why building a separate audit log system is expensive and redundant when you're already instrumented.
+2. Architecture: hot / warm / cold (6 min)
+    - Tiered storage matched to query patterns: DuckDB warm path for sub-100ms interactive queries, JSONL on object storage for drill-down, full OTEL archive for compliance.
+    - The data pipeline that filters, routes, and classifies spans using Protobuf-defined event types.
+3. DuckDB as the query engine (6 min)
+    - Why DuckDB: embedded, zero-infrastructure, reads JSONL and Parquet from S3 directly via httpfs.
+    - Unnesting OTEL's nested structure with CTEs. Extracting attributes with `list_filter` and `list_extract`.
+    - The Hive-partition glob performance caveat and the fix.
+4. Protobuf as the schema contract (4 min)
+    - Single `.proto` definition generates types for Java ingestion and TypeScript search API.
+    - Deriving OTEL event names from proto enums. One schema change propagates through the entire stack.
+5. Results and practical considerations (5 min)
+    - Benchmark walkthrough: 23ms warm vs. 52s raw OTEL scans. 99.3% data reduction.
+    - Cost equation: open-source stack, object storage pricing, no per-query billing.
+    - Who this serves: end users, support teams, compliance, DevOps fallback.
+
+## Target audience
+
+Backend engineers, platform engineers, and DevOps practitioners who work with OpenTelemetry and are looking for ways to make telemetry data useful beyond dashboards. Also relevant for teams evaluating alternatives to managed observability platforms for audit and compliance use cases.
+
+## Takeaways
+
+- OpenTelemetry traces already contain business-relevant audit data. Filtering out infrastructure noise reduces data volume by 92%.
+- DuckDB can query JSONL and Parquet files directly from object storage with no external server, no license, and no per-query cost.
+- A Protobuf schema contract keeps event classification consistent across ingestion and search services in different languages.
+- Tiered storage (DuckDB warm path + JSONL cold path + full OTEL archive) matches query patterns to cost and performance needs without forcing all queries through a single tier.

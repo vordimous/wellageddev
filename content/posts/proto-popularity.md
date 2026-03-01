@@ -85,7 +85,7 @@ The ROI on Protobuf has never been better. The tooling, the ecosystem, and the d
 - The deciding factor should be: is this project going to have schemas? Schemas almost always matter. If data crosses a boundary, a schema makes that boundry well defined and easier to maintain.
 - Protobuf is the most capable schema language available and can be used anywhere schemas are found. API contracts, event schemas, data pipelines, configuration, inter-service messages, and even REST APIs.
 
-### CFP 
+## CFP
 
 # It Is Time to Reconsider Protobuf
 

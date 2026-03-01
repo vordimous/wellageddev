@@ -699,3 +699,67 @@ The question is not whether to support these standards, but how quickly and comp
 ---
 
 *Document generated from industry research including sources from MuleSoft, Boomi, WSO2, Solace, Confluent, CNCF, Capital One, eBay, and other industry leaders. All quotes and statistics are attributed with source links.*
+
+---
+
+## CFP
+
+# Schemas Are the Interface: Why Structure Matters More in the Age of AI Agents
+
+Schemas have always been the right way to define how systems exchange data. OpenAPI for REST, AsyncAPI for events, Protobuf for cross-language contracts, CloudEvents for message envelopes. The arguments for contract-first development are well established: type safety, code generation, breaking change detection, independent service evolution. But adoption has always been optional. Teams could skip the schema, ship raw JSON, and deal with the consequences later.
+
+AI agents changed the math. When an LLM decides which tool to invoke, it reads a schema. MCP tool definitions are JSON Schema. OpenAI function calling requires typed parameter declarations. Google's Agent Development Kit generates callable tools directly from OpenAPI specifications, using the `summary` and `description` fields to guide tool selection. The model doesn't read your source code or your documentation site. It reads the schema. A missing description is no longer a documentation gap. It is a capability gap. An imprecise type is no longer a developer annoyance. It is a source of hallucination.
+
+This talk connects the decades-old case for schema-driven development to the new reality of AI agent tooling. You'll see how MCP, OpenAI Structured Outputs, and Google ADK all depend on the same foundation (machine-readable, semantically annotated schemas), why Google is pushing gRPC and Protobuf as a transport layer for MCP, and what this means for how you design APIs and define contracts going forward. The schema is no longer just the contract between your services. It is the interface your AI agents reason against.
+
+## Talk outline
+
+> Slated at ~25 min runtime but can be adapted to a lightning talk or deep dive
+
+1. Schemas have always mattered (3 min)
+    - Quick tour of the landscape: OpenAPI, AsyncAPI, Protobuf, CloudEvents, Schema Registry.
+    - The traditional case for contract-first: type safety, code generation, compatibility, independent evolution.
+    - Why adoption remained optional for most teams despite the clear benefits.
+2. Enter the agents (5 min)
+    - How LLM function calling works: the model reads a schema, selects a tool, emits structured JSON. The orchestrator validates and executes.
+    - MCP's tool definition format: `name`, `description`, `inputSchema`. The schema is the executable contract.
+    - Demo: a simple MCP server with two tools. Show the JSON Schema the model sees. Walk through how the model picks the right tool based on description quality.
+3. The new correctness requirements (7 min)
+    - Description quality drives tool selection accuracy. Vague descriptions cause wrong tool picks. Demo: same tool with a good vs. bad description, showing the model's behavior change.
+    - Type enforcement prevents injection. Protobuf's strict typing and JSON Schema's constrained outputs both validate at the serialization layer, catching malformed inputs before execution.
+    - Schema drift breaks automated pipelines. In agent workflows, schema changes cascade. Practitioners identify schema drift as the top cause of broken automations.
+    - Missing fields are capability gaps. If your OpenAPI spec has no `operationId` or summary, Google ADK generates a tool the agent cannot reliably use.
+4. The ecosystem convergence (5 min)
+    - Google contributing gRPC transport to MCP (February 2026). Protobuf's strict typing + MCP's semantic descriptions = both layers matter.
+    - OpenAI Structured Outputs: constraining model generation at the decoding layer against a JSON Schema, not just prompting for JSON.
+    - Google ADK's `OpenAPIToolset`: one OpenAPI spec in, callable tools out. The spec quality determines agent quality.
+    - Emerging standards: OASF (Open Agentic Schema Framework), agents.json, LangChain Agent Protocol. Different organizations arriving at the same conclusion.
+5. Practical adoption (5 min)
+    - Start with what you have: improve your OpenAPI descriptions and add missing `operationId` fields. This is the lowest-effort, highest-impact change for AI readiness.
+    - Add Protobuf for type safety across service boundaries. Use Buf for linting, breaking change detection, and code generation.
+    - Schema registries for versioning. The same compatibility strategies (backward, forward, full) that protect human consumers now protect agent consumers.
+    - The contract-first workflow you'd use for APIs now serves both humans and agents. The tooling (Buf, OpenAPI generators, schema registries) is already built.
+
+## Target audience
+
+Backend developers, API designers, platform engineers, and anyone building or integrating with AI agent tooling (MCP servers, function calling, agentic workflows). Also relevant for engineering leaders evaluating how their API strategy intersects with AI adoption.
+
+## Takeaways
+
+- AI agents read your schemas at runtime to decide what to do. Schema quality directly determines agent accuracy.
+- MCP, OpenAI function calling, and Google ADK all depend on machine-readable, semantically annotated schemas. The model is now a consumer of your API contract.
+- Contract-first development (Protobuf, OpenAPI, JSON Schema) is no longer just good practice for teams. It is a prerequisite for reliable AI-powered automation.
+- The tooling ecosystem built for human developers (Buf, schema registries, OpenAPI generators) already serves agents too. The investment in schemas pays off twice.
+
+## References
+
+- [MCP Specification](https://modelcontextprotocol.io/specification/2025-11-25)
+- [Google Pushes for gRPC Support in Model Context Protocol (InfoQ, Feb 2026)](https://www.infoq.com/news/2026/02/google-grpc-mcp-transport/)
+- [Google Cloud: gRPC as a Native Transport for MCP](https://cloud.google.com/blog/products/networking/grpc-as-a-native-transport-for-mcp)
+- [OpenAI Structured Outputs](https://developers.openai.com/api/docs/guides/structured-outputs/)
+- [OpenAI Function Calling](https://developers.openai.com/api/docs/guides/function-calling/)
+- [Google ADK: OpenAPI Tools](https://google.github.io/adk-docs/tools-custom/openapi-tools/)
+- [Simon Willison on LLM Schemas (Feb 2025)](https://simonwillison.net/2025/Feb/28/llm-schemas/)
+- [Open Agentic Schema Framework (OASF)](https://fabrix.ai/blog/some-of-the-open-source-standards-used-with-ai-agents-or-agentic-frameworks/)
+- [Comparing 7 AI Agent-to-API Standards (Nordic APIs)](https://nordicapis.com/comparing-7-ai-agent-to-api-standards/)
+- [Building Agents with OpenAPI: LangChain vs Haystack (Speakeasy)](https://www.speakeasy.com/blog/langchain-vs-haystack-api-tools)
