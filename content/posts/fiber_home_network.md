@@ -44,7 +44,8 @@ This layout delivers a 10G fiber backbone across three managed switch locations,
 
 ## Topology
 
-```mermaid
+
+{{< mermaid >}}
 graph TD
     ISP["🌐 ISP Fiber — 3 Gbps"]
     MODEM["📦 Modem / ONT — 10GE RJ45 out"]
@@ -74,7 +75,8 @@ graph TD
     SW2 -->|"2.5G RJ45 — same floor"| AP2
     SW2 -->|"10G SFP+ fiber — far-end run"| SW3
     SW3 -->|"2.5G RJ45 — same zone"| AP3
-```
+
+{{< /mermaid >}}
 
 ---
 
@@ -103,7 +105,7 @@ All inter-switch fiber links carry 802.1Q trunks with all VLANs tagged. The UCG-
 
 ## Port Mapping
 
-```mermaid
+{{< mermaid >}}
 graph LR
     subgraph MODEM["Modem / ONT"]
         M_OUT["10GE RJ45 OUT"]
@@ -164,7 +166,7 @@ graph LR
     SW2_P2 ---|"Cat6 patch — same floor"| WS2
     SW2_P3 ---|"Cat6 run to AP — same floor"| AP2
     SW3_P1 ---|"Cat6 run to AP — same zone"| AP3
-```
+{{< /mermaid >}}
 
 ---
 
