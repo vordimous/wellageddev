@@ -1,35 +1,38 @@
 ---
-title: An effective management style
+title: What I hope is an effective management style
 date: 2022-02-01T04:00:00.000Z
-summary: My perspective on an effective management style
+summary: My job as a manager is to help you be as much or more successful in your career as I have been in mine. Your growth can happen in spite of a bad manager, or because of a good one. I aim to be the latter.
 draft: false
 tags:
   - management
 ---
 
-This is a collection of bullet points for how an effective management style should be implemented.
+My job as a manager is to help you be as much or more successful in your career as I have been in mine. Your growth can happen in spite of a bad manager, or because of a good one. I aim to be the latter.
 
-## Team
+Here is how I boil it down. I want to be good enough at my own job, and fluent enough in the jobs of the people who report to me, that I can spend my time deliberately and treat your time as the more valuable resource. Seniority makes my time look more expensive on paper, so I flip that on purpose. I multiply my time by investing it in helping you get better at using yours.
 
-- Your managers goal is the make the most of your time and not require most of your time.
-- Your manager should trust you to manage your own time. You don't need to clear with me in advance your time AFK or OOO.
-- 1:1 are for the team and will be documented privately with you, me, and your lead. Any feedback on PAR reviews will come from this document.
-- Please ask for help when you need it. Nobody works alone.
+## What you can expect from me
 
-## Leaders
+- My goal is to make the most of your time, not to require most of your time.
+- I trust you to manage your own calendar (or status). You don't need to clear AFK or OOO time with me in advance.
+- I run 1:1s for you, not for me. I keep notes in a private doc shared with you. Anything that shows up in a performance review will already be in that doc. No surprises.
+- I plan work as far ahead as I can so you're not blindsided. I use loose planning structures and add process only when it adds more value than the time it takes.
+- I encourage growth days. Take a full day or split it in half. Whatever fits how you learn.
 
-- Your manager doesn't need to approve or know about everything, your judgment is important on when your manager can help. If you think your manager will be surprised then they need to be updated.
-- You will focus on your team's success, your manager should work with you to create and manage what success looks like. Success shouldn't be measured by vanity metrics.
-- New ideas are important, we will foster and evaluate, but decide and move on.
-- FOSS is the baseline example fo what can be achieved. We can’t compare ourselves to companies more than double our size. Less is more.
+## What I expect from you
 
-## Management Style
+- Ask for help when you need it. Nobody on my team works alone.
+- Use your judgment on what to escalate. I don't need to approve or know about everything. The test I use: if I would be surprised to hear about it later, I should hear about it now.
+- For PTO, decide for yourself on individual days. For anything longer than three days, give me a heads up, ideally two weeks out on the calendar.
 
-- Trust people to decide on good PTO/OOO for individual days. Only require pre-approval for longer than 3 days. Having days on the calendar 2 weeks ahead of time is preferred.
-- In 1:1s, note-taking will include all important details and feedback. You will be informed as early as possible about anything that would come up in a review.
-- Plan work as much ahead of time as possible, loosely implement structures like sprints and add on as needed.
-- Use growth days that are flexible for you to choose. ex. take one full day or two half days.
+## Principles I lead by
 
-## Links
+- I focus on the team's success over individual heroics. We define what success looks like together, and I don't measure it with vanity metrics.
+- I take new ideas seriously. I foster them, evaluate them, decide, and move on. I treat endless debate as its own failure mode.
+- I treat FOSS as the baseline for what is possible. I don't let us compare ourselves to companies more than double our size. Less is more.
+- I lead with trust. I only add process when trust is missing, or when the team has grown past what trust alone can hold.
 
-- [egoless.engineering](https://egoless.engineering/)
+
+## Other good references (WIP)
+
+- [Dan McKinley's talk *Egoless Engineering*](./egoless_engineering.md)
