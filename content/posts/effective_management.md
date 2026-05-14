@@ -35,4 +35,5 @@ Here is how I boil it down. I want to be good enough at my own job, and fluent e
 
 ## Other good references (WIP)
 
+- [Lara Hogan, *Set future performance reviews up for success now*](https://larahogan.me/blog/set-future-performance-reviews-up-for-success/) — on running 1:1s and shared notes so reviews contain no surprises.
 - [Dan McKinley's talk *Egoless Engineering*](./egoless_engineering.md)
