@@ -33,7 +33,7 @@ playbook: |
 time_to_fc: '10:10'
 color_at_fc: Pale brown
 smell_at_fc: 'Roasted corn '
-total_time: null
+total_time: '18:00'
 why_dropped: null
 anything_weird: null
 roasted_weight_g: null
