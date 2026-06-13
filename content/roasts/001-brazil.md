@@ -1,16 +1,16 @@
 ---
 title: 001 — Brazil Machado Recanto do Engenho
 date: 2026-06-13T00:00:00.000Z
-origin: Brazil — Machado, Recanto do Engenho
-process:
+origin: 'Brazil — Machado, Recanto do Engenho'
+process: null
 target_level: Medium
 tags:
-- roast
-- brazil
+  - roast
+  - brazil
 batch_size_g: 227
 profile: P5
 weight_setting: ½ lb
-green_weight_g:
+green_weight_g: 263
 ambient_f: 91
 ambient_rh: 44
 bean_notes: |
@@ -29,15 +29,16 @@ playbook: |
   8. Cool cycle ~10 min, door cracked at end.
   9. Weigh roasted. Page computes loss %.
   10. **Before Guatemala: let drum cool 7 min with door open.**
-time_to_fc:
-color_at_fc:
-smell_at_fc:
-total_time:
-why_dropped:
-anything_weird:
-roasted_weight_g:
-tasting_notes:
-rating:
-next_time:
+time_to_fc: null
+color_at_fc: null
+smell_at_fc: null
+total_time: null
+why_dropped: null
+anything_weird: null
+roasted_weight_g: null
+tasting_notes: null
+rating: null
+next_time: null
 roaster: Behmor 1600 Plus
 ---
+
