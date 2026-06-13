@@ -30,7 +30,7 @@ playbook: |
   8. Cool cycle ~10 min.
   9. Weigh roasted.
   10. **Before Ethiopia: cool drum 10–12 min, door wide open.** Drum is at peak heat; Ethiopia is the most delicate.
-time_to_fc: 9-11
+time_to_fc: '9:00'
 color_at_fc: null
 smell_at_fc: null
 total_time: null
