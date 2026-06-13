@@ -3,7 +3,7 @@ title: 003 — Nicaragua Buenos Aires Maracaturra
 date: 2026-06-13T00:00:00.000Z
 origin: 'Nicaragua — Buenos Aires, Maracaturra'
 process: null
-target_level: Medium
+target_level: Light
 tags:
   - roast
   - nicaragua
@@ -42,5 +42,6 @@ rating: null
 next_time: null
 roaster: Behmor 1600 Plus
 ---
+
 
 
