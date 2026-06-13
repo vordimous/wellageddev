@@ -1,0 +1,49 @@
+{{ define "main" }}
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">{{ .Title }}</h1>
+      {{ with .Params.summary }}<p class="post-summary">{{ . }}</p>{{ end }}
+    </header>
+
+    <section class="post-content">
+      {{ .Content }}
+
+      {{ $roasts := where .Pages "Section" "roasts" }}
+      {{ $roasts = where $roasts "Params.draft" "!=" true }}
+      {{ if $roasts }}
+        <table class="roast-table">
+          <thead>
+            <tr>
+              <th>Roast</th>
+              <th>Date</th>
+              <th>Origin</th>
+              <th>Level</th>
+              <th>DTR %</th>
+              <th>Loss %</th>
+              <th>Rating</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{ range $roasts.ByDate.Reverse }}
+              <tr>
+                <td><a href="{{ .RelPermalink }}">{{ .Title }}</a></td>
+                <td>{{ .Date.Format "2006-01-02" }}</td>
+                <td>{{ .Params.origin | default "—" }}</td>
+                <td>{{ .Params.target_level | default "—" }}</td>
+                <td>{{ with .Params.dtr_pct }}{{ . }}{{ else }}—{{ end }}</td>
+                <td>{{ with .Params.weight_loss_pct }}{{ . }}{{ else }}—{{ end }}</td>
+                <td>{{ with .Params.rating }}{{ . }}{{ else }}—{{ end }}</td>
+              </tr>
+            {{ end }}
+          </tbody>
+        </table>
+      {{ end }}
+    </section>
+  </article>
+
+  <style>
+    .roast-table { width: 100%; border-collapse: collapse; margin: 1.5em 0; font-size: 0.95em; }
+    .roast-table th, .roast-table td { padding: 0.5em 0.75em; border-bottom: 1px solid var(--border, #ddd); text-align: left; }
+    .roast-table th { font-weight: 600; }
+  </style>
+{{ end }}
