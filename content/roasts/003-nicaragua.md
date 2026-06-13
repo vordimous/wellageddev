@@ -8,9 +8,9 @@ tags:
   - roast
   - nicaragua
   - maracaturra
-batch_size_g: 456
+batch_size_g: 454
 profile: P3
-weight_setting: ½ lb
+weight_setting: 1 lb
 green_weight_g: 455
 ambient_f: 91
 ambient_rh: 44
