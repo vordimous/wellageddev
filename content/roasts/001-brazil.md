@@ -3,7 +3,7 @@ title: 001 — Brazil Machado Recanto do Engenho
 date: 2026-06-13T00:00:00.000Z
 origin: 'Brazil — Machado, Recanto do Engenho'
 process: null
-target_level: Medium
+target_level: Light
 tags:
   - roast
   - brazil
@@ -41,5 +41,6 @@ rating: null
 next_time: null
 roaster: Behmor 1600 Plus
 ---
+
 
 
