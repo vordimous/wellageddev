@@ -1,0 +1,14 @@
+<table class="roast-ref">
+  <thead>
+    <tr><th>Quantity</th><th>Formula</th><th>Why it matters</th></tr>
+  </thead>
+  <tbody>
+    {{ range .Site.Data.roast_guidance.formulas }}
+      <tr>
+        <td>{{ .name }}</td>
+        <td><code>{{ .formula }}</code></td>
+        <td>{{ .purpose }}</td>
+      </tr>
+    {{ end }}
+  </tbody>
+</table>

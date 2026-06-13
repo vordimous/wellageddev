@@ -8,8 +8,11 @@
     <section class="post-content">
       {{ .Content }}
 
+      <p><a href="{{ "/roasts/methods/" | relURL }}">→ Methods &amp; reference</a> (how the numbers below are computed)</p>
+
       {{ $roasts := where .Pages "Section" "roasts" }}
       {{ $roasts = where $roasts "Params.draft" "!=" true }}
+      {{ $roasts = where $roasts "Params.origin" "!=" nil }}
       {{ if $roasts }}
         <table class="roast-table">
           <thead>

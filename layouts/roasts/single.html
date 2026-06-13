@@ -1,0 +1,222 @@
+{{ define "main" }}
+
+<h1 class="pg-title">{{ .Title | emojify }}</h1>
+
+<div class="meta">
+  {{ partial "single/meta.html" . }}
+  {{ partial "single/meta-tags.html" . }}
+</div>
+
+{{/* ---------- Look up reference values from data/roast_guidance.yaml ---------- */}}
+{{ $targetKey := lower (.Params.target_level | default "") }}
+{{ $level := index (where .Site.Data.roast_guidance.levels "name" $targetKey) 0 }}
+
+{{/* ---------- Look up Behmor recommended setting from charge size ---------- */}}
+{{ $g := .Params.batch_size_g | default 0 }}
+{{ $behmor := "" }}
+{{ $behmorNote := "" }}
+{{ range .Site.Data.roast_guidance.behmor_weight_settings }}
+  {{ if and (ge $g .charge_min) (lt $g .charge_max) }}
+    {{ $behmor = .setting }}
+    {{ $behmorNote = .note }}
+  {{ end }}
+{{ end }}
+
+{{/* ---------- Compute derived values from raw inputs ---------- */}}
+{{ $green := .Params.green_weight_g }}
+{{ $roasted := .Params.roasted_weight_g }}
+{{ $lossPct := "" }}
+{{ if and $green $roasted (gt $green 0) }}
+  {{ $lossPct = printf "%.1f" (mul (div (sub (float $green) (float $roasted)) (float $green)) 100.0) }}
+{{ end }}
+
+{{ $fcStr := .Params.time_to_fc }}
+{{ $totalStr := .Params.total_time }}
+{{ $devStr := "" }}
+{{ $dtrPct := "" }}
+{{ if and $fcStr $totalStr }}
+  {{ $fcParts := split $fcStr ":" }}
+  {{ $totalParts := split $totalStr ":" }}
+  {{ if and (eq (len $fcParts) 2) (eq (len $totalParts) 2) }}
+    {{ $fcSec := add (mul (int (index $fcParts 0)) 60) (int (index $fcParts 1)) }}
+    {{ $totalSec := add (mul (int (index $totalParts 0)) 60) (int (index $totalParts 1)) }}
+    {{ if and (gt $totalSec 0) (gt $totalSec $fcSec) }}
+      {{ $devSec := sub $totalSec $fcSec }}
+      {{ $devStr = printf "%d:%02d" (div $devSec 60) (mod $devSec 60) }}
+      {{ $dtrPct = printf "%.1f" (mul (div (float $devSec) (float $totalSec)) 100.0) }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{/* ---------- Roast plan panel ---------- */}}
+<section class="roast-facts">
+  <h2 class="roast-facts-title">Roast plan</h2>
+  <div class="roast-facts-grid">
+    {{ with .Params.origin }}<div><dt>Origin</dt><dd>{{ . }}</dd></div>{{ end }}
+    {{ with .Params.process }}<div><dt>Process</dt><dd>{{ . }}</dd></div>{{ end }}
+    {{ with .Params.target_level }}<div><dt>Target level</dt><dd>{{ . }}</dd></div>{{ end }}
+    {{ with .Params.roaster }}<div><dt>Roaster</dt><dd>{{ . }}</dd></div>{{ end }}
+    {{ with .Params.profile }}<div><dt>Profile</dt><dd>{{ . }}</dd></div>{{ end }}
+    {{ with .Params.batch_size_g }}<div><dt>Batch size</dt><dd>{{ . }} g</dd></div>{{ end }}
+    {{ with .Params.weight_setting }}<div><dt>Weight setting</dt><dd>{{ . }}</dd></div>{{ end }}
+    {{ if $behmor }}
+      <div><dt>Recommended setting</dt><dd>{{ $behmor }} <span class="muted">— {{ $behmorNote }}</span></dd></div>
+    {{ end }}
+  </div>
+
+  {{ if $level }}
+    <h3 class="roast-facts-subtitle">Targets for <em>{{ .Params.target_level }}</em> level</h3>
+    <div class="roast-facts-grid">
+      <div><dt>Weight loss target</dt><dd>{{ index $level.loss_pct 0 }}–{{ index $level.loss_pct 1 }}%</dd></div>
+      <div><dt>DTR target</dt><dd>{{ index $level.dtr_pct 0 }}–{{ index $level.dtr_pct 1 }}%</dd></div>
+      <div class="span2"><dt>Drop trigger</dt><dd>{{ $level.drop }}</dd></div>
+      <div class="span2"><dt>Flavor goal</dt><dd>{{ $level.flavor }}</dd></div>
+    </div>
+    <p class="roast-facts-note">Targets sourced from <a href="{{ "/roasts/methods/" | relURL }}">methods reference</a>.</p>
+  {{ end }}
+
+  {{/* ---------- Measured section ---------- */}}
+  {{ if or $green $roasted $fcStr $totalStr .Params.rating }}
+    <h3 class="roast-facts-subtitle">Measured</h3>
+    <div class="roast-facts-grid">
+      {{ with $green }}<div><dt>Green</dt><dd>{{ . }} g</dd></div>{{ end }}
+      {{ with $roasted }}<div><dt>Roasted</dt><dd>{{ . }} g</dd></div>{{ end }}
+      {{ if $lossPct }}
+        <div>
+          <dt>Weight loss</dt>
+          <dd>
+            {{ $lossPct }}%
+            {{ if $level }}
+              {{ $lo := index $level.loss_pct 0 }}
+              {{ $hi := index $level.loss_pct 1 }}
+              {{ $val := float $lossPct }}
+              {{ if and (ge $val (float $lo)) (le $val (float $hi)) }}
+                <span class="badge ok">in range</span>
+              {{ else if lt $val (float $lo) }}
+                <span class="badge under">under by {{ printf "%.1f" (sub (float $lo) $val) }}%</span>
+              {{ else }}
+                <span class="badge over">over by {{ printf "%.1f" (sub $val (float $hi)) }}%</span>
+              {{ end }}
+            {{ end }}
+          </dd>
+        </div>
+      {{ end }}
+      {{ with $fcStr }}<div><dt>Time to FC</dt><dd>{{ . }}</dd></div>{{ end }}
+      {{ with $totalStr }}<div><dt>Total time</dt><dd>{{ . }}</dd></div>{{ end }}
+      {{ if $devStr }}<div><dt>Dev time</dt><dd>{{ $devStr }}</dd></div>{{ end }}
+      {{ if $dtrPct }}
+        <div>
+          <dt>DTR</dt>
+          <dd>
+            {{ $dtrPct }}%
+            {{ if $level }}
+              {{ $lo := index $level.dtr_pct 0 }}
+              {{ $hi := index $level.dtr_pct 1 }}
+              {{ $val := float $dtrPct }}
+              {{ if and (ge $val (float $lo)) (le $val (float $hi)) }}
+                <span class="badge ok">in range</span>
+              {{ else if lt $val (float $lo) }}
+                <span class="badge under">under by {{ printf "%.1f" (sub (float $lo) $val) }}%</span>
+              {{ else }}
+                <span class="badge over">over by {{ printf "%.1f" (sub $val (float $hi)) }}%</span>
+              {{ end }}
+            {{ end }}
+          </dd>
+        </div>
+      {{ end }}
+      {{ with .Params.rating }}<div><dt>Rating</dt><dd>{{ . }} / 10</dd></div>{{ end }}
+    </div>
+  {{ end }}
+</section>
+
+{{/* ---------- Structured note sections rendered from frontmatter ---------- */}}
+{{ with .Params.bean_notes }}
+  <section class="roast-section">
+    <h2>Bean-specific notes</h2>
+    {{ . | markdownify }}
+  </section>
+{{ end }}
+
+{{ with .Params.playbook }}
+  <section class="roast-section">
+    <h2>Today's playbook</h2>
+    {{ . | markdownify }}
+  </section>
+{{ end }}
+
+{{/* Live observations — only render if any field is filled */}}
+{{ if or .Params.color_at_fc .Params.smell_at_fc .Params.why_dropped .Params.anything_weird }}
+  <section class="roast-section">
+    <h2>Live notes</h2>
+    <dl class="roast-live">
+      {{ with .Params.color_at_fc }}<dt>Color at FC</dt><dd>{{ . }}</dd>{{ end }}
+      {{ with .Params.smell_at_fc }}<dt>Smell at FC</dt><dd>{{ . }}</dd>{{ end }}
+      {{ with .Params.why_dropped }}<dt>Why dropped</dt><dd>{{ . | markdownify }}</dd>{{ end }}
+      {{ with .Params.anything_weird }}<dt>Anything weird</dt><dd>{{ . | markdownify }}</dd>{{ end }}
+    </dl>
+  </section>
+{{ end }}
+
+{{ with .Params.tasting_notes }}
+  <section class="roast-section">
+    <h2>Tasting notes</h2>
+    {{ . | markdownify }}
+  </section>
+{{ end }}
+
+{{ with .Params.next_time }}
+  <section class="roast-section">
+    <h2>What to change next time</h2>
+    {{ . | markdownify }}
+  </section>
+{{ end }}
+
+{{/* Freeform overflow body, if used */}}
+{{ if .Content }}
+  <section class="roast-section">
+    {{ .Content }}
+  </section>
+{{ end }}
+
+{{ partial "single/pagination.html" . }}
+
+<style>
+  .roast-facts {
+    margin: 1.5em 0 2em;
+    padding: 1em 1.25em;
+    border: 1px solid var(--border, #ddd);
+    border-radius: 6px;
+    background: var(--bg-alt, rgba(127,127,127,0.05));
+  }
+  .roast-facts-title { margin: 0 0 0.5em; font-size: 1.1em; }
+  .roast-facts-subtitle { margin: 1em 0 0.5em; font-size: 1em; opacity: 0.85; }
+  .roast-facts-note { margin: 0.5em 0 0; font-size: 0.85em; opacity: 0.7; }
+  .roast-facts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0.5em 1em;
+    margin: 0;
+  }
+  .roast-facts-grid > div { display: flex; gap: 0.4em; align-items: baseline; flex-wrap: wrap; }
+  .roast-facts-grid > div.span2 { grid-column: span 2; }
+  .roast-facts-grid dt { font-weight: 600; opacity: 0.75; margin: 0; }
+  .roast-facts-grid dd { margin: 0; }
+  .roast-facts .muted { opacity: 0.7; }
+  .badge {
+    font-size: 0.75em;
+    padding: 0.1em 0.45em;
+    border-radius: 3px;
+    margin-left: 0.3em;
+  }
+  .badge.ok    { background: #c8e6c9; color: #1b5e20; }
+  .badge.under { background: #fff3cd; color: #856404; }
+  .badge.over  { background: #f8d7da; color: #721c24; }
+
+  .roast-section { margin: 1.5em 0; }
+  .roast-section h2 { margin-bottom: 0.5em; }
+  .roast-live { display: grid; grid-template-columns: max-content 1fr; gap: 0.4em 1em; margin: 0; }
+  .roast-live dt { font-weight: 600; opacity: 0.75; }
+  .roast-live dd { margin: 0; }
+</style>
+
+{{ end }}

@@ -127,20 +127,22 @@ const roasts: Collection = {
   label: "Roasts",
   path: "content/roasts/",
   format: "md",
-  // Skip the _TEMPLATE.md scaffold so it doesn't show up as an editable entry.
-  match: { exclude: "_*" },
+  // Skip the _TEMPLATE.md scaffold and the methods reference page — they
+  // aren't roast entries.
+  match: { exclude: "{_*,methods}" },
   description:
-    "Coffee roast log. One markdown file per roast — phone-friendly fields for mid-roast edits.",
+    "Coffee roast log. Phone-friendly: scroll top→bottom in the order you actually fill fields during a roast.",
   defaultItem: () => ({
     date: new Date().toISOString(),
-    roaster: "Behmor 1600 Plus",
-    batch_size_g: 113,
+    batch_size_g: 227,
     profile: "P5",
-    weight_setting: "1 lb",
+    weight_setting: "½ lb",
     tags: ["roast"],
     draft: true,
+    roaster: "Behmor 1600 Plus",
   }),
   fields: [
+    // ----- TITLE & DATE -----
     {
       type: "string",
       name: "title",
@@ -148,31 +150,195 @@ const roasts: Collection = {
       isTitle: true,
       required: true,
     },
-    { type: "datetime", name: "date", label: "Date" },
-    { type: "string", name: "roaster", label: "Roaster" },
-    { type: "string", name: "origin", label: "Origin" },
-    { type: "string", name: "process", label: "Process" },
-    { type: "string", name: "target_level", label: "Target roast level" },
-    { type: "number", name: "batch_size_g", label: "Batch size (g green)" },
-    { type: "string", name: "profile", label: "Behmor profile" },
-    { type: "string", name: "weight_setting", label: "Weight setting" },
-    { type: "string", name: "drum_speed", label: "Drum speed" },
-    { type: "number", name: "green_weight_g", label: "Green weight (g)" },
-    { type: "number", name: "roasted_weight_g", label: "Roasted weight (g)" },
-    { type: "number", name: "weight_loss_pct", label: "Weight loss %" },
-    { type: "string", name: "time_to_fc", label: "Time to first crack (mm:ss)" },
-    { type: "string", name: "total_time", label: "Total roast time (mm:ss)" },
-    { type: "string", name: "dev_time", label: "Development time (mm:ss)" },
-    { type: "number", name: "dtr_pct", label: "DTR %" },
-    { type: "number", name: "rating", label: "Rating (1–10)" },
+    {
+      type: "datetime",
+      name: "date",
+      label: "Date",
+      description: "Roast date. Sorts the roast index.",
+    },
+
+    // ----- BEAN PLAN (pre-roast) -----
+    {
+      type: "string",
+      name: "origin",
+      label: "Origin",
+      description:
+        "Country and farm/region/lot. Example: \"Ethiopia — Kayon Mountain, Taaroo\".",
+    },
+    {
+      type: "string",
+      name: "process",
+      label: "Process",
+      description:
+        "Washed, Natural, Honey, Anaerobic, etc. Read it off the bean bag.",
+    },
+    {
+      type: "string",
+      name: "target_level",
+      label: "Target roast level",
+      description:
+        "Light, Light-Medium, Medium, Medium-Dark, Dark. Drives the expected-range panel.",
+    },
     {
       type: "string",
       name: "tags",
       label: "Tags",
       list: true,
+      description: "Always keep \"roast\". Add origin, varietal, process.",
     },
-    markdownBody,
-    { type: "boolean", name: "draft", label: "Draft" },
+
+    // ----- BATCH PLAN (pre-roast) -----
+    {
+      type: "number",
+      name: "batch_size_g",
+      label: "Batch size (g green)",
+      description:
+        "Grams of green charged. ½ lb (227 g) is the Behmor's comfortable batch.",
+    },
+    {
+      type: "string",
+      name: "profile",
+      label: "Behmor profile",
+      description: "P1–P5. P5 is the default for almost all batches.",
+    },
+    {
+      type: "string",
+      name: "weight_setting",
+      label: "Weight setting",
+      description:
+        "Match the actual charge (½ lb for 227 g). Overshoot one class only for tiny (~¼ lb) charges.",
+    },
+
+    // ----- PRE-ROAST FREEFORM NOTES -----
+    {
+      type: "string",
+      name: "bean_notes",
+      label: "Bean-specific notes",
+      ui: { component: "textarea" },
+      description:
+        "What makes THIS bean distinct — flavor goals beyond the level-default, density quirks, things to watch.",
+    },
+    {
+      type: "string",
+      name: "playbook",
+      label: "Today's playbook",
+      ui: { component: "textarea" },
+      description:
+        "Step-by-step plan for this specific roast. Ambient temp, FC window estimate, drop trigger, between-roast cool time.",
+    },
+
+    // ----- LIVE NOTES (during roast) — fill in time order -----
+    {
+      type: "string",
+      name: "time_to_fc",
+      label: "Time to first crack (mm:ss)",
+      description: "Elapsed from Start to the first audible pop. Format 09:30.",
+    },
+    {
+      type: "string",
+      name: "color_at_fc",
+      label: "Color at first crack",
+      description:
+        "Quick observation at FC start. Example: \"light tan, no smoke yet\".",
+    },
+    {
+      type: "string",
+      name: "smell_at_fc",
+      label: "Smell at first crack",
+      description:
+        "Quick observation. Example: \"bread-y / sweet / faint caramel\".",
+    },
+    {
+      type: "string",
+      name: "total_time",
+      label: "Total roast time (mm:ss)",
+      description: "Elapsed from Start to when you hit Cool / dropped.",
+    },
+    {
+      type: "string",
+      name: "why_dropped",
+      label: "Why dropped",
+      ui: { component: "textarea" },
+      description:
+        "What you saw/heard that triggered the drop. Useful next time you're between SC snaps and second.",
+    },
+    {
+      type: "string",
+      name: "anything_weird",
+      label: "Anything weird",
+      ui: { component: "textarea" },
+      description:
+        "Stalls, uneven roast, smoke earlier than expected, scorched beans, anything off. Leave blank if nothing.",
+    },
+
+    // ----- POST-ROAST MEASUREMENTS -----
+    {
+      type: "number",
+      name: "green_weight_g",
+      label: "Green weight (g)",
+      description: "Exact weighed grams BEFORE the roast.",
+    },
+    {
+      type: "number",
+      name: "roasted_weight_g",
+      label: "Roasted weight (g)",
+      description: "Weighed grams AFTER cooling. Page computes loss % from this.",
+    },
+
+    // ----- REST & TASTE -----
+    {
+      type: "string",
+      name: "tasting_notes",
+      label: "Tasting notes (after 12–24h rest)",
+      ui: { component: "textarea" },
+      description:
+        "Aroma, acidity, body, sweetness, finish. Brew method + ratio if relevant.",
+    },
+    {
+      type: "number",
+      name: "rating",
+      label: "Rating (1–10)",
+      description: "Your subjective score of the cup after resting.",
+    },
+    {
+      type: "string",
+      name: "next_time",
+      label: "What to change next time",
+      ui: { component: "textarea" },
+      description:
+        "Specific adjustments for the next batch of this bean. Drop earlier? More dev? Different weight setting?",
+    },
+
+    // ----- OVERFLOW BODY (optional) -----
+    {
+      type: "string",
+      name: "body",
+      label: "Anything else (freeform markdown)",
+      isBody: true,
+      ui: { component: "textarea" },
+      description:
+        "Optional. Use for photos, tables, links, or anything that doesn't fit the structured fields above.",
+    },
+
+    // ----- MACHINE / ADMIN (rarely changes) -----
+    {
+      type: "string",
+      name: "roaster",
+      label: "Roaster",
+      description: "Defaults to Behmor 1600 Plus. Change only if you switch machines.",
+    },
+    {
+      type: "string",
+      name: "drum_speed",
+      label: "Drum speed",
+      description: "Leave blank on the 1600 Plus (fixed speed). Reserved for future machines.",
+    },
+    {
+      type: "boolean",
+      name: "draft",
+      label: "Draft",
+      description: "When ON, this roast is hidden from the live site.",
+    },
   ],
 };
 

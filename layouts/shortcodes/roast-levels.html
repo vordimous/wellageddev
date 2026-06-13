@@ -1,0 +1,22 @@
+<table class="roast-ref">
+  <thead>
+    <tr>
+      <th>Level</th>
+      <th>Weight loss %</th>
+      <th>DTR %</th>
+      <th>Drop trigger</th>
+      <th>Flavor profile</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{ range .Site.Data.roast_guidance.levels }}
+      <tr>
+        <td><strong>{{ .name }}</strong></td>
+        <td>{{ index .loss_pct 0 }}–{{ index .loss_pct 1 }}%</td>
+        <td>{{ index .dtr_pct 0 }}–{{ index .dtr_pct 1 }}%</td>
+        <td>{{ .drop }}</td>
+        <td>{{ .flavor }}</td>
+      </tr>
+    {{ end }}
+  </tbody>
+</table>
