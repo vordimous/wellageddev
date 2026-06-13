@@ -59,6 +59,17 @@
     {{ with .Params.profile }}<div><dt>Profile</dt><dd>{{ . }}</dd></div>{{ end }}
     {{ with .Params.batch_size_g }}<div><dt>Batch size</dt><dd>{{ . }} g</dd></div>{{ end }}
     {{ with .Params.weight_setting }}<div><dt>Weight setting</dt><dd>{{ . }}</dd></div>{{ end }}
+    {{ with .Params.green_weight_g }}<div><dt>Green weight</dt><dd>{{ . }} g</dd></div>{{ end }}
+    {{ if or .Params.ambient_f .Params.ambient_rh }}
+      <div>
+        <dt>Conditions</dt>
+        <dd>
+          {{- with .Params.ambient_f }}{{ . }}°F{{ end -}}
+          {{- if and .Params.ambient_f .Params.ambient_rh }} / {{ end -}}
+          {{- with .Params.ambient_rh }}{{ . }}% RH{{ end -}}
+        </dd>
+      </div>
+    {{ end }}
     {{ if $behmor }}
       <div><dt>Recommended setting</dt><dd>{{ $behmor }} <span class="muted">— {{ $behmorNote }}</span></dd></div>
     {{ end }}
@@ -82,7 +93,6 @@
   {{ if or $green $roasted $fcStr $totalStr .Params.rating }}
     <h3 class="roast-facts-subtitle">Measured</h3>
     <div class="roast-facts-grid">
-      {{ with $green }}<div><dt>Green</dt><dd>{{ . }} g</dd></div>{{ end }}
       {{ with $roasted }}<div><dt>Roasted</dt><dd>{{ . }} g</dd></div>{{ end }}
       {{ if $lossPct }}
         <div>

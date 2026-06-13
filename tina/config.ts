@@ -217,6 +217,22 @@ const roasts: Collection = {
         "Exact weighed grams BEFORE the roast. Fill in when you weigh the batch — used to compute loss %.",
     },
 
+    // ----- SESSION CONDITIONS (pre-roast) -----
+    {
+      type: "number",
+      name: "ambient_f",
+      label: "Ambient temp (°F)",
+      description:
+        "Room or outdoor temp at roast start. Higher temp → earlier FC and compounding heat in back-to-back sessions.",
+    },
+    {
+      type: "number",
+      name: "ambient_rh",
+      label: "Ambient humidity (%RH)",
+      description:
+        "Relative humidity at roast start. Higher RH → beans carry more moisture → longer drying phase → FC may come later.",
+    },
+
     // ----- PRE-ROAST FREEFORM NOTES -----
     {
       type: "string",

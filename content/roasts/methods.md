@@ -10,12 +10,23 @@ tags:
 
 Every roast page computes derived values from a few raw inputs and compares them against industry-consensus targets. This page documents the formulas and the lookup tables so you can verify any number on the site by hand — and so the rules live in one editable place, not scattered through templates.
 
+## Session conditions
+
+Two ambient readings logged at roast start — not used in any formula today, but tracked because they explain session-to-session variation in FC timing:
+
+| Field | Effect |
+| --- | --- |
+| `ambient_f` | Higher temp → earlier FC; compounding heat in back-to-back sessions |
+| `ambient_rh` | Higher RH → beans carry more moisture → longer drying phase → FC comes later |
+
+The two effects can partially cancel: a hot, humid day (91°F / 65% RH) will pull FC earlier via heat but push it later via moisture. Once you have 10+ roasts logged, compare FC times against these readings to see which variable dominates on your machine in your space.
+
 ## The four raw inputs
 
 Punch these into Tina; everything else is derived.
 
 | Field | What it is | When to fill |
-|---|---|---|
+| --- | --- | --- |
 | `green_weight_g` | Weighed grams before the roast | Pre-roast |
 | `roasted_weight_g` | Weighed grams after cooling | Post-roast |
 | `time_to_fc` (mm:ss) | Elapsed time from Start to the first audible pop | At first crack |
@@ -50,6 +61,16 @@ The "weight" button on the Behmor sets the heating program. Match it to your act
 ## Safety — dark roasts on the Behmor 1600 Plus
 
 The Behmor 1600 Plus manual **explicitly warns against Vienna, French, and Italian dark roasts** on this machine. Oily beans shed oil into the chaff tray; under repeated dark-roast heat, that residue can ignite. Stop the roast before a heavy oil sheen develops on the bean surface. The "dark" row in the level reference above is included for completeness — it is not a target this machine is built for.
+
+## Behmor startup sequence
+
+The Behmor 1600 Plus requires a short preheat **before loading beans**, and has a mid-roast safety cutoff you must acknowledge.
+
+**Preheat (first roast only):**
+With the drum *out*, select 1 lb + any profile, press START, let run for **1 min 30 sec**, then cancel. This warms the chamber. For back-to-back roasts the drum is already hot — skip the preheat and cool between batches instead (see playbook for each roast).
+
+**75% safety shutoff (every roast):**
+At 75% through the program, the display counts down from 0:30. You must press START to continue. If you miss it, the machine switches to cool mode immediately — mid-roast. Stay within earshot of the machine at all times.
 
 ## Profile selection
 
