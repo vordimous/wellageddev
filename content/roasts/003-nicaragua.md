@@ -8,8 +8,8 @@ tags:
   - roast
   - nicaragua
   - maracaturra
-batch_size_g: 227
-profile: P5
+batch_size_g: 456
+profile: P3
 weight_setting: ½ lb
 green_weight_g: 455
 ambient_f: 91
@@ -30,7 +30,7 @@ playbook: |
   8. Cool cycle ~10 min.
   9. Weigh roasted.
   10. **Before Ethiopia: cool drum 10–12 min, door wide open.** Drum is at peak heat; Ethiopia is the most delicate.
-time_to_fc: null
+time_to_fc: 9-11
 color_at_fc: null
 smell_at_fc: null
 total_time: null
