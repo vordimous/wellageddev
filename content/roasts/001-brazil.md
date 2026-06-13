@@ -32,7 +32,7 @@ playbook: |
 time_to_fc: '7:30'
 color_at_fc: Light tan
 smell_at_fc: 'Lightly sweet baked cookies '
-total_time: null
+total_time: '15:00'
 why_dropped: null
 anything_weird: null
 roasted_weight_g: null
