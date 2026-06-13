@@ -31,8 +31,8 @@ playbook: |
   9. Weigh roasted.
   10. **Before Ethiopia: cool drum 10–12 min, door wide open.** Drum is at peak heat; Ethiopia is the most delicate.
 time_to_fc: '9:00'
-color_at_fc: null
-smell_at_fc: null
+color_at_fc: Pale tan
+smell_at_fc: Bland roasted smell
 total_time: null
 why_dropped: null
 anything_weird: null
