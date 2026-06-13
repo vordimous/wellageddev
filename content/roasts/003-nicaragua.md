@@ -33,13 +33,14 @@ playbook: |
 time_to_fc: '9:00'
 color_at_fc: Pale tan
 smell_at_fc: Bland roasted smell
-total_time: null
+total_time: '21:30'
 why_dropped: null
 anything_weird: null
-roasted_weight_g: null
+roasted_weight_g: 410
 tasting_notes: null
 rating: null
 next_time: null
 roaster: Behmor 1600 Plus
 ---
+
 
