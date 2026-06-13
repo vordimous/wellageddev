@@ -9,6 +9,7 @@ tags:
 batch_size_g: 227
 profile: P5
 weight_setting: ½ lb
+green_weight_g:
 bean_notes:
 playbook:
 time_to_fc:
@@ -17,12 +18,10 @@ smell_at_fc:
 total_time:
 why_dropped:
 anything_weird:
-green_weight_g:
 roasted_weight_g:
 tasting_notes:
 rating:
 next_time:
 roaster: Behmor 1600 Plus
-drum_speed:
 draft: true
 ---

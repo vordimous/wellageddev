@@ -73,6 +73,9 @@
       <div class="span2"><dt>Flavor goal</dt><dd>{{ $level.flavor }}</dd></div>
     </div>
     <p class="roast-facts-note">Targets sourced from <a href="{{ "/roasts/methods/" | relURL }}">methods reference</a>.</p>
+    {{ with $level.behmor_warning }}
+      <p class="roast-warning">⚠ {{ . }}</p>
+    {{ end }}
   {{ end }}
 
   {{/* ---------- Measured section ---------- */}}
@@ -211,6 +214,16 @@
   .badge.ok    { background: #c8e6c9; color: #1b5e20; }
   .badge.under { background: #fff3cd; color: #856404; }
   .badge.over  { background: #f8d7da; color: #721c24; }
+
+  .roast-warning {
+    margin: 0.75em 0 0;
+    padding: 0.6em 0.8em;
+    background: #fff3cd;
+    border-left: 3px solid #d39e00;
+    border-radius: 3px;
+    font-size: 0.9em;
+    color: #5d4a00;
+  }
 
   .roast-section { margin: 1.5em 0; }
   .roast-section h2 { margin-bottom: 0.5em; }

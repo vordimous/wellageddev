@@ -11,6 +11,7 @@ tags:
 batch_size_g: 227
 profile: P5
 weight_setting: ½ lb
+green_weight_g:
 bean_notes: |
   - **Maracaturra** beans are large and low-density — they move fast through development; watch FC closely and don't miss the window.
   - Flavor goal beyond the level-default: caramel with soft fruit — leave some sweetness, don't push to dark.
@@ -31,7 +32,6 @@ smell_at_fc:
 total_time:
 why_dropped:
 anything_weird:
-green_weight_g:
 roasted_weight_g:
 tasting_notes:
 rating:

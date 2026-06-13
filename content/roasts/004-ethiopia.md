@@ -11,6 +11,7 @@ tags:
 batch_size_g: 227
 profile: P5
 weight_setting: ½ lb
+green_weight_g:
 bean_notes: |
   - Last of four — most delicate. Drum is hot and seasoned at this point; FC will come earlier than batches 1–3.
   - Kayon Mountain Taaroo is known for jasmine and stone-fruit. Flavor goal beyond the level-default: protect the florals and bright acidity — don't chase development.
@@ -31,7 +32,6 @@ smell_at_fc:
 total_time:
 why_dropped:
 anything_weird:
-green_weight_g:
 roasted_weight_g:
 tasting_notes:
 rating:

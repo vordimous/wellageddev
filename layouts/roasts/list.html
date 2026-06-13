@@ -8,45 +8,326 @@
     <section class="post-content">
       {{ .Content }}
 
-      <p><a href="{{ "/roasts/methods/" | relURL }}">→ Methods &amp; reference</a> (how the numbers below are computed)</p>
+      <p class="roast-methods-link">
+        <a href="{{ "/roasts/methods/" | relURL }}">→ Methods &amp; reference</a>
+        <span class="roast-methods-hint">how the numbers below are computed</span>
+      </p>
 
       {{ $roasts := where .Pages "Section" "roasts" }}
       {{ $roasts = where $roasts "Params.draft" "!=" true }}
       {{ $roasts = where $roasts "Params.origin" "!=" nil }}
       {{ if $roasts }}
-        <table class="roast-table">
-          <thead>
-            <tr>
-              <th>Roast</th>
-              <th>Date</th>
-              <th>Origin</th>
-              <th>Level</th>
-              <th>DTR %</th>
-              <th>Loss %</th>
-              <th>Rating</th>
-            </tr>
-          </thead>
-          <tbody>
-            {{ range $roasts.ByDate.Reverse }}
-              <tr>
-                <td><a href="{{ .RelPermalink }}">{{ .Title }}</a></td>
-                <td>{{ .Date.Format "2006-01-02" }}</td>
-                <td>{{ .Params.origin | default "—" }}</td>
-                <td>{{ .Params.target_level | default "—" }}</td>
-                <td>{{ with .Params.dtr_pct }}{{ . }}{{ else }}—{{ end }}</td>
-                <td>{{ with .Params.weight_loss_pct }}{{ . }}{{ else }}—{{ end }}</td>
-                <td>{{ with .Params.rating }}{{ . }}{{ else }}—{{ end }}</td>
-              </tr>
+        <ul class="roast-list">
+          {{ range $roasts.ByDate.Reverse }}
+            {{/* ---- compute loss %, DTR %, dev time ---- */}}
+            {{ $g := .Params.green_weight_g }}
+            {{ $r := .Params.roasted_weight_g }}
+            {{ $loss := "" }}
+            {{ if and $g $r (gt $g 0) }}
+              {{ $loss = printf "%.1f" (mul (div (sub (float $g) (float $r)) (float $g)) 100.0) }}
             {{ end }}
-          </tbody>
-        </table>
+            {{ $fc := .Params.time_to_fc }}
+            {{ $tot := .Params.total_time }}
+            {{ $dtr := "" }}
+            {{ $dev := "" }}
+            {{ if and $fc $tot }}
+              {{ $fcP := split $fc ":" }}
+              {{ $totP := split $tot ":" }}
+              {{ if and (eq (len $fcP) 2) (eq (len $totP) 2) }}
+                {{ $fcS := add (mul (int (index $fcP 0)) 60) (int (index $fcP 1)) }}
+                {{ $totS := add (mul (int (index $totP 0)) 60) (int (index $totP 1)) }}
+                {{ if and (gt $totS 0) (gt $totS $fcS) }}
+                  {{ $devS := sub $totS $fcS }}
+                  {{ $dev = printf "%d:%02d" (div $devS 60) (mod $devS 60) }}
+                  {{ $dtr = printf "%.1f" (mul (div (float $devS) (float $totS)) 100.0) }}
+                {{ end }}
+              {{ end }}
+            {{ end }}
+
+            {{/* ---- look up target ranges from data/roast_guidance.yaml ---- */}}
+            {{ $targetKey := lower (.Params.target_level | default "") }}
+            {{ $level := index (where $.Site.Data.roast_guidance.levels "name" $targetKey) 0 }}
+
+            {{/* ---- compute level-class for accent color ---- */}}
+            {{ $levelClass := "level-unknown" }}
+            {{ if $targetKey }}{{ $levelClass = printf "level-%s" (replace $targetKey " " "-") }}{{ end }}
+
+            {{ $measured := or $loss $dtr .Params.rating }}
+
+            <li class="roast-card {{ $levelClass }}{{ if not $measured }} roast-card-pending{{ end }}">
+              <a class="roast-card-link" href="{{ .RelPermalink }}">
+                <div class="roast-card-head">
+                  <div class="roast-card-title">{{ .Title }}</div>
+                  <time class="roast-card-date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+                </div>
+
+                {{ with .Params.origin }}<p class="roast-card-origin">{{ . }}</p>{{ end }}
+
+                <div class="roast-card-meta">
+                  {{ with .Params.target_level }}
+                    <span class="roast-tag roast-tag-level">{{ . }}</span>
+                  {{ end }}
+                  {{ with .Params.process }}
+                    <span class="roast-tag">{{ . }}</span>
+                  {{ end }}
+                  {{ with .Params.rating }}
+                    <span class="roast-tag roast-tag-rating">★ {{ . }}<span class="rating-denom">/10</span></span>
+                  {{ end }}
+                  {{ if not $measured }}
+                    <span class="roast-tag roast-tag-pending">not roasted yet</span>
+                  {{ end }}
+                </div>
+
+                <dl class="roast-card-stats">
+                  <div class="roast-stat">
+                    <dt>DTR</dt>
+                    <dd>
+                      {{ if $dtr }}{{ $dtr }}%{{ else }}<span class="dash">—</span>{{ end }}
+                      {{ if and $dtr $level }}
+                        {{ $lo := index $level.dtr_pct 0 }}
+                        {{ $hi := index $level.dtr_pct 1 }}
+                        {{ $val := float $dtr }}
+                        {{ if and (ge $val (float $lo)) (le $val (float $hi)) }}
+                          <span class="roast-pill ok" title="in range">●</span>
+                        {{ else if lt $val (float $lo) }}
+                          <span class="roast-pill under" title="under by {{ printf "%.1f" (sub (float $lo) $val) }}%">▼</span>
+                        {{ else }}
+                          <span class="roast-pill over" title="over by {{ printf "%.1f" (sub $val (float $hi)) }}%">▲</span>
+                        {{ end }}
+                      {{ end }}
+                    </dd>
+                  </div>
+                  <div class="roast-stat">
+                    <dt>Loss</dt>
+                    <dd>
+                      {{ if $loss }}{{ $loss }}%{{ else }}<span class="dash">—</span>{{ end }}
+                      {{ if and $loss $level }}
+                        {{ $lo := index $level.loss_pct 0 }}
+                        {{ $hi := index $level.loss_pct 1 }}
+                        {{ $val := float $loss }}
+                        {{ if and (ge $val (float $lo)) (le $val (float $hi)) }}
+                          <span class="roast-pill ok" title="in range">●</span>
+                        {{ else if lt $val (float $lo) }}
+                          <span class="roast-pill under" title="under by {{ printf "%.1f" (sub (float $lo) $val) }}%">▼</span>
+                        {{ else }}
+                          <span class="roast-pill over" title="over by {{ printf "%.1f" (sub $val (float $hi)) }}%">▲</span>
+                        {{ end }}
+                      {{ end }}
+                    </dd>
+                  </div>
+                  <div class="roast-stat">
+                    <dt>FC</dt>
+                    <dd>{{ with $fc }}{{ . }}{{ else }}<span class="dash">—</span>{{ end }}</dd>
+                  </div>
+                  <div class="roast-stat">
+                    <dt>Total</dt>
+                    <dd>{{ with $tot }}{{ . }}{{ else }}<span class="dash">—</span>{{ end }}</dd>
+                  </div>
+                </dl>
+              </a>
+            </li>
+          {{ end }}
+        </ul>
       {{ end }}
     </section>
   </article>
 
   <style>
-    .roast-table { width: 100%; border-collapse: collapse; margin: 1.5em 0; font-size: 0.95em; }
-    .roast-table th, .roast-table td { padding: 0.5em 0.75em; border-bottom: 1px solid var(--border, #ddd); text-align: left; }
-    .roast-table th { font-weight: 600; }
+    .roast-methods-link {
+      margin: 1em 0 1.75em;
+      padding: 0.5em 0.85em;
+      background: var(--nav-bg-color);
+      border-left: 3px solid var(--link-color);
+      border-radius: 0 4px 4px 0;
+    }
+    .roast-methods-hint {
+      color: var(--post-info-color);
+      font-size: 0.85em;
+      margin-left: 0.4em;
+    }
+
+    .roast-list {
+      list-style: none;
+      padding: 0;
+      margin: 1.5em 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 0.9em;
+    }
+
+    /* Card shell — IDLE state */
+    .roast-card {
+      position: relative;
+      border: 1px solid var(--table-border-color);
+      border-radius: 10px;
+      overflow: hidden;
+      background: var(--nav-bg-color);
+      transition:
+        transform 0.18s ease,
+        box-shadow 0.2s ease,
+        border-color 0.18s ease,
+        background-color 0.18s ease;
+    }
+    .roast-card::before {
+      content: "";
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 4px;
+      background: var(--accent, var(--link-color));
+      transition: width 0.18s ease;
+    }
+
+    /* HOVER state — distinct background, wider stripe, glow, and ring */
+    .roast-card:hover,
+    .roast-card:focus-within {
+      transform: translateY(-3px);
+      background: var(--bg-color);
+      border-color: var(--accent, var(--link-color));
+      box-shadow:
+        0 0 0 1px var(--accent, var(--link-color)),
+        0 10px 24px rgba(0, 0, 0, 0.28);
+    }
+    .roast-card:hover::before,
+    .roast-card:focus-within::before {
+      width: 7px;
+    }
+
+    .roast-card-pending { opacity: 0.72; }
+    .roast-card-pending:hover,
+    .roast-card-pending:focus-within { opacity: 1; }
+
+    /* Level accent colors (CSS var per level) */
+    .roast-card.level-light          { --accent: #f6c453; }
+    .roast-card.level-light-medium   { --accent: #e89d44; }
+    .roast-card.level-medium         { --accent: #b6692c; }
+    .roast-card.level-medium-dark    { --accent: #7a3e1e; }
+    .roast-card.level-dark           { --accent: #3d1f10; }
+    .roast-card.level-unknown        { --accent: var(--table-border-color); }
+
+    .roast-card-link {
+      display: block;
+      padding: 0.9em 1em 0.9em 1.15em;
+      color: inherit;
+      text-decoration: none;
+      border-bottom: none;
+    }
+    .roast-card-link:hover,
+    .roast-card-link:focus,
+    .roast-card-link:active { border-bottom: none; color: inherit; }
+
+    .roast-card-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 0.75em;
+      margin-bottom: 0.3em;
+    }
+    /* div (not h2) so the theme's "## " ::before prefix doesn't apply */
+    .roast-card-title {
+      font-size: 1em;
+      font-weight: 600;
+      line-height: 1.3;
+      color: var(--link-color);
+    }
+    .roast-card-date {
+      font-size: 0.78em;
+      color: var(--post-info-color);
+      white-space: nowrap;
+      flex-shrink: 0;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .roast-card-origin {
+      margin: 0 0 0.7em;
+      font-size: 0.88em;
+      color: var(--font-color);
+      opacity: 0.8;
+      line-height: 1.35;
+    }
+
+    .roast-card-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35em;
+      margin-bottom: 0.85em;
+    }
+    .roast-tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.15em 0.6em;
+      border-radius: 999px;
+      font-size: 0.72em;
+      font-weight: 500;
+      background: var(--nav-bg-color);
+      color: var(--nav-link-color);
+      border: 1px solid var(--table-border-color);
+      white-space: nowrap;
+    }
+    .roast-tag-level {
+      background: var(--accent, var(--link-color));
+      color: #fff;
+      border-color: transparent;
+    }
+    .roast-card.level-light .roast-tag-level,
+    .roast-card.level-light-medium .roast-tag-level { color: #2a1d05; }
+    .roast-tag-rating {
+      background: transparent;
+      color: var(--link-color);
+      border-color: var(--link-color);
+      font-weight: 600;
+    }
+    .rating-denom { opacity: 0.55; font-weight: 400; margin-left: 0.1em; }
+    .roast-tag-pending {
+      font-style: italic;
+      opacity: 0.75;
+    }
+
+    .roast-card-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.4em;
+      margin: 0;
+      padding: 0.65em 0 0;
+      border-top: 1px solid var(--hr-color);
+    }
+    .roast-stat { margin: 0; min-width: 0; }
+    .roast-stat dt {
+      font-size: 0.65em;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--post-info-color);
+      margin: 0;
+      font-weight: 600;
+    }
+    .roast-stat dd {
+      margin: 0.15em 0 0;
+      font-size: 0.92em;
+      font-variant-numeric: tabular-nums;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.25em;
+    }
+    .roast-stat .dash { opacity: 0.35; }
+
+    .roast-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1em;
+      height: 1em;
+      font-size: 0.7em;
+      border-radius: 999px;
+      line-height: 1;
+    }
+    .roast-pill.ok    { color: #1b5e20; background: #c8e6c9; }
+    .roast-pill.under { color: #856404; background: #fff3cd; }
+    .roast-pill.over  { color: #721c24; background: #f8d7da; }
+
+    @media (max-width: 480px) {
+      .roast-list { grid-template-columns: 1fr; gap: 0.75em; }
+      .roast-card-head { flex-direction: column; align-items: flex-start; gap: 0.15em; }
+      .roast-card-stats { grid-template-columns: repeat(2, 1fr); gap: 0.55em 0.4em; }
+    }
   </style>
 {{ end }}

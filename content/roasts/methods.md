@@ -47,6 +47,10 @@ The "weight" button on the Behmor sets the heating program. Match it to your act
 
 {{< roast-behmor-weights >}}
 
+## Safety — dark roasts on the Behmor 1600 Plus
+
+The Behmor 1600 Plus manual **explicitly warns against Vienna, French, and Italian dark roasts** on this machine. Oily beans shed oil into the chaff tray; under repeated dark-roast heat, that residue can ignite. Stop the roast before a heavy oil sheen develops on the bean surface. The "dark" row in the level reference above is included for completeness — it is not a target this machine is built for.
+
 ## Profile selection
 
 Profile P5 is the most aggressive and the default for almost all home batches on the 1600 Plus. P1–P4 trade total energy for longer drum time; useful only if your roasts are coming in too fast even at the matched weight setting.

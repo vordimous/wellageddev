@@ -176,8 +176,9 @@ const roasts: Collection = {
       type: "string",
       name: "target_level",
       label: "Target roast level",
+      options: ["Light", "Light-Medium", "Medium", "Medium-Dark", "Dark"],
       description:
-        "Light, Light-Medium, Medium, Medium-Dark, Dark. Drives the expected-range panel.",
+        "Drives the expected-range panel. Dropdown to avoid typos that would silently break the lookup.",
     },
     {
       type: "string",
@@ -207,6 +208,13 @@ const roasts: Collection = {
       label: "Weight setting",
       description:
         "Match the actual charge (½ lb for 227 g). Overshoot one class only for tiny (~¼ lb) charges.",
+    },
+    {
+      type: "number",
+      name: "green_weight_g",
+      label: "Green weight (g)",
+      description:
+        "Exact weighed grams BEFORE the roast. Fill in when you weigh the batch — used to compute loss %.",
     },
 
     // ----- PRE-ROAST FREEFORM NOTES -----
@@ -271,18 +279,12 @@ const roasts: Collection = {
         "Stalls, uneven roast, smoke earlier than expected, scorched beans, anything off. Leave blank if nothing.",
     },
 
-    // ----- POST-ROAST MEASUREMENTS -----
-    {
-      type: "number",
-      name: "green_weight_g",
-      label: "Green weight (g)",
-      description: "Exact weighed grams BEFORE the roast.",
-    },
+    // ----- POST-ROAST MEASUREMENT -----
     {
       type: "number",
       name: "roasted_weight_g",
       label: "Roasted weight (g)",
-      description: "Weighed grams AFTER cooling. Page computes loss % from this.",
+      description: "Weighed grams AFTER cooling. Page computes loss % from this and the green weight.",
     },
 
     // ----- REST & TASTE -----
@@ -326,12 +328,6 @@ const roasts: Collection = {
       name: "roaster",
       label: "Roaster",
       description: "Defaults to Behmor 1600 Plus. Change only if you switch machines.",
-    },
-    {
-      type: "string",
-      name: "drum_speed",
-      label: "Drum speed",
-      description: "Leave blank on the 1600 Plus (fixed speed). Reserved for future machines.",
     },
     {
       type: "boolean",

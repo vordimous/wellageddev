@@ -10,6 +10,7 @@ tags:
 batch_size_g: 227
 profile: P5
 weight_setting: ½ lb
+green_weight_g:
 bean_notes: |
   - First of four — most forgiving bean, ordered first to season the drum.
   - Flavor goal beyond the level-default: chocolate / nutty / sweet — pull development long enough to round out, but don't push into roasty.
@@ -30,7 +31,6 @@ smell_at_fc:
 total_time:
 why_dropped:
 anything_weird:
-green_weight_g:
 roasted_weight_g:
 tasting_notes:
 rating:

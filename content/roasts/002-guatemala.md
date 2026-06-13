@@ -11,6 +11,7 @@ tags:
 batch_size_g: 227
 profile: P5
 weight_setting: ½ lb
+green_weight_g:
 bean_notes: |
   - Huehue is high-grown and dense; expect a slightly later FC than the Brazil at the same heat setting.
   - Flavor goal beyond the level-default: cocoa with citrus brightness and a clean finish — don't bake the acidity flat.
@@ -31,7 +32,6 @@ smell_at_fc:
 total_time:
 why_dropped:
 anything_weird:
-green_weight_g:
 roasted_weight_g:
 tasting_notes:
 rating:
