@@ -35,12 +35,13 @@ smell_at_fc: 'Lightly sweet baked cookies '
 total_time: '15:00'
 why_dropped: 'Second crack at 19:30'
 anything_weird: 'We should have been on P3 per tha handbook. P5 is manual mode and we didn''t have the right instructions. '
-roasted_weight_g: 410
+roasted_weight_g: 225
 tasting_notes: null
 rating: null
 next_time: null
 roaster: Behmor 1600 Plus
 ---
+
 
 
 
