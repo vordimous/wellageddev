@@ -30,9 +30,9 @@ playbook: |
   8. Cool cycle ~10 min.
   9. Weigh roasted.
   10. **Before Nicaragua: cool drum 7 min with door open.**
-time_to_fc: null
-color_at_fc: null
-smell_at_fc: null
+time_to_fc: '10:10'
+color_at_fc: Pale brown
+smell_at_fc: 'Roasted corn '
 total_time: null
 why_dropped: null
 anything_weird: null
@@ -42,4 +42,5 @@ rating: null
 next_time: null
 roaster: Behmor 1600 Plus
 ---
+
 
