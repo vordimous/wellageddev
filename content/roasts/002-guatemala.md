@@ -1,17 +1,17 @@
 ---
 title: 002 — Guatemala Huehuetenango Unión Cantinil
 date: 2026-06-13T00:00:00.000Z
-origin: Guatemala — Huehuetenango, Unión Cantinil
-process:
+origin: 'Guatemala — Huehuetenango, Unión Cantinil'
+process: null
 target_level: Medium
 tags:
-- roast
-- guatemala
-- huehuetenango
-batch_size_g: 227
+  - roast
+  - guatemala
+  - huehuetenango
+batch_size_g: 454
 profile: P5
-weight_setting: ½ lb
-green_weight_g:
+weight_setting: 1 lb
+green_weight_g: 454
 ambient_f: 91
 ambient_rh: 44
 bean_notes: |
@@ -30,15 +30,16 @@ playbook: |
   8. Cool cycle ~10 min.
   9. Weigh roasted.
   10. **Before Nicaragua: cool drum 7 min with door open.**
-time_to_fc:
-color_at_fc:
-smell_at_fc:
-total_time:
-why_dropped:
-anything_weird:
-roasted_weight_g:
-tasting_notes:
-rating:
-next_time:
+time_to_fc: null
+color_at_fc: null
+smell_at_fc: null
+total_time: null
+why_dropped: null
+anything_weird: null
+roasted_weight_g: null
+tasting_notes: null
+rating: null
+next_time: null
 roaster: Behmor 1600 Plus
 ---
+
