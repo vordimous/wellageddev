@@ -35,7 +35,7 @@ smell_at_fc: 'Lightly sweet baked cookies '
 total_time: '15:00'
 why_dropped: null
 anything_weird: null
-roasted_weight_g: null
+roasted_weight_g: 245
 tasting_notes: null
 rating: null
 next_time: null
