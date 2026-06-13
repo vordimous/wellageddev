@@ -36,7 +36,7 @@ smell_at_fc: 'Roasted corn '
 total_time: '18:00'
 why_dropped: null
 anything_weird: null
-roasted_weight_g: null
+roasted_weight_g: 393
 tasting_notes: null
 rating: null
 next_time: null
