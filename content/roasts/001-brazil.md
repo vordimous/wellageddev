@@ -29,9 +29,9 @@ playbook: |
   8. Cool cycle ~10 min, door cracked at end.
   9. Weigh roasted. Page computes loss %.
   10. **Before Guatemala: let drum cool 7 min with door open.**
-time_to_fc: null
-color_at_fc: null
-smell_at_fc: null
+time_to_fc: '7:30'
+color_at_fc: Light tan
+smell_at_fc: 'Lightly sweet baked cookies '
 total_time: null
 why_dropped: null
 anything_weird: null
