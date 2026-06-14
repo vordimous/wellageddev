@@ -317,6 +317,13 @@ const roasts: Collection = {
       label: "Roasted weight (g)",
       description: "Weighed grams AFTER cooling. Page computes loss % from this and the green weight.",
     },
+    {
+      type: "image",
+      name: "roasted_photo",
+      label: "Roasted beans photo",
+      description:
+        "Upload a photo of the cooled finished beans to document color. Phone uploads work — Tina pushes to static/imgs/.",
+    },
 
     // ----- REST & TASTE -----
     {

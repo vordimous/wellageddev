@@ -128,6 +128,16 @@
 </section>
 {{ end }}
 
+{{/* ---------- Roasted beans photo ---------- */}}
+{{ with .Params.roasted_photo }}
+<section class="roast-photo-section">
+  <figure>
+    <img src="{{ . | relURL }}" alt="Cooled, roasted beans for {{ $.Title }}" loading="lazy" class="roast-photo">
+    <figcaption>Roasted beans — color reference</figcaption>
+  </figure>
+</section>
+{{ end }}
+
 {{/* ---------- Roast plan panel ---------- */}}
 <section class="roast-facts">
   <h2 class="roast-facts-title">Roast plan</h2>
@@ -387,6 +397,29 @@
     border-radius: 3px;
     font-size: 0.9em;
     color: #5d4a00;
+  }
+
+  .roast-photo-section {
+    margin: 1em 0 1.5em;
+  }
+  .roast-photo-section figure {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4em;
+  }
+  .roast-photo {
+    max-width: min(100%, 720px);
+    height: auto;
+    border-radius: 8px;
+    display: block;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  }
+  .roast-photo-section figcaption {
+    font-size: 0.85em;
+    color: var(--post-info-color, #777);
+    text-align: center;
   }
 
   .roast-section { margin: 1.5em 0; }

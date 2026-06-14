@@ -36,6 +36,10 @@ After ~10–15 logged roasts, the universal targets in `data/roast_guidance.yaml
 
 Each roast page and list card computes a rest window from the **roast date** + the level's `rest_days` range, then shows a status pill (`Resting` / `Ready` / `Past peak`) by comparing against `now`. The math lives in `layouts/roasts/single.html` and `layouts/roasts/list.html` and uses `time.ParseDuration` with hour-based durations (`mul 24 days` → `%dh`). To tune rest windows, edit the `rest_days` arrays in `data/roast_guidance.yaml` — both pages update on rebuild.
 
+## Roasted beans photo
+
+`roasted_photo` is a Tina `image` field. Uploads go to `static/imgs/` (configured in `tina/config.ts` media block). Phone uploads work because the project is on Tina Cloud. The single page renders the photo as a `<figure>` right after the headline stats strip, before the plan panel. Capped at 720px display width with `max-width: min(100%, 720px)` — responsive on phones, doesn't dominate on desktop. No multi-resolution `srcset` yet — to add it later, move the Tina media root from `static/` to `assets/` and use Hugo's image pipeline (`resources.GetMatch` + `.Resize`).
+
 ## Bean source
 
 `product_url` (paste the vendor's product page link) and optional `vendor` (human-readable name). The single page renders a "Source" row in the plan panel — uses `vendor` if set, otherwise extracts the URL's host via `replaceRE`. Links open in a new tab with `rel="noopener"`.

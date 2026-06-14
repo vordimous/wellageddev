@@ -31,6 +31,7 @@ total_time:
 why_dropped:
 anything_weird:
 roasted_weight_g:
+roasted_photo:
 tasting_notes:
 rating:
 next_time:
