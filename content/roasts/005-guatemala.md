@@ -48,15 +48,16 @@ time_to_fc: '10:06'
 color_at_fc: 'Light caramel '
 smell_at_fc: Faint toast
 total_time: null
-why_dropped: |-
+why_dropped: ''
+anything_weird: |-
   Pressed P3 after 14:00 min
   Increased time 0:45
-anything_weird: null
+  Blew the leaf blower to cool
 roasted_weight_g: null
 tasting_notes: null
 rating: null
 next_time: null
 roaster: Behmor 2000 AB Plus
-draft: false
+draft: true
 ---
 
