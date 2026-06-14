@@ -27,6 +27,7 @@ playbook: |
 time_to_fc:
 color_at_fc:
 smell_at_fc:
+interventions:
 total_time:
 why_dropped:
 anything_weird:

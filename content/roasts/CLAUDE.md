@@ -82,6 +82,29 @@ A roast playbook directly drives a physical action on a $400 machine using $20+ 
 - Don't reuse a prior roast's playbook structure without checking it against the manual — early playbooks (001–004) were built before we had the manual extracted and contain known errors.
 - Don't copy generic drum-roaster advice (Genuine Origin, Scott Rao, etc.) into a Behmor playbook unless you've verified it applies to a probeless fixed-program machine.
 
+## Repeatability — capture every button press
+
+The `interventions` field is the single most important repeatability tool. Starting settings (profile / weight / batch) are not enough to reproduce a roast — what *makes* the roast is the sequence of mid-roast button presses with their elapsed times. Capture them all:
+
+- The Manual-mode P switch (e.g. `14:00 — P3 (drop to 50%)`)
+- The D button if pressed (e.g. `14:00 — D (drum high)`)
+- Every `+` and `C` time extension with the seconds added
+- The Cool press at drop
+
+Format is one per line, `MM:SS — what you pressed`. Free text after the dash is fine. The page renders it as a monospace block in the Live notes section.
+
+Without this log, "ran on Auto P1, 1 lb, dropped at 18:45" tells you nothing about *when* you switched modes, *when* you added time, or how the cup got where it did. With it, future-you can replicate a good roast or diagnose a bad one.
+
+## Capturing machine details honestly
+
+When pulling info from the Behmor manual into the YAML data:
+
+- **Quote the manual directly** in a `manual_quote` or similar field when the wording matters
+- **Flag contradictions** rather than silently picking one. The manual gives two different drum-speed RPM ranges on different pages; the YAML now states this and treats the absolute values as approximate
+- **Don't invent precision.** If the manual says "high" and "standard" without RPM, capture those names. Don't backfill numbers from forum posts or other machines
+
+This same standard applies to playbook construction — every non-obvious instruction should be traceable to a manual section. See "Building a roast playbook" above.
+
 ## Time fields
 
 `time_to_fc` and `total_time` are **elapsed time** in `mm:ss`. The Behmor displays *countdown* time — recording the countdown values produces a DTR > 40%, which is the immediate signal that elapsed vs countdown got confused. The first batch of roasts hit this; field descriptions in `tina/config.ts` clarify.

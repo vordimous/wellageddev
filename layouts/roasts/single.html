@@ -264,12 +264,13 @@
 {{ end }}
 
 {{/* Live observations — only render if any field is filled */}}
-{{ if or .Params.color_at_fc .Params.smell_at_fc .Params.why_dropped .Params.anything_weird }}
+{{ if or .Params.color_at_fc .Params.smell_at_fc .Params.interventions .Params.why_dropped .Params.anything_weird }}
   <section class="roast-section">
     <h2>Live notes</h2>
     <dl class="roast-live">
       {{ with .Params.color_at_fc }}<dt>Color at FC</dt><dd>{{ . }}</dd>{{ end }}
       {{ with .Params.smell_at_fc }}<dt>Smell at FC</dt><dd>{{ . }}</dd>{{ end }}
+      {{ with .Params.interventions }}<dt>Button log</dt><dd><pre class="roast-interventions">{{ . }}</pre></dd>{{ end }}
       {{ with .Params.why_dropped }}<dt>Why dropped</dt><dd>{{ . | markdownify }}</dd>{{ end }}
       {{ with .Params.anything_weird }}<dt>Anything weird</dt><dd>{{ . | markdownify }}</dd>{{ end }}
     </dl>
@@ -427,6 +428,18 @@
   .roast-live { display: grid; grid-template-columns: max-content 1fr; gap: 0.4em 1em; margin: 0; }
   .roast-live dt { font-weight: 600; opacity: 0.75; }
   .roast-live dd { margin: 0; }
+  .roast-interventions {
+    margin: 0;
+    padding: 0.6em 0.8em;
+    background: var(--nav-bg-color, rgba(127,127,127,0.08));
+    border-left: 3px solid var(--link-color, #888);
+    border-radius: 0 4px 4px 0;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.85em;
+    line-height: 1.45;
+    white-space: pre-wrap;
+    overflow-x: auto;
+  }
 </style>
 
 {{ end }}

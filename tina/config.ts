@@ -289,9 +289,17 @@ const roasts: Collection = {
     },
     {
       type: "string",
+      name: "interventions",
+      label: "Mid-roast button log",
+      ui: { component: "textarea" },
+      description:
+        "What makes a roast repeatable: every Behmor button press, in order, with the elapsed time. Format one per line: 'MM:SS — what you pressed'. Example: '10:21 — P3 (drop to 50% manual)' / '10:21 — D (drum high)' / '12:30 — + extended 0:30' / '13:45 — Cool'. Future-you needs this to replicate a good roast or diagnose a bad one.",
+    },
+    {
+      type: "string",
       name: "total_time",
       label: "Total roast time (mm:ss)",
-      description: "Elapsed from Start to when you hit Cool / dropped.",
+      description: "Elapsed from Start to when you hit Cool / dropped. Cooling cycle NOT included.",
     },
     {
       type: "string",

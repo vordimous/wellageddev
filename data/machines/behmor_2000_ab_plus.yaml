@@ -152,9 +152,10 @@ temperature_buttons:
 
 drum_speed:
   button: D
-  standard_rpm: 8
-  high_rpm: 16
-  note: "D button toggles drum rotation speed. Manual recommends combining with P3 after FC (pro sample roasting technique) for even tumbling during development."
+  states: ["standard", "high"]
+  toggle_behavior: "Press D once to switch from standard → high (or back). Pairs with P3 in the Pro Sample Roasting technique."
+  manual_quote: "\"Button D - drum / cylinder motor speed toggle from standard to high.\" The manual states this on two pages with two different RPM ranges (\"16 rpm → 32 rpm\" in one recap, \"8 rpm → 16 rpm\" in another). Treat absolute RPM as approximate; what's reliable is the toggle behavior and its role in the pro technique."
+  use_with_p3: "After FC + 10-15s, the manual's pro technique says press P3 then D — dropping element power to 50% while raising drum tumbling rate. Beans get more even surface contact at the lower sustained power."
 
 beginner_guidance:
   - "Never start above ¼ lb when first learning the roaster."

@@ -95,12 +95,13 @@ playbook: >
 time_to_fc: '10:06'
 color_at_fc: 'Light caramel '
 smell_at_fc: Faint toast
+interventions: |-
+  14:00 — P3 (drop to 50% manual; ~3:54 after FC, much later than the pro technique's 10–15s)
+  14:00 — + extended 0:45
+  18:45 — Cool
 total_time: '18:45'
 why_dropped: ''
-anything_weird: |-
-  Pressed P3 after 14:00 min
-  Increased time 0:45
-  Blew the leaf blower to cool
+anything_weird: Used a leaf blower to assist the cool cycle
 roasted_weight_g: 415
 tasting_notes: null
 rating: null
