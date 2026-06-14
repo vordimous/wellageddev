@@ -48,7 +48,9 @@ time_to_fc: '10:06'
 color_at_fc: 'Light caramel '
 smell_at_fc: Faint toast
 total_time: null
-why_dropped: 'Pressed P3 after 14:00 min'
+why_dropped: |-
+  Pressed P3 after 14:00 min
+  Increased time 0:45
 anything_weird: null
 roasted_weight_g: null
 tasting_notes: null
