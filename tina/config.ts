@@ -129,7 +129,7 @@ const roasts: Collection = {
   format: "md",
   // Skip the _TEMPLATE.md scaffold and the methods reference page — they
   // aren't roast entries.
-  match: { exclude: "{_*,methods}" },
+  match: { exclude: "{_*,methods,behmor-*}" },
   description:
     "Coffee roast log. Phone-friendly: scroll top→bottom in the order you actually fill fields during a roast.",
   defaultItem: () => ({
@@ -139,7 +139,7 @@ const roasts: Collection = {
     weight_setting: "½ lb",
     tags: ["roast"],
     draft: true,
-    roaster: "Behmor 1600 Plus",
+    roaster: "Behmor 2000 AB Plus",
   }),
   fields: [
     // ----- TITLE & DATE -----
@@ -199,15 +199,16 @@ const roasts: Collection = {
     {
       type: "string",
       name: "profile",
-      label: "Behmor profile",
-      description: "P1–P5. P5 is the default for almost all batches.",
+      label: "Starting profile",
+      description:
+        "P1–P5 = power levels (0/25/50/75/100%). Start pre-FC on P4 or automatic; drop to P3 (50%) at first crack. P4/P5 not recommended after FC — risk scorching.",
     },
     {
       type: "string",
       name: "weight_setting",
       label: "Weight setting",
       description:
-        "Match the actual charge (½ lb for 227 g). Overshoot one class only for tiny (~¼ lb) charges.",
+        "Sets the default program time: ¼ lb = 8:30, ½ lb = 12:00, 1 lb = 18:00. Match to actual charge.",
     },
     {
       type: "number",
@@ -343,7 +344,8 @@ const roasts: Collection = {
       type: "string",
       name: "roaster",
       label: "Roaster",
-      description: "Defaults to Behmor 1600 Plus. Change only if you switch machines.",
+      description:
+        "Defaults to Behmor 2000 AB Plus. Drives the machine-specific data panel on each roast page (file at data/machines/<key>.yaml).",
     },
     {
       type: "boolean",

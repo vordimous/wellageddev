@@ -9,8 +9,11 @@
       {{ .Content }}
 
       <p class="roast-methods-link">
-        <a href="{{ "/roasts/methods/" | relURL }}">→ Methods &amp; reference</a>
-        <span class="roast-methods-hint">how the numbers below are computed</span>
+        <a href="{{ "/roasts/methods/" | relURL }}">→ Methods &amp; formulas</a>
+        <span class="roast-methods-hint">how the numbers are computed</span>
+        <br>
+        <a href="{{ "/roasts/behmor-2000ab/" | relURL }}">→ Behmor 2000 AB Plus</a>
+        <span class="roast-methods-hint">machine cheat sheet</span>
       </p>
 
       {{ $roasts := where .Pages "Section" "roasts" }}

@@ -1,18 +1,31 @@
-<table class="roast-ref">
-  <thead>
-    <tr>
-      <th>Actual charge</th>
-      <th>Weight button</th>
-      <th>Why</th>
-    </tr>
-  </thead>
-  <tbody>
-    {{ range .Site.Data.roast_guidance.behmor_weight_settings }}
+{{/* Renders the weight-setting table for a specific machine.
+     Usage: {{< roast-behmor-weights >}} (defaults to behmor_2000_ab_plus)
+            {{< roast-behmor-weights machine="behmor_2000_ab_plus" >}} */}}
+{{ $machineKey := .Get "machine" | default "behmor_2000_ab_plus" }}
+{{ $machine := index .Site.Data.machines $machineKey }}
+{{ if $machine }}
+  <table class="roast-ref">
+    <thead>
       <tr>
-        <td>{{ .label }}</td>
-        <td><strong>{{ .setting }}</strong></td>
-        <td>{{ .note }}</td>
+        <th>Actual charge</th>
+        <th>Weight button</th>
+        <th>Program time</th>
+        <th>75% shutoff at</th>
+        <th>Why</th>
       </tr>
-    {{ end }}
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      {{ range $machine.weight_settings }}
+        <tr>
+          <td>{{ .label }}</td>
+          <td><strong>{{ .setting }}</strong></td>
+          <td>{{ .program_time }}</td>
+          <td>{{ .shutoff_elapsed }} elapsed</td>
+          <td>{{ .note }}</td>
+        </tr>
+      {{ end }}
+    </tbody>
+  </table>
+{{ else }}
+  <p><em>No data for machine: <code>{{ $machineKey }}</code></em></p>
+{{ end }}

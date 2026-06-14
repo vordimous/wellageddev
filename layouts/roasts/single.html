@@ -7,18 +7,27 @@
   {{ partial "single/meta-tags.html" . }}
 </div>
 
-{{/* ---------- Look up reference values from data/roast_guidance.yaml ---------- */}}
+{{/* ---------- Universal roast levels from data/roast_guidance.yaml ---------- */}}
 {{ $targetKey := lower (.Params.target_level | default "") }}
 {{ $level := index (where .Site.Data.roast_guidance.levels "name" $targetKey) 0 }}
 
-{{/* ---------- Look up Behmor recommended setting from charge size ---------- */}}
+{{/* ---------- Machine-specific data: derive key from roaster field ---------- */}}
+{{/* "Behmor 2000 AB Plus" → lower → replace non-alnum → "behmor_2000_ab_plus" */}}
+{{ $machineKey := .Params.roaster | default "" | lower | replaceRE `[^a-z0-9]+` "_" }}
+{{ $machine := index .Site.Data.machines $machineKey }}
+
+{{/* ---------- Look up recommended weight setting for this machine + charge ---------- */}}
 {{ $g := .Params.batch_size_g | default 0 }}
-{{ $behmor := "" }}
-{{ $behmorNote := "" }}
-{{ range .Site.Data.roast_guidance.behmor_weight_settings }}
-  {{ if and (ge $g .charge_min) (lt $g .charge_max) }}
-    {{ $behmor = .setting }}
-    {{ $behmorNote = .note }}
+{{ $weightRec := "" }}
+{{ $weightNote := "" }}
+{{ $shutoffAt := "" }}
+{{ if $machine }}
+  {{ range $machine.weight_settings }}
+    {{ if and (ge $g .charge_min) (lt $g .charge_max) }}
+      {{ $weightRec = .setting }}
+      {{ $weightNote = .note }}
+      {{ $shutoffAt = .shutoff_elapsed }}
+    {{ end }}
   {{ end }}
 {{ end }}
 
@@ -70,10 +79,16 @@
         </dd>
       </div>
     {{ end }}
-    {{ if $behmor }}
-      <div><dt>Recommended setting</dt><dd>{{ $behmor }} <span class="muted">— {{ $behmorNote }}</span></dd></div>
+    {{ if $weightRec }}
+      <div><dt>Recommended setting</dt><dd>{{ $weightRec }} <span class="muted">— {{ $weightNote }}</span></dd></div>
+    {{ end }}
+    {{ if $shutoffAt }}
+      <div><dt>75% shutoff at</dt><dd>{{ $shutoffAt }} elapsed</dd></div>
     {{ end }}
   </div>
+  {{ if and $machine $machine.reference_url }}
+    <p class="roast-facts-note">Machine cheat sheet: <a href="{{ $machine.reference_url | relURL }}">{{ $machine.name }}</a></p>
+  {{ end }}
 
   {{ if $level }}
     <h3 class="roast-facts-subtitle">Targets for <em>{{ .Params.target_level }}</em> level</h3>
@@ -84,8 +99,11 @@
       <div class="span2"><dt>Flavor goal</dt><dd>{{ $level.flavor }}</dd></div>
     </div>
     <p class="roast-facts-note">Targets sourced from <a href="{{ "/roasts/methods/" | relURL }}">methods reference</a>.</p>
-    {{ with $level.behmor_warning }}
-      <p class="roast-warning">⚠ {{ . }}</p>
+    {{/* Machine-specific dark-roast warning, shown only for dark/medium-dark targets */}}
+    {{ if and $machine (or (eq $targetKey "dark") (eq $targetKey "medium-dark")) }}
+      {{ with $machine.safety.dark_roast_warning }}
+        <p class="roast-warning">⚠ {{ . }}</p>
+      {{ end }}
     {{ end }}
   {{ end }}
 

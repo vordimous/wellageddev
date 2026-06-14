@@ -1,0 +1,32 @@
+{{/* Renders the P1–P5 power-level table for a machine.
+     Usage: {{< roast-behmor-profiles >}} (defaults to behmor_2000_ab_plus)
+            {{< roast-behmor-profiles machine="behmor_2000_ab_plus" >}} */}}
+{{ $machineKey := .Get "machine" | default "behmor_2000_ab_plus" }}
+{{ $machine := index .Site.Data.machines $machineKey }}
+{{ if $machine }}
+  <table class="roast-ref">
+    <thead>
+      <tr>
+        <th>Profile</th>
+        <th>Power</th>
+        <th>Use</th>
+        <th>OK after FC?</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{ range $machine.profiles }}
+        <tr>
+          <td><strong>{{ .id }}</strong></td>
+          <td>{{ .power_pct }}%</td>
+          <td>
+            {{ .use }}
+            {{ with .warning }}<br><span style="color:#856404;">⚠ {{ . }}</span>{{ end }}
+          </td>
+          <td>{{ if .post_fc_ok }}✓{{ else }}✗{{ end }}</td>
+        </tr>
+      {{ end }}
+    </tbody>
+  </table>
+{{ else }}
+  <p><em>No data for machine: <code>{{ $machineKey }}</code></em></p>
+{{ end }}

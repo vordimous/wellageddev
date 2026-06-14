@@ -32,6 +32,6 @@ roasted_weight_g:
 tasting_notes:
 rating:
 next_time:
-roaster: Behmor 1600 Plus
+roaster: Behmor 2000 AB Plus
 draft: true
 ---

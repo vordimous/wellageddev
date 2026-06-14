@@ -15,6 +15,8 @@ green_weight_g: 455
 ambient_f: 91
 ambient_rh: 44
 bean_notes: |
+  **Note — wrong model:** The playbook for this roast was built for the Behmor 1600 Plus. The machine used was the Behmor 2000 AB Plus. Roast data is as logged; the playbook is a historical record, not a recommendation.
+
   - **Maracaturra** beans are large and low-density — they move fast through development; watch FC closely and don't miss the window.
   - Flavor goal beyond the level-default: caramel with soft fruit — leave some sweetness, don't push to dark.
 playbook: |

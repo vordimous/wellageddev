@@ -14,6 +14,8 @@ green_weight_g: 263
 ambient_f: 91
 ambient_rh: 44
 bean_notes: |
+  **Note — wrong model:** The playbook for this roast was built for the Behmor 1600 Plus. The machine used was the Behmor 2000 AB Plus. P5 was run throughout including post-FC, which the 2000AB manual flags as not recommended after first crack. Roast data is as logged; the playbook is a historical record of what was planned, not a recommendation.
+
   - First of four — most forgiving bean, ordered first to season the drum.
   - Flavor goal beyond the level-default: chocolate / nutty / sweet — pull development long enough to round out, but don't push into roasty.
 playbook: |

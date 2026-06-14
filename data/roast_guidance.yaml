@@ -1,12 +1,13 @@
-# Roast guidance reference values.
-# Single source of truth — consumed by the single-page expected-range panel
-# AND by the public /roasts/methods/ documentation page so they can't drift.
+# Architecture docs: content/roasts/CLAUDE.md
 #
-# Sources (industry consensus, not Behmor-specific):
-#   - Genuine Origin, "Roast Profiles 101" (target DTR 16–20% across origins)
+# Universal roast science — model-agnostic.
+# Machine-specific guidance (profiles, weight settings, program times,
+# safety features) lives in data/machines/<model_key>.yaml.
+#
+# Sources:
+#   - Genuine Origin, "Roast Profiles 101" (DTR 16–20% target across origins)
 #   - Scott Rao, "The Coffee Roaster's Companion" (DTR > ~24% risks baking)
 #   - Sweet Maria's roast color guide (loss % per level)
-#   - Bodhi Leaf, "Behmor 1600 Plus Roasting Guide"
 #
 # These are starting points. Calibrate against your own logged batches.
 
@@ -36,29 +37,6 @@ levels:
     dtr_pct: [20, 24]
     drop: "Rolling SC, before oil floods the surface"
     flavor: "Smoke / spice / bitter, body dominant"
-    behmor_warning: "The Behmor 1600 Plus manual warns against Vienna / French / Italian dark roasts on this machine — oily beans accumulating in the chaff tray are a fire risk. Stop before a heavy oil sheen develops."
-
-# Behmor 1600 Plus: recommended weight-button setting per actual charge.
-# The Behmor manual recommends matching the setting to the charge.
-# For very small charges (¼ lb), overshooting by ONE class is a defensible
-# tweak to keep the roast moving without scorching — but is forum wisdom,
-# not in the official guide. Treat it as experimental.
-behmor_weight_settings:
-  - label: "¼ lb (≈113 g)"
-    charge_min: 70
-    charge_max: 150
-    setting: "½ lb"
-    note: "One class over matched. Forum-suggested for very small charges to avoid stalling. The official guide says use the matched (¼ lb) setting; try both."
-  - label: "½ lb (≈227 g)"
-    charge_min: 150
-    charge_max: 320
-    setting: "½ lb"
-    note: "Matched. Manual's intended setup for this batch size."
-  - label: "1 lb (≈454 g)"
-    charge_min: 320
-    charge_max: 500
-    setting: "1 lb"
-    note: "Matched. Max-comfort batch on the 1600 Plus."
 
 formulas:
   - name: Weight loss %
@@ -69,4 +47,4 @@ formulas:
     purpose: "How long the bean spent post-first-crack. Drives sweetness and body."
   - name: DTR (development time ratio) %
     formula: "development_time / total_time × 100"
-    purpose: "Share of the roast spent in development. Genuine Origin targets 16–20% across origins; > ~24% risks baked / flat cup (Rao)."
+    purpose: "Share of the roast in development. Genuine Origin targets 16–20%; > ~24% risks baked / flat cup (Rao)."

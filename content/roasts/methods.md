@@ -21,16 +21,18 @@ Two ambient readings logged at roast start — not used in any formula today, bu
 
 The two effects can partially cancel: a hot, humid day (91°F / 65% RH) will pull FC earlier via heat but push it later via moisture. Once you have 10+ roasts logged, compare FC times against these readings to see which variable dominates on your machine in your space.
 
-## The four raw inputs
+## Raw inputs
 
-Punch these into Tina; everything else is derived.
+These are logged per roast. Everything in the "Measured" panel on a roast page is derived from them — no double-entry, no drift.
 
-| Field | What it is | When to fill |
+| Field | What it is | When to log |
 | --- | --- | --- |
 | `green_weight_g` | Weighed grams before the roast | Pre-roast |
 | `roasted_weight_g` | Weighed grams after cooling | Post-roast |
 | `time_to_fc` (mm:ss) | Elapsed time from Start to the first audible pop | At first crack |
 | `total_time` (mm:ss) | Elapsed time from Start to when you hit Cool | At drop |
+
+The two ambient readings above (`ambient_f`, `ambient_rh`) are also raw inputs, but they don't feed any formula yet — they're recorded for pattern-finding once batch history grows.
 
 ## Derived values
 
@@ -48,41 +50,23 @@ For a roast with `green_weight_g: 227`, `roasted_weight_g: 193`, `time_to_fc: 10
 
 ## Target level reference
 
-These ranges drive the "Expected" column in the panel. They are starting points pulled from industry sources, not Behmor-specific. After 10–15 logged batches, calibrate against your own data and edit the values in [`data/roast_guidance.yaml`](https://github.com/) — every page on the site picks up the change automatically.
+These ranges drive the "Expected" column in the panel. They are industry-consensus starting points and apply to any roaster — calibrate against your own batches over time.
 
 {{< roast-levels >}}
 
-## Behmor 1600 Plus weight setting
+## Machine-specific guidance
 
-The "weight" button on the Behmor sets the heating program. Match it to your actual charge — except very small batches, where overshooting one class keeps the roast from stalling.
+This page is intentionally machine-agnostic. For machine-specific guidance — power profiles, weight-setting program times, preheat sequences, safety features — see the page for your roaster:
 
-{{< roast-behmor-weights >}}
-
-## Safety — dark roasts on the Behmor 1600 Plus
-
-The Behmor 1600 Plus manual **explicitly warns against Vienna, French, and Italian dark roasts** on this machine. Oily beans shed oil into the chaff tray; under repeated dark-roast heat, that residue can ignite. Stop the roast before a heavy oil sheen develops on the bean surface. The "dark" row in the level reference above is included for completeness — it is not a target this machine is built for.
-
-## Behmor startup sequence
-
-The Behmor 1600 Plus requires a short preheat **before loading beans**, and has a mid-roast safety cutoff you must acknowledge.
-
-**Preheat (first roast only):**
-With the drum *out*, select 1 lb + any profile, press START, let run for **1 min 30 sec**, then cancel. This warms the chamber. For back-to-back roasts the drum is already hot — skip the preheat and cool between batches instead (see playbook for each roast).
-
-**75% safety shutoff (every roast):**
-At 75% through the program, the display counts down from 0:30. You must press START to continue. If you miss it, the machine switches to cool mode immediately — mid-roast. Stay within earshot of the machine at all times.
-
-## Profile selection
-
-Profile P5 is the most aggressive and the default for almost all home batches on the 1600 Plus. P1–P4 trade total energy for longer drum time; useful only if your roasts are coming in too fast even at the matched weight setting.
+- [Behmor 2000 AB Plus](/roasts/behmor-2000ab/) — current machine
 
 ## Sources
 
-- Bodhi Leaf — [Behmor 1600 Plus Roasting Guide](https://www.bodhileafcoffee.com/pages/behmor-1600-plus-roasting-guide)
-- Not So Ancient Chinese Secrets — [How to Home-Roast with the Behmor 1600 Plus](https://www.notsoancientchinesecrets.com/home-roast-coffee-behmor-1600plus/)
-- Genuine Origin — [Roast Profiles 101](https://blog.genuineorigin.com/2025/11/guide-to-roast-profiles/)
+- Genuine Origin — [Roast Profiles 101](https://blog.genuineorigin.com/2025/11/guide-to-roast-profiles/) (DTR 16–20% target across origins)
+- Scott Rao — *The Coffee Roaster's Companion* (DTR > ~24% risks baking)
+- Sweet Maria's — roast color and loss percentage guide
 - Green Coffee Collective — [Types of Coffee Roasts](https://greencoffeecollective.com/blogs/learn/types-of-coffee-roasts)
 
 ## Caveats
 
-Most published targets — the 8–9 min FC benchmark, DTR ranges, the temperature thresholds — come from drum roasters with bean-probe feedback. The Behmor 1600 Plus runs a fixed time/heat program and is roasted by ear. Treat the numbers as the *shape* you're aiming for, not setpoints to dial in directly. The reference values on this page get more honest the more of your own batches you log.
+Most published targets — the 8–9 min FC benchmark, DTR ranges, the temperature thresholds — come from drum roasters with bean-probe feedback. Probeless home roasters like the Behmor run a fixed time/power program and are roasted by ear. Treat the numbers as the *shape* you're aiming for, not setpoints to dial in directly. The reference values on this page get more honest the more of your own batches you log.

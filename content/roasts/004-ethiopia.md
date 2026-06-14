@@ -12,23 +12,22 @@ batch_size_g: 227
 profile: P5
 weight_setting: ½ lb
 green_weight_g:
-ambient_f: 91
-ambient_rh: 44
+ambient_f:
+ambient_rh:
 bean_notes: |
   - Last of four — most delicate. Drum is hot and seasoned at this point; FC will come earlier than batches 1–3.
   - Kayon Mountain Taaroo is known for jasmine and stone-fruit. Flavor goal beyond the level-default: protect the florals and bright acidity — don't chase development.
 playbook: |
-  Ambient ~91°F, drum at peak heat from three prior roasts. No preheat. **This is the delicate one** — protect the florals. The whole game is "drop early."
+  Roast this one **first or second** in the order, not last. It's the most delicate bean and suffers most from a hot, seasoned drum. Ideal: first roast of a fresh session on a cooler day, or after only one other batch.
 
-  1. Let drum cool **10–12 min**, door wide open. Empty chaff tray thoroughly — most accumulated chaff of the session.
-  2. Weigh 227 g green into drum.
-  3. Insert drum. Select **P5 / ½ lb**, press START. Start phone timer. Chopstick in door immediately.
-  4. **75% shutoff — critical:** press START when the display counts down 0:30 or it auto-cools. Especially important here — auto-cool before drop would ruin this roast.
-  5. **Listen for FC** — could be as early as 8–10 min today. Mark time-to-FC the *instant* you hear the first pop.
-  6. **Drop trigger:** 15–45s after FC starts. **Before** any oil sheen, before FC even fully rolls. Hit **C** — err early.
-  7. Cool cycle ~10 min.
-  8. Weigh roasted. Expect ~13–15% loss; above 16% you pushed past light-medium.
-  9. Rest 24h minimum — Ethiopians especially benefit from full rest before tasting.
+  1. Preheat machine 1:30 (drum out) if roasting this first.
+  2. Weigh green into drum. Check process on the bag — fill that field before starting.
+  3. Insert drum. Select profile and weight setting per batch size, press START. Phone timer running. Chopstick in door immediately — FC comes fast on Ethiopians.
+  4. **75% shutoff — critical:** press START when display counts down 0:30.
+  5. **Listen for FC** the instant it starts. Mark time-to-FC.
+  6. **Drop trigger:** 15–45s after FC starts. **Before** any oil sheen. Err early — you can always go a touch darker next time.
+  7. Cool ~10 min. Weigh roasted. Expect ~13–15% loss for light-medium.
+  8. Rest 24h minimum before tasting.
 time_to_fc:
 color_at_fc:
 smell_at_fc:
@@ -39,5 +38,5 @@ roasted_weight_g:
 tasting_notes:
 rating:
 next_time:
-roaster: Behmor 1600 Plus
+roaster: Behmor 2000 AB Plus
 ---

@@ -15,6 +15,8 @@ green_weight_g: 454
 ambient_f: 91
 ambient_rh: 44
 bean_notes: |
+  **Note — wrong model:** The playbook for this roast was built for the Behmor 1600 Plus. The machine used was the Behmor 2000 AB Plus. Roast data is as logged; the playbook is a historical record, not a recommendation.
+
   - Huehue is high-grown and dense; expect a slightly later FC than the Brazil at the same heat setting.
   - Flavor goal beyond the level-default: cocoa with citrus brightness and a clean finish — don't bake the acidity flat.
 playbook: |

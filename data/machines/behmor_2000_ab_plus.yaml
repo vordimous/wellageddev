@@ -1,0 +1,95 @@
+# Architecture docs: content/roasts/CLAUDE.md
+#
+# Behmor 2000 AB Plus — machine-specific roasting guidance.
+# Sourced from:
+#   - Behmor Quick Start Guide: https://behmor.com/knowledge-base/behmor-roaster-quick-start-guide/
+#   - Behmor Control Panel & Auto-Safety Shutoff: https://behmor.com/knowledge-base/behmor-roaster-control-panel-features-auto-safety-shutoff/
+#   - 2000AB 120V Operation Manual V28 (Nov 2023): http://www.behmor.com/docs/Behmor%202000AB%20120v%20Operation%20Manual%20V28%2011.19.2023%20BW%20Inspired.pdf
+
+name: Behmor 2000 AB Plus
+# URL of the in-site reference page for this machine.
+reference_url: "/roasts/behmor-2000ab/"
+manual_url: "http://www.behmor.com/docs/Behmor%202000AB%20120v%20Operation%20Manual%20V28%2011.19.2023%20BW%20Inspired.pdf"
+knowledge_base_url: "https://behmor.com/knowledge-base/"
+
+# P1–P5 are POWER LEVELS, not automated profiles.
+# Start pre-FC on automatic or P4; drop to P3 at first crack.
+profiles:
+  - id: P1
+    power_pct: 0
+    label: "0% — drum only"
+    use: "Rotation with no heat. Use to stall or cool slowly without hitting C."
+    post_fc_ok: true
+  - id: P2
+    power_pct: 25
+    label: "25% — very gentle"
+    use: "Light drying phase or very slow finishing."
+    post_fc_ok: true
+  - id: P3
+    power_pct: 50
+    label: "50% — development"
+    use: "Recommended post-FC setting. Drop to P3 at first crack and let exothermic momentum finish the roast."
+    post_fc_ok: true
+  - id: P4
+    power_pct: 75
+    label: "75% — drying/Maillard"
+    use: "Pre-FC drying and Maillard phase only."
+    post_fc_ok: false
+    warning: "Not recommended after first crack."
+  - id: P5
+    power_pct: 100
+    label: "100% — full power"
+    use: "Early drying phase only. Drop to P3 at FC."
+    post_fc_ok: false
+    warning: "Not recommended after first crack — risks scorching beans and sensor damage."
+
+# Weight button sets DEFAULT PROGRAM TIME, not heat intensity.
+# The 75% safety shutoff fires at 75% of this default time.
+weight_settings:
+  - label: "¼ lb (≈113 g)"
+    charge_min: 70
+    charge_max: 150
+    setting: "¼ lb"
+    program_time: "8:30"
+    shutoff_elapsed: "6:22"
+    shutoff_remaining: "2:08"
+    note: "Official beginner starting point. Manual says never start above ¼ lb until familiar with the machine."
+  - label: "½ lb (≈227 g)"
+    charge_min: 150
+    charge_max: 320
+    setting: "½ lb"
+    program_time: "12:00"
+    shutoff_elapsed: "9:00"
+    shutoff_remaining: "3:00"
+    note: "Standard batch. 75% shutoff at 9 min elapsed — may coincide with first crack. Stay close."
+  - label: "1 lb (≈454 g)"
+    charge_min: 320
+    charge_max: 500
+    setting: "1 lb"
+    program_time: "18:00"
+    shutoff_elapsed: "13:30"
+    shutoff_remaining: "4:30"
+    note: "Full batch. More thermal momentum — harder to stop development at the right moment."
+
+preheat:
+  duration_sec: 90
+  instruction: "Weigh beans into drum but keep drum OUT of machine. Select weight setting + profile, press START. At 1:30 elapsed, open door and insert loaded drum. Program continues from where it left off. Skip for back-to-back roasts — chamber is already hot."
+  timer_reads_at_insert:
+    quarter_lb: "7:00"
+    half_lb: "10:30"
+    one_lb: "16:30"
+
+safety:
+  shutoff_name: "Err 7"
+  shutoff_trigger: "75% through program time"
+  shutoff_action: "Press START within 0:30 countdown or machine enters cool mode"
+  dark_roast_warning: "The Behmor 2000 AB Plus manual warns against Vienna / French / Italian dark roasts — oily beans accumulate in the chaff tray and are a fire risk. Do not roast past a heavy oil sheen."
+
+temperature_buttons:
+  A: "Exhaust channel temperature (available once exhaust fan activates mid-roast)"
+  B: "Chamber wall temperature"
+  note: "Neither A nor B reads bean temperature. Use as relative progress indicators only."
+
+drum_speed:
+  button: D
+  note: "D button adjusts drum rotation speed. Higher speed = more even tumbling, slightly lower peak surface temp. Lower speed = more surface contact heat. Adjust post-FC if needed."
