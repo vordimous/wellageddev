@@ -57,6 +57,77 @@
   {{ end }}
 {{ end }}
 
+{{/* ---------- Compute ready-to-drink window from roast date + level rest_days ---------- */}}
+{{ $hasMeasurements := or $lossPct $dtrPct }}
+{{ $readyText := "" }}
+{{ $readyStatus := "" }}
+{{ $readyDetail := "" }}
+{{ if and $hasMeasurements $level $level.rest_days }}
+  {{ $minDays := index $level.rest_days 0 }}
+  {{ $maxDays := index $level.rest_days 1 }}
+  {{ $minDur := time.ParseDuration (printf "%dh" (mul 24 $minDays)) }}
+  {{ $maxDur := time.ParseDuration (printf "%dh" (mul 24 $maxDays)) }}
+  {{ $readyFrom := .Date.Add $minDur }}
+  {{ $readyTo := .Date.Add $maxDur }}
+  {{ $sameYear := eq ($readyFrom.Format "2006") ($readyTo.Format "2006") }}
+  {{ if $sameYear }}
+    {{ $readyText = printf "%s – %s" ($readyFrom.Format "Jan 2") ($readyTo.Format "Jan 2") }}
+  {{ else }}
+    {{ $readyText = printf "%s – %s" ($readyFrom.Format "Jan 2, 2006") ($readyTo.Format "Jan 2, 2006") }}
+  {{ end }}
+  {{ $now := now }}
+  {{ if lt $now $readyFrom }}
+    {{ $readyStatus = "resting" }}
+    {{ $daysLeft := int (div (sub $readyFrom.Unix $now.Unix) 86400) }}
+    {{ $readyDetail = printf "ready in ~%d day%s" $daysLeft (cond (eq $daysLeft 1) "" "s") }}
+  {{ else if le $now $readyTo }}
+    {{ $readyStatus = "ready" }}
+    {{ $readyDetail = "in peak window" }}
+  {{ else }}
+    {{ $readyStatus = "past-peak" }}
+    {{ $daysPast := int (div (sub $now.Unix $readyTo.Unix) 86400) }}
+    {{ $readyDetail = printf "past peak by ~%d day%s" $daysPast (cond (eq $daysPast 1) "" "s") }}
+  {{ end }}
+{{ end }}
+
+{{/* ---------- Headline stats strip ---------- */}}
+{{ if $hasMeasurements }}
+<section class="roast-headline">
+  <div class="roast-headline-stats">
+    <div class="hstat">
+      <span class="hstat-label">FC</span>
+      <span class="hstat-value">{{ with $fcStr }}{{ . }}{{ else }}—{{ end }}</span>
+    </div>
+    <div class="hstat">
+      <span class="hstat-label">Total</span>
+      <span class="hstat-value">{{ with $totalStr }}{{ . }}{{ else }}—{{ end }}</span>
+    </div>
+    <div class="hstat">
+      <span class="hstat-label">Dev</span>
+      <span class="hstat-value">{{ with $devStr }}{{ . }}{{ else }}—{{ end }}</span>
+    </div>
+    <div class="hstat">
+      <span class="hstat-label">DTR</span>
+      <span class="hstat-value">{{ if $dtrPct }}{{ $dtrPct }}%{{ else }}—{{ end }}</span>
+    </div>
+    <div class="hstat">
+      <span class="hstat-label">Loss</span>
+      <span class="hstat-value">{{ if $lossPct }}{{ $lossPct }}%{{ else }}—{{ end }}</span>
+    </div>
+  </div>
+  {{ if $readyText }}
+    <div class="roast-ready">
+      <div class="roast-ready-main">
+        <span class="hstat-label">Ready to drink</span>
+        <span class="hstat-value">{{ $readyText }}</span>
+        <span class="roast-status roast-status-{{ $readyStatus }}">{{ $readyStatus | humanize }}</span>
+      </div>
+      <div class="roast-ready-detail">{{ $readyDetail }}</div>
+    </div>
+  {{ end }}
+</section>
+{{ end }}
+
 {{/* ---------- Roast plan panel ---------- */}}
 <section class="roast-facts">
   <h2 class="roast-facts-title">Roast plan</h2>
@@ -212,6 +283,64 @@
 {{ partial "single/pagination.html" . }}
 
 <style>
+  .roast-headline {
+    margin: 1em 0 1.5em;
+    padding: 0.9em 1.1em;
+    background: var(--nav-bg-color, rgba(127,127,127,0.08));
+    border: 1px solid var(--table-border-color, #ddd);
+    border-radius: 8px;
+  }
+  .roast-headline-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 0.5em 1.25em;
+    margin: 0;
+  }
+  .hstat { display: flex; flex-direction: column; gap: 0.15em; }
+  .hstat-label {
+    font-size: 0.7em;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--post-info-color, #777);
+    font-weight: 600;
+  }
+  .hstat-value {
+    font-size: 1.35em;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    line-height: 1.1;
+  }
+  .roast-ready {
+    margin-top: 0.85em;
+    padding-top: 0.85em;
+    border-top: 1px solid var(--hr-color, rgba(127,127,127,0.2));
+    display: flex;
+    flex-direction: column;
+    gap: 0.2em;
+  }
+  .roast-ready-main {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.6em;
+  }
+  .roast-ready-detail {
+    font-size: 0.85em;
+    color: var(--post-info-color, #777);
+  }
+  .roast-status {
+    display: inline-block;
+    padding: 0.15em 0.65em;
+    border-radius: 999px;
+    font-size: 0.75em;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .roast-status-resting   { background: #fff3cd; color: #856404; }
+  .roast-status-ready     { background: #c8e6c9; color: #1b5e20; }
+  .roast-status-past-peak { background: #f8d7da; color: #721c24; }
+
   .roast-facts {
     margin: 1.5em 0 2em;
     padding: 1em 1.25em;

@@ -48,6 +48,16 @@ For a roast with `green_weight_g: 227`, `roasted_weight_g: 193`, `time_to_fc: 10
 - **Development time:** 12:45 − 10:30 = **2:15**
 - **DTR:** 135s / 765s × 100 = **17.6%**
 
+## Resting / ready-to-drink window
+
+Fresh-roasted coffee needs to degas before it tastes right. CO₂ in the beans interferes with extraction; until enough has escaped, espresso pulls fast and brewed coffee tastes flat or sour. Darker roasts shed CO₂ faster than light roasts (longer Maillard means more porous structure).
+
+Each level in the reference table has a `rest_days` range used by every roast page to compute a **Ready to drink** window from the roast date. The single-page panel then compares today against that window and shows a status pill:
+
+- **Resting** — still degassing; tasting now will be inconclusive
+- **Ready** — in the peak window; brew and rate
+- **Past peak** — beans are still drinkable for weeks, but flavors will be muted
+
 ## Target level reference
 
 These ranges drive the "Expected" column in the panel. They are industry-consensus starting points and apply to any roaster — calibrate against your own batches over time.

@@ -8,6 +8,7 @@
 #   - Genuine Origin, "Roast Profiles 101" (DTR 16–20% target across origins)
 #   - Scott Rao, "The Coffee Roaster's Companion" (DTR > ~24% risks baking)
 #   - Sweet Maria's roast color guide (loss % per level)
+#   - Sweet Maria's resting / degassing guide + James Hoffmann's resting video (rest_days per level)
 #
 # These are starting points. Calibrate against your own logged batches.
 
@@ -15,26 +16,31 @@ levels:
   - name: light
     loss_pct: [12, 14]
     dtr_pct: [16, 19]
+    rest_days: [10, 14]
     drop: "15–45s after FC starts, before any oil sheen"
     flavor: "Bright acidity, floral/fruit forward, origin-distinct"
   - name: light-medium
     loss_pct: [13, 15]
     dtr_pct: [17, 20]
+    rest_days: [8, 12]
     drop: "30–60s into development, before FC fully winds down"
     flavor: "Balanced acidity, sweetness emerging, origin still legible"
   - name: medium
     loss_pct: [14, 16]
     dtr_pct: [18, 22]
+    rest_days: [7, 10]
     drop: "End of FC through 1:30–2:30 of development, before SC"
     flavor: "Caramel / cocoa, balanced body, low acidity"
   - name: medium-dark
     loss_pct: [16, 18]
     dtr_pct: [19, 23]
+    rest_days: [5, 8]
     drop: "First few snaps of second crack"
     flavor: "Roasty notes appearing, body forward, less origin character"
   - name: dark
     loss_pct: [18, 20]
     dtr_pct: [20, 24]
+    rest_days: [3, 7]
     drop: "Rolling SC, before oil floods the surface"
     flavor: "Smoke / spice / bitter, body dominant"
 

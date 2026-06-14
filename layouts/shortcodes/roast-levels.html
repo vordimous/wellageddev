@@ -4,6 +4,7 @@
       <th>Level</th>
       <th>Weight loss %</th>
       <th>DTR %</th>
+      <th>Rest (days)</th>
       <th>Drop trigger</th>
       <th>Flavor profile</th>
     </tr>
@@ -14,6 +15,7 @@
         <td><strong>{{ .name }}</strong></td>
         <td>{{ index .loss_pct 0 }}–{{ index .loss_pct 1 }}%</td>
         <td>{{ index .dtr_pct 0 }}–{{ index .dtr_pct 1 }}%</td>
+        <td>{{ index .rest_days 0 }}–{{ index .rest_days 1 }}</td>
         <td>{{ .drop }}</td>
         <td>{{ .flavor }}</td>
       </tr>

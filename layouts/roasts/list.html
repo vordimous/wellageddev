@@ -57,6 +57,30 @@
 
             {{ $measured := or $loss $dtr .Params.rating }}
 
+            {{/* ---- compute ready-to-drink status ---- */}}
+            {{ $readyStatus := "" }}
+            {{ $readyLabel := "" }}
+            {{ if and $measured $level $level.rest_days }}
+              {{ $minDays := index $level.rest_days 0 }}
+              {{ $maxDays := index $level.rest_days 1 }}
+              {{ $minDur := time.ParseDuration (printf "%dh" (mul 24 $minDays)) }}
+              {{ $maxDur := time.ParseDuration (printf "%dh" (mul 24 $maxDays)) }}
+              {{ $readyFrom := .Date.Add $minDur }}
+              {{ $readyTo := .Date.Add $maxDur }}
+              {{ $now := now }}
+              {{ if lt $now $readyFrom }}
+                {{ $readyStatus = "resting" }}
+                {{ $daysLeft := int (div (sub $readyFrom.Unix $now.Unix) 86400) }}
+                {{ $readyLabel = printf "resting · %dd" $daysLeft }}
+              {{ else if le $now $readyTo }}
+                {{ $readyStatus = "ready" }}
+                {{ $readyLabel = "ready" }}
+              {{ else }}
+                {{ $readyStatus = "past-peak" }}
+                {{ $readyLabel = "past peak" }}
+              {{ end }}
+            {{ end }}
+
             <li class="roast-card {{ $levelClass }}{{ if not $measured }} roast-card-pending{{ end }}">
               <a class="roast-card-link" href="{{ .RelPermalink }}">
                 <div class="roast-card-head">
@@ -78,6 +102,9 @@
                   {{ end }}
                   {{ if not $measured }}
                     <span class="roast-tag roast-tag-pending">not roasted yet</span>
+                  {{ end }}
+                  {{ if $readyStatus }}
+                    <span class="roast-tag roast-tag-ready-{{ $readyStatus }}">{{ $readyLabel }}</span>
                   {{ end }}
                 </div>
 
@@ -284,6 +311,9 @@
       font-style: italic;
       opacity: 0.75;
     }
+    .roast-tag-ready-resting   { background: #fff3cd; color: #856404; border-color: #f0d97d; }
+    .roast-tag-ready-ready     { background: #c8e6c9; color: #1b5e20; border-color: #9ed99e; }
+    .roast-tag-ready-past-peak { background: #f8d7da; color: #721c24; border-color: #eaa6ab; }
 
     .roast-card-stats {
       display: grid;
