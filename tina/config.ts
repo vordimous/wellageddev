@@ -135,10 +135,10 @@ const roasts: Collection = {
   defaultItem: () => ({
     date: new Date().toISOString(),
     batch_size_g: 227,
-    profile: "P5",
+    profile: "P1",
     weight_setting: "½ lb",
     tags: ["roast"],
-    draft: true,
+    draft: false,
     roaster: "Behmor 2000 AB Plus",
   }),
   fields: [
