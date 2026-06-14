@@ -3,8 +3,6 @@ title: 005 — Guatemala Huehuetenango Unión Cantinil
 date: 2026-06-14T00:00:00.000Z
 origin: 'Guatemala — Huehuetenango, Unión Cantinil'
 process: Wet Process (Washed)
-product_url: 'https://www.sweetmarias.com/guatemala-huehuetenango-union-cantinil-8626.html'
-vendor: Sweet Maria's
 target_level: Medium
 tags:
   - roast
@@ -14,8 +12,6 @@ batch_size_g: 454
 profile: P1
 weight_setting: 1 lb
 green_weight_g: 457.2
-ambient_f: 76
-ambient_rh: 74
 bean_notes: |
   - SHB EP, 16–18 screen, .4 d/300gr — dense, high-grown (up to ~1600 m). Expect a slightly later FC than lower-grown lots at the same heat setting.
   - Cultivar blend: Bourbon, Caturra, Catuaí, Pache. Washed, patio sun-dried.
@@ -48,16 +44,17 @@ playbook: |
   - "Roasted corn" smell or pale brown color at FC = under-developed; let it carry past FC end.
   - Heavy bluish smoke or rolling 2nd crack = imminent fire risk. Press Cool immediately.
   - Never roast past 10 seconds into 2C.
-time_to_fc:
-color_at_fc:
-smell_at_fc:
-total_time:
-why_dropped:
-anything_weird:
-roasted_weight_g:
-tasting_notes:
-rating:
-next_time:
+time_to_fc: '10:06'
+color_at_fc: 'Light caramel '
+smell_at_fc: Faint toast
+total_time: null
+why_dropped: null
+anything_weird: null
+roasted_weight_g: null
+tasting_notes: null
+rating: null
+next_time: null
 roaster: Behmor 2000 AB Plus
 draft: true
 ---
+
