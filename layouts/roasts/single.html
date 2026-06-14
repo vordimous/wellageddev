@@ -134,6 +134,13 @@
   <div class="roast-facts-grid">
     {{ with .Params.origin }}<div><dt>Origin</dt><dd>{{ . }}</dd></div>{{ end }}
     {{ with .Params.process }}<div><dt>Process</dt><dd>{{ . }}</dd></div>{{ end }}
+    {{ with .Params.product_url }}
+      {{ $label := $.Params.vendor }}
+      {{ if not $label }}
+        {{ $label = replaceRE "^https?://(?:www\\.)?([^/]+).*" "$1" . }}
+      {{ end }}
+      <div><dt>Source</dt><dd><a href="{{ . }}" target="_blank" rel="noopener">{{ $label }}</a></dd></div>
+    {{ end }}
     {{ with .Params.target_level }}<div><dt>Target level</dt><dd>{{ . }}</dd></div>{{ end }}
     {{ with .Params.roaster }}<div><dt>Roaster</dt><dd>{{ . }}</dd></div>{{ end }}
     {{ with .Params.profile }}<div><dt>Profile</dt><dd>{{ . }}</dd></div>{{ end }}

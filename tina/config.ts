@@ -174,6 +174,20 @@ const roasts: Collection = {
     },
     {
       type: "string",
+      name: "product_url",
+      label: "Bean source URL",
+      description:
+        "Link to the product page where the green beans were purchased. Lets you re-buy and helps readers find the same lot.",
+    },
+    {
+      type: "string",
+      name: "vendor",
+      label: "Vendor (optional)",
+      description:
+        "Human-readable name of the seller (e.g. \"The Captain's Coffee\"). If blank, the page shows the URL's domain.",
+    },
+    {
+      type: "string",
       name: "target_level",
       label: "Target roast level",
       options: ["Light", "Light-Medium", "Medium", "Medium-Dark", "Dark"],

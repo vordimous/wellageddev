@@ -1,7 +1,7 @@
 ---
 title: Behmor 2000 AB Plus — reference
-date: 2026-06-13T00:00:00.000Z
-summary: Operational reference for the Behmor 2000 AB Plus pulled from the official knowledge base — startup sequence, profiles, weight settings, safety features, and temperature readings.
+date: 2026-06-14T00:00:00.000Z
+summary: Operational reference for the Behmor 2000 AB Plus pulled from the official Operation Manual V30 (Oct 2024) — origin-specific Auto Mode profiles, Manual Mode power controls, the pro sample roasting technique, safety, preheat, and full machine guidance.
 layout: methods
 tags:
 - roast
@@ -9,68 +9,115 @@ tags:
 - behmor
 ---
 
-Pulled from the [Behmor knowledge base](https://behmor.com/knowledge-base/) so it's available on-hand during a roast. Cross-checked against the [official 2000AB 120V manual (V28, Nov 2023)](http://www.behmor.com/docs/Behmor%202000AB%20120v%20Operation%20Manual%20V28%2011.19.2023%20BW%20Inspired.pdf).
+Sourced from the official [2000AB 120V Operation Manual V30 (Oct 2024)](http://www.behmor.com/docs/Behmor%202000AB%20120v%20Operation%20Manual%20V28%2011.19.2023%20BW%20Inspired.pdf) and the [Behmor knowledge base](https://behmor.com/knowledge-base/). Pulled into the site so it's available on-hand during a roast.
 
 ---
 
-## Profiles: P1–P5 are power levels, not programmes
+## The single most important thing: P1–P5 mean TWO things
 
-This is the most important thing to understand about the Behmor. P1–P5 set the **heating element power**, not an automated roast curve.
+This is the easiest way to wreck a roast on this machine: P1–P5 have **different meanings** depending on whether you press them before or after Start.
+
+| When | What P1–P5 means |
+| --- | --- |
+| **BEFORE Start (Auto Mode)** | Origin-specific roast profile. Choose based on bean type. |
+| **AFTER Start (Manual Mode)** | Power level (0/25/50/75/100%). Use to drop power post-FC. |
+
+The manual makes this explicit (Part 3, page 8 and Part 5 page 12). If you treat P5 like "100% power" when selecting it as your starting Auto profile, you're actually picking the Hawaiian/island lowest-heat profile — wrong direction.
+
+## Auto Mode — pick by origin BEFORE pressing Start
+
+This is the chart from the manual that drives every roast plan on the site.
+
+{{< roast-behmor-auto-profiles >}}
+
+**Practical reading:** Centrals / Peruvian / Colombian → **P1** (or P2 for slightly gentler). Brazilian / African / SE Asian → **P3**. Kona and island coffees → **P4 or P5**. The default for the machine is P1; the manual recommends beginners run four ¼ lb batches on P1 to learn it.
+
+## Manual Mode — press P1–P5 AFTER Start
+
+Once a roast has started, the P buttons become power-level adjusters.
 
 {{< roast-behmor-profiles >}}
 
-**The recommended roast approach (per official docs):**
-Start on the automatic program (weight setting drives the default program time). At first crack, press **P3** to drop to 50% power and let the beans' own exothermic momentum carry development. Use **C** and **D** buttons to manage the final phase.
+P4 and P5 are explicitly flagged as **not recommended after first crack** — combined with the bean mass already heated, they will scorch.
 
-P4 and P5 should only be used in the early (drying/Maillard) phase, not during or after first crack.
+## The Professional Sample Roasting technique
 
-## Weight settings — default program times
+Directly from the manual (Part 5, page 12-13). This is the recommended approach for almost any quality single-origin:
 
-The weight button only sets the **program duration**. Heat is controlled by the profile (P1–P5).
+1. Close door, press desired weight, press **START** (defaults to Auto P1)
+2. Once you hear first cracking, wait **10–15 seconds**
+3. Press **P3** (drops to 50% power in Manual mode)
+4. Press **D** (changes drum speed)
+5. May need to extend time using **+** or **C** button
+6. Press **Cool** when target hit
+
+The manual's rationale: *"Cutting power using the P3 button to 50% sustains heat, but gently allows the beans' exothermic momentum to work and prevent scorching beans."*
+
+## Weight settings — default program time only
+
+The weight button sets the **program duration**. Heat is controlled by the profile (Auto) or by the P-power level (Manual).
 
 {{< roast-behmor-weights >}}
 
-Match the weight button to your actual charge. The 75% safety shutoff fires at 75% of the program time selected.
+Match the weight button to your actual charge. The 75% Err 7 safety shutoff fires at 75% of the program time. **For Full City+ darker roasts, manual recommends reducing the batch to 336 g (12 oz) for control** — full-pound batches retain too much thermal momentum past City+.
 
 ## Preheat sequence
 
-1. Weigh green beans into the drum. Keep the drum **out** of the machine.
-2. Select your weight setting and profile. Press **START**. Machine begins warming with no drum.
-3. Let run **1 minute 30 seconds**. For ½ lb (12:00 program), the timer will read **10:30** remaining.
-4. Open the door and insert the loaded drum.
-5. The program continues from where it left off.
+1. Weigh green into drum. Keep drum **out** of machine.
+2. Press any weight + any profile + START. Run for **1:30 minutes** with drum out.
+3. Press **OFF**. Insert loaded drum + chaff tray.
+4. Start the actual roast.
 
-For back-to-back roasts, the chamber is already warm — skip the preheat and account for earlier FC on subsequent batches.
+**⚠ Do not exceed 1:30 preheat** — the manual warns that longer preheats trigger a safety feature that prevents starting the roast.
 
-## 75% auto-safety shutoff (Err 7)
+## 75% safety shutoff (Err 7)
 
-At 75% through the program, the display blinks and counts down from **0:30**. Press **START** to continue. If you miss it, the machine enters cool mode and shows **Err 7**. This applies in both automatic and manual modes.
+At 75% through the program, the display blinks `un:30..29..28` with loud beeping. You have 30 seconds to press **START** to continue. If you miss it, the machine enters cool mode and shows **Err 7**.
 
-The exact "75% at" time is shown in the weight-settings table above. On a ½ lb batch it lands at 9:00 elapsed — potentially right in the middle of first crack — so stay near the machine.
+The **C button bypasses Err 7** — pressing it during the warning window resets the timer per the Rosetta Stone and tells the machine you're actively engaged.
+
+## The C button (Rosetta Stone)
+
+The C button resets the timer to the approximate time it takes to go from start of first crack to start of second crack, per the selected weight setting. Three uses:
+
+1. **Anticipate 2C** — gives you a fresh count toward the next milestone
+2. **Bypass the Err 7 safety prompt** — signals active interaction
+3. **Extend time in larger increments** than the `+` button (useful in low-voltage situations or when you've slowed development with P3)
 
 ## A/B temperature buttons
 
-- **A button**: exhaust channel temperature (available once the exhaust fan activates mid-roast)
-- **B button**: chamber wall temperature
+- **A** — exhaust channel temperature (active once exhaust fan starts mid-roast)
+- **B** — chamber wall temperature
 
-**Neither reading is bean temperature.** Use them as relative indicators of roast progress, not absolute targets.
+Manual is emphatic: *"These temps ARE NOT bean temps and for information / correlation purposes only. Never gauge degree of roast based on these temps."*
 
-## Drum speed — D button
+## Critical safety constraints
 
-The D button adjusts drum rotation speed. Higher speed = more even tumbling, slightly lower peak surface temp. Lower speed = more surface contact heat. Adjust after FC to fine-tune development if needed.
+These come straight from the manual and they are not soft rules:
 
-## C button (cool)
+- **Allow 1 HOUR between roasts.** Not minutes — the manual states this as a direct rule (Part 4 Important Reminders #4).
+- **Never roast past 10 seconds into second crack.** Past this point beans can ignite.
+- **Never start above ¼ lb when first learning.** The manual is loud about this — start with four ¼ lb batches on P1.
+- **The 2000 AB Plus is not intended for Vienna, French, or Italian roasts.** Oily beans + chaff tray = fire risk.
+- **Never leave the roaster unattended.** Explicit in the manual title: *"NOT a set and walk away device."*
 
-Pressing C before the program ends starts the cooling cycle immediately. Use this as your drop trigger — hit C at the moment you want to stop development.
+## Beginner guidance
 
-## Beginner guidance (from official docs)
+From manual Part 3:
 
-- Start with **¼ lb batches on P1** for your first four roasts to learn the machine.
-- Do not start above ¼ lb until you're comfortable with timing and the shutoff.
-- "The Behmor Roaster is not a set and walk away device — always stay by the roaster when it is in use."
+- Roast **four ¼ lb batches on P1** to learn FC sounds, color cues, smell changes.
+- After ¼ lb is comfortable, move to ½ lb. Move to 1 lb last.
+- Always forward-think the roast by 15 seconds (the reversal time from roasting to cooling).
+- **Never gauge degree of roast by oil appearance** — drum roasters don't show oil during the roast; droplets appear 24h–several days after, especially with rest.
+
+## Cleaning
+
+- Every **5 roasts** (more often for darker roasts), do a dry burn (¼ lb + Start, run full program) with the interior cleaned by Simple Green or other non-caustic / non-abrasive cleaner.
+- Never spray heating elements.
+- Keep the back-lower-right corner of the roasting chamber clean — the thermocouple sensor lives there. Dirty sensor = extended / wrong roast times.
 
 ## Sources
 
 - [Behmor Roaster Quick Start Guide](https://behmor.com/knowledge-base/behmor-roaster-quick-start-guide/) — Behmor knowledge base
 - [Control Panel Features & Auto-Safety Shutoff](https://behmor.com/knowledge-base/behmor-roaster-control-panel-features-auto-safety-shutoff/) — Behmor knowledge base
-- [2000AB Plus 120V Operation Manual V28 (PDF)](http://www.behmor.com/docs/Behmor%202000AB%20120v%20Operation%20Manual%20V28%2011.19.2023%20BW%20Inspired.pdf) — official manual
+- [2000AB Plus 120V Operation Manual V30 (Oct 2024)](http://www.behmor.com/docs/Behmor%202000AB%20120v%20Operation%20Manual%20V28%2011.19.2023%20BW%20Inspired.pdf) — official manual

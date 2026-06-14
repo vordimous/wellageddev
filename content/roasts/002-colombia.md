@@ -1,13 +1,15 @@
 ---
-title: 002 — Guatemala Huehuetenango Unión Cantinil
+title: 002 — Colombia Sierra Nevada Finca La Esperanza
 date: 2026-06-13T00:00:00.000Z
-origin: 'Guatemala — Huehuetenango, Unión Cantinil'
+origin: 'Colombia — Sierra Nevada, Finca La Esperanza'
 process: null
+product_url: 'https://thecaptainscoffee.com/products/colombia-sierra-nevada-finca-la-esperanza'
+vendor: The Captain's Coffee
 target_level: Medium
 tags:
   - roast
-  - guatemala
-  - huehuetenango
+  - colombia
+  - sierra-nevada
 batch_size_g: 454
 profile: P5
 weight_setting: 1 lb
@@ -15,8 +17,11 @@ green_weight_g: 454
 ambient_f: 91
 ambient_rh: 44
 bean_notes: |
+  **Note — wrong bean labeled:** Values logged on this page are from a roast of **Colombia Sierra Nevada Finca La Esperanza**. The Guatemala Huehuetenango Unión Cantinil that was originally planned for slot 002 was not actually roasted in this session. Title, origin, and tags have been corrected to match the bean that was actually run; the playbook and bean characteristics below were written for the Huehue plan and are kept as a historical record of what was intended.
+
   **Note — wrong model:** The playbook for this roast was built for the Behmor 1600 Plus. The machine used was the Behmor 2000 AB Plus. Roast data is as logged; the playbook is a historical record, not a recommendation.
 
+  - (Below this line: original Guatemala Huehue planning notes — superseded.)
   - Huehue is high-grown and dense; expect a slightly later FC than the Brazil at the same heat setting.
   - Flavor goal beyond the level-default: cocoa with citrus brightness and a clean finish — don't bake the acidity flat.
 playbook: |

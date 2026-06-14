@@ -1,0 +1,30 @@
+{{/* Renders the AUTO MODE origin-to-profile chart for a machine.
+     P1–P5 in Auto mode are origin-specific profile choices (selected before Start).
+     For Manual mode power levels, use {{< roast-behmor-profiles >}}.
+     Usage: {{< roast-behmor-auto-profiles >}} */}}
+{{ $machineKey := .Get "machine" | default "behmor_2000_ab_plus" }}
+{{ $machine := index .Site.Data.machines $machineKey }}
+{{ if and $machine $machine.auto_mode_profiles }}
+  <table class="roast-ref">
+    <thead>
+      <tr>
+        <th>Profile</th>
+        <th>Bean type</th>
+        <th>Recommended origins</th>
+        <th>Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{ range $machine.auto_mode_profiles }}
+        <tr>
+          <td><strong>{{ .id }}</strong></td>
+          <td>{{ .bean_type }}</td>
+          <td>{{ delimit .origins ", " }}</td>
+          <td>{{ .notes }}</td>
+        </tr>
+      {{ end }}
+    </tbody>
+  </table>
+{{ else }}
+  <p><em>No auto_mode_profiles data for machine: <code>{{ $machineKey }}</code></em></p>
+{{ end }}

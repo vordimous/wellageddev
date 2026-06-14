@@ -1,49 +1,99 @@
 # Architecture docs: content/roasts/CLAUDE.md
 #
 # Behmor 2000 AB Plus — machine-specific roasting guidance.
-# Sourced from:
-#   - Behmor Quick Start Guide: https://behmor.com/knowledge-base/behmor-roaster-quick-start-guide/
-#   - Behmor Control Panel & Auto-Safety Shutoff: https://behmor.com/knowledge-base/behmor-roaster-control-panel-features-auto-safety-shutoff/
-#   - 2000AB 120V Operation Manual V28 (Nov 2023): http://www.behmor.com/docs/Behmor%202000AB%20120v%20Operation%20Manual%20V28%2011.19.2023%20BW%20Inspired.pdf
+# Sourced primarily from the official Operation Manual V30 (Oct 2024).
+#
+# Sources:
+#   - 2000AB 120V Operation Manual V30 (Oct 21 2024): http://www.behmor.com/docs/Behmor%202000AB%20120v%20Operation%20Manual%20V28%2011.19.2023%20BW%20Inspired.pdf
+#   - Quick Start Guide: https://behmor.com/knowledge-base/behmor-roaster-quick-start-guide/
+#   - Control Panel & Auto-Safety Shutoff: https://behmor.com/knowledge-base/behmor-roaster-control-panel-features-auto-safety-shutoff/
 
 name: Behmor 2000 AB Plus
-# URL of the in-site reference page for this machine.
 reference_url: "/roasts/behmor-2000ab/"
 manual_url: "http://www.behmor.com/docs/Behmor%202000AB%20120v%20Operation%20Manual%20V28%2011.19.2023%20BW%20Inspired.pdf"
 knowledge_base_url: "https://behmor.com/knowledge-base/"
 
-# P1–P5 are POWER LEVELS, not automated profiles.
-# Start pre-FC on automatic or P4; drop to P3 at first crack.
-profiles:
+# ─────────────────────────────────────────────────────────────────────────
+# CRITICAL: P1–P5 mean two different things depending on mode.
+#
+# In AUTO mode (chosen before pressing Start) — origin-specific profile.
+# In MANUAL mode (pressed AFTER Start) — power level (0/25/50/75/100%).
+#
+# This is the single most important fact about operating this machine.
+# ─────────────────────────────────────────────────────────────────────────
+
+# Auto mode profiles per Manual Part 3 "Select and Set Roasting Profile".
+# Choose based on the bean's origin/hardness BEFORE pressing Start.
+auto_mode_profiles:
+  - id: P1
+    label: "P1 (default) — Hard Bean, Highest Heat"
+    bean_type: "Hard bean (SHB / HG, high-grown)"
+    origins: ["All Centrals", "Peruvian", "Colombian"]
+    notes: "Default profile. The manual recommends new users do four ¼ lb batches on P1 to learn the machine."
+  - id: P2
+    label: "P2 — Hard Bean (gentler)"
+    bean_type: "Hard bean (SHB / HG, high-grown)"
+    origins: ["All Centrals", "Peruvian", "Colombian"]
+    notes: "Less aggressive than P1 for the same regions; useful for a softer entry into FC on dense lots."
+  - id: P3
+    label: "P3 — Soft Bean / Low-grown / Espresso Blend"
+    bean_type: "Soft bean / low-grown"
+    origins: ["Brazilians", "Africans", "Southeast Asian", "Malabar", "Jamaican Blue Mountain", "Yauco Selecto"]
+    notes: "Add time via + or C button — P3–P5 auto programs may need extension."
+  - id: P4
+    label: "P4 — Low-grown island, just into 2C"
+    bean_type: "Soft / low-grown island"
+    origins: ["Kona", "low-grown island coffees"]
+    notes: "Used for taking Kona-style beans just into second crack."
+  - id: P5
+    label: "P5 — Island coffees, City / City+, Lowest Heat"
+    bean_type: "Soft / low-grown island"
+    origins: ["Kona", "low-grown island coffees"]
+    notes: "Lowest heat profile. Used for keeping island coffees shy of second crack at City/City+."
+
+# Manual mode power levels — ONLY active after a roast has started.
+# Press any P button mid-roast to drop into Manual mode for that power level.
+manual_mode_powers:
   - id: P1
     power_pct: 0
-    label: "0% — drum only"
-    use: "Rotation with no heat. Use to stall or cool slowly without hitting C."
+    label: "0% — drum rotation only"
+    use: "Stalls heat; lets exothermic momentum carry. Press 1 button to return to Auto."
     post_fc_ok: true
   - id: P2
     power_pct: 25
-    label: "25% — very gentle"
-    use: "Light drying phase or very slow finishing."
+    label: "25%"
+    use: "Gentle finishing power."
     post_fc_ok: true
   - id: P3
     power_pct: 50
-    label: "50% — development"
-    use: "Recommended post-FC setting. Drop to P3 at first crack and let exothermic momentum finish the roast."
+    label: "50% — recommended development setting"
+    use: "Manual recommends pressing P3 ~10–15 sec after FC starts to drop power and let beans' exothermic momentum carry. Combine with D button."
     post_fc_ok: true
   - id: P4
     power_pct: 75
-    label: "75% — drying/Maillard"
-    use: "Pre-FC drying and Maillard phase only."
+    label: "75%"
+    use: "Pre-FC drying / Maillard only."
     post_fc_ok: false
-    warning: "Not recommended after first crack."
+    warning: "Not recommended after first crack (manual: combined with bean-mass heat may scorch)."
   - id: P5
     power_pct: 100
     label: "100% — full power"
-    use: "Early drying phase only. Drop to P3 at FC."
+    use: "Pre-FC drying phase only."
     post_fc_ok: false
-    warning: "Not recommended after first crack — risks scorching beans and sensor damage."
+    warning: "Not recommended after first crack (manual: combined with bean-mass heat may scorch)."
 
-# Weight button sets DEFAULT PROGRAM TIME, not heat intensity.
+# The "Professional Sample Roasting" technique from manual Part 5 Tips.
+# Quoted: "Once user hears First Cracking sound wait appx :10-15 seconds.
+# Press: the P3 button then d button. **For FC you may need to add time
+# using the + button or c button. Press the cool button as needed."
+pro_sample_roasting:
+  start_profile: P1
+  start_mode: Auto
+  fc_action: "10–15 seconds after FC starts, press P3 (drops power to 50%) then D (raises drum speed)."
+  rationale: "Cutting power to 50% sustains heat but lets the beans' exothermic momentum carry the roast, preventing scorching."
+  time_extension: "You will likely need to add time using the + button or C button to extend through development."
+
+# Weight button sets DEFAULT PROGRAM TIME, not heat.
 # The 75% safety shutoff fires at 75% of this default time.
 weight_settings:
   - label: "¼ lb (≈113 g)"
@@ -53,7 +103,7 @@ weight_settings:
     program_time: "8:30"
     shutoff_elapsed: "6:22"
     shutoff_remaining: "2:08"
-    note: "Official beginner starting point. Manual says never start above ¼ lb until familiar with the machine."
+    note: "Manual's official beginner starting point: \"NEVER START with quantities above ¼ lb\" until familiar with the roaster. Start with four ¼ lb batches on P1."
   - label: "½ lb (≈227 g)"
     charge_min: 150
     charge_max: 320
@@ -61,7 +111,7 @@ weight_settings:
     program_time: "12:00"
     shutoff_elapsed: "9:00"
     shutoff_remaining: "3:00"
-    note: "Standard batch. 75% shutoff at 9 min elapsed — may coincide with first crack. Stay close."
+    note: "Move here once comfortable with ¼ lb roasts. 75% shutoff at 9 min elapsed — often coincides with FC."
   - label: "1 lb (≈454 g)"
     charge_min: 320
     charge_max: 500
@@ -69,27 +119,50 @@ weight_settings:
     program_time: "18:00"
     shutoff_elapsed: "13:30"
     shutoff_remaining: "4:30"
-    note: "Full batch. More thermal momentum — harder to stop development at the right moment."
+    note: "Full batch capacity. For Full City+ darker, manual recommends REDUCING to 336 g (12 oz) for control — full pound retains too much thermal momentum past City+."
 
 preheat:
   duration_sec: 90
-  instruction: "Weigh beans into drum but keep drum OUT of machine. Select weight setting + profile, press START. At 1:30 elapsed, open door and insert loaded drum. Program continues from where it left off. Skip for back-to-back roasts — chamber is already hot."
-  timer_reads_at_insert:
-    quarter_lb: "7:00"
-    half_lb: "10:30"
-    one_lb: "16:30"
+  instruction: "Press any weight button + any profile + START, run for 1:30 with drum OUT. Press OFF, insert drum + tray, then start the actual roast. Manual warns: longer than 1:30 can trigger a safety feature that prevents starting the roast."
+  max_duration_warning: "Do NOT exceed 1:30 preheat — locks out the roast start."
 
 safety:
-  shutoff_name: "Err 7"
+  shutoff_name: "Err 7 / Unattended Safety Shutoff"
   shutoff_trigger: "75% through program time"
-  shutoff_action: "Press START within 0:30 countdown or machine enters cool mode"
-  dark_roast_warning: "The Behmor 2000 AB Plus manual warns against Vienna / French / Italian dark roasts — oily beans accumulate in the chaff tray and are a fire risk. Do not roast past a heavy oil sheen."
+  shutoff_action: "Press START within 0:30 countdown or machine enters cool mode. The C button (Rosetta Stone) also bypasses Err 7 by signaling active interaction."
+  between_roasts_minutes: 60
+  between_roasts_quote: "\"Allow 1 hour between roasts\" — Manual Part 4."
+  past_2c_warning: "Never roast past 10 seconds into second crack. The manual repeatedly warns that beans can ignite past this point."
+  dark_roast_warning: "The Behmor 2000 AB Plus manual states explicitly: \"The Behmor Roaster is not intended to roast coffee to levels known as Vienna, French, or Italian.\" Oily beans accumulate in the chaff tray as a fire risk. For Full City+, reduce batch to 336 g."
+
+# C button is the "Rosetta Stone" feature — resets timer to approximate
+# 1C → 2C time per weight setting, and bypasses Err 7 by signaling
+# active user interaction.
+c_button:
+  function: "Rosetta Stone — resets timer to approximate 1C → 2C time for the selected weight, using P1 Auto Mode timing as the baseline."
+  side_effects:
+    - "Bypasses Err 7 unattended-shutoff safety prompt"
+    - "Can be pressed multiple times near end of roast to extend total time in low-voltage situations"
+    - "Use to add time in larger increments than the +/- buttons"
 
 temperature_buttons:
   A: "Exhaust channel temperature (available once exhaust fan activates mid-roast)"
   B: "Chamber wall temperature"
-  note: "Neither A nor B reads bean temperature. Use as relative progress indicators only."
+  note: "Neither A nor B reads bean temperature. Manual is explicit: \"These temps ARE NOT bean temps and for information / correlation purposes only. Never gauge degree of roast based on these temps.\""
 
 drum_speed:
   button: D
-  note: "D button adjusts drum rotation speed. Higher speed = more even tumbling, slightly lower peak surface temp. Lower speed = more surface contact heat. Adjust post-FC if needed."
+  standard_rpm: 8
+  high_rpm: 16
+  note: "D button toggles drum rotation speed. Manual recommends combining with P3 after FC (pro sample roasting technique) for even tumbling during development."
+
+beginner_guidance:
+  - "Never start above ¼ lb when first learning the roaster."
+  - "Roast at least four ¼ lb batches on P1 to learn FC sounds, color changes, smell cues, and how the C button works."
+  - "After ¼ lb is comfortable, move to ½ lb. Move to 1 lb last."
+  - "Always forward-think your roast by 15 seconds — that's how long it takes to reverse from roast to cool."
+  - "Never gauge degree of roast by appearance of oils on bean surface — the Behmor is a drum roaster; oils appear 24h–several days post-roast."
+
+cleaning:
+  cadence: "Every 5 roasts (more often for darker roasts)"
+  method: "Dry burn (¼ lb + Start, run full program) after cleaning interior with Simple Green or other non-caustic / non-abrasive cleaner. Never spray heating elements. Keep the back-lower-right corner of the roasting chamber clean — thermocouple sensor lives there."

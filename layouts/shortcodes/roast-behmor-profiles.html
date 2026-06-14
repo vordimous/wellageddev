@@ -1,20 +1,22 @@
-{{/* Renders the P1–P5 power-level table for a machine.
+{{/* Renders the MANUAL MODE power-level table for a machine.
+     P1–P5 in Manual mode are power levels (only active after roast started).
+     For the Auto Mode origin chart, use {{< roast-behmor-auto-profiles >}}.
      Usage: {{< roast-behmor-profiles >}} (defaults to behmor_2000_ab_plus)
             {{< roast-behmor-profiles machine="behmor_2000_ab_plus" >}} */}}
 {{ $machineKey := .Get "machine" | default "behmor_2000_ab_plus" }}
 {{ $machine := index .Site.Data.machines $machineKey }}
-{{ if $machine }}
+{{ if and $machine $machine.manual_mode_powers }}
   <table class="roast-ref">
     <thead>
       <tr>
-        <th>Profile</th>
+        <th>Button</th>
         <th>Power</th>
         <th>Use</th>
         <th>OK after FC?</th>
       </tr>
     </thead>
     <tbody>
-      {{ range $machine.profiles }}
+      {{ range $machine.manual_mode_powers }}
         <tr>
           <td><strong>{{ .id }}</strong></td>
           <td>{{ .power_pct }}%</td>
@@ -28,5 +30,5 @@
     </tbody>
   </table>
 {{ else }}
-  <p><em>No data for machine: <code>{{ $machineKey }}</code></em></p>
+  <p><em>No manual_mode_powers data for machine: <code>{{ $machineKey }}</code></em></p>
 {{ end }}

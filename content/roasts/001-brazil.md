@@ -3,6 +3,7 @@ title: 001 — Brazil Machado Recanto do Engenho
 date: 2026-06-13T00:00:00.000Z
 origin: 'Brazil — Machado, Recanto do Engenho'
 process: null
+product_url: https://www.sweetmarias.com/brazil-machado-recanto-do-engenho-8608.html
 target_level: Light
 tags:
   - roast
