@@ -50,13 +50,18 @@ For a roast with `green_weight_g: 227`, `roasted_weight_g: 193`, `time_to_fc: 10
 
 ## Resting / ready-to-drink window
 
-Fresh-roasted coffee needs to degas before it tastes right. CO₂ in the beans interferes with extraction; until enough has escaped, espresso pulls fast and brewed coffee tastes flat or sour. Darker roasts shed CO₂ faster than light roasts (longer Maillard means more porous structure).
+Fresh-roasted coffee needs to degas before it tastes right. CO₂ trapped in the beans interferes with extraction; brew too soon and the cup tastes flat or sour and espresso channels. Darker roasts shed CO₂ faster than light roasts (longer pyrolysis = more porous structure).
 
-Each level in the reference table has a `rest_days` range used by every roast page to compute a **Ready to drink** window from the roast date. The single-page panel then compares today against that window and shows a status pill:
+The `rest_days` ranges in the reference table are tuned for a **drum roaster brewed by filter methods**, which is what this site logs. Two assumptions baked into the numbers:
 
-- **Resting** — still degassing; tasting now will be inconclusive
+- **Drum vs air.** Scott Rao notes classic-drum roasts don't benefit from more than 1–2 days of rest unless underdeveloped; air roasters (Loring, IKAWA) often need 1–4 weeks. The Behmor is a drum roaster.
+- **Filter vs espresso.** Filter brewing vents CO₂ freely, so short rests work — vendor "12–24hr" minimums on the bag are real. Espresso runs at 9 bar with nowhere for gas to escape and channels without more rest. **For espresso, add ~5–7 days to the upper bound of each range.**
+
+The single-page panel compares today against the level's window and shows a status pill:
+
+- **Resting** — under the lower bound; CO₂ may still fight extraction
 - **Ready** — in the peak window; brew and rate
-- **Past peak** — beans are still drinkable for weeks, but flavors will be muted
+- **Past peak** — drinkable for weeks more, but aromatics are fading (faster for dark/oily — Rao recommends drinking those within days)
 
 ## Target level reference
 
@@ -76,6 +81,7 @@ This page is intentionally machine-agnostic. For machine-specific guidance — p
 - Scott Rao — *The Coffee Roaster's Companion* (DTR > ~24% risks baking)
 - Sweet Maria's — roast color and loss percentage guide
 - Green Coffee Collective — [Types of Coffee Roasts](https://greencoffeecollective.com/blogs/learn/types-of-coffee-roasts)
+- Scott Rao — [Resting Roasts: Is Fresher Better?](https://www.scottrao.com/blog/restingbeans) (rest_days; drum vs air roaster differences)
 
 ## Caveats
 

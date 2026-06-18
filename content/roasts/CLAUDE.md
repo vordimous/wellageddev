@@ -36,6 +36,8 @@ After ~10–15 logged roasts, the universal targets in `data/roast_guidance.yaml
 
 Each roast page and list card computes a rest window from the **roast date** + the level's `rest_days` range, then shows a status pill (`Resting` / `Ready` / `Past peak`) by comparing against `now`. The math lives in `layouts/roasts/single.html` and `layouts/roasts/list.html` and uses `time.ParseDuration` with hour-based durations (`mul 24 days` → `%dh`). To tune rest windows, edit the `rest_days` arrays in `data/roast_guidance.yaml` — both pages update on rebuild.
 
+**Rest-time assumptions:** the YAML ranges are tuned for **drum roaster + filter brewing**, which is what this site logs. Scott Rao: drum roasts don't need more than 1–2 days unless underdeveloped; air roasters need 1–4 weeks. Filter vents CO₂ freely (vendor "12–24hr" minimums are real); espresso needs ~5–7 more days because gas can't escape under 9 bar. Don't widen these ranges back toward espresso/air-roaster numbers without changing the brew-method assumption documented in `methods.md` and the YAML header.
+
 ## Roasted beans photo
 
 `roasted_photo` is a Tina `image` field. Uploads go to `static/imgs/` (configured in `tina/config.ts` media block). Phone uploads work because the project is on Tina Cloud. The single page renders the photo as a `<figure>` right after the headline stats strip, before the plan panel. Capped at 720px display width with `max-width: min(100%, 720px)` — responsive on phones, doesn't dominate on desktop. No multi-resolution `srcset` yet — to add it later, move the Tina media root from `static/` to `assets/` and use Hugo's image pipeline (`resources.GetMatch` + `.Resize`).
