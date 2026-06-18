@@ -39,11 +39,12 @@ total_time: '21:30'
 why_dropped: null
 anything_weird: null
 roasted_weight_g: 410
-tasting_notes: null
-rating: null
+tasting_notes: 'Bright, citrus light start with an easy finish'
+rating: 6
 next_time: null
 roaster: Behmor 1600 Plus
 ---
+
 
 
 
