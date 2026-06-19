@@ -49,10 +49,10 @@ playbook: |
   - Pale color at FC + bland smell = under-developed. Hold through the FC tail before dropping.
   - Heavy bluish smoke or any 2nd-crack snap = imminent fire risk. Press Cool immediately.
   - Never roast past 10 seconds into 2C.
-time_to_fc: null
-color_at_fc: null
-smell_at_fc: null
-interventions: null
+time_to_fc: '7:30'
+color_at_fc: Pale
+smell_at_fc: Bread
+interventions: '+2:00'
 total_time: null
 why_dropped: null
 anything_weird: null
@@ -64,4 +64,5 @@ next_time: null
 roaster: Behmor 2000 AB Plus
 draft: true
 ---
+
 
