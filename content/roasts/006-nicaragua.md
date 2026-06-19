@@ -57,7 +57,7 @@ interventions: |-
   +30
   +30
   +30
-total_time: null
+total_time: '13:30'
 why_dropped: null
 anything_weird: null
 roasted_weight_g: 209.6
