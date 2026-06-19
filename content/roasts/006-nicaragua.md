@@ -50,9 +50,9 @@ playbook: |
   - Pale color at FC + bland smell = under-developed (this was 003's failure mode for Maracaturra). Hold through the FC tail before dropping.
   - Heavy bluish smoke or any 2nd-crack snap = imminent fire risk. Press Cool immediately.
   - Never roast past 10 seconds into 2C.
-time_to_fc: null
-color_at_fc: null
-smell_at_fc: null
+time_to_fc: '8:15'
+color_at_fc: Pale grenish tan
+smell_at_fc: Fresh bread
 interventions: null
 total_time: null
 why_dropped: null
