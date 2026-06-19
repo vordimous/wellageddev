@@ -60,7 +60,7 @@ interventions: |-
 total_time: null
 why_dropped: null
 anything_weird: null
-roasted_weight_g: null
+roasted_weight_g: 209.6
 roasted_photo: null
 tasting_notes: null
 rating: null
@@ -68,4 +68,5 @@ next_time: null
 roaster: Behmor 2000 AB Plus
 draft: true
 ---
+
 
