@@ -2,8 +2,8 @@
 title: 006 — Nicaragua Buenos Aires Maracaturra
 date: 2026-06-19T00:00:00.000Z
 origin: 'Nicaragua — Buenos Aires, Maracaturra'
-process:
-product_url: https://www.sweetmarias.com/nicaragua-buenos-aires-maracaturra-8451.html
+process: null
+product_url: 'https://www.sweetmarias.com/nicaragua-buenos-aires-maracaturra-8451.html'
 vendor: Sweet Maria's
 target_level: Light-medium
 tags:
@@ -13,7 +13,7 @@ tags:
 batch_size_g: 227
 profile: P1
 weight_setting: ½ lb
-green_weight_g:
+green_weight_g: null
 ambient_f: 78
 ambient_rh: 76
 bean_notes: |
@@ -50,18 +50,19 @@ playbook: |
   - Pale color at FC + bland smell = under-developed (this was 003's failure mode for Maracaturra). Hold through the FC tail before dropping.
   - Heavy bluish smoke or any 2nd-crack snap = imminent fire risk. Press Cool immediately.
   - Never roast past 10 seconds into 2C.
-time_to_fc:
-color_at_fc:
-smell_at_fc:
-interventions:
-total_time:
-why_dropped:
-anything_weird:
-roasted_weight_g:
-roasted_photo:
-tasting_notes:
-rating:
-next_time:
+time_to_fc: null
+color_at_fc: null
+smell_at_fc: null
+interventions: null
+total_time: null
+why_dropped: null
+anything_weird: null
+roasted_weight_g: null
+roasted_photo: null
+tasting_notes: null
+rating: null
+next_time: null
 roaster: Behmor 2000 AB Plus
-draft: false
+draft: true
 ---
+
