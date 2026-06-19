@@ -14,8 +14,8 @@ batch_size_g: 227
 profile: P1
 weight_setting: ½ lb
 green_weight_g:
-ambient_f:
-ambient_rh:
+ambient_f: 78
+ambient_rh: 76
 bean_notes: |
   - Nicaragua is a **Central American hard bean** → Auto P1 per the manual (Centrals / Peruvian / Colombian).
   - **Maracaturra** has very large screen size and lower density than standard Centrals (per Sweet Maria's library). Sweet Maria's warns "internal roast development can be difficult to achieve with Maracaturras because of the large screen size" — the bean's surface gets to FC before the core fully catches up. At Full City the risk is that the surface gets there while the core is still mid-Maillard; hold development long enough for the core to catch up.
