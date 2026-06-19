@@ -56,7 +56,7 @@ interventions: '+2:00'
 total_time: null
 why_dropped: null
 anything_weird: null
-roasted_weight_g: null
+roasted_weight_g: 207.2
 roasted_photo: null
 tasting_notes: null
 rating: null
