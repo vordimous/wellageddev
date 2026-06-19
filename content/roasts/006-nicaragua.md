@@ -53,7 +53,10 @@ playbook: |
 time_to_fc: '8:15'
 color_at_fc: Pale grenish tan
 smell_at_fc: Fresh bread
-interventions: null
+interventions: |-
+  +30
+  +30
+  +30
 total_time: null
 why_dropped: null
 anything_weird: null
