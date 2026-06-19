@@ -13,7 +13,7 @@ tags:
 batch_size_g: 227
 profile: P1
 weight_setting: ½ lb
-green_weight_g: null
+green_weight_g: 228.7
 ambient_f: 78
 ambient_rh: 76
 bean_notes: |
@@ -68,5 +68,6 @@ next_time: null
 roaster: Behmor 2000 AB Plus
 draft: true
 ---
+
 
 
