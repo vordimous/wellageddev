@@ -84,6 +84,15 @@ A roast playbook directly drives a physical action on a $400 machine using $20+ 
 - Don't reuse a prior roast's playbook structure without checking it against the manual — early playbooks (001–004) were built before we had the manual extracted and contain known errors.
 - Don't copy generic drum-roaster advice (Genuine Origin, Scott Rao, etc.) into a Behmor playbook unless you've verified it applies to a probeless fixed-program machine.
 
+### Every playbook runs in isolation
+
+Each `NNN-*.md` playbook must be written as if no other roast preceded it. Two specific consequences:
+
+1. **Always include the 1:30 preheat step.** The Behmor's cool cycle blows forced air through the chamber specifically to cool the drum and elements down. The next roast needs the standard preheat regardless of how recently the previous one finished. Do not write conditional preheat ("skip if back-to-back") or "drum is hot" framing — both are wrong.
+2. **No cross-references to other roasts in the playbook body.** No "back-to-back" deviation framing, no "previous roast" notes, no chronology-based instructions. The 1-hour-between-roasts rule is a standalone instruction at the end of the sequence, not a framing for skipping steps. Bean notes may compare against prior *tasting* outcomes; the playbook itself cannot.
+
+The "no preheat, drum hot" pattern in roasts 003–004 is documented as one of the pre-manual errors — don't propagate it.
+
 ## Repeatability — capture every button press
 
 The `interventions` field is the single most important repeatability tool. Starting settings (profile / weight / batch) are not enough to reproduce a roast — what *makes* the roast is the sequence of mid-roast button presses with their elapsed times. Capture them all:
