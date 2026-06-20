@@ -61,13 +61,14 @@ total_time: '13:30'
 why_dropped: null
 anything_weird: null
 roasted_weight_g: 209.6
-roasted_photo: null
+roasted_photo: /imgs/PXL_20260619_185002195.jpg
 tasting_notes: null
 rating: null
 next_time: null
 roaster: Behmor 2000 AB Plus
 draft: false
 ---
+
 
 
 
