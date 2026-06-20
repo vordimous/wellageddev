@@ -3,7 +3,7 @@ title: 008 — Guatemala Huehuetenango Rolando Sanchez (Full City+)
 date: 2026-06-20T00:00:00.000Z
 origin: 'Guatemala — Huehuetenango, Finca Claima (Rolando Sanchez)'
 process: Wet Process (Washed)
-product_url: https://thecaptainscoffee.com/products/guatemala-huehuetenango-rolando-sanchez
+product_url: 'https://thecaptainscoffee.com/products/guatemala-huehuetenango-rolando-sanchez'
 vendor: The Captain's Coffee
 target_level: Medium-dark
 tags:
@@ -13,9 +13,9 @@ tags:
 batch_size_g: 227
 profile: P1
 weight_setting: ½ lb
-green_weight_g:
-ambient_f:
-ambient_rh:
+green_weight_g: 227
+ambient_f: 84
+ambient_rh: 50
 bean_notes: |
   - **Guatemala Huehuetenango** is a Central American hard bean → Auto P1 per the manual (Centrals / Peruvian / Colombian).
   - **SHB EP**, varietals **Catuai + Caturra**, altitude 1,100–2,000 masl (main plantings 1,100–1,200 m). Dense, high-grown — expect FC slightly later than lower-grown lots at the same heat.
@@ -56,18 +56,19 @@ playbook: |
   - **Listen for the *gap* between FC and 2C.** Common roasting knowledge (not from the Behmor manual): FC has a wet-popcorn pop sound; 2C is a sharper, drier snap. If you confuse the FC tail with 2C start, you'll under-roast. If you confuse 2C start with FC tail, you'll over-roast past the safety line.
   - **Never roast past 10 seconds into 2C.** This is the documented fire-ignition threshold.
   - **Drop early if anything feels off.** Better to land at Full City than to set the chaff tray on fire.
-time_to_fc:
-color_at_fc:
-smell_at_fc:
-interventions:
-total_time:
-why_dropped:
-anything_weird:
-roasted_weight_g:
-roasted_photo:
-tasting_notes:
-rating:
-next_time:
+time_to_fc: '7:30'
+color_at_fc: null
+smell_at_fc: null
+interventions: 'pressed c. then pressed c again at 1:00 left'
+total_time: '10:30'
+why_dropped: null
+anything_weird: null
+roasted_weight_g: 206.9
+roasted_photo: null
+tasting_notes: null
+rating: null
+next_time: null
 roaster: Behmor 2000 AB Plus
 draft: false
 ---
+
