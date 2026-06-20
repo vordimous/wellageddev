@@ -3,7 +3,7 @@ title: 009 — Guatemala Huehuetenango Rolando Sanchez (Full City+)
 date: 2026-06-20T00:00:00.000Z
 origin: 'Guatemala — Huehuetenango, Finca Claima (Rolando Sanchez)'
 process: Wet Process (Washed)
-product_url: https://thecaptainscoffee.com/products/guatemala-huehuetenango-rolando-sanchez
+product_url: 'https://thecaptainscoffee.com/products/guatemala-huehuetenango-rolando-sanchez'
 vendor: The Captain's Coffee
 target_level: Medium-dark
 tags:
@@ -13,9 +13,9 @@ tags:
 batch_size_g: 227
 profile: P1
 weight_setting: ½ lb
-green_weight_g:
-ambient_f:
-ambient_rh:
+green_weight_g: 223
+ambient_f: 84
+ambient_rh: 50
 bean_notes: |
   - Central → Auto P1. SHB EP, Catuai + Caturra, ~1,100–1,200 m.
   - Vendor (Captain's Coffee): dark chocolate, caramel, peach, cashew butter.
@@ -59,18 +59,20 @@ playbook: |
   - Smell shift through the roast: bread → toast → caramel → cocoa → resinous (= past the safety line).
   - FC sound: wet popcorn pops. 2C sound: sharper, drier, faster snaps.
   - For Full City+, drop on the **first sharp distinct snap that's not a popcorn pop** after FC has wound down.
-time_to_fc:
-color_at_fc:
-smell_at_fc:
-interventions:
-total_time:
-why_dropped:
-anything_weird:
-roasted_weight_g:
-roasted_photo:
-tasting_notes:
-rating:
-next_time:
+time_to_fc: '7:21'
+color_at_fc: pale tan
+smell_at_fc: bread
+interventions: null
+total_time: '12:10'
+why_dropped: smell cocoa
+anything_weird: null
+roasted_weight_g: null
+roasted_photo: null
+tasting_notes: null
+rating: null
+next_time: null
 roaster: Behmor 2000 AB Plus
 draft: false
 ---
+
+
