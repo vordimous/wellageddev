@@ -64,25 +64,46 @@ The manual's rationale: *"Cutting power using the P3 button to 50% sustains heat
 Synthesized from the Behmor knowledge base, Sweet Maria's library, and home-barista forum consensus.
 
 1. Press desired weight + P1 + **START**
-2. At the 75% shutoff prompt: press **C** to continue
-3. At **first crack**: press **C** immediately. Do NOT switch to Manual P3 yet.
+2. At the 75% shutoff prompt: press **C** to continue (also bypasses Err 7)
+3. At **first crack**: **check the remaining clock first.** If there's less than ~2:30 remaining, press **C** to reset to the Rosetta Stone duration. If there's more, *don't* press C — let Auto P1's original program run.
 4. **Stay on Auto P1** through the FC body — full heat carries development
-5. If development needs more time (low voltage, humid day): press **C again**. Each press resets the timer; no per-roast cap.
+5. If you need more time near the end of the clock (low voltage, humid day): press **C** to extend toward the Rosetta Stone duration
 6. Only drop to **P3** if 2C threatens (rapid louder snaps, acrid smoke, oil sheen forming) — as a brake, not as the default
 7. Press **Cool** when target hit
 
-Rationale: full Auto P1 heat through FC body actually drives off moisture and progresses Maillard. The C-button shapes the time without cutting power. Behmor's knowledge base explicitly endorses multiple-press C for extension in low-voltage situations.
+Rationale: full Auto P1 heat through FC body actually drives off moisture and progresses Maillard. The C-button shapes the time without cutting power.
 
-**Use this for:** drinking coffee at ½ lb or 1 lb, targeting City through Full City.
+**Use this for:** drinking coffee at ½ lb or 1 lb, targeting City through Full City+.
 
-## `+` vs `C` for extending a roast
+## `+` vs `C` — the most important machine quirk
 
-| Button | Increment | Cap | When to use |
-| --- | --- | --- | --- |
-| **+** | ~10 sec per press | Per-roast cumulative cap (~+2:00 observed) | Fine-tuning inside the program time |
-| **C** | Resets timer to Rosetta Stone 1C→2C window | None documented | Primary extension lever. Press at FC for correct development window. Press again if you need more. |
+This is what trips up new Behmor users. **`+` adds to the clock. `C` resets the clock.** They are not interchangeable.
 
-If the roast is stalling and you reach for `+`, you'll hit the cap. Use `C` instead — Behmor's KB documents it as the multi-press low-voltage extension mechanism.
+| Button | What it does | When to press |
+| --- | --- | --- |
+| **+** | **ADDS** ~10s per press to the current clock | Fine-tuning a small definite extension. Has a per-roast cumulative cap (~+2:00 observed). |
+| **C** | **RESETS** the clock to the Rosetta Stone 1C→2C duration (does NOT add) | When the current clock has LESS time than you need for development. If current clock has MORE, C shortens the roast. |
+
+### The C-button reset values (approximate)
+
+| Weight setting | Rosetta Stone reset value |
+| --- | --- |
+| ¼ lb | ~1:30 |
+| ½ lb | ~2:09 (observed on roast 008) |
+| 1 lb | ~3:00+ |
+
+### When pressing C HELPS vs HURTS
+
+| Situation | Press C? | Why |
+| --- | --- | --- |
+| 75% shutoff (Err 7) fires | **Yes** | Bypasses Err 7. Reset value is roughly neutral here. |
+| FC arrives with under ~2:30 left on clock | **Yes** | C extends the clock to the Rosetta Stone value. |
+| FC arrives with 3:00+ left on clock (e.g. early FC) | **No** | C will SHORTEN the clock. Let Auto P1's original program run. |
+| Near end of clock (under ~1:30) and you need more time | **Yes** | C extends. Use repeatedly in low-voltage situations. |
+
+**Failure mode logged on roast 008:** FC came at 7:30 with 4:30 remaining on the ½ lb / 12:00 program. Pressing C at FC reset the clock to 2:09 — a 2:21 *cut* to available development time. Result: 8.85% loss vs 16–18% Medium-dark target, because the bean didn't get enough post-FC time at full Auto P1 heat.
+
+The forum technique "press C at FC" assumes FC arrives near the end of the program (typical for ½ lb dense SHB ~10–11 min FC). It doesn't generalize to early-FC situations.
 
 ## Weight settings — default program time only
 
@@ -109,11 +130,15 @@ The **C button bypasses Err 7** — pressing it during the warning window resets
 
 ## The C button (Rosetta Stone)
 
-The C button resets the timer to the approximate time it takes to go from start of first crack to start of second crack, per the selected weight setting. Three uses:
+The C button **RESETS** the clock to an approximate 1C→2C duration for the selected weight setting (~1:30 for ¼ lb, ~2:09 for ½ lb, ~3:00+ for 1 lb). It does **NOT add** to the current clock.
 
-1. **Anticipate 2C** — gives you a fresh count toward the next milestone
-2. **Bypass the Err 7 safety prompt** — signals active interaction
-3. **Extend time in larger increments** than the `+` button (useful in low-voltage situations or when you've slowed development with P3)
+This distinction matters a lot — see the "`+` vs `C`" section below for when pressing C extends vs shortens a roast. The short version: C extends only when the current remaining clock is LESS than the Rosetta Stone value. If MORE, C shortens.
+
+Three legitimate uses:
+
+1. **Bypass the Err 7 safety prompt** at 75% shutoff — signals active interaction
+2. **Extend time near end of clock** — Behmor KB notes "press it numerous times towards the end of the roast" for low-voltage extension
+3. **Anticipate 2C** — when used near end of program, the reset gives you a fresh count toward 2C
 
 ## A/B temperature buttons
 
