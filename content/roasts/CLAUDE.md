@@ -60,7 +60,9 @@ A roast playbook directly drives a physical action on a $400 machine using $20+ 
 
    Picking P5 for a Brazilian or Central American bean is wrong — P5 in Auto mode is the *lowest* heat profile, intended for Hawaiian/island coffees. The "P5 = aggressive" assumption is only correct in Manual mode (which fires AFTER Start).
 
-3. **Default to the Professional Sample Roasting technique** unless you have a specific reason to deviate: start on Auto P1 (or per-origin Auto profile), and at 10–15s after FC press P3 + D to drop power to 50% and raise drum speed. Manual Part 5 page 12-13.
+3. **Default to the C-button + Auto P1 hold technique** for drinking-coffee batches at ½ lb or 1 lb: start on Auto P1 (or per-origin Auto profile), at FC press **C** (resets timer to Rosetta Stone 1C→2C window), stay on Auto P1 through the FC body, drop to P3 only as a brake if 2C threatens. Extend with additional **C** presses, not `+` (which has a per-roast cap that 007 hit at +2:00). See `c_button_technique` in `data/machines/behmor_2000_ab_plus.yaml` and the public Behmor reference page.
+
+   **Do NOT default to the manual's Pro Sample Roasting technique** (P3+D at FC+15s) for drinking-coffee batches — it cuts power to 50% for the entire development phase, which stalls heat needed for moisture drive-off. Roasts 006 and 007 both used Pro Sample Roasting and came in under-developed (8–9.4% loss vs 13–16% target, DTR 38%+ vs 17–22% target). Pro Sample Roasting is for sample roasting (small evaluation batches where slow, low-development finish is intentional); see `pro_sample_roasting.appropriate_use` in the YAML.
 
 4. **Confirm constraints from the manual:**
    - Batch ≤ 336 g if pushing past City+ (manual recommendation for darker control)

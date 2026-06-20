@@ -40,11 +40,13 @@ Once a roast has started, the P buttons become power-level adjusters.
 
 P4 and P5 are explicitly flagged as **not recommended after first crack** — combined with the bean mass already heated, they will scorch.
 
-## The Professional Sample Roasting technique
+## Two post-FC techniques — pick by goal
 
-Directly from the manual (Part 5, page 12-13). This is the recommended approach for almost any quality single-origin:
+The manual documents one approach (Professional Sample Roasting); forum and Sweet Maria's-library consensus uses a different one (C-button + Auto P1 hold) for drinking coffee. Both start the same way: ½ lb + P1 + Start. They diverge at first crack.
 
-1. Close door, press desired weight, press **START** (defaults to Auto P1)
+### Professional Sample Roasting (manual Part 5, page 12-13) — sample roasting only
+
+1. Press desired weight + P1 + **START** (defaults to Auto P1)
 2. Once you hear first cracking, wait **10–15 seconds**
 3. Press **P3** (drops to 50% power in Manual mode)
 4. Press **D** (changes drum speed)
@@ -52,6 +54,35 @@ Directly from the manual (Part 5, page 12-13). This is the recommended approach 
 6. Press **Cool** when target hit
 
 The manual's rationale: *"Cutting power using the P3 button to 50% sustains heat, but gently allows the beans' exothermic momentum to work and prevent scorching beans."*
+
+**Use this for:** small evaluation batches where slow, low-development finish is intentional (cupping samples).
+
+**Don't use this for drinking coffee at ½ lb or 1 lb.** Roasts 006 and 007 logged on this site both used this technique and came in under-developed (8–9.4% loss vs 13–16% target, DTR 38%+) — the P3 cut starves development heat over the 3–5 minute development window.
+
+### C-button + Auto P1 hold — drinking coffee at ½ lb / 1 lb
+
+Synthesized from the Behmor knowledge base, Sweet Maria's library, and home-barista forum consensus.
+
+1. Press desired weight + P1 + **START**
+2. At the 75% shutoff prompt: press **C** to continue
+3. At **first crack**: press **C** immediately. Do NOT switch to Manual P3 yet.
+4. **Stay on Auto P1** through the FC body — full heat carries development
+5. If development needs more time (low voltage, humid day): press **C again**. Each press resets the timer; no per-roast cap.
+6. Only drop to **P3** if 2C threatens (rapid louder snaps, acrid smoke, oil sheen forming) — as a brake, not as the default
+7. Press **Cool** when target hit
+
+Rationale: full Auto P1 heat through FC body actually drives off moisture and progresses Maillard. The C-button shapes the time without cutting power. Behmor's knowledge base explicitly endorses multiple-press C for extension in low-voltage situations.
+
+**Use this for:** drinking coffee at ½ lb or 1 lb, targeting City through Full City.
+
+## `+` vs `C` for extending a roast
+
+| Button | Increment | Cap | When to use |
+| --- | --- | --- | --- |
+| **+** | ~10 sec per press | Per-roast cumulative cap (~+2:00 observed) | Fine-tuning inside the program time |
+| **C** | Resets timer to Rosetta Stone 1C→2C window | None documented | Primary extension lever. Press at FC for correct development window. Press again if you need more. |
+
+If the roast is stalling and you reach for `+`, you'll hit the cap. Use `C` instead — Behmor's KB documents it as the multi-press low-voltage extension mechanism.
 
 ## Weight settings — default program time only
 

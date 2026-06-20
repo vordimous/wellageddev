@@ -86,12 +86,61 @@ manual_mode_powers:
 # Quoted: "Once user hears First Cracking sound wait appx :10-15 seconds.
 # Press: the P3 button then d button. **For FC you may need to add time
 # using the + button or c button. Press the cool button as needed."
+#
+# WHEN TO USE: small-batch evaluation / sample roasting (tiny lots, controlled
+# tasting). The 50% power cut intentionally stalls development for a slow,
+# even finish — useful when the goal is preserving raw bean characteristics
+# for cupping, not hitting a target weight loss for drinking coffee.
+#
+# WHEN NOT TO USE: drinking-coffee roasts at ½ lb or 1 lb. The P3 power cut
+# at FC+15s starves development heat — observed failure mode on roasts 006
+# and 007: 8–9.4% weight loss vs 13–16% target, DTR 38%+ vs 17–22% target.
+# Beans tumble at 50% power for 5+ minutes losing minimal mass.
+#
+# For drinking coffee → use `c_button_technique` below instead.
 pro_sample_roasting:
   start_profile: P1
   start_mode: Auto
   fc_action: "10–15 seconds after FC starts, press P3 (drops power to 50%) then D (raises drum speed)."
   rationale: "Cutting power to 50% sustains heat but lets the beans' exothermic momentum carry the roast, preventing scorching."
   time_extension: "You will likely need to add time using the + button or C button to extend through development."
+  appropriate_use: "Sample roasting / cupping evaluation — small batches where slow, even, low-development finish is intentional."
+  inappropriate_use: "Drinking-coffee development at ½ lb or 1 lb. Use c_button_technique instead."
+
+# The "C-button + Auto P1 hold" technique — forum/SM-library consensus for
+# hitting proper development on drinking-coffee batches. Synthesizes:
+#   - Behmor KB: "C button … press it numerous times towards the end of the
+#     roast, extending available roast times" (low-voltage handling)
+#   - Sweet Maria's library: P1 Auto is the right preset for light roasts
+#   - Home-Barista forum: "load beans, hit start with full power, then at
+#     first crack hit the 'C' button, switch to P3, and press the + button
+#     2 or 3 times" — the C-at-FC is the key step
+#
+# Core idea: keep full Auto P1 heat through development; use C (not +) to
+# extend; use P3 only as a brake near 2C, not as the default post-FC mode.
+c_button_technique:
+  start_profile: P1
+  start_mode: Auto
+  fc_action: "At FC: press C immediately. Stay on Auto P1 (do NOT switch to manual P3 yet)."
+  c_button_effect: "Resets timer to Rosetta Stone 1C→2C development window, bypasses Err 7, no per-roast cap on presses."
+  development_heat: "Full Auto P1 heat continues through FC body. This is the inverse of pro_sample_roasting."
+  brake: "Drop to P3 ONLY if 2C threatens (rapid louder snaps, acrid smoke shift, oil sheen) — not as the default post-FC mode."
+  time_extension: "Press C again as needed. Each press resets the timer; no documented cumulative cap."
+  rationale: "P3 at 50% for the entire development phase stalls heat needed for moisture drive-off and Maillard progression on ½ lb+ batches. Holding Auto P1 with C-shaped timing delivers full development at the bean's actual stage."
+  appropriate_use: "Drinking-coffee batches at ½ lb or 1 lb, targeting City through Full City."
+  inappropriate_use: "Sample roasting where slow controlled finish is intentional → use pro_sample_roasting."
+
+# Per-button extension behavior comparison — the difference between + and C
+# matters because the + button has a per-roast cap and 007 hit it at +2:00.
+time_extension_buttons:
+  plus_button:
+    increment: "~10 seconds per press"
+    cap: "Per-roast cumulative cap exists (undocumented exact value; ~+2:00 observed on roast 007 at ½ lb / P1)."
+    use: "Fine-tuning small adjustments inside the documented program time."
+  c_button:
+    increment: "Resets timer to Rosetta Stone 1C→2C window for the active weight setting"
+    cap: "None documented. Behmor KB explicitly allows multiple presses 'towards the end of the roast' for low-voltage extension."
+    use: "Primary extension mechanism. Press at FC for correct development window; press again if voltage/humidity slows the roast."
 
 # Weight button sets DEFAULT PROGRAM TIME, not heat.
 # The 75% safety shutoff fires at 75% of this default time.
