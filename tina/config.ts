@@ -474,13 +474,7 @@ export default defineConfig({
     tina: {
       mediaRoot: "imgs",
       publicFolder: "static",
-      // `static: false` switches Tina to dynamic/repo-based media handling.
-      // - Production / Tina Cloud needs this so phone uploads commit to git.
-      //   Without it, Tina Cloud errors: "Media needs to be turned on for this project".
-      // - Local dev WITHOUT a token can't connect to Tina Cloud, and turning on
-      //   dynamic media here would force an auth prompt.
-      // So: enable only when we have a Tina Cloud token (production / preview builds).
-      static: !process.env.TINA_TOKEN,
+      static: false,
     },
   },
 
