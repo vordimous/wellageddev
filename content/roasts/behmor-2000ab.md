@@ -122,6 +122,25 @@ The C button resets the timer to the approximate time it takes to go from start 
 
 Manual is emphatic: *"These temps ARE NOT bean temps and for information / correlation purposes only. Never gauge degree of roast based on these temps."*
 
+## What "dark" means on this machine
+
+The level reference table in [Methods & reference](/roasts/methods/) defines five levels from Light through Dark. **Not all of them are safely targetable on the Behmor 2000 AB Plus.** The manual is explicit on two limits:
+
+- *"The Behmor Roaster is not intended to roast coffee to levels known as Vienna, French, or Italian."*
+- *"Never roast past 10 seconds into second crack."*
+
+Mapping our level table to what's achievable on this machine:
+
+| Level | Drop trigger (per `data/roast_guidance.yaml`) | Behmor-safe? |
+| --- | --- | --- |
+| Light | 15–45s after FC starts, before any oil sheen | Yes |
+| Light-medium | 30–60s into development | Yes |
+| Medium | End of FC through 1:30–2:30 development | Yes |
+| Medium-dark | First few snaps of 2C | **Yes — at the safety ceiling.** Drop within 10 sec of first 2C snap. |
+| Dark | Rolling SC, before oil floods | **No** — requires staying in 2C past the 10-second line; violates the manual. |
+
+So in practice the deepest roast you can target safely is **Medium-dark / Full City+**, with the drop trigger being the *first 1–3 snaps* of 2C. For darker than that you need a different machine.
+
 ## Critical safety constraints
 
 These come straight from the manual and they are not soft rules:

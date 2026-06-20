@@ -74,7 +74,7 @@ A roast playbook directly drives a physical action on a $400 machine using $20+ 
 ### Structure every playbook with
 
 - **A plan rationale block at the top** — what bean type → which Auto profile, what target level, what charge size, expected FC behavior
-- **A numbered sequence** that includes: preheat, drum insert, profile + weight + START, when to listen for FC, exact 75% shutoff time, the P3+D drop after FC, drop trigger for the target level, cool cycle, weigh, and between-roast wait
+- **A numbered sequence** that includes: preheat, drum insert, profile + weight + START, when to listen for FC, exact 75% shutoff time, C-button at FC (the default per `c_button_technique` in the machine YAML), drop trigger for the target level, cool cycle, weigh, and between-roast wait
 - **A "what to watch" block** flagging the bean's idiosyncrasies plus the universal fire-risk warnings (heavy smoke, past-2C, etc.)
 - **Cite the manual** when adding non-obvious advice (e.g. "manual Part 5, page 12-13" for the pro technique). The citations are what let a future reader verify the playbook against an authoritative source.
 
@@ -85,6 +85,8 @@ A roast playbook directly drives a physical action on a $400 machine using $20+ 
 - Don't write a back-to-back cool-down in minutes if the manual says 1 hour.
 - Don't reuse a prior roast's playbook structure without checking it against the manual — early playbooks (001–004) were built before we had the manual extracted and contain known errors.
 - Don't copy generic drum-roaster advice (Genuine Origin, Scott Rao, etc.) into a Behmor playbook unless you've verified it applies to a probeless fixed-program machine.
+- Don't write unsourced sensory recipes ("press P3 for the final 30s before 2C", "open door at 1:30 into cool"). If a step isn't traceable to the manual or a cited forum/library, either drop it or mark it explicitly as common roasting knowledge / community technique. The rule is: a step under time pressure should not be dressed up as official guidance when it isn't.
+- Don't test multiple variables in a single roast. When introducing a new technique (e.g. switching from Pro Sample Roasting to C-button + Auto P1 hold), validate it at a previously-attempted target before pushing to a new deeper or lighter level. Otherwise you can't cleanly attribute an off result to technique vs target. If the user requests a multi-variable run anyway, flag it explicitly in `bean_notes` so the outcome is interpreted with that caveat.
 
 ### Every playbook runs in isolation
 
@@ -101,7 +103,8 @@ The `interventions` field is the single most important repeatability tool. Start
 
 - The Manual-mode P switch (e.g. `14:00 — P3 (drop to 50%)`)
 - The D button if pressed (e.g. `14:00 — D (drum high)`)
-- Every `+` and `C` time extension with the seconds added
+- Every `C` press (note: C is the documented extension lever for the C-button technique; resets the timer to the Rosetta Stone 1C→2C window)
+- Every `+` press with the seconds added (note: + has a per-roast cumulative cap, ~+2:00 observed; if you reach for + as the primary extension lever you'll run out)
 - The Cool press at drop
 
 Format is one per line, `MM:SS — what you pressed`. Free text after the dash is fine. The page renders it as a monospace block in the Live notes section.
