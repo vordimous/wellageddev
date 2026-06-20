@@ -67,12 +67,13 @@ total_time: '12:10'
 why_dropped: smell cocoa
 anything_weird: null
 roasted_weight_g: null
-roasted_photo: null
+roasted_photo: /imgs/PXL_20260620_195929829.jpg
 tasting_notes: null
 rating: null
 next_time: null
 roaster: Behmor 2000 AB Plus
 draft: false
 ---
+
 
 
