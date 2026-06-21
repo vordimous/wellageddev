@@ -69,7 +69,7 @@ interventions: pressed C once
 total_time: '12:10'
 why_dropped: audible 2nd crack 2C
 anything_weird: null
-roasted_weight_g: null
+roasted_weight_g: 204.7
 roasted_photo: null
 tasting_notes: null
 rating: null
@@ -77,5 +77,6 @@ next_time: null
 roaster: Behmor 2000 AB Plus
 draft: false
 ---
+
 
 
