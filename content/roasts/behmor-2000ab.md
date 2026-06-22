@@ -75,6 +75,25 @@ Rationale: full Auto P1 heat through FC body actually drives off moisture and pr
 
 **Use this for:** drinking coffee at ½ lb or 1 lb, targeting City through Full City+.
 
+### Pure Manual mode + 50/30/20 phase targets — community technique (not from the manual)
+
+**Source: Virtual Coffee Lab YouTube — *Behmor Coffee Roasting Recipe* ([li_XZd1hrtI](https://www.youtube.com/watch?v=li_XZd1hrtI), Sep 2021).** Demonstrated on a **Behmor 1600 Plus**, not the 2000 AB Plus, so the heat-management button behavior and safety-shutoff threshold differ from this machine. Logged here as a community-sourced alternative to the two techniques above. See [`/behmor-video-notes.md`](/behmor-video-notes.md) at the repo root for the full breakdown.
+
+1. Preheat the chamber to ~210 °F (B-temp), then load drum
+2. Press desired weight + P1 + **START**, then **immediately press P5** to switch to Manual mode (P-buttons now act as power levels, not Auto profiles)
+3. Log time + temperature every 30 seconds. Mark events: dry end, FC, drop
+4. Ride the P-buttons by chamber temperature — back off to P4 (75%) when approaching the safety ceiling; return to P5 if temp falls; press **D** for high drum + convection somewhere in the dry phase
+5. At first crack: drop to **P3** (50%) for development
+6. **Cool** at the target level, accounting for ~15 s of cool-cycle carryover
+
+**Target phase split (his framework, not the manual's):** 50% dry / 30% browning / 20% development of total elapsed time, with naturals running shorter on development. Hitting 53/32/14 in the video produced his preferred cup on the bean.
+
+**Caveats before using this on a 2000 AB Plus:**
+
+- The "back off to P4 to avoid the 320 °F shutoff" beat is a 1600+ behavior. The 2000 AB Plus uses the 75% Err 7 shutoff documented above — the trigger condition is different, so don't carry the 4:15 / 295 °F intervention point across blindly
+- The voiceover never mentions the C button, but Mike *does* press C near the end of the roast (observed in the video, unnarrated) — consistent with using C as a late extension lever per the `+ vs C` table below. The C-button + Auto P1 hold technique above is still the project's default for drinking coffee on this machine — try this one as a comparison, not as a replacement
+- Drop is **before 2C** — this is a Medium / Full City recipe, not a Medium-dark target. For Full City+ on this machine, the C-button + Auto P1 hold path is better characterized
+
 ## `+` vs `C` — the most important machine quirk
 
 This is what trips up new Behmor users. **`+` adds to the clock. `C` resets the clock.** They are not interchangeable.
