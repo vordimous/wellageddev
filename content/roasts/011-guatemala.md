@@ -1,9 +1,9 @@
 ---
-title: 011 — Guatemala Huehuetenango Rolando Sanchez (Pure Manual, 50/30/20)
+title: '011 — Guatemala Huehuetenango Rolando Sanchez (Pure Manual, 50/30/20)'
 date: 2026-06-22T00:00:00.000Z
 origin: 'Guatemala — Huehuetenango, Finca Claima (Rolando Sanchez)'
 process: Wet Process (Washed)
-product_url: https://thecaptainscoffee.com/products/guatemala-huehuetenango-rolando-sanchez
+product_url: 'https://thecaptainscoffee.com/products/guatemala-huehuetenango-rolando-sanchez'
 vendor: The Captain's Coffee
 target_level: Medium-dark
 tags:
@@ -14,9 +14,9 @@ tags:
 batch_size_g: 227
 profile: P5
 weight_setting: ½ lb
-green_weight_g:
-ambient_f:
-ambient_rh:
+green_weight_g: 227
+ambient_f: 82
+ambient_rh: 71
 bean_notes: |
   - Same bean / weight / target as 009 and 010 (which both landed light, ~8–10% loss, 2C never confirmed on 009).
   - **New technique this run: Pure Manual mode + 50/30/20 phase split.** Adapted from Virtual Coffee Lab's Behmor recipe (YouTube *li_XZd1hrtI*, Sep 2021). His machine is a 1600 Plus; deviations noted in playbook. Full breakdown: `/behmor-video-notes.md`.
@@ -73,18 +73,48 @@ playbook: |
   - Color: green → yellow (dry end) → tan → brown → deep brown (FC) → darker brown with patches → oily sheen starting (close to 2C).
   - Smell: hay → bread → toast → caramel → cocoa → resinous (past the line).
   - 2C sound: sharper, drier, faster than FC's wet popcorn. Drop on the first 2–3 distinct snaps after FC has wound down.
-time_to_fc:
-color_at_fc:
-smell_at_fc:
-interventions:
-total_time:
-why_dropped:
-anything_weird:
-roasted_weight_g:
-roasted_photo:
-tasting_notes:
-rating:
-next_time:
+time_to_fc: '8:45'
+color_at_fc: pale tan
+smell_at_fc: bread
+interventions: |-
+  154
+  167
+  188
+  206
+  219
+  233
+  246
+  257
+  269
+  278
+  275
+  271
+  267
+  269
+  D, yellow color
+  269
+  271
+  275
+  FC, maybe fake, it was quite
+  276
+  278
+  280
+  285
+  293
+  maybe 2C but could be FC, loud popping. it was 12:10
+  299
+  303
+total_time: '13:30'
+why_dropped: null
+anything_weird: null
+roasted_weight_g: 194.2
+roasted_photo: null
+tasting_notes: null
+rating: null
+next_time: null
 roaster: Behmor 2000 AB Plus
 draft: false
 ---
+
+
+
