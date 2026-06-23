@@ -1,5 +1,5 @@
 ---
-title: '012 — Guatemala Huehuetenango Rolando Sanchez (Pure Manual, real-FC timing)'
+title: 012 — Guatemala Huehuetenango Rolando Sanchez
 date: 2026-06-22T00:00:00.000Z
 origin: 'Guatemala — Huehuetenango, Finca Claima (Rolando Sanchez)'
 process: Wet Process (Washed)
@@ -125,6 +125,7 @@ next_time: null
 roaster: Behmor 2000 AB Plus
 draft: false
 ---
+
 
 
 
