@@ -144,6 +144,145 @@ This talk walks through the most common criticisms of Protobuf and gRPC, acknowl
 - BSR and remote plugins. Real value, but it's a second-step concern.
 - The remaining four criticisms from the konfig list. Blog material, not stage material.
 
+## Slide outline
+
+> 18 slides, ~10 minutes of narrated content in a 15 minute slot. The remaining time absorbs transitions, a stumble, and a walk-up. Lightning slides move fast; a 20 second slide is normal.
+
+**Rules for this deck**
+
+- One idea per slide. If a slide needs a second bullet to make sense, it's two slides.
+- On-slide text is what the audience *reads*, not what I say. Everything else is a speaker note.
+- No slide has more than three lines of text. Section dividers have one.
+- Code appears at most twice, eight lines maximum, syntax highlighted, no ellipses.
+- Screen recordings only, no live demo, no terminal typing on stage.
+- No logo grids. A logo grid says "many things support this" without letting anyone verify it.
+
+### Act 1: The pattern (3 slides, ~1 min)
+
+**1. Title** — 10s
+> It Is Time to Reconsider Protobuf
+> *name, handle, event*
+
+**2. Three dates** — 30s
+> Dec 2025 — MCP makes transports pluggable
+> Jan 2026 — Google withdraws its gRPC transport proposal
+> Jan 2026 — Buf publishes a Protobuf mapping of MCP anyway
+
+*Say:* MCP is the newest protocol most people here have touched. Its maintainers decided not to bless new official transports, so Google's dedicated proposal became unnecessary and they closed it themselves. Buf mapped the protocol to Protobuf regardless.
+
+**3. The pattern** — 20s
+> Schema tooling shows up next to every new protocol.
+
+*Say:* Because the schema question is independent of the protocol question. Hold onto that.
+
+### Act 2: The bumpy years (3 slides, ~1.5 min)
+
+**4. When you formed your opinion** — 40s
+> You met Protobuf somewhere around 2016–2020.
+
+*Say:* Set the scene concretely: protoc wired into your build, no browser story, a `.proto` file your IDE treated as plain text.
+
+**5. What people actually said** — 40s
+> Four short verbatim quotes from [I Reviewed 1,000s of Opinions on gRPC](https://konfigthis.com/blog/grpc/), attributed on-slide.
+
+*Say:* Read two aloud, let the other two land silently. Attribution on screen is what keeps this from reading as a strawman.
+
+**6. They were right** — 20s
+> Every one of these was true.
+
+*Say:* I'm not here to tell you those complaints were wrong. I'm here because the thing they were about has changed underneath them.
+
+### Act 3: The reframe (5 slides, ~4 min) — this is the talk
+
+**7. Thesis** — 20s
+> Protobuf is a schema language.
+
+*Say:* Nothing more on this slide. Let it sit.
+
+**8. The boundary** — 50s
+> Simple diagram: one line labeled "application boundary," four things crossing it — DTOs, events, API responses, config.
+
+*Say:* Anything that crosses this line has a shape. The only question is whether that shape is written down somewhere both sides can generate from.
+
+**9. Protobuf without gRPC** — 40s
+> Kafka. Confluent Schema Registry. Protobuf as a first-class schema type.
+> No gRPC anywhere in this picture.
+
+*Say:* This is the proof that schema and transport are separate decisions. Most people have never connected these two facts.
+
+**10. Compatibility is a property, not a practice** — 50s
+> Eight-line `.proto` diff: add a field, bump nothing, old readers keep working.
+
+*Say:* Contrast with the alternative: a version key in a JSON envelope and a code review convention nobody wrote down.
+
+**11. The question** — 40s
+> Not "do I need gRPC?"
+> "Does data cross a boundary here?"
+
+*Say:* This is the one line to remember from the talk. Say it, pause, move on.
+
+### Act 4: It became first-class (4 slides, ~3 min)
+
+**12. Timeline** — 60s
+> 2020 — AWS ALB routes gRPC natively · Confluent makes Protobuf first-class
+> 2022 — Postman ships gRPC support
+> 2023 — Kubernetes 1.27: native gRPC health probes GA
+> 2025 — gRPC Swift 2 · Tonic becomes official gRPC-Rust under CNCF · protovalidate v1.0
+> 2026 — Protobuf gets a language server · Spring Boot 4.1 ships first-party gRPC
+
+*Say:* Build the rows one at a time. The shape is the argument: infrastructure first, then tooling, then orchestration, then languages, then frameworks. It worked inward toward the code you write.
+
+**13. Screen recording: the LSP** — 40s
+> Silent 20 second capture. Go-to-definition across files, then completion inside a message.
+
+*Say:* January 2026. This is the single slide that retires "the tooling is rough," because it demonstrates instead of claiming.
+
+**14. Screenshot: `buf breaking` in CI** — 30s
+> A failed check on a renamed field. Red, unambiguous, no narration.
+
+*Say:* Schema drift becomes a build failure instead of a production incident.
+
+**15. Nobody announced this** — 20s
+> No one shipped a press release saying Protobuf was ready.
+
+*Say:* Each of those platforms independently decided a schema-defined contract was worth supporting directly. That's what a technology maturing actually looks like.
+
+### Act 5: What to do (3 slides, ~1.5 min)
+
+**16. Monday morning** — 60s
+> 1. Pick one DTO you already have. Define it as a `.proto`.
+> 2. Generate it next to your existing JSON.
+> 3. Add `buf lint` and `buf breaking` to CI.
+
+*Say:* Change no transport. Delete no code. This is the entire first step.
+
+**17. Adoption is additive** — 20s
+> Nobody has to approve a migration.
+
+*Say:* This is why the first step is safe to take without a meeting.
+
+**18. Close** — 20s
+> Does data cross a boundary here?
+> *QR code to the reference list*
+
+### Assets to produce
+
+- [ ] Screen recording: Protobuf LSP go-to-definition and completion, 20s, no audio, large font
+- [ ] Screenshot: `buf breaking` failing a CI check on a renamed field
+- [ ] Diagram: application boundary with four objects crossing it
+- [ ] Eight-line `.proto` diff showing an added field
+- [ ] Four attributed quotes pulled from the konfig post
+- [ ] Timeline slide with five rows, built progressively
+- [ ] QR code to the published reference list
+
+### Slides deliberately not made
+
+- A logo grid of supporting languages. The timeline makes the same point with evidence and a shape.
+- Any benchmark chart. Putting a performance number on screen concedes the frame, and the whole talk argues performance was never the point.
+- A gRPC streaming diagram. Transport detail that pulls against the schema thesis.
+- A Protobuf Editions slide. Correct and current, but it invites "so is proto3 dead?" and costs three minutes I don't have.
+- An architecture diagram of gateways and proxies. If someone needs it, they need a different, longer talk.
+
 ## Target audience
 Polyglot developers, API designers, and platform engineers who evaluated Protobuf or gRPC in the past and decided against it, or who have only ever worked with JSON APIs.
 
