@@ -89,36 +89,60 @@ The ROI on Protobuf has never been better. The tooling, the ecosystem, and the d
 
 # It Is Time to Reconsider Protobuf
 
-Most developers dismissed Protocol Buffers years ago. The tooling was rough, the learning curve was steep, and the common advice was "you're not Google, you don't need it." That advice is outdated.
+Protobuf adoption remains low despite years of maturity, but not for the reasons most developers think. The real barrier is not complexity or tooling; it is that most developers have only ever worked with JSON and never had a reason to choose something different. Protobuf does not ask you to compete with JSON on its home turf. It asks you to think about your interfaces differently.
 
-The Protobuf ecosystem has changed. The `buf` CLI handles linting, formatting, and breaking change detection in a single tool. The Buf Schema Registry provides dependency management and remote code generation without installing protoc. ConnectRPC serves gRPC, gRPC-Web, and plain HTTP from the same `.proto` definition with no proxy required. Validation rules live directly in the schema with protovalidate.
+The real case for Protobuf isn't serialization speed. It's contract-first development. One `.proto` file drives type generation across every language in your stack, schema drift becomes a lint error, and breaking changes get caught before they ship. Modern tooling (buf, ConnectRPC, protovalidate) has removed every historical friction point. This talk covers the practical path to adopting Protobuf without abandoning REST or JSON where they already work.
 
-But the bigger shift is in how we should think about Protobuf. It was never really about performance or replacing REST. Protobuf is a schema language. Any object that crosses an application boundary (an API response, an event, a message, a DTO) can be defined as a Protobuf message. That definition becomes the source of truth, shareable across services in any language, with forward and backward compatibility built in.
+The tooling story has changed significantly. buf handles linting, formatting, and breaking change detection in CI. ConnectRPC works over plain HTTP without a proxy. protovalidate puts validation rules directly in the schema. Postman, VS Code, and IntelliJ all have native support.
 
 This talk walks through the most common criticisms of Protobuf and gRPC, acknowledges where they came from, and shows what has changed. You'll see the current state of the tooling, a practical workflow for adopting Protobuf schemas in an existing project, and why the real ROI is in schema-driven development, not raw throughput.
 
-## Talk outline 
+## Talk outline
 
-> Slated at ~25 min runtime but can be adapted to a lightning talk or deep dive
+> 15 min lightning. Budget ~13 min of content, 2 min of slack. No live demo, screen recordings only. No Q&A built in.
 
-1. The old criticisms and why they stuck (5 min)
-    - Walk through real developer feedback collected from Reddit, HN, and Twitter
-    - Acknowledge each point was valid at the time
-2. What changed (8 min)
-    - `buf` CLI and BSR: schema development lifecycle
-    - ConnectRPC: multi-protocol from one definition, no proxy
-    - `protovalidate`: contracts that enforce themselves
-    - Postman, VS Code, IntelliJ: mainstream tooling support
-3. Protobuf is a schema, not just a SerDe format (7 min)
-    - Any object leaving the application boundary is a candidate
-    - Schema as source of truth vs code as source of truth
-    - Forward/backward compatibility vs custom versioning
-    - Same `.proto`, any language, any transport
-4. Practical adoption path (5 min)
-    - Start with DTOs and boundary objects
-    - Generate alongside existing JSON APIs
-    - gRPC-gateway / ConnectRPC for coexistence
-    - One schema, multiple consumers
+1. The hook: watch what happens around every new protocol (1 min)
+    - MCP is the newest protocol most of this room has touched. It's JSON-RPC, and in December 2025 its maintainers decided transports should be pluggable rather than blessing new official ones.
+    - Google withdrew its dedicated gRPC transport proposal, because with pluggable transports it wasn't needed.
+    - Buf then published a full Protobuf mapping of MCP anyway, the same way they've shown up next to every other protocol.
+    - That's the pattern worth noticing. Schema tooling arrives next to whatever the new thing is, because the schema question is independent of the protocol question. Hold that thought.
+2. You remember the bumpy years (2 min)
+    - Most of this room formed an opinion about Protobuf and gRPC somewhere between 2016 and 2020, and it was rough: protoc in your build, no browser story, thin IDE support, "you're not Google."
+    - Source it honestly from [I Reviewed 1,000s of Opinions on gRPC](https://konfigthis.com/blog/grpc/) so nobody thinks you're strawmanning. Those complaints were correct.
+    - Say plainly that you're not here to argue the complaints were wrong. You're here because the thing they were about has changed underneath them.
+    - Do not attempt a point-by-point rebuttal. It reads as defensive and burns the clock.
+3. The reframe: Protobuf is a schema language (4 min)
+    - This is the talk. Everything before it is setup, everything after is evidence.
+    - Any object crossing an application boundary is a candidate: DTOs, events, API responses, config.
+    - Kafka and Confluent Schema Registry treat Protobuf as a first-class schema with zero gRPC involved. Strongest proof that schema and transport are separate decisions, and most of the room hasn't connected it.
+    - Forward and backward compatibility as a built-in property, not a versioning convention you maintain by hand.
+    - Land the line: the deciding question is not "do I need gRPC," it's "does data cross a boundary here."
+4. It became first-class while you weren't looking (4 min)
+    - The point of this section is accumulation, not any single item. Nobody announced "Protobuf is ready now." It arrived one platform at a time, starting at the infrastructure edge and working inward toward the code you write.
+    - Run it as a timeline slide, roughly one line each, fast:
+        - 2020: AWS ALB routes gRPC natively with end-to-end HTTP/2. Confluent Schema Registry makes Protobuf first-class alongside Avro.
+        - 2022: Postman ships gRPC support. The "you can't just poke at it" objection loses its tool of choice.
+        - 2023: Kubernetes 1.27 promotes native gRPC health probes to GA. No sidecar, no wrapper binary.
+        - 2025: gRPC Swift 2 lands as a full async/await rewrite. Tonic is donated into the gRPC project under CNCF and becomes the official Rust implementation. `protovalidate` reaches v1.0.
+        - 2026: Protobuf gets a real language server. Spring Boot 4.1 ships first-party gRPC auto-configuration for server, client, and test.
+    - Then slow down and show exactly one of them. The LSP is the right pick: a twenty-second screen recording of go-to-definition and completion inside a `.proto` does more than any claim you can make out loud.
+    - Second artifact if time allows: `buf breaking` failing in CI on a renamed field. One screenshot, no narration.
+    - The line that ties it together: none of these were Protobuf asking for special treatment. Each one was a platform deciding a schema-defined contract was worth supporting directly.
+5. Monday morning (1.5 min)
+    - Pick one DTO that already exists in your codebase. Define it as a `.proto`.
+    - Generate it alongside your current JSON. Change no transport, delete no code.
+    - Add `buf lint` and `buf breaking` to CI. That's the whole first step.
+    - The point is that adoption is additive. Nobody has to approve a migration.
+6. Close (0.5 min)
+    - One slide: the reframe restated, a QR code to the reference list, done.
+
+### Cut for time, deliberately
+
+- Protobuf Editions. Correct, current, and a nuance trap. Invites "is proto3 dead" and costs three minutes.
+- The four gRPC streaming types. Transport detail, undercuts the schema thesis.
+- Benchmarks and payload-size numbers. Arguing performance concedes the frame.
+- BSR and remote plugins. Real value, but it's a second-step concern.
+- The remaining four criticisms from the konfig list. Blog material, not stage material.
 
 ## Target audience
 Polyglot developers, API designers, and platform engineers who evaluated Protobuf or gRPC in the past and decided against it, or who have only ever worked with JSON APIs.
@@ -149,8 +173,50 @@ Polyglot developers, API designers, and platform engineers who evaluated Protobu
 
 ### Tooling and ecosystem
 - [Buf Schema Registry (BSR)](https://buf.build/product/bsr) - Hosted Protobuf registry with dependency management and generated SDKs
+- [Protobuf finally has LSP support. You're welcome.](https://buf.build/blog/protobuf-lsp) - Buf ships the first production-grade Protobuf language server (Jan 2026), closing the "IDE support is bad" criticism
+- [Introducing the next generation of the Buf CLI](https://buf.build/blog/buf-cli-next-generation) - v2 config format, monorepos as first-class citizens, `buf config migrate`
+- [protovalidate](https://github.com/bufbuild/protovalidate) - Validation rules declared in the schema; reached v1.0 in September 2025
 - [OpenTelemetry Protocol (OTLP) Specification](https://opentelemetry.io/docs/specs/otlp/) - Real-world example of Protobuf as an industry-standard wire format
 - [opentelemetry-proto](https://github.com/open-telemetry/opentelemetry-proto) - The actual .proto definitions for OTel's data model
+
+### Protobuf Editions
+- [Protobuf Editions Overview](https://protobuf.dev/editions/overview/) - Official docs on replacing `syntax = "proto3"` with `edition = "2024"`
+- [Protobuf Editions are here: don't panic](https://buf.build/blog/protobuf-editions-are-here) - Buf's take: editions are a feature-flag refactor, most users should stay on proto3 for now
+- [Protobuf Editions explained](https://kreya.app/blog/protobuf-editions-explained/) - Practical walkthrough of what changes and what doesn't
+- [Protobuf changes announced June 27, 2025](https://protobuf.dev/news/2025-06-27/) - Edition 2024 release timeline
+
+### ConnectRPC and the browser story
+- [Making gRPC more approachable with ConnectRPC](https://kmcd.dev/posts/connectrpc/) - Introduction to Connect's HTTP/1.1 + JSON approach
+- [ConnectRPC: Where is it now?](https://kmcd.dev/posts/connectrpc-where-is-it-now/) - Two-year retrospective (May 2026) covering remote plugins, LSP, protovalidate, FauxRPC, OpenAPI generation
+- [Why Smart Teams Are Betting on ConnectRPC Over Standard gRPC](https://alamrafiul.com/posts/connectrpc-vs-grpc/) - Side-by-side comparison of ergonomics and debuggability
+- [Connect RPC vs. Google gRPC: Conformance Deep Dive](https://buf.build/blog/grpc-conformance-deep-dive) - How Connect implementations measure against the gRPC spec
+
+### First-class support, platform by platform
+> The timeline behind the talk's central claim: Protobuf and gRPC support arrived incrementally across the industry, starting at the infrastructure edge and working inward.
+
+- [ALB support for end-to-end HTTP/2 and gRPC](https://aws.amazon.com/blogs/aws/new-application-load-balancer-support-for-end-to-end-http-2-and-grpc) - AWS, October 2020. gRPC-aware routing, health checks, and access logs at the load balancer
+- [Protobuf Schema Serializer and Deserializer](https://docs.confluent.io/platform/current/schema-registry/fundamentals/serdes-develop/serdes-protobuf.html) - Confluent Platform 5.5 (2020) made Protobuf a first-class schema type alongside Avro
+- [Postman Now Supports gRPC](https://blog.postman.com/postman-now-supports-grpc/) - January 2022 open beta, GA with Postman v10
+- [Kubernetes 1.24: gRPC container probes in beta](https://kubernetes.io/blog/2022/05/13/grpc-probes-now-in-beta/) - Alpha in 1.23, beta in 1.24, GA in 1.27. Native gRPC health checking with no wrapper binary
+- [Introducing gRPC Swift 2](https://www.swift.org/blog/grpc-swift-2/) - February 2025. Full async/await rewrite with pluggable transports and client-side load balancing
+- [gRPC-Rust Preview Release](https://grpc.io/blog/grpc-rust-announcement/) - Tonic donated into the gRPC project under CNCF as the official Rust implementation
+- [Spring Boot 4.1 Adds gRPC Auto-Configuration](https://www.infoq.com/news/2026/06/spring-boot-4-1/) - June 2026. Server, client, testing, SSL, security, and health indicators all auto-configured
+- [Supported languages](https://grpc.io/docs/languages/) - The current roster, 15+ languages
+
+### Language and framework integration
+- [The Ultimate Guide to Spring gRPC](https://stevenpg.com/posts/ultimate-guide-spring-grpc/) - Deep dive on Spring Boot 4.1's first-party gRPC support: all four RPC types, error mapping, interceptors, metadata, deadlines, TLS, testing
+- [Getting Started with Spring gRPC in Spring Boot 4.1](https://www.danvega.dev/blog/spring-grpc-spring-boot-4-1) - Shorter intro to the auto-configuration and client injection story (June 2026)
+- [spring-grpc](https://github.com/spring-projects/spring-grpc) - The Spring project itself
+- [gRPC-Rust Roadmap](https://grpc.io/blog/grpc-rust-roadmap/) - Where the Rust implementation is headed after the Tonic donation
+
+### Protobuf beyond RPC: events and data pipelines
+- [Why a Protobuf schema registry?](https://buf.build/blog/why-a-protobuf-schema-registry) - Buf's case for schemas as a governed artifact, not a build detail
+- [Bufstream schema providers](https://buf.build/docs/bufstream/schema-providers/) - Broker-side schema awareness for Kafka topics, Confluent Schema Registry API compatible
+- [How to use Protobuf with Apache Kafka and Schema Registry](https://codingharbour.com/apache-kafka/how-to-use-protobuf-with-apache-kafka-and-schema-registry/) - Hands-on walkthrough
+
+### Running it in production
+- [Six Lessons from Production gRPC](https://speedscale.com/blog/six-lessons-from-production-grpc/) - Operational friction points and how teams work around them
+- [Running gRPC at Scale: Lessons From the Frontlines of Production](https://tldrecap.tech/posts/2025/grpconf-india/grpc-scaling-production/) - gRPConf India talk recap on multi-region throughput, load balancing, observability
 
 ### Developer sentiment and community discourse
 - [I Reviewed 1,000s of Opinions on gRPC](https://konfigthis.com/blog/grpc/) - Synthesizes developer opinions from Reddit, HN, Twitter, and YouTube
@@ -159,3 +225,10 @@ Polyglot developers, API designers, and platform engineers who evaluated Protobu
 
 ### Protobuf/gRPC momentum
 - [Google Pushes for gRPC Support in Model Context Protocol](https://www.infoq.com/news/2026/02/google-grpc-mcp-transport/) - Google Cloud contributing gRPC transport to Anthropic's MCP (Feb 2026)
+- [A gRPC Transport for the Model Context Protocol](https://cloud.google.com/blog/products/networking/grpc-as-a-native-transport-for-mcp/) - Google Cloud's own announcement (Jan 2026), with the full argument for binary encoding, mTLS, and method-level authorization
+- [SEP-1352: Add gRPC as a transport](https://github.com/modelcontextprotocol/modelcontextprotocol/issues/1352) - Withdrawn by its Google authors on Jan 14, 2026 in favor of pluggable transports. The discussion thread is the real value: a live argument over whether schema-first belongs in a JSON-RPC protocol
+- [The Future of MCP Transports](https://blog.modelcontextprotocol.io/posts/2025-12-19-mcp-transport-future/#official-and-custom-transports) - The decision that made SEP-1352 unnecessary. gRPC ships as a custom transport, not an official one
+- [The 2026 MCP Roadmap](https://blog.modelcontextprotocol.io/posts/2026-mcp-roadmap/) - "We are not adding more official transports this cycle." Keeps the momentum claim honest
+- [bufbuild/mcp-proto](https://github.com/bufbuild/mcp-proto) - Buf's Protobuf mapping of the MCP protocol, open-sourced in response to the SEP-1352 discussion. A worked example of retrofitting a schema onto a JSON-native protocol
+- [gRPC and AI: A Powerful Partnership](https://grpc.io/blog/grpc-and-ai/) - How LLMs shorten the proto-authoring and test-generation loop
+- [gRPConf 2025](https://grpc.io/blog/grpconf-2025-announcement/) - A dedicated conference is itself a signal of ecosystem health; gRPConf 2026 follows Sept 3 at the Computer History Museum
