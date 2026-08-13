@@ -146,142 +146,135 @@ This talk walks through the most common criticisms of Protobuf and gRPC, acknowl
 
 ## Slide outline
 
-> 18 slides, ~10 minutes of narrated content in a 15 minute slot. The remaining time absorbs transitions, a stumble, and a walk-up. Lightning slides move fast; a 20 second slide is normal.
+> 18 slides, ~10 minutes narrated, 15 minute slot. Same beats as the talk outline. The difference is that no slide is a sentence I'm about to say out loud.
 
-**Rules for this deck**
+**The rule: three slide types, nothing in between.**
 
-- One idea per slide. If a slide needs a second bullet to make sense, it's two slides.
-- On-slide text is what the audience *reads*, not what I say. Everything else is a speaker note.
-- No slide has more than three lines of text. Section dividers have one.
-- Code appears at most twice, eight lines maximum, syntax highlighted, no ellipses.
-- Screen recordings only, no live demo, no terminal typing on stage.
-- No logo grids. A logo grid says "many things support this" without letting anyone verify it.
+| Type | What's on screen | Word budget |
+|---|---|---|
+| **Artifact** | A real screenshot or recording of the thing itself | A label. 3–6 words. |
+| **Diagram** | Boxes, arrows, a timeline. Something with a shape. | Node labels only. No sentences. |
+| **Punctuation** | One short phrase, large, alone | 5 words maximum |
+
+If a slide needs a sentence to make sense, it's a slide I haven't figured out yet. The audience is either reading or listening, never both, and I'd rather they listen.
+
+**The spine of the deck is one visual callback.** Slide 4 shows a `.proto` file open in a 2018 editor: gray monospace, no highlighting, no help. Slide 13 shows the *same file* under the language server. I don't explain the pairing. Nine slides apart, it lands on its own.
 
 ### Act 1: The pattern (3 slides, ~1 min)
 
-**1. Title** — 10s
-> It Is Time to Reconsider Protobuf
-> *name, handle, event*
+**1. Title** — 10s · punctuation
+Talk title, name, handle. Nothing else.
 
-**2. Three dates** — 30s
-> Dec 2025 — MCP makes transports pluggable
-> Jan 2026 — Google withdraws its gRPC transport proposal
-> Jan 2026 — Buf publishes a Protobuf mapping of MCP anyway
+**2. Three real screenshots** — 30s · artifact
+Side by side, in order: the MCP "pluggable transports" blog post header, the SEP-1352 GitHub issue with its **Closed** badge visible, and the `bufbuild/mcp-proto` repo header. Dates under each.
+*On screen:* the three dates only.
+*Say:* MCP decided transports should be pluggable rather than blessing new ones. That made Google's dedicated gRPC proposal unnecessary, so Google closed it themselves. Buf mapped the protocol to Protobuf anyway.
 
-*Say:* MCP is the newest protocol most people here have touched. Its maintainers decided not to bless new official transports, so Google's dedicated proposal became unnecessary and they closed it themselves. Buf mapped the protocol to Protobuf regardless.
-
-**3. The pattern** — 20s
-> Schema tooling shows up next to every new protocol.
-
-*Say:* Because the schema question is independent of the protocol question. Hold onto that.
+**3. Every protocol grows a schema** — 25s · diagram
+Five columns, protocol on top and its schema language underneath. SOAP → WSDL. REST → OpenAPI. gRPC → Protobuf. GraphQL → SDL. MCP → *(blank, then fills in)*.
+*On screen:* ten words, all of them proper nouns.
+*Say:* This keeps happening. The protocol shows up first and a schema language grows next to it, because the schema question is separate from the protocol question. That's the whole talk.
 
 ### Act 2: The bumpy years (3 slides, ~1.5 min)
 
-**4. When you formed your opinion** — 40s
-> You met Protobuf somewhere around 2016–2020.
+**4. A `.proto` file in 2018** — 30s · artifact
+Screenshot of a `.proto` open in an editor of the era. Flat gray monospace, no syntax highlighting, no go-to-definition, no error squiggles. Nothing but text.
+*On screen:* "2018".
+*Say:* This is what the file looked like. Your editor had no idea what it was.
 
-*Say:* Set the scene concretely: protoc wired into your build, no browser story, a `.proto` file your IDE treated as plain text.
+**5. What people actually said** — 45s · artifact
+Screenshots of real HN and Reddit comments. Cropped tight, four of them, timestamps visible.
+*Say:* Read two aloud, let the others land silently.
+*Why screenshots:* typed-out quotes read as strawmen no matter how accurate they are. A screenshot with a timestamp can't be accused of paraphrasing, and it solves the sourcing problem at the same time.
 
-**5. What people actually said** — 40s
-> Four short verbatim quotes from [I Reviewed 1,000s of Opinions on gRPC](https://konfigthis.com/blog/grpc/), attributed on-slide.
-
-*Say:* Read two aloud, let the other two land silently. Attribution on screen is what keeps this from reading as a strawman.
-
-**6. They were right** — 20s
-> Every one of these was true.
-
-*Say:* I'm not here to tell you those complaints were wrong. I'm here because the thing they were about has changed underneath them.
+**6. All true** — 15s · punctuation
+*On screen:* "All of it was true."
+*Say:* I'm not here to tell you those were wrong. The thing they were about changed underneath them.
 
 ### Act 3: The reframe (5 slides, ~4 min) — this is the talk
 
-**7. Thesis** — 20s
-> Protobuf is a schema language.
+**7. Thesis** — 20s · punctuation
+*On screen:* "Protobuf is a schema language."
+*Say:* Nothing. Let it sit for two seconds.
 
-*Say:* Nothing more on this slide. Let it sit.
+**8. One file, many outputs** — 50s · diagram
+A single `.proto` in the center. Arrows fanning out to Go structs, TypeScript types, a Python client, a Kafka topic, and generated docs. The center node is small; the fan is the point.
+*On screen:* six node labels.
+*Say:* One definition. Every consumer generates from it. Nobody hand-writes the shape twice, and nobody's copy drifts.
 
-**8. The boundary** — 50s
-> Simple diagram: one line labeled "application boundary," four things crossing it — DTOs, events, API responses, config.
+**9. A Kafka topic with a schema** — 40s · artifact
+Screenshot of a schema registry UI showing a topic with schema type `PROTOBUF`. No arrows, no annotation.
+*On screen:* "No gRPC in this picture."
+*Say:* Protobuf as a first-class schema type since 2020, alongside Avro. Topics, evolution, breaking-change checks. This is the proof that schema and transport are separate decisions.
 
-*Say:* Anything that crosses this line has a shape. The only question is whether that shape is written down somewhere both sides can generate from.
+**10. Old reader, new message** — 50s · diagram
+Two writers and one reader. v2 writer emits a message with an extra field; the v1 reader parses it fine, with the unknown field drawn grayed out and passing straight through.
+*On screen:* "v1", "v2", "ignored".
+*Say:* Add a field, pick an unused number, ship it. Compare that to a version key in a JSON envelope and a convention nobody wrote down.
 
-**9. Protobuf without gRPC** — 40s
-> Kafka. Confluent Schema Registry. Protobuf as a first-class schema type.
-> No gRPC anywhere in this picture.
-
-*Say:* This is the proof that schema and transport are separate decisions. Most people have never connected these two facts.
-
-**10. Compatibility is a property, not a practice** — 50s
-> Eight-line `.proto` diff: add a field, bump nothing, old readers keep working.
-
-*Say:* Contrast with the alternative: a version key in a JSON envelope and a code review convention nobody wrote down.
-
-**11. The question** — 40s
-> Not "do I need gRPC?"
-> "Does data cross a boundary here?"
-
-*Say:* This is the one line to remember from the talk. Say it, pause, move on.
+**11. The question** — 40s · punctuation
+*On screen:* "Does data cross a boundary here?"
+*Say:* Say it, pause, move on. Don't elaborate. It returns on the last slide.
 
 ### Act 4: It became first-class (4 slides, ~3 min)
 
-**12. Timeline** — 60s
-> 2020 — AWS ALB routes gRPC natively · Confluent makes Protobuf first-class
-> 2022 — Postman ships gRPC support
-> 2023 — Kubernetes 1.27: native gRPC health probes GA
-> 2025 — gRPC Swift 2 · Tonic becomes official gRPC-Rust under CNCF · protovalidate v1.0
-> 2026 — Protobuf gets a language server · Spring Boot 4.1 ships first-party gRPC
+**12. Timeline** — 60s · diagram
+Horizontal axis, 2020 to 2026. Markers with platform logos, revealed left to right. Underneath, an arrow labeled "inward" running from *infrastructure* to *your framework*.
+*On screen:* years, logos, five one-word themes.
+*Say:* Name each year and what tier it hit. AWS and Confluent, then Postman, then Kubernetes, then the language implementations, then Spring Boot and the IDEs. Don't read the items — the shape is the argument.
 
-*Say:* Build the rows one at a time. The shape is the argument: infrastructure first, then tooling, then orchestration, then languages, then frameworks. It worked inward toward the code you write.
+**13. The same file, now** — 40s · artifact
+Twenty second silent capture: go-to-definition across files, then completion inside a message. **The same `.proto` from slide 4.**
+*On screen:* "2026".
+*Say:* Almost nothing. Let people notice the callback themselves.
 
-**13. Screen recording: the LSP** — 40s
-> Silent 20 second capture. Go-to-definition across files, then completion inside a message.
+**14. `buf breaking` fails the build** — 30s · artifact
+Screenshot of the red CI check on a renamed field.
+*On screen:* nothing beyond the screenshot.
+*Say:* Schema drift is a build failure now, not an incident.
 
-*Say:* January 2026. This is the single slide that retires "the tooling is rough," because it demonstrates instead of claiming.
-
-**14. Screenshot: `buf breaking` in CI** — 30s
-> A failed check on a renamed field. Red, unambiguous, no narration.
-
-*Say:* Schema drift becomes a build failure instead of a production incident.
-
-**15. Nobody announced this** — 20s
-> No one shipped a press release saying Protobuf was ready.
-
-*Say:* Each of those platforms independently decided a schema-defined contract was worth supporting directly. That's what a technology maturing actually looks like.
+**15. No launch day** — 20s · punctuation
+*On screen:* "Nobody announced this."
+*Say:* Each platform independently decided a schema-defined contract was worth supporting. That's what maturing actually looks like, and it's easy to miss.
 
 ### Act 5: What to do (3 slides, ~1.5 min)
 
-**16. Monday morning** — 60s
-> 1. Pick one DTO you already have. Define it as a `.proto`.
-> 2. Generate it next to your existing JSON.
-> 3. Add `buf lint` and `buf breaking` to CI.
+**16. One new file** — 60s · diagram
+A file tree, before and after. The after side has exactly one new `.proto` and a generated directory, marked green. Everything else is unchanged and gray.
+*On screen:* the tree, plus `buf lint` and `buf breaking`.
+*Say:* Pick a DTO you already have, define it as a proto, generate next to your existing JSON, add the two checks to CI. No transport changes. No deletions.
 
-*Say:* Change no transport. Delete no code. This is the entire first step.
+**17. Additive** — 20s · punctuation
+*On screen:* "Nobody has to approve a migration."
 
-**17. Adoption is additive** — 20s
-> Nobody has to approve a migration.
-
-*Say:* This is why the first step is safe to take without a meeting.
-
-**18. Close** — 20s
-> Does data cross a boundary here?
-> *QR code to the reference list*
+**18. Close** — 20s · punctuation
+*On screen:* the question again, plus a QR to the reference list.
 
 ### Assets to produce
 
-- [ ] Screen recording: Protobuf LSP go-to-definition and completion, 20s, no audio, large font
-- [ ] Screenshot: `buf breaking` failing a CI check on a renamed field
-- [ ] Diagram: application boundary with four objects crossing it
-- [ ] Eight-line `.proto` diff showing an added field
-- [ ] Four attributed quotes pulled from the konfig post
-- [ ] Timeline slide with five rows, built progressively
-- [ ] QR code to the published reference list
+Real work is here now, not in the slide text. Roughly in order of how long each takes.
+
+- [ ] **Screen recording**, Protobuf LSP: go-to-definition then completion, 20s, silent, large font. Must use the same file as the 2018 screenshot.
+- [ ] **Period screenshot**, a `.proto` with no editor support. Find a 2018-era editor build or disable the plugin and match the theme of the era.
+- [ ] **Four cropped comment screenshots** from HN and Reddit, timestamps visible, sourced from the konfig post's citations.
+- [ ] **Screenshot**, `buf breaking` failing a CI check on a renamed field.
+- [ ] **Screenshot**, schema registry UI showing a topic with schema type PROTOBUF.
+- [ ] **Three screenshots** for slide 2: MCP transports post, closed SEP-1352 issue, mcp-proto repo.
+- [ ] **Diagram**, one `.proto` fanning out to five consumers.
+- [ ] **Diagram**, v2 message read by a v1 reader with the unknown field grayed.
+- [ ] **Diagram**, protocol-to-schema-language columns.
+- [ ] **Diagram**, horizontal timeline with logos and the "inward" arrow.
+- [ ] **Diagram**, before/after file tree.
+- [ ] **QR code** to the published reference list.
 
 ### Slides deliberately not made
 
-- A logo grid of supporting languages. The timeline makes the same point with evidence and a shape.
-- Any benchmark chart. Putting a performance number on screen concedes the frame, and the whole talk argues performance was never the point.
+- A logo grid of supporting languages. The timeline says the same thing with a shape and a direction.
+- Any benchmark chart. A performance number on screen concedes the frame.
 - A gRPC streaming diagram. Transport detail that pulls against the schema thesis.
-- A Protobuf Editions slide. Correct and current, but it invites "so is proto3 dead?" and costs three minutes I don't have.
-- An architecture diagram of gateways and proxies. If someone needs it, they need a different, longer talk.
+- A Protobuf Editions slide. Invites "so is proto3 dead?" and costs three minutes.
+- A gateway and proxy architecture diagram. Different, longer talk.
+- Any slide containing a sentence I am about to say out loud.
 
 ## Target audience
 Polyglot developers, API designers, and platform engineers who evaluated Protobuf or gRPC in the past and decided against it, or who have only ever worked with JSON APIs.
