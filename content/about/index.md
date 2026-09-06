@@ -23,6 +23,20 @@ Full-Stack engineer and Golang enthusiast with cloud-native, distributed systems
 
 ## Professional Experience
 
+### Tech Lead, X1 Integration Platform
+
+**Rygen Technologies** | Dec 2024 - Present
+
+I am the technical manager of [Rygen X1 iPaaS](https://www.rygen.com/x1-integrations), serving as chief architect, principal engineer, and people manager for the 10-person product team. I set the architectural direction of the platform and approve every change that goes into it.
+
+- **Engineering leadership**: Own hiring, growth, and performance for the team. Reviewed thousands of merge requests across dozens of repositories, and defined the review process itself: CODEOWNERS ownership, automated reviewer routing, and default approver rules.
+- **3.0 Control Plane / Data Plane architecture**: Designed and built both sides of the contract between the two systems. `Protobuf` ownership with commit-SHA pinning and an ancestry gate so a change traces to the exact commit that produced it, a tuned `gRPC` transport with a documented envelope error model, a shape-versioned secret envelope, and per-workspace Data Plane deployment. Removed the legacy tenant axis and made workspace the sole scoping unit across domain, API, UI, and transport.
+- **Runtime reliability**: Stopped `Kubernetes` rollouts from losing in-flight work, using graceful shutdown, exchange tracking, and abandoned-exchange marking. Replaced ad-hoc pools with shared `Micrometer`-instrumented `Camel` thread pools, made the `Tomcat` connector fail fast when saturated, and moved dispatch to leaderless `gRPC` with pod-local route self-healing.
+- **Observability**: Introduced `OpenTelemetry` to X1 and extended it into a platform-wide telemetry contract: `Camel` route instrumentation, metrics, trace-stamped user-facing errors, `Faro` frontend telemetry, `Grafana` dashboards, and migration of flow-run history off `MongoDB` onto timeseries `SQL` storage.
+- **API and frontend platform**: Standardized the API on `OpenAPI` with discriminator mappings and static spec generation, so the `Vue` UI is generated from the contract instead of hand-maintained against it. Led a frontend type-safety epic (typed routing, generated enums, a `ZodForm` JSON-Forms framework driven by backend annotations) and an audited design-token system with lint enforcement and dark theme.
+- **Build platform and DX**: Owned the build and CI story across the org: `Java 25`, `Spring Boot 4.x` on `Camel 4.x LTS`, `Gradle` version catalogs, `Renovate` policy and fleet sharding, change-scoped CI jobs, module-separated caches, and a `Docker` image proxy for CI and `testcontainers`.
+- Stack: Java, Spring Boot, Apache Camel, gRPC/Protobuf, PostgreSQL, Hibernate, Vue/TypeScript, Keycloak, Kubernetes, Helm, GitLab CI, OpenTelemetry, Grafana.
+
 ### Head of Developer Experience
 
 **Aklivity** | Mar 2023 - Nov 2024
